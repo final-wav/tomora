@@ -763,54 +763,64 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
       margin-bottom: 8px;
     }
 
-    /* BOTTOM MINI PLAYER (Matching top navbar glass & drop-shadow) */
+    /* FLOATING BOTTOM MINI PLAYER (Glass Dock) */
     .bottom-player {
       position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 75px;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(780px, calc(100vw - 32px));
+      height: 68px;
       background: rgba(12, 12, 15, 0.85);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65), 0 0 1px rgba(255, 255, 255, 0.15);
       display: grid;
-      grid-template-columns: 280px 1fr 280px;
+      grid-template-columns: 210px 1fr 50px;
       align-items: center;
-      padding: 0 32px;
+      padding: 0 20px;
       z-index: 1000;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .player-left {
       display: flex;
       flex-direction: column;
       gap: 2px;
+      overflow: hidden;
     }
 
     .player-track-info {
       display: flex;
       align-items: baseline;
       gap: 8px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .player-track-num {
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       font-weight: 900;
       color: var(--magenta);
       letter-spacing: 0.08em;
     }
 
     .player-track-title {
-      font-size: 0.95rem;
+      font-size: 0.88rem;
       font-weight: 800;
       color: #ffffff;
       text-transform: uppercase;
       letter-spacing: 0.04em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .player-subtitle {
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       color: var(--text-muted);
       letter-spacing: 0.05em;
     }
@@ -819,8 +829,8 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 6px;
-      max-width: 580px;
+      gap: 5px;
+      max-width: 460px;
       margin: 0 auto;
       width: 100%;
     }
@@ -828,7 +838,7 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
     .player-controls {
       display: flex;
       align-items: center;
-      gap: 18px;
+      gap: 16px;
     }
 
     .ctrl-btn {
@@ -848,8 +858,8 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
     }
 
     .play-pause-circle {
-      width: 36px;
-      height: 36px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
       background: #ffffff;
       color: #0c0c0f;
@@ -870,16 +880,16 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
     .timeline-wrap {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       width: 100%;
     }
 
     .time-stamp {
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       color: var(--text-muted);
       font-variant-numeric: tabular-nums;
       font-family: monospace;
-      min-width: 32px;
+      min-width: 28px;
     }
 
     .timeline-track {
@@ -906,11 +916,11 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
 
     .timeline-thumb {
       position: absolute;
-      right: -5px;
+      right: -4px;
       top: 50%;
       transform: translateY(-50%);
-      width: 10px;
-      height: 10px;
+      width: 9px;
+      height: 9px;
       border-radius: 50%;
       background: #ffffff;
       box-shadow: 0 0 8px var(--magenta-glow);
@@ -925,25 +935,27 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
       display: flex;
       justify-content: flex-end;
       align-items: center;
-      gap: 12px;
     }
 
     .player-lang-badge {
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       font-weight: 800;
       color: var(--text-muted);
       border: 1px solid rgba(255, 255, 255, 0.12);
-      padding: 3px 8px;
+      padding: 2px 6px;
       border-radius: 4px;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
     }
 
-    @media (max-width: 850px) {
+    @media (max-width: 768px) {
       .bottom-player {
+        bottom: 16px;
+        width: calc(100vw - 24px);
         grid-template-columns: 1fr;
         height: auto;
-        padding: 10px 18px;
-        gap: 8px;
+        padding: 10px 14px;
+        gap: 6px;
+        border-radius: 14px;
       }
       .player-left { display: none; }
       .player-right { display: none; }
