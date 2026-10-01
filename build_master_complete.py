@@ -45,29 +45,7 @@ phase1_dir = "c:/Users/Hakan/Documents/antigravity/modest-meitner/album_analyse_
 def clean_txt(t):
     return re.sub(r'[^a-zA-Z0-9]', '', t).lower()
 
-def find_matching_card(line_text, cards):
-    line_lower = line_text.lower()
-    line_clean = clean_txt(line_text)
-    if not line_clean:
-        return None
-    
-    for idx, card in enumerate(cards):
-        q_raw = card.get("quote", "").split('/')[0].strip().lower()
-        q_clean = clean_txt(q_raw)
-        
-        # 1. Exact or substring quote match
-        if q_clean and (q_clean in line_clean or line_clean in q_clean):
-            return idx
-            
-        # 2. Key phrase tokens
-        tokens = [t.strip() for t in re.findall(r'[a-zA-Z]{3,}', q_raw) if t.strip() not in ['the', 'and', 'for', 'von', 'der', 'die', 'das', 'mit', 'wie', 'ein', 'eine', 'you']]
-        matched = [t for t in tokens if t in line_lower]
-        if len(tokens) > 0 and len(matched) >= min(len(tokens), 2 if len(tokens) >= 2 else 1):
-            return idx
-            
-    return None
-
-def extract_stanzas_for_track(num_str, title, analysis_cards):
+def extract_stanzas_for_track(num_str, title):
     p1_file = f"{num_str}_{title.replace(' ', '_')}.md"
     p1_path = os.path.join(phase1_dir, p1_file)
     if not os.path.exists(p1_path):
@@ -107,12 +85,7 @@ def extract_stanzas_for_track(num_str, title, analysis_cards):
                 stanzas.append(current_stanza)
             current_stanza = {"title": line_s, "lines": []}
         elif line_s:
-            matched_card_idx = find_matching_card(line_s, analysis_cards)
-            current_stanza["lines"].append({
-                "text": line_s,
-                "is_annotated": matched_card_idx is not None,
-                "target_card": matched_card_idx
-            })
+            current_stanza["lines"].append(line_s)
         else:
             if current_stanza["lines"]:
                 stanzas.append(current_stanza)
@@ -156,7 +129,7 @@ def render_analysis_column_for_lang(review_raw, cards, num, lang):
         cards_body_html = "\n".join(b_p_html)
 
         cards_html_parts.append(f"""
-        <div class="analysis-card" id="card-{num}-{lang}-{idx}" data-card-idx="{idx}">
+        <div class="analysis-card" id="card-{num}-{lang}-{idx}">
           <span class="card-quote">{q}</span>
           <div class="card-body">
             {cards_body_html}
@@ -177,27 +150,14 @@ def render_analysis_column_for_lang(review_raw, cards, num, lang):
     """
 
 def render_track_html(num, title, stanzas, de_info, en_info):
-    # Render stanzas
+    # Render stanzas as pure text
     lyrics_html_parts = []
-    line_global_idx = 0
     for s in stanzas:
         lyrics_html_parts.append('<div class="stanza">')
         if s["title"]:
             lyrics_html_parts.append(f'<div class="stanza-title">{s["title"]}</div>')
-        for l in s["lines"]:
-            text = l["text"]
-            if l["is_annotated"]:
-                target_card = l["target_card"]
-                lyrics_html_parts.append(
-                    f'<div class="lyric-line annotated" data-line-idx="{line_global_idx}" data-target-card="{target_card}">'
-                    f'<span class="annotation-highlight">{text}</span>'
-                    f'</div>'
-                )
-            else:
-                lyrics_html_parts.append(
-                    f'<div class="lyric-line plain" data-line-idx="{line_global_idx}">{text}</div>'
-                )
-            line_global_idx += 1
+        for text in s["lines"]:
+            lyrics_html_parts.append(f'<div class="lyric-line">{text}</div>')
         lyrics_html_parts.append('</div>')
     lyrics_rendered = "\n".join(lyrics_html_parts)
 
@@ -699,51 +659,10 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
     }
 
     .lyric-line {
-      font-size: 1.05rem;
-      line-height: 1.85;
-      font-weight: 400;
-      color: rgba(255, 255, 255, 0.65);
-      margin-bottom: 4px;
-      user-select: text;
-      display: block;
-      width: fit-content;
-      transition: all 0.2s ease;
-    }
-
-    .lyric-line.plain {
-      cursor: default;
-    }
-
-    .lyric-line.annotated {
-      cursor: pointer;
-    }
-
-    .annotation-highlight {
-      display: inline;
-      color: inherit;
-      transition: all 0.2s ease;
-    }
-
-    .lyric-line.annotated:hover {
-      color: #ffffff;
-    }
-
-    .lyric-line.annotated:hover .annotation-highlight {
-      color: var(--magenta);
-      text-shadow: 0 0 10px rgba(255, 0, 122, 0.4);
-    }
-
-    .lyric-line.annotated.active {
-      color: #ffffff;
-    }
-
-    .lyric-line.annotated.active .annotation-highlight {
-      color: #ffffff;
-      background: var(--magenta);
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-weight: 700;
-      box-shadow: 0 0 16px var(--magenta-glow);
+      font-size: 1.08rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.75);
+      line-height: 1.65;
     }
 
     /* Right Column: Analysis */
@@ -1305,55 +1224,7 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
 
     setLanguage(currentLang);
 
-    // 4. Genius-Style Annotation Interactivity (Two-Way Sync)
-    document.querySelectorAll('.lyric-line.annotated').forEach(lineEl => {
-      lineEl.addEventListener('click', () => {
-        const trackSection = lineEl.closest('.track-section');
-        const targetCardIdx = lineEl.getAttribute('data-target-card');
-
-        // Deactivate active states across all lines in this section
-        trackSection.querySelectorAll('.lyric-line.annotated').forEach(l => l.classList.remove('active'));
-        
-        // Highlight all lines matching this target card
-        trackSection.querySelectorAll(`.lyric-line.annotated[data-target-card="${targetCardIdx}"]`).forEach(l => l.classList.add('active'));
-
-        const activeLangBlock = trackSection.querySelector(`.lang-${currentLang}`);
-        if (activeLangBlock) {
-          const cards = activeLangBlock.querySelectorAll('.analysis-card');
-          cards.forEach((card, idx) => {
-            if (idx.toString() === targetCardIdx) {
-              card.classList.add('active');
-              card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            } else {
-              card.classList.remove('active');
-            }
-          });
-        }
-      });
-    });
-
-    document.querySelectorAll('.analysis-card').forEach(card => {
-      card.addEventListener('click', () => {
-        const trackSection = card.closest('.track-section');
-        const cardIdx = card.getAttribute('data-card-idx') || card.id.split('-').pop();
-
-        const activeLangBlock = trackSection.querySelector(`.lang-${currentLang}`);
-        if (activeLangBlock) {
-          activeLangBlock.querySelectorAll('.analysis-card').forEach(c => c.classList.remove('active'));
-          card.classList.add('active');
-        }
-
-        trackSection.querySelectorAll('.lyric-line.annotated').forEach(l => {
-          const isMatch = l.getAttribute('data-target-card') === cardIdx;
-          l.classList.toggle('active', isMatch);
-          if (isMatch) {
-            l.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-          }
-        });
-      });
-    });
-
-    // 5. Dual Media Audio Engine: YouTube Song + Neural TTS Audio Essay
+    // 4. Dual Media Audio Engine: YouTube Song + Neural TTS Audio Essay
     let ytPlayer = null;
     let ytReady = false;
     let queuedVideoId = null;
@@ -1668,7 +1539,7 @@ drawer_items_parts = []
 for num_str, title in track_names_map.items():
     de_info = de_tracks_deep.get(num_str, {"review": "", "cards": []})
     en_info = en_tracks_deep.get(num_str, {"review": "", "cards": []})
-    stanzas = extract_stanzas_for_track(num_str, title, de_info["cards"])
+    stanzas = extract_stanzas_for_track(num_str, title)
     
     tracks_rendered_parts.append(render_track_html(num_str, title, stanzas, de_info, en_info))
     drawer_items_parts.append(f'<li><a href="#track-{num_str}">{num_str} — {title}</a></li>')
