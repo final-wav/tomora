@@ -189,25 +189,19 @@ def render_track_html(num, title, stanzas, de_info, en_info):
         <div class="track-title-wrap">
           <span class="track-num-badge">{num}</span>
           <h2 class="track-heading">{title}</h2>
-        </div>
-        <div class="track-actions">
-          <button class="song-play-btn" data-track-num="{num}" aria-label="Play Original Song">
-            <svg class="play-icon" viewBox="0 0 24 24" width="13" height="13"><polygon points="6 4 20 12 6 20 6 4" fill="currentColor"></polygon></svg>
-            <svg class="pause-icon" viewBox="0 0 24 24" width="13" height="13" style="display:none;"><rect x="5" y="4" width="4" height="16" fill="currentColor"></rect><rect x="15" y="4" width="4" height="16" fill="currentColor"></rect></svg>
-            <span class="btn-text">
-              <span class="lang-de">Song</span>
-              <span class="lang-en">Song</span>
-            </span>
-          </button>
-          <button class="audio-play-btn" data-track-num="{num}" aria-label="Listen to Audio Essay">
-            <svg class="play-icon" viewBox="0 0 24 24" width="13" height="13"><polygon points="6 4 20 12 6 20 6 4" fill="currentColor"></polygon></svg>
-            <svg class="pause-icon" viewBox="0 0 24 24" width="13" height="13" style="display:none;"><rect x="5" y="4" width="4" height="16" fill="currentColor"></rect><rect x="15" y="4" width="4" height="16" fill="currentColor"></rect></svg>
-            <span class="btn-text">
-              <span class="lang-de">Audio-Essay</span>
-              <span class="lang-en">Audio Essay</span>
-            </span>
+          <button class="song-round-play-btn" data-track-num="{num}" aria-label="Play Original Song">
+            <svg class="play-icon" viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><polygon points="7 4 19 12 7 20 7 4"></polygon></svg>
+            <svg class="pause-icon" viewBox="0 0 24 24" width="13" height="13" fill="currentColor" style="display:none;"><rect x="6" y="4" width="3.5" height="16"></rect><rect x="14.5" y="4" width="3.5" height="16"></rect></svg>
           </button>
         </div>
+        <button class="audio-play-btn" data-track-num="{num}" aria-label="Listen to Audio Essay">
+          <svg class="play-icon" viewBox="0 0 24 24" width="13" height="13"><polygon points="6 4 20 12 6 20 6 4" fill="currentColor"></polygon></svg>
+          <svg class="pause-icon" viewBox="0 0 24 24" width="13" height="13" style="display:none;"><rect x="5" y="4" width="4" height="16" fill="currentColor"></rect><rect x="15" y="4" width="4" height="16" fill="currentColor"></rect></svg>
+          <span class="btn-text">
+            <span class="lang-de">Audio-Essay</span>
+            <span class="lang-en">Audio Essay</span>
+          </span>
+        </button>
       </div>
       <div class="track-grid">
         <div class="lyrics-col">
@@ -565,48 +559,38 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
 
     .track-title-wrap {
       display: flex;
-      align-items: baseline;
-      gap: 16px;
-    }
-
-    .track-actions {
-      display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
       flex-wrap: wrap;
     }
 
-    .song-play-btn {
+    .song-round-play-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
       background: var(--magenta);
-      border: 1px solid var(--magenta);
       color: #ffffff;
-      padding: 6px 14px;
-      border-radius: 4px;
-      font-size: 0.75rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      cursor: pointer;
+      border: none;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      transition: all 0.2s ease;
-      user-select: none;
-      box-shadow: 0 0 14px var(--magenta-glow);
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 0 12px var(--magenta-glow);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      flex-shrink: 0;
+      padding: 0;
     }
 
-    .song-play-btn:hover {
+    .song-round-play-btn:hover {
       background: #ff2b92;
-      border-color: #ff2b92;
-      box-shadow: 0 0 20px rgba(255, 0, 122, 0.6);
-      transform: translateY(-1px);
+      transform: scale(1.1);
+      box-shadow: 0 0 18px rgba(255, 0, 122, 0.65);
     }
 
-    .song-play-btn.playing {
+    .song-round-play-btn.playing {
       background: #ffffff;
       color: #0c0c0f;
-      border-color: #ffffff;
-      box-shadow: 0 0 18px rgba(255, 255, 255, 0.6);
+      box-shadow: 0 0 16px rgba(255, 255, 255, 0.6);
     }
 
     .audio-play-btn {
@@ -614,7 +598,7 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
       border: 1px solid rgba(255, 255, 255, 0.15);
       color: #cfcfd4;
       padding: 6px 14px;
-      border-radius: 4px;
+      border-radius: 8px;
       font-size: 0.75rem;
       font-weight: 700;
       letter-spacing: 0.08em;
@@ -814,7 +798,7 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
       margin-bottom: 8px;
     }
 
-    /* FLOATING BOTTOM MINI PLAYER (Glass Dock - Sharp Rectangle) */
+    /* FLOATING BOTTOM MINI PLAYER (Glass Dock) */
     .bottom-player {
       position: fixed;
       bottom: 24px;
@@ -826,7 +810,7 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 0px;
+      border-radius: 8px;
       box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65), 0 0 1px rgba(255, 255, 255, 0.15);
       display: grid;
       grid-template-columns: 1fr auto 1fr;
@@ -897,7 +881,6 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
     .ctrl-btn {
       background: none;
       border: none;
-      border-radius: 0px;
       color: var(--text-muted);
       cursor: pointer;
       display: flex;
@@ -912,9 +895,9 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
     }
 
     .play-pause-circle {
-      width: 32px;
-      height: 32px;
-      border-radius: 0px;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
       background: #ffffff;
       color: #0c0c0f;
       display: flex;
@@ -952,7 +935,7 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
       flex: 1;
       height: 4px;
       background: rgba(255, 255, 255, 0.15);
-      border-radius: 0px;
+      border-radius: 2px;
       cursor: pointer;
       position: relative;
     }
@@ -964,7 +947,7 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
     .timeline-fill {
       height: 100%;
       background: var(--magenta);
-      border-radius: 0px;
+      border-radius: 2px;
       width: 0%;
       pointer-events: none;
       position: relative;
@@ -977,7 +960,7 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
       transform: translateY(-50%);
       width: 8px;
       height: 8px;
-      border-radius: 0px;
+      border-radius: 50%;
       background: #ffffff;
       box-shadow: 0 0 8px var(--magenta-glow);
       display: none;
@@ -999,7 +982,7 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
       color: var(--text-muted);
       border: 1px solid rgba(255, 255, 255, 0.12);
       padding: 2px 6px;
-      border-radius: 0px;
+      border-radius: 4px;
       letter-spacing: 0.08em;
     }
 
@@ -1011,7 +994,7 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
         height: auto;
         padding: 10px 14px;
         gap: 6px;
-        border-radius: 0px;
+        border-radius: 8px;
       }
       .player-left { display: none; }
       .player-right { display: none; }
@@ -1358,7 +1341,7 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
         essaySub.style.display = currentMode === 'essay' ? 'inline' : 'none';
       }
 
-      document.querySelectorAll('.song-play-btn').forEach(btn => {
+      document.querySelectorAll('.song-round-play-btn').forEach(btn => {
         const isThis = (btn.getAttribute('data-track-num') === track.num) && (currentMode === 'song');
         btn.classList.toggle('playing', isThis && isPlaying);
         btn.querySelector('.play-icon').style.display = (isThis && isPlaying) ? 'none' : 'inline-block';
@@ -1526,7 +1509,7 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
     }, 250);
 
     // In-Page Track Song Play Buttons
-    document.querySelectorAll('.song-play-btn').forEach(btn => {
+    document.querySelectorAll('.song-round-play-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         const numStr = btn.getAttribute('data-track-num');
         const targetIdx = trackList.findIndex(t => t.num === numStr);
