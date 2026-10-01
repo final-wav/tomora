@@ -609,15 +609,13 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
     .lyric-line:hover {
       color: var(--magenta);
       background-color: var(--magenta-dim);
-      box-shadow: inset 2px 0 0 var(--magenta);
     }
 
     .lyric-line.active {
       color: #ffffff;
       background-color: var(--magenta-dim);
       font-weight: 700;
-      box-shadow: inset 4px 0 0 var(--magenta), 0 0 20px var(--magenta-glow);
-      padding-left: 12px;
+      box-shadow: 0 0 20px var(--magenta-glow);
     }
 
     /* Right Column: Analysis */
