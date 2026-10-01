@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TOMORA — Album Review & Literary Interpretation</title>
+  <title>TOMORA — Album Review & Interpretation</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <style>
     :root {
       --bg: #0c0c0f;
@@ -39,6 +38,10 @@
       overflow-x: hidden;
       position: relative;
     }
+
+    /* Dynamic Language Visibility */
+    body[data-lang="de"] .lang-en { display: none !important; }
+    body[data-lang="en"] .lang-de { display: none !important; }
 
     /* Animierter 35mm Analog-Film-Grain Canvas */
     #grainCanvas {
@@ -122,15 +125,6 @@
       line-height: 1;
     }
 
-    .brand-sub {
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      color: var(--magenta);
-      text-transform: uppercase;
-      margin-top: 4px;
-    }
-
     .nav-right {
       display: flex;
       justify-content: flex-end;
@@ -138,23 +132,32 @@
       gap: 16px;
     }
 
-    .lang-switch {
+    .lang-toggle-btn {
+      background: rgba(255, 255, 255, 0.06);
       color: var(--text-muted);
-      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 6px 14px;
+      border-radius: 4px;
       font-size: 0.75rem;
       font-weight: 800;
       letter-spacing: 0.15em;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      padding: 6px 12px;
-      border-radius: 4px;
-      transition: all 0.2s;
+      cursor: pointer;
       text-transform: uppercase;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
 
-    .lang-switch:hover {
+    .lang-toggle-btn:hover {
       color: #ffffff;
       border-color: var(--magenta);
       background: var(--magenta-dim);
+    }
+
+    .lang-toggle-btn span.active-indicator {
+      color: var(--magenta);
+      font-weight: 900;
     }
 
     /* Burger Drawer */
@@ -421,21 +424,18 @@
       gap: 32px;
     }
 
+    .lang-block {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
     .narrative-review {
       background: transparent;
       font-size: 1.05rem;
       color: #cfcfd4;
       line-height: 1.8;
       font-weight: 400;
-    }
-
-    .narrative-review h3 {
-      font-size: 1.35rem;
-      font-weight: 800;
-      color: #ffffff;
-      margin-bottom: 16px;
-      line-height: 1.3;
-      letter-spacing: -0.01em;
     }
 
     .narrative-review p {
@@ -514,7 +514,7 @@
     }
   </style>
 </head>
-<body>
+<body data-lang="de">
 
   <!-- Grain Overlay -->
   <canvas id="grainCanvas"></canvas>
@@ -532,7 +532,10 @@
       <div class="brand-title">TOMORA</div>
     </div>
     <div class="nav-right">
-      <a href="index.html" class="lang-switch">Deutsch</a>
+      <button class="lang-toggle-btn" id="langToggleBtn" aria-label="Switch Language">
+        <span class="lang-de">EN</span>
+        <span class="lang-en">DE</span>
+      </button>
     </div>
   </nav>
 
@@ -544,7 +547,10 @@
         <span></span>
         <span></span>
       </button>
-      <div class="drawer-title">Track Selection</div>
+      <div class="drawer-title">
+        <span class="lang-de">Titelauswahl</span>
+        <span class="lang-en">Track Selection</span>
+      </div>
     </div>
     <ul class="drawer-nav">
       <li><a href="#track-01">01 — Please</a></li>
@@ -572,9 +578,15 @@
   <!-- Main Content -->
   <main class="main-wrapper">
     <header class="album-header">
-      <span class="album-meta-tag">Full Work Analysis & Psychogram</span>
+      <span class="album-meta-tag">
+        <span class="lang-de">Vollständige Werkanalyse & Psychogramm</span>
+        <span class="lang-en">Full Work Analysis & Psychogram</span>
+      </span>
       <h1 class="album-main-title">TOMORA</h1>
-      <p class="album-subtitle">An in-depth literary and psychoanalytic examination of attachment, loss, psychological deconstruction, and the reclamation of sovereign autonomy.</p>
+      <p class="album-subtitle">
+        <span class="lang-de">Eine detaillierte literarische und psychoanalytische Untersuchung über Bindung, Verlust, seelische Dekonstruktion und die Rückkehr zur autonomen Souveränität.</span>
+        <span class="lang-en">An in-depth literary and psychoanalytic examination of attachment, loss, psychological deconstruction, and the reclamation of sovereign autonomy.</span>
+      </p>
     </header>
 
     <div class="tracks-list">
@@ -596,13 +608,52 @@
 </div>
         </div>
         <div class="analysis-col">
-          <div class="narrative-review">
-            <p>The album opens not with an assertion of strength or the posturing of a sovereign self, but with a pure vocative of total surrender: <strong>“Please”</strong>. It is an entrance of devastating intimacy. The speaker begins from a position of zero leverage, where their entire emotional equilibrium depends on the responsiveness of the other. Closeness is framed not as tenderness, but as a primal survival reflex.</p>
-<p>The text thrusts the listener into the unvarnished vulnerability of a bond where dignity has already been bartered away for the next moment of attention. There is no backstory and no rationalization—only the bare craving for rescue from one's own solitude.</p>
+          
+    <div class="lang-block lang-de">
+      <div class="narrative-review">
+        <p>Das Album beginnt nicht mit einer Aussage, einer These oder einer Positionierung im Raum, sondern mit einem reinen Vokativ der Entäußerung: <strong>„Please“</strong>. Es ist ein Einstieg von schmerzhafter Intimität. Hier spricht kein souveränes Subjekt, das um Liebe wirbt, sondern eine Stimme, deren gesamtes inneres Gleichgewicht an der Reaktion des Gegenübers hängt. Nähe wird nicht als Zärtlichkeit verhandelt, sondern als existenzieller Überlebensreflex.</p>
+<p>Der Text wirft uns ohne Vorwarnung in die ungeschminkte Verwundbarkeit einer Bindung, in der die eigene Würde bereits für den nächsten Moment der Beachtung geopfert wurde. Es gibt keine Vorgeschichte und keine Erklärungen – nur das nackte Verlangen nach Rettung vor der eigenen Einsamkeit.</p>
+      </div>
+      <div class="analysis-cards-list">
+        
+        <div class="analysis-card" id="card-01-de-0">
+          <span class="card-quote">Please (Please) / Das doppelte Echo der Ohnmacht</span>
+          <div class="card-body">
+            <p>Das Echo <code style="color:var(--magenta);font-family:monospace;">(Please)</code> verdoppelt das Flehen im leeren Raum. Wer so spricht, besitzt keinerlei Verhandlungsposition mehr: Die eigene Existenz wird bedingungslos in die Hände des Anderen gelegt.</p>
+<p>Hinter der scheinbaren Unterwerfung liegt jedoch auch ein unausgesprochener Druck: Wer sich so schutzlos ausliefert, zwingt das Gegenüber in die Rolle des Retters.</p>
           </div>
-          <div class="analysis-cards-list">
-            
-        <div class="analysis-card" id="card-01-0">
+        </div>
+        
+
+        <div class="analysis-card" id="card-01-de-1">
+          <span class="card-quote">Come (Please come) / Der zögernde Notruf</span>
+          <div class="card-body">
+            <p>Mit dem Wort <em>„Come“</em> versucht das Ich zum ersten Mal, eine Richtung einzufordern – doch die Angst vor Zurückweisung ist so groß, dass sofort wieder das flehende <em>„(Please come)“</em> hinterhergeschoben wird.</p>
+<p>Der Wunsch nach Kontakt zieht nach vorn, aber die innere Lähmung hält die Person an Ort und Stelle fest. Die gesamte Last, die Distanz zu überwinden, wird dem Partner aufgebürdet.</p>
+          </div>
+        </div>
+        
+
+        <div class="analysis-card" id="card-01-de-2">
+          <span class="card-quote">Closer, closer, closer / Die Tilgung des Zwischenraums</span>
+          <div class="card-body">
+            <p>Das wiederholte <em>„closer“</em> wirkt wie ein Mantra, mit dem die innere Panik niedergekämpft werden soll. Jeder Millimeter Abstand fühlt sich wie ein Absturz ins Bodenlose an.</p>
+<p>Es geht längst nicht mehr um gesunde Nähe, sondern um das vollständige Auslöschen jedes Zwischenraums: Das krampfhafte Festhalten eines Ertrinkenden, der den Retter mit in die Tiefe reißt.</p>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+          
+    <div class="lang-block lang-en">
+      <div class="narrative-review">
+        <p>The album opens not with an assertion of strength or the posturing of a sovereign self, but with a pure vocative of total surrender: <strong>“Please”</strong>. It is an entrance of devastating intimacy. The speaker begins from a position of zero leverage, where their entire emotional equilibrium depends on the responsiveness of the other. Closeness is framed not as tenderness, but as a primal survival reflex.</p>
+<p>The text thrusts the listener into the unvarnished vulnerability of a bond where dignity has already been bartered away for the next moment of attention. There is no backstory and no rationalization—only the bare craving for rescue from one's own solitude.</p>
+      </div>
+      <div class="analysis-cards-list">
+        
+        <div class="analysis-card" id="card-01-en-0">
           <span class="card-quote">Please (Please) / The doubled echo of helplessness</span>
           <div class="card-body">
             <p>The echo <code style="color:var(--magenta);font-family:monospace;">(Please)</code> doubles the plea in an empty room. One who speaks like this holds no negotiating leverage: existence is placed unconditionally in the other's hands.</p>
@@ -611,7 +662,7 @@
         </div>
         
 
-        <div class="analysis-card" id="card-01-1">
+        <div class="analysis-card" id="card-01-en-1">
           <span class="card-quote">Come (Please come) / The hesitant distress signal</span>
           <div class="card-body">
             <p>With the word <em>“Come”</em>, the speaker attempts to demand direction—yet terror of rejection immediately cushions the command with a pleading <em>“(Please come)”</em>.</p>
@@ -620,7 +671,7 @@
         </div>
         
 
-        <div class="analysis-card" id="card-01-2">
+        <div class="analysis-card" id="card-01-en-2">
           <span class="card-quote">Closer, closer, closer / Eradicating the space between</span>
           <div class="card-body">
             <p>Repeating <em>“closer”</em> functions like a mantra to keep panic at bay. Every millimeter of separation feels like freefall into the void.</p>
@@ -628,7 +679,9 @@
           </div>
         </div>
         
-          </div>
+      </div>
+    </div>
+    
         </div>
       </div>
     </section>
@@ -671,13 +724,43 @@
 </div>
         </div>
         <div class="analysis-col">
-          <div class="narrative-review">
-            <p>What began as a trembling plea accelerates in <em>Come Closer</em> into an unyielding undertow. The track dissects the perilous hunger for emotional fusion: the partner's proximity becomes the sole focus against inner fragmentation.</p>
-<p>Here, the self loses touch with its own center. It mistakes the physical proximity of the other for genuine peace. Constant repetition of the demand leaves no room for reflection or healthy separation—it is the intoxication of a bond that razes all boundaries between two individuals.</p>
+          
+    <div class="lang-block lang-de">
+      <div class="narrative-review">
+        <p>Was im Intro als zitterndes Bitten begann, verwandelt sich in <em>Come Closer</em> in einen unerbittlichen Sog. Der Song seziert die gefährliche Sehnsucht nach Verschmelzung: Die Nähe des Partners wird zum einzigen Halt gegen die innere Zerrissenheit erklärt.</p>
+<p>Hier verliert das Ich den Kontakt zu sich selbst. Es verwechselt die bloße physische Heranführung des Anderen mit innerem Frieden. Die ständige Wiederholung der Aufforderung lässt keinen Raum für Zweifel oder gesunde Distanz – es ist der Rausch einer Bindung, die alle Grenzen zwischen zwei Menschen einreißt.</p>
+      </div>
+      <div class="analysis-cards-list">
+        
+        <div class="analysis-card" id="card-02-de-0">
+          <span class="card-quote">Come closer to me / Das Verlangen nach Verschmelzung</span>
+          <div class="card-body">
+            <p>Das ständige Wiederholen der Zeile wirkt wie ein Beschwörungsritus: Man will den Partner so nah an sich heranziehen, dass kein Gedanke an Trennung oder Realität mehr dazwischenpasst.</p>
+<p>Jedes Zögern des Gegenübers wird sofort als Bedrohung erlebt. Verlangen schlägt hier in reinen Zwang um.</p>
           </div>
-          <div class="analysis-cards-list">
-            
-        <div class="analysis-card" id="card-02-0">
+        </div>
+        
+
+        <div class="analysis-card" id="card-02-de-1">
+          <span class="card-quote">To me, to me, to me / Das Verschwinden der Ich-Grenzen</span>
+          <div class="card-body">
+            <p>Die repetitive Häufung von <em>„To me, to me, to me“</em> offenbart die zentripetale Fixierung: Die gesamte Welt wird auf die Distanz zwischen dem Anderen und dem eigenen Bedürfnis reduziert.</p>
+<p>Der Partner wird nicht mehr als eigenständiges Gegenüber mit eigenen Grenzen wahrgenommen, sondern soll die innere Leere lückenlos ausfüllen.</p>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+          
+    <div class="lang-block lang-en">
+      <div class="narrative-review">
+        <p>What began as a trembling plea accelerates in <em>Come Closer</em> into an unyielding undertow. The track dissects the perilous hunger for emotional fusion: the partner's proximity becomes the sole focus against inner fragmentation.</p>
+<p>Here, the self loses touch with its own center. It mistakes the physical proximity of the other for genuine peace. Constant repetition of the demand leaves no room for reflection or healthy separation—it is the intoxication of a bond that razes all boundaries between two individuals.</p>
+      </div>
+      <div class="analysis-cards-list">
+        
+        <div class="analysis-card" id="card-02-en-0">
           <span class="card-quote">Come closer to me / The craving for fusion</span>
           <div class="card-body">
             <p>The repetition of the line functions like an incantation: pulling the partner so close that no thought of reality or separation can squeeze between.</p>
@@ -686,7 +769,7 @@
         </div>
         
 
-        <div class="analysis-card" id="card-02-1">
+        <div class="analysis-card" id="card-02-en-1">
           <span class="card-quote">To me, to me, to me / Erasing ego boundaries</span>
           <div class="card-body">
             <p>The repetitive accumulation of <em>“To me, to me, to me”</em> reveals a centripetal fixation: the entire world is reduced to the distance between the other and one's own insatiable need.</p>
@@ -694,7 +777,9 @@
           </div>
         </div>
         
-          </div>
+      </div>
+    </div>
+    
         </div>
       </div>
     </section>
@@ -749,13 +834,43 @@
 </div>
         </div>
         <div class="analysis-col">
-          <div class="narrative-review">
-            <p>A sharp rupture in the narrative architecture: helpless begging flips into razor-sharp intellectual observation. <em>A Boy Like You</em> is the forensic dissection of the partner on the level of pure intellect.</p>
-<p>Terrified of her own vulnerability, the protagonist retreats into the mind and dismantles the counterpart with surgical precision. It is the classic armor of rationalization: if you can completely predict and classify the other as an archetype, they can never catch your heart unguarded again.</p>
+          
+    <div class="lang-block lang-de">
+      <div class="narrative-review">
+        <p>Ein harter Bruch in der Dramaturgie des Werks: Das hilflose Flehen schlägt in eiskalte Beobachtung um. <em>A Boy Like You</em> ist die messerscharfe Demontage des Partners auf der Ebene des Verstandes.</p>
+<p>Aus Angst vor der eigenen Verletzlichkeit zieht sich die Protagonistin in den Kopf zurück und seziert das Gegenüber mit schonungsloser Präzision. Es ist der klassische Schutzpanzer der Rationalisierung: Wer den Anderen vollkommen durchschaut und auf ein berechenbares Muster reduziert, kann von ihm nicht mehr unvorbereitet verletzt werden.</p>
+      </div>
+      <div class="analysis-cards-list">
+        
+        <div class="analysis-card" id="card-03-de-0">
+          <span class="card-quote">A Boy Like You / Die Vermessung der Schwächen</span>
+          <div class="card-body">
+            <p>Jede Geste, jedes falsche Wort und jedes Verhaltensmuster des Partners wird katalogisiert und dekonstruiert.</p>
+<p>Die Sprache ist distanziert und kühl: Indem sie den Partner auf die Kategorie <em>„ein Junge wie du“</em> reduziert, nimmt sie ihm das Geheimnis und damit die Macht über ihr Herz.</p>
           </div>
-          <div class="analysis-cards-list">
-            
-        <div class="analysis-card" id="card-03-0">
+        </div>
+        
+
+        <div class="analysis-card" id="card-03-de-1">
+          <span class="card-quote">Die Kälte der Erkenntnis</span>
+          <div class="card-body">
+            <p>Hinter der analytischen Überlegenheit liegt eine tiefe Ernüchterung: Die schmerzhafte Einsicht, dass der reale Mensch vor einem niemals das Idealbild erfüllen wird, das man auf ihn projiziert hat.</p>
+<p>Die intellektuelle Kritik schützt vor dem Schmerz, hinterlässt aber eine bittere, unüberbrückbare Distanz.</p>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+          
+    <div class="lang-block lang-en">
+      <div class="narrative-review">
+        <p>A sharp rupture in the narrative architecture: helpless begging flips into razor-sharp intellectual observation. <em>A Boy Like You</em> is the forensic dissection of the partner on the level of pure intellect.</p>
+<p>Terrified of her own vulnerability, the protagonist retreats into the mind and dismantles the counterpart with surgical precision. It is the classic armor of rationalization: if you can completely predict and classify the other as an archetype, they can never catch your heart unguarded again.</p>
+      </div>
+      <div class="analysis-cards-list">
+        
+        <div class="analysis-card" id="card-03-en-0">
           <span class="card-quote">A Boy Like You / Measuring the flaws</span>
           <div class="card-body">
             <p>Every gesture, false word, and behavioral pattern of the partner is cataloged and deconstructed.</p>
@@ -764,7 +879,7 @@
         </div>
         
 
-        <div class="analysis-card" id="card-03-1">
+        <div class="analysis-card" id="card-03-en-1">
           <span class="card-quote">The chill of disillusionment</span>
           <div class="card-body">
             <p>Beneath analytical superiority lies profound disillusionment: the painful realization that the real person across the room will never match the idealized projection.</p>
@@ -772,7 +887,9 @@
           </div>
         </div>
         
-          </div>
+      </div>
+    </div>
+    
         </div>
       </div>
     </section>
@@ -842,13 +959,43 @@
 </div>
         </div>
         <div class="analysis-col">
-          <div class="narrative-review">
-            <p>When intellectual control can no longer contain emotional reality, the system collapses. <em>Ring The Alarm</em> is a state of psychic emergency: repressed panic ruptures to the surface.</p>
-<p>There is no room for witty analysis here. Internal alarm sirens wail because the fundamental threat of relational breakdown can no longer be denied. The track captures the dread of acute overwhelm—the moment you realize everything is crashing down, yet find yourself unable to let go.</p>
+          
+    <div class="lang-block lang-de">
+      <div class="narrative-review">
+        <p>Wenn der Verstand die emotionale Wucht nicht mehr kontrollieren kann, bricht das System zusammen. <em>Ring The Alarm</em> ist der seelische Notstand: Die verdrängte Panik bricht unkontrolliert hervor.</p>
+<p>Hier gibt es keine kühle Analyse mehr. Die inneren Alarmglocken schlagen an, weil die fundamentale Bedrohung der Bindung nicht mehr geleugnet werden kann. Der Song fängt den Zustand akuter Überforderung ein – den Moment, in dem man begreift, dass die Beziehung kollabiert, man aber gleichzeitig unfähig ist, sich zu lösen.</p>
+      </div>
+      <div class="analysis-cards-list">
+        
+        <div class="analysis-card" id="card-04-de-0">
+          <span class="card-quote">Ring the alarm / Das innere Alarmsystem</span>
+          <div class="card-body">
+            <p>Der Alarm ist der emotionale Aufschrei vor dem drohenden Verlust. Der Körper und die Psyche befinden sich im Ausnahmezustand.</p>
+<p>Fluchtreflex und Klammerreflex feuern gleichzeitig: Die Erkenntnis, dass die Bindung toxisch ist, trifft auf die nackte Panik vor dem Alleinsein.</p>
           </div>
-          <div class="analysis-cards-list">
-            
-        <div class="analysis-card" id="card-04-0">
+        </div>
+        
+
+        <div class="analysis-card" id="card-04-de-1">
+          <span class="card-quote">Kontrollverlust & Nackte Panik</span>
+          <div class="card-body">
+            <p>In der akuten Krise fallen alle Schutzmasken. Das Ich verliert jede Kontrolle über die Fassade.</p>
+<p>Es ist der absolute Tiefpunkt des Widerstands: Die Einsicht, dass man die Situation mit Worten, Vorwürfen und Gedanken nicht mehr unter Kontrolle halten kann.</p>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+          
+    <div class="lang-block lang-en">
+      <div class="narrative-review">
+        <p>When intellectual control can no longer contain emotional reality, the system collapses. <em>Ring The Alarm</em> is a state of psychic emergency: repressed panic ruptures to the surface.</p>
+<p>There is no room for witty analysis here. Internal alarm sirens wail because the fundamental threat of relational breakdown can no longer be denied. The track captures the dread of acute overwhelm—the moment you realize everything is crashing down, yet find yourself unable to let go.</p>
+      </div>
+      <div class="analysis-cards-list">
+        
+        <div class="analysis-card" id="card-04-en-0">
           <span class="card-quote">Ring the alarm / The internal alarm system</span>
           <div class="card-body">
             <p>The alarm represents the emotional outcry before impending loss. Body and mind enter a state of emergency.</p>
@@ -857,7 +1004,7 @@
         </div>
         
 
-        <div class="analysis-card" id="card-04-1">
+        <div class="analysis-card" id="card-04-en-1">
           <span class="card-quote">Loss of control & Raw panic</span>
           <div class="card-body">
             <p>In acute crisis, all protective masks fall away. The ego loses all control over its outward facade.</p>
@@ -865,7 +1012,9 @@
           </div>
         </div>
         
-          </div>
+      </div>
+    </div>
+    
         </div>
       </div>
     </section>
@@ -937,13 +1086,43 @@
 </div>
         </div>
         <div class="analysis-col">
-          <div class="narrative-review">
-            <p>Following the catastrophic alarm and system overheat in <em>Ring The Alarm</em>, the psyche executes a dramatic evasive maneuver: retreating into total denial. <em>My Baby</em> completely whites out the collapse that just occurred.</p>
-<p>Lying together once more in a sheltered space, holding onto each other, everything suddenly feels intoxicatingly, deceptively “right”. It is a sanctuary of deliberate amnesia: the two build a forbidden fortress of two. Nobody on the outside must know, nobody must peer inside—because any clear-eyed gaze from the outside world would immediately shatter the fragile illusion. Reality is locked out to keep pain from penetrating.</p>
+          
+    <div class="lang-block lang-de">
+      <div class="narrative-review">
+        <p>Nach dem katastrophalen Alarm und der Überhitzung in <em>Ring The Alarm</em> vollzieht die Psyche eine dramatische Fluchtbewegung: die Flucht in die totale Verleugnung (<em>Denial</em>). <em>My Baby</em> blendet den soeben erlebten Einsturz komplett aus.</p>
+<p>In dem Moment, in dem man mit der Person wieder in einem geschützten Raum liegt und sich festhält, fühlt sich plötzlich alles wieder betörend „richtig“ an. Es ist ein Rausch des Verdrängens: Die beiden errichten eine geheime Festung zu zweit. Niemand draußen darf es wissen, niemand darf hineinsehen – denn jeder ehrliche Blick von außen würde die fragile Illusion sofort zerstören. Man sperrt die Realität aus, um den Schmerz nicht spüren zu müssen.</p>
+      </div>
+      <div class="analysis-cards-list">
+        
+        <div class="analysis-card" id="card-05-de-0">
+          <span class="card-quote">My Baby / Der Schutzrausch der Verleugnung</span>
+          <div class="card-body">
+            <p>Nach dem Ausnahmezustand klammert sich die Psyche an die einzige Erleichterung, die sie kennt: die Nähe des Partners. Der Begriff <em>„Baby“</em> wirkt zärtlich, verharmlosend und beschützend.</p>
+<p>Man schließt einen stillen Pakt mit sich selbst: Solange wir uns halten, ist nichts passiert. Es ist der archetypische Mechanismus der Verleugnung: Man weiß um den Abgrund, entscheidet sich aber bewusst dafür, die Augen zu schließen und im warmen Gefühl der Erleichterung zu verharren.</p>
           </div>
-          <div class="analysis-cards-list">
-            
-        <div class="analysis-card" id="card-05-0">
+        </div>
+        
+
+        <div class="analysis-card" id="card-05-de-1">
+          <span class="card-quote">Niemand darf es wissen / Die hermetische Festung</span>
+          <div class="card-body">
+            <p>Die Außenwelt wird zur Bedrohung erklärt, weil die Realität die Wahrheit über die Risse in der Bindung ausspricht. Die Beziehung wird zu einem geheimen Schutzraum stilisiert: <em>Nur wir zwei gegen den Rest der Welt.</em></p>
+<p>Doch unter der scheinbaren Geborgenheit liegt eine tiefe Beklemmung: Eine Bindung, die man vor der Welt und vor der eigenen Vernunft verstecken muss, um sie am Leben zu erhalten, trägt ihr eigenes Ende bereits in sich.</p>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+          
+    <div class="lang-block lang-en">
+      <div class="narrative-review">
+        <p>Following the catastrophic alarm and system overheat in <em>Ring The Alarm</em>, the psyche executes a dramatic evasive maneuver: retreating into total denial. <em>My Baby</em> completely whites out the collapse that just occurred.</p>
+<p>Lying together once more in a sheltered space, holding onto each other, everything suddenly feels intoxicatingly, deceptively “right”. It is a sanctuary of deliberate amnesia: the two build a forbidden fortress of two. Nobody on the outside must know, nobody must peer inside—because any clear-eyed gaze from the outside world would immediately shatter the fragile illusion. Reality is locked out to keep pain from penetrating.</p>
+      </div>
+      <div class="analysis-cards-list">
+        
+        <div class="analysis-card" id="card-05-en-0">
           <span class="card-quote">My Baby / The protective narcotic of denial</span>
           <div class="card-body">
             <p>Following acute panic, the psyche clings to the only relief it knows: the physical presence of the partner. The moniker <em>“Baby”</em> feels tender, infantilizing, and protective.</p>
@@ -952,7 +1131,7 @@
         </div>
         
 
-        <div class="analysis-card" id="card-05-1">
+        <div class="analysis-card" id="card-05-en-1">
           <span class="card-quote">Nobody must know / The hermetic fortress</span>
           <div class="card-body">
             <p>The outside world is designated as a threat because reality speaks the truth about the structural fractures in the bond. The relationship is mythologized into a secret sanctuary: <em>Us against the world.</em></p>
@@ -960,7 +1139,9 @@
           </div>
         </div>
         
-          </div>
+      </div>
+    </div>
+    
         </div>
       </div>
     </section>
@@ -1031,13 +1212,43 @@
 </div>
         </div>
         <div class="analysis-col">
-          <div class="narrative-review">
-            <p>The definitive turning point of the entire work. <em>Have You Seen Me Dance Alone</em> is not a mournful breakup ballad, but the moment unvarnished vitality shatters the illusion of codependency like glass.</p>
-<p>The question <em>“Have you seen me dance alone?”</em> is a proud demarcation of boundaries. After the preceding phases of enmeshment and denial, the self resigns from the shared cadence. Solo dancing is not tragic surrender, but a radical declaration of autonomy: I exist, I breathe, and I move under my own power. The moment the protagonist realizes she can feel vibrant and whole without the partner's validation, codependency loses its power.</p>
+          
+    <div class="lang-block lang-de">
+      <div class="narrative-review">
+        <p>Der fundamentale Wendepunkt des gesamten Albums. <em>Have You Seen Me Dance Alone</em> ist keine wehmütige Trennungsklage, sondern der Moment, in dem die unmaskierte Lebendigkeit die Illusion der Abhängigkeit zersprengt.</p>
+<p>Die Frage <em>„Have you seen me dance alone?“</em> ist eine stolze Grenzziehung. Nach den vorherigen Phasen der Verschmelzung und der Verleugnung kündigt das Ich den gemeinsamen Takt auf. Das Alleintanzen ist keine traurige Kapitulation, sondern die radikale Erkenntnis der eigenen Autonomie: Ich existiere, ich atme und ich bewege mich aus eigener Kraft. In dem Augenblick, in dem das Ich spürt, dass es ohne die Bestätigung des Anderen lebendig sein kann, verliert die Abhängigkeit ihre Macht.</p>
+      </div>
+      <div class="analysis-cards-list">
+        
+        <div class="analysis-card" id="card-06-de-0">
+          <span class="card-quote">Have you seen me dance alone? / Der Akt der Selbstbehauptung</span>
+          <div class="card-body">
+            <p>Die Frage markiert den Moment, in dem die Fesseln der Abhängigkeit abgestreift werden. Wer allein tanzen kann und dabei echte Freude empfindet, benötigt die Erlaubnis und den Halt des Partners nicht mehr.</p>
+<p>Das Alleintanzen symbolisiert die Rückkehr der Selbstbestimmung: Das Subjekt findet seinen eigenen Takt wieder und stellt sich mutig der eigenen Existenz.</p>
           </div>
-          <div class="analysis-cards-list">
-            
-        <div class="analysis-card" id="card-06-0">
+        </div>
+        
+
+        <div class="analysis-card" id="card-06-de-1">
+          <span class="card-quote">Der Durchbruch zur Autonomie</span>
+          <div class="card-body">
+            <p>Die Trennung vollzieht sich hier nicht durch schmutzigen Streit oder Verbitterung, sondern durch die unausweichliche Klarheit wiedergewonnener Unabhängigkeit.</p>
+<p>Die toxische Bindung kollabiert an der schlichten Tatsache, dass das Ich sich selbst wiedergefunden hat und nicht mehr bereit ist, die eigene Identität aufzugeben.</p>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+          
+    <div class="lang-block lang-en">
+      <div class="narrative-review">
+        <p>The definitive turning point of the entire work. <em>Have You Seen Me Dance Alone</em> is not a mournful breakup ballad, but the moment unvarnished vitality shatters the illusion of codependency like glass.</p>
+<p>The question <em>“Have you seen me dance alone?”</em> is a proud demarcation of boundaries. After the preceding phases of enmeshment and denial, the self resigns from the shared cadence. Solo dancing is not tragic surrender, but a radical declaration of autonomy: I exist, I breathe, and I move under my own power. The moment the protagonist realizes she can feel vibrant and whole without the partner's validation, codependency loses its power.</p>
+      </div>
+      <div class="analysis-cards-list">
+        
+        <div class="analysis-card" id="card-06-en-0">
           <span class="card-quote">Have you seen me dance alone? / The act of self-assertion</span>
           <div class="card-body">
             <p>The question marks the instant the shackles of dependency fall away. One who can dance alone and experience genuine joy no longer requires the partner's permission or validation.</p>
@@ -1046,7 +1257,7 @@
         </div>
         
 
-        <div class="analysis-card" id="card-06-1">
+        <div class="analysis-card" id="card-06-en-1">
           <span class="card-quote">The breakthrough into autonomy</span>
           <div class="card-body">
             <p>The detachment here happens not through bitter brawls or resentment, but through the undeniable clarity of restored independence.</p>
@@ -1054,7 +1265,9 @@
           </div>
         </div>
         
-          </div>
+      </div>
+    </div>
+    
         </div>
       </div>
     </section>
@@ -1122,13 +1335,43 @@
 </div>
         </div>
         <div class="analysis-col">
-          <div class="narrative-review">
-            <p>Following the euphoria of the breakout comes the inevitable cost: dissociative freeze. <em>Somewhere Else</em> captures the hollow state when the initial adrenaline fades and the reality of loss settles deep into consciousness.</p>
-<p>To survive the sheer impact of severing the bond, the self retreats behind a protective wall. Awareness detaches: physically present in the room, but internally residing <em>“somewhere else”</em>. Coldness is not experienced as cruelty, but welcomed as necessary psychological anesthesia—an emotional hibernation allowing deep wounds to cool.</p>
+          
+    <div class="lang-block lang-de">
+      <div class="narrative-review">
+        <p>Auf die Euphorie des Ausbruchs folgt der unvermeidliche Preis: die seelische Kältestarre (<em>Freeze</em>). <em>Somewhere Else</em> fängt das Gefühl ein, wenn der erste Adrenalinschub verfliegt und die Wucht des Verlusts das Bewusstsein erreicht.</p>
+<p>Um den Schmerz des endgültigen Bindungsabbruchs überhaupt zu überleben, zieht sich das Ich hinter eine Schutzmauer zurück. Das Bewusstsein entkoppelt sich: Man ist zwar physisch anwesend, aber innerlich <em>„somewhere else“</em>. Die Kälte wird hier nicht als Mangel erlebt, sondern als notwendige seelische Anästhesie – ein emotionaler Winterschlaf, in dem die tiefen Wunden abkühlen können.</p>
+      </div>
+      <div class="analysis-cards-list">
+        
+        <div class="analysis-card" id="card-07-de-0">
+          <span class="card-quote">Somewhere Else / Die innere Distanzierung</span>
+          <div class="card-body">
+            <p>Das Ich erlebt sich selbst wie eine distanzierte Beobachterin. Man blickt auf die eigenen Erlebnisse herab, ohne dass der Schmerz unmittelbar bis ins Zentrum vordringen kann.</p>
+<p>Diese Form der Entrückung ist eine Schutzreaktion: Das System drosselt die Empfindungen auf ein Minimum, um nicht an der akuten Überlastung zu zerbrechen.</p>
           </div>
-          <div class="analysis-cards-list">
-            
-        <div class="analysis-card" id="card-07-0">
+        </div>
+        
+
+        <div class="analysis-card" id="card-07-de-1">
+          <span class="card-quote">Die Kälte als Schutzraum</span>
+          <div class="card-body">
+            <p>Wo zuvor noch zerstörerische Hitze und Panik herrschten, breitet sich nun eine gläserne, unantastbare Stille aus.</p>
+<p>Das Einfrieren der Gefühle ist ein lebenserhaltender Übergangszustand: Eine Phase der Ruhe, die dem Selbst die nötige Zeit gibt, sich innerlich neu zu sortieren.</p>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+          
+    <div class="lang-block lang-en">
+      <div class="narrative-review">
+        <p>Following the euphoria of the breakout comes the inevitable cost: dissociative freeze. <em>Somewhere Else</em> captures the hollow state when the initial adrenaline fades and the reality of loss settles deep into consciousness.</p>
+<p>To survive the sheer impact of severing the bond, the self retreats behind a protective wall. Awareness detaches: physically present in the room, but internally residing <em>“somewhere else”</em>. Coldness is not experienced as cruelty, but welcomed as necessary psychological anesthesia—an emotional hibernation allowing deep wounds to cool.</p>
+      </div>
+      <div class="analysis-cards-list">
+        
+        <div class="analysis-card" id="card-07-en-0">
           <span class="card-quote">Somewhere Else / Internal detachment</span>
           <div class="card-body">
             <p>The self observes its own life like a detached bystander. One looks down upon one's experiences without letting raw pain penetrate into the core.</p>
@@ -1137,7 +1380,7 @@
         </div>
         
 
-        <div class="analysis-card" id="card-07-1">
+        <div class="analysis-card" id="card-07-en-1">
           <span class="card-quote">Ice as a sanctuary</span>
           <div class="card-body">
             <p>Where destructive heat and panic once raged, an untouchable stillness now settles.</p>
@@ -1145,7 +1388,9 @@
           </div>
         </div>
         
-          </div>
+      </div>
+    </div>
+    
         </div>
       </div>
     </section>
@@ -1237,13 +1482,43 @@
 </div>
         </div>
         <div class="analysis-col">
-          <div class="narrative-review">
-            <p>Remaining frozen in numbness becomes unsustainable. <em>I Drink The Light</em> is the psyche's counter-offensive against emotional freeze: an effort to banish the internal void through sensory intensity.</p>
-<p>The metaphor of <em>“drinking the light”</em> describes an insatiable hunger for vitality, dopamine, and raw life-force. Ingesting brightness and sensory stimulation serves to prove that one is still alive. Yet beneath this surge lies lingering urgency: one who grasps at light with such intensity is still actively running from lingering shadows.</p>
+          
+    <div class="lang-block lang-de">
+      <div class="narrative-review">
+        <p>Das Verharren in der Kältestarre wird auf Dauer unerträglich. <em>I Drink The Light</em> ist der Gegenangriff der Psyche gegen die drohende emotionale Taubheit: Der Versuch, die innere Leere durch reine Reizüberflutung zu vertreiben.</p>
+<p>Die Metapher, <em>„das Licht zu trinken“</em>, beschreibt einen unersättlichen Hunger nach Vitalität, Dopamin und Lebensenergie. Man saugt Eindrücke, Helligkeit und Intensität in sich auf, um zu beweisen, dass man noch lebt. Doch hinter diesem manischen Rausch schwingt die latente Dringlichkeit mit: Wer so gierig nach dem Licht greift, kämpft immer noch gegen die Schatten der Vergangenheit an.</p>
+      </div>
+      <div class="analysis-cards-list">
+        
+        <div class="analysis-card" id="card-08-de-0">
+          <span class="card-quote">I drink the light / Der Hunger nach Vitalität</span>
+          <div class="card-body">
+            <p>Das Subjekt weigert sich, in der Taubheit zu erstarren, und stürzt sich in die Suche nach intensiven Eindrücken. Das Licht wird zur Nahrung für eine ausgehungerte Seele.</p>
+<p>Es ist die Flucht nach vorn: Ein energetischer Kraftakt, um die Schwere der vorherigen Tracks hinter sich zu lassen.</p>
           </div>
-          <div class="analysis-cards-list">
-            
-        <div class="analysis-card" id="card-08-0">
+        </div>
+        
+
+        <div class="analysis-card" id="card-08-de-1">
+          <span class="card-quote">Der Rausch gegen das Vergessen</span>
+          <div class="card-body">
+            <p>Der Versuch, Schmerz durch pure Aktivität und Reize zu überdecken, verleiht dem Song eine flirrende Dringlichkeit.</p>
+<p>Es ist ein wichtiger Zwischenschritt auf dem Heilungsweg: Die Lebensgeister kehren mit aller Macht zurück, auch wenn der innere Frieden erst noch gefunden werden muss.</p>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+          
+    <div class="lang-block lang-en">
+      <div class="narrative-review">
+        <p>Remaining frozen in numbness becomes unsustainable. <em>I Drink The Light</em> is the psyche's counter-offensive against emotional freeze: an effort to banish the internal void through sensory intensity.</p>
+<p>The metaphor of <em>“drinking the light”</em> describes an insatiable hunger for vitality, dopamine, and raw life-force. Ingesting brightness and sensory stimulation serves to prove that one is still alive. Yet beneath this surge lies lingering urgency: one who grasps at light with such intensity is still actively running from lingering shadows.</p>
+      </div>
+      <div class="analysis-cards-list">
+        
+        <div class="analysis-card" id="card-08-en-0">
           <span class="card-quote">I drink the light / The hunger for vitality</span>
           <div class="card-body">
             <p>Refusing to fossilize in numbness, the subject throws herself into the pursuit of intense sensations. Light becomes fuel for a starved soul.</p>
@@ -1252,7 +1527,7 @@
         </div>
         
 
-        <div class="analysis-card" id="card-08-1">
+        <div class="analysis-card" id="card-08-en-1">
           <span class="card-quote">The surge against the past</span>
           <div class="card-body">
             <p>The drive to override lingering pain with pure activity gives the song its vibrant urgency.</p>
@@ -1260,7 +1535,9 @@
           </div>
         </div>
         
-          </div>
+      </div>
+    </div>
+    
         </div>
       </div>
     </section>
@@ -1327,13 +1604,43 @@
 </div>
         </div>
         <div class="analysis-col">
-          <div class="narrative-review">
-            <p>As the manic rush of Track 8 burns to ash, a profound stillness settles in <em>Wavelengths</em>. It is the contemplative heart of the entire journey: here, all artificial defense mechanisms, survival roles, and conditioned personas completely dissolve.</p>
-<p>The fundamental core question—<strong>“Who am I?”</strong>—stands naked in the room. This marks the symbolic death of the false, codependent self. The protagonist realizes that all previous behaviors—pleading, clinging, intellectualizing, denying—were merely frantic adaptation strategies. Solitude is no longer fought as an existential threat, but embraced as a sanctuary of unvarnished truth.</p>
+          
+    <div class="lang-block lang-de">
+      <div class="narrative-review">
+        <p>Nachdem der manische Rausch aus Track 8 verraucht ist, kehrt in <em>Wavelengths</em> tiefgreifende Stille ein. Es ist das Herzstück der inneren Einkehr: Hier fallen alle künstlichen Schutzschichten, Rollenmuster und antrainierten Persönlichkeitsmasken endgültig in sich zusammen.</p>
+<p>Die fundamentale Kernfrage <em>„Who am I?“</em> steht nackt im Raum. Es vollzieht sich der symbolische Tod des falschen, abhängigen Selbst. Das Ich begreift, dass alle bisherigen Verhaltensweisen – das Bitten, das Klammern, das Intellektualisieren, das Verleugnen – lediglich verzweifelte Anpassungsstrategien waren. Die Stille wird hier nicht mehr als existenzielle Bedrohung bekämpft, sondern als ein Zustand unbestechlicher, heilsamer Wahrheit angenommen.</p>
+      </div>
+      <div class="analysis-cards-list">
+        
+        <div class="analysis-card" id="card-09-de-0">
+          <span class="card-quote">Who am I? / Das Begraben der Masken</span>
+          <div class="card-body">
+            <p>Die Frage nach der eigenen Identität steht im Zentrum. Alle Rollen – die des Retters, der braven Gefallenden oder des bedürftigen Liebhabers – werden feierlich zu Grabe getragen.</p>
+<p>Die krampfhafte Suche nach Bestätigung weicht einer tiefen inneren Ruhe: Es gibt nichts mehr vorzuspielen und niemanden mehr zu überzeugen.</p>
           </div>
-          <div class="analysis-cards-list">
-            
-        <div class="analysis-card" id="card-09-0">
+        </div>
+        
+
+        <div class="analysis-card" id="card-09-de-1">
+          <span class="card-quote">Wavelengths / Die Klarheit im Nullpunkt</span>
+          <div class="card-body">
+            <p>An die Stelle von innerem Chaos und Sirenen tritt eine unaufgeregte, nüchterne Klarheit.</p>
+<p>Es ist der absolute seelische Nullpunkt – der Moment vollständiger Entgiftung, an dem echte Selbstwerdung und Neuanfang überhaupt erst möglich werden.</p>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+          
+    <div class="lang-block lang-en">
+      <div class="narrative-review">
+        <p>As the manic rush of Track 8 burns to ash, a profound stillness settles in <em>Wavelengths</em>. It is the contemplative heart of the entire journey: here, all artificial defense mechanisms, survival roles, and conditioned personas completely dissolve.</p>
+<p>The fundamental core question—<strong>“Who am I?”</strong>—stands naked in the room. This marks the symbolic death of the false, codependent self. The protagonist realizes that all previous behaviors—pleading, clinging, intellectualizing, denying—were merely frantic adaptation strategies. Solitude is no longer fought as an existential threat, but embraced as a sanctuary of unvarnished truth.</p>
+      </div>
+      <div class="analysis-cards-list">
+        
+        <div class="analysis-card" id="card-09-en-0">
           <span class="card-quote">Who am I? / Burying the masks</span>
           <div class="card-body">
             <p>The question of true identity occupies the center. Every role—the caretaker, the people-pleaser, the desperate lover—is formally laid to rest.</p>
@@ -1342,7 +1649,7 @@
         </div>
         
 
-        <div class="analysis-card" id="card-09-1">
+        <div class="analysis-card" id="card-09-en-1">
           <span class="card-quote">Wavelengths / Clarity at ground zero</span>
           <div class="card-body">
             <p>Internal chaos and alarm give way to sober, clear-headed composure.</p>
@@ -1350,7 +1657,9 @@
           </div>
         </div>
         
-          </div>
+      </div>
+    </div>
+    
         </div>
       </div>
     </section>
@@ -1405,13 +1714,43 @@
 </div>
         </div>
         <div class="analysis-col">
-          <div class="narrative-review">
-            <p>A moment of mature, crystalline lucidity. <em>Side By Side</em> is not a sentimental plea for a reunion, but a dignified, clear-headed look back across past terrain from a place of safety and strength.</p>
-<p>Looking across the wreckage of the past happens without bitterness and without any urge to cross back over. The fog of projection and infantile hope has completely lifted. The partner is perceived in all their human limitation—without hatred, but equally without romantic distortion. Autonomic self-regulation is restored: two entities can exist side by side without consuming each other.</p>
+          
+    <div class="lang-block lang-de">
+      <div class="narrative-review">
+        <p>Ein Moment reifer, kristallklarer Einsicht. <em>Side By Side</em> ist keine sentimentale Hoffnung auf ein Comeback, sondern der würdevolle Rückblick auf die Beziehung aus sicherer, autonomer Distanz.</p>
+<p>Das lyrische Ich blickt nun gemeinsam mit dem Hörer auf die Landkarte der Vergangenheit zurück. Der Nebel aus Projektionen und kindlichen Hoffnungen hat sich verzogen. Man erkennt das Gegenüber in seiner ganzen Begrenztheit – ohne Hass, aber auch ohne jede Verklärung. Die Fähigkeit zur autarken Selbstregulation ist zurückgekehrt: Man kann nebeneinander existieren, ohne sich ineinander aufzulösen.</p>
+      </div>
+      <div class="analysis-cards-list">
+        
+        <div class="analysis-card" id="card-10-de-0">
+          <span class="card-quote">Side By Side / Frieden mit der Distanz</span>
+          <div class="card-body">
+            <p>Man akzeptiert, dass man zwei getrennte Wesen ist, die ihren eigenen Raum beanspruchen dürfen.</p>
+<p>Die Haltung ist zentriert und gefestigt: Kein Groll, keine Rachegelüste, sondern eine würdevolle Anerkennung dessen, was war und was nie wieder sein wird.</p>
           </div>
-          <div class="analysis-cards-list">
-            
-        <div class="analysis-card" id="card-10-0">
+        </div>
+        
+
+        <div class="analysis-card" id="card-10-de-1">
+          <span class="card-quote">Die Wiederherstellung der Grenze</span>
+          <div class="card-body">
+            <p>Die Grenze zwischen dem Selbst und dem Anderen ist nun keine Mauer aus Angst mehr, sondern eine gesunde, atmende Schutzhaut.</p>
+<p>Das Ich hat gelernt, bei sich zu bleiben, selbst wenn Erinnerungen an die alte Verbindung auftauchen.</p>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+          
+    <div class="lang-block lang-en">
+      <div class="narrative-review">
+        <p>A moment of mature, crystalline lucidity. <em>Side By Side</em> is not a sentimental plea for a reunion, but a dignified, clear-headed look back across past terrain from a place of safety and strength.</p>
+<p>Looking across the wreckage of the past happens without bitterness and without any urge to cross back over. The fog of projection and infantile hope has completely lifted. The partner is perceived in all their human limitation—without hatred, but equally without romantic distortion. Autonomic self-regulation is restored: two entities can exist side by side without consuming each other.</p>
+      </div>
+      <div class="analysis-cards-list">
+        
+        <div class="analysis-card" id="card-10-en-0">
           <span class="card-quote">Side By Side / Peace with the distance</span>
           <div class="card-body">
             <p>Accepting that two people can exist as separate beings, each claiming their own rightful space.</p>
@@ -1420,7 +1759,7 @@
         </div>
         
 
-        <div class="analysis-card" id="card-10-1">
+        <div class="analysis-card" id="card-10-en-1">
           <span class="card-quote">Restoring the perimeter</span>
           <div class="card-body">
             <p>The boundary between Self and Other is no longer a fortress built of terror, but living, healthy skin.</p>
@@ -1428,7 +1767,9 @@
           </div>
         </div>
         
-          </div>
+      </div>
+    </div>
+    
         </div>
       </div>
     </section>
@@ -1501,13 +1842,43 @@
 </div>
         </div>
         <div class="analysis-col">
-          <div class="narrative-review">
-            <p>The unyielding bedrock of rebirth. In <em>The Thing</em>, emotional agony is no longer staged as a dramatic spectacle, but placed plainly on the table like a physical artifact (<em>“The Thing”</em>) to be weighed and dismantled.</p>
-<p>Here begins the reconstruction of the individual—not on superficial facades, but from the core outward, straight from bone marrow (<em>“Build my body from the bone”</em>). It is a manifesto of radical self-ownership: demanding nothing from the world, from parents, or from the ex-partner. Existence is reconstructed like a fortress of granite, stone by stone.</p>
+          
+    <div class="lang-block lang-de">
+      <div class="narrative-review">
+        <p>Das unverrückbare Fundament des Wiederaufbaus. In <em>The Thing</em> wird der erlittene Schmerz nicht mehr als melodramatische Seifenoper inszeniert, sondern mit schonungsloser Nüchternheit wie ein schweres, physisches Objekt (<em>„The Thing“</em>) auf den Tisch gelegt und seziert.</p>
+<p>Hier beginnt der Wiederaufbau des Menschen – und zwar nicht an der Oberfläche der Fassaden, sondern rein von innen heraus, aus der eigenen Knochensubstanz (<em>„Build my body from the bone“</em>). Es ist ein Manifest radikaler Selbstverantwortung: Man verlangt absolut nichts mehr von der Welt, von den Eltern oder vom Ex-Partner. Die eigene Existenz wird wie ein Gebäude aus unzerstörbarem Granit Stein für Stein neu errichtet.</p>
+      </div>
+      <div class="analysis-cards-list">
+        
+        <div class="analysis-card" id="card-11-de-0">
+          <span class="card-quote">The Thing / Den Schmerz verdinglichen</span>
+          <div class="card-body">
+            <p>Indem das Trauma als greifbares <em>„Ding“</em> betrachtet wird, verliert es seine unheimliche, beherrschende Macht. Man nimmt es in die Hand, begutachtet es und legt es bewusst zur Seite.</p>
+<p>Die Opferhaltung wird endgültig abgestreift: Kein Warten auf Entschuldigungen von außen, sondern die bewusste Integration der Narben in das eigene Fundament.</p>
           </div>
-          <div class="analysis-cards-list">
-            
-        <div class="analysis-card" id="card-11-0">
+        </div>
+        
+
+        <div class="analysis-card" id="card-11-de-1">
+          <span class="card-quote">Build my body from the bone / Das eiserne Fundament</span>
+          <div class="card-body">
+            <p>Der Wiederaufbau erfolgt Knochen für Knochen, Muskelstrang für Muskelstrang.</p>
+<p>Es ist eine stoische, disziplinierte Rekonstruktion des Charakters: Aus dem erlebten Einsturz erwächst eine innere Härte und Standfestigkeit, die nicht mehr erschüttert werden kann.</p>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+          
+    <div class="lang-block lang-en">
+      <div class="narrative-review">
+        <p>The unyielding bedrock of rebirth. In <em>The Thing</em>, emotional agony is no longer staged as a dramatic spectacle, but placed plainly on the table like a physical artifact (<em>“The Thing”</em>) to be weighed and dismantled.</p>
+<p>Here begins the reconstruction of the individual—not on superficial facades, but from the core outward, straight from bone marrow (<em>“Build my body from the bone”</em>). It is a manifesto of radical self-ownership: demanding nothing from the world, from parents, or from the ex-partner. Existence is reconstructed like a fortress of granite, stone by stone.</p>
+      </div>
+      <div class="analysis-cards-list">
+        
+        <div class="analysis-card" id="card-11-en-0">
           <span class="card-quote">The Thing / Objectifying the trauma</span>
           <div class="card-body">
             <p>By viewing trauma as a tangible object, its haunting spell is broken. You take it in your hands, inspect it, and intentionally set it down.</p>
@@ -1516,7 +1887,7 @@
         </div>
         
 
-        <div class="analysis-card" id="card-11-1">
+        <div class="analysis-card" id="card-11-en-1">
           <span class="card-quote">Build my body from the bone / The iron foundation</span>
           <div class="card-body">
             <p>Rebuilding proceeds bone by bone, sinew by sinew.</p>
@@ -1524,7 +1895,9 @@
           </div>
         </div>
         
-          </div>
+      </div>
+    </div>
+    
         </div>
       </div>
     </section>
@@ -1588,13 +1961,43 @@
 </div>
         </div>
         <div class="analysis-col">
-          <div class="narrative-review">
-            <p>The magnificent, triumphant culmination of a heroic journey. <em>In A Minute</em> avoids cheap illusions and peaks in the most vital imperative of the entire work: <strong>“Don’t you forget about yourself”</strong>.</p>
-<p>The circle closes: the trembling, begging soul of Track 1 has evolved into a sovereign, inviolable individual. The final command is addressed inward to one's own consciousness—as a lifelong sacred oath never again to barter personal sovereignty for the illusion of intimacy, nor place one's dignity on the auction block. The album ends not in the sorrow of goodbye, but in the proud sunrise of a self-directed, liberated life.</p>
+          
+    <div class="lang-block lang-de">
+      <div class="narrative-review">
+        <p>Das majestätische, triumphale Finale einer tiefgreifenden Wandlung. <em>In A Minute</em> verzichtet auf kitschige Illusionen und gipfelt in dem wichtigsten Leitsatz des gesamten Werks: <strong>„Don’t you forget about yourself“</strong>.</p>
+<p>Der Kreis schließt sich: Aus dem verängstigten, bettelnden Ich aus Track 1 ist eine unantastbare, souveräne Persönlichkeit geworden. Der finale Imperativ richtet sich an das eigene Bewusstsein – als lebenslanger Schwur, sich nie wieder für die Illusion von Nähe selbst zu verraten oder die eigene Würde zur Disposition zu stellen. Das Album endet nicht im Schmerz des Abschieds, sondern im stolzen Beginn eines selbstbestimmten, freien Lebens.</p>
+      </div>
+      <div class="analysis-cards-list">
+        
+        <div class="analysis-card" id="card-12-de-0">
+          <span class="card-quote">Don't you forget about yourself / Der heilige Schwur</span>
+          <div class="card-body">
+            <p>Die finale Mahnung geht nach innen: Vergiss dich selbst nie wieder. Mache deine Existenz nie wieder von den Launen eines Anderen abhängig.</p>
+<p>Die Transformation ist vollendet: Aus der Asche kindlicher Bedürftigkeit ist ein souveränes, in sich ruhendes Selbst hervorgegangen.</p>
           </div>
-          <div class="analysis-cards-list">
-            
-        <div class="analysis-card" id="card-12-0">
+        </div>
+        
+
+        <div class="analysis-card" id="card-12-de-1">
+          <span class="card-quote">Triumphale Vollendung & Katharsis</span>
+          <div class="card-body">
+            <p>Die innere Reise findet ihren Abschluss in einer tief empfundenen Katharsis.</p>
+<p><em>TOMORA</em> feiert die Rückkehr zur Unteilbarkeit: Das Individuum ist geheilt, frei und bereit für das eigene, ungeschriebene Morgen.</p>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+          
+    <div class="lang-block lang-en">
+      <div class="narrative-review">
+        <p>The magnificent, triumphant culmination of a heroic journey. <em>In A Minute</em> avoids cheap illusions and peaks in the most vital imperative of the entire work: <strong>“Don’t you forget about yourself”</strong>.</p>
+<p>The circle closes: the trembling, begging soul of Track 1 has evolved into a sovereign, inviolable individual. The final command is addressed inward to one's own consciousness—as a lifelong sacred oath never again to barter personal sovereignty for the illusion of intimacy, nor place one's dignity on the auction block. The album ends not in the sorrow of goodbye, but in the proud sunrise of a self-directed, liberated life.</p>
+      </div>
+      <div class="analysis-cards-list">
+        
+        <div class="analysis-card" id="card-12-en-0">
           <span class="card-quote">Don't you forget about yourself / The sacred vow</span>
           <div class="card-body">
             <p>The final command turns inward: never forget who you are. Never again make your existence dependent on another's validation.</p>
@@ -1603,7 +2006,7 @@
         </div>
         
 
-        <div class="analysis-card" id="card-12-1">
+        <div class="analysis-card" id="card-12-en-1">
           <span class="card-quote">Triumphant culmination & Catharsis</span>
           <div class="card-body">
             <p>The inward voyage reaches its resolution in deep, liberating catharsis.</p>
@@ -1611,7 +2014,9 @@
           </div>
         </div>
         
-          </div>
+      </div>
+    </div>
+    
         </div>
       </div>
     </section>
@@ -1621,7 +2026,10 @@
 
   <footer>
     <p><strong>TOMORA</strong> — Album Review & Interpretation</p>
-    <p>Literary and psychoanalytic study across all 12 tracks.</p>
+    <p>
+      <span class="lang-de">Literarische und psychoanalytische Gesamtschau aller 12 Stücke.</span>
+      <span class="lang-en">Literary and psychoanalytic study across all 12 tracks.</span>
+    </p>
   </footer>
 
   <script>
@@ -1689,7 +2097,28 @@
       });
     });
 
-    // 3. Genius-Style Line Highlight & Scroll Interactivity
+    // 3. Dynamic Language Switcher (Instant & Non-Destructive)
+    let currentLang = localStorage.getItem('tomora_lang') || 'de';
+    const langToggleBtn = document.getElementById('langToggleBtn');
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      document.body.setAttribute('data-lang', lang);
+      document.documentElement.lang = lang;
+      localStorage.setItem('tomora_lang', lang);
+      document.title = (lang === 'de') 
+        ? 'TOMORA — Album Review & Psychoanalytische Interpretation'
+        : 'TOMORA — Album Review & Literary Interpretation';
+    }
+
+    langToggleBtn.addEventListener('click', () => {
+      setLanguage(currentLang === 'de' ? 'en' : 'de');
+    });
+
+    // Initialize Language
+    setLanguage(currentLang);
+
+    // 4. Genius-Style Line Highlight & Scroll Interactivity
     document.querySelectorAll('.lyric-line').forEach(lineEl => {
       lineEl.addEventListener('click', () => {
         const trackSection = lineEl.closest('.track-section');
@@ -1699,16 +2128,19 @@
         trackSection.querySelectorAll('.lyric-line').forEach(l => l.classList.remove('active'));
         lineEl.classList.add('active');
 
-        // Highlight matching card
-        const cards = trackSection.querySelectorAll('.analysis-card');
-        cards.forEach((card, idx) => {
-          if (idx.toString() === targetCardIdx) {
-            card.classList.add('active');
-            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          } else {
-            card.classList.remove('active');
-          }
-        });
+        // Highlight matching card in the active language block
+        const activeLangBlock = trackSection.querySelector(`.lang-${currentLang}`);
+        if (activeLangBlock) {
+          const cards = activeLangBlock.querySelectorAll('.analysis-card');
+          cards.forEach((card, idx) => {
+            if (idx.toString() === targetCardIdx) {
+              card.classList.add('active');
+              card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } else {
+              card.classList.remove('active');
+            }
+          });
+        }
       });
     });
   </script>

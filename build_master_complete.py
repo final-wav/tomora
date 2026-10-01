@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 TOMORA Album Review & Literary Interpretation
-Master Generator Script - Modular, Robust & Exhaustive
+Single-Page Dynamic Bilingual Master (Instant DE <-> EN Toggle)
 """
 
 import os
@@ -107,16 +107,109 @@ def extract_stanzas_for_track(num_str, title, analysis_cards):
 
     return stanzas
 
-HTML_TEMPLATE = """<!DOCTYPE html>
-<html lang="[[LANG]]">
+def render_markdown_block(text):
+    text = text.strip()
+    text = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', text)
+    text = re.sub(r'(?<!\*)\*([^*]+?)\*(?!\*)', r'<em>\1</em>', text)
+    text = re.sub(r'`([^`]+?)`', r'<code style="color:var(--magenta);font-family:monospace;">\1</code>', text)
+    return text
+
+def render_analysis_column_for_lang(review_raw, cards, num, lang):
+    # Render review markdown
+    paragraphs = [p.strip() for p in review_raw.strip().split('\n\n') if p.strip()]
+    p_html_parts = []
+    for p in paragraphs:
+        if p.startswith('###'):
+            kicker = re.sub(r'^###\s*(Track\s*\d+:?\s*[^—–\-]+[—–\-])?\s*', '', p).strip()
+            if kicker:
+                p_html_parts.append(f'<div style="font-size:1.15rem;font-weight:800;color:#ffffff;margin-bottom:16px;letter-spacing:-0.01em;">{render_markdown_block(kicker)}</div>')
+        else:
+            p_rendered = render_markdown_block(p)
+            p_html_parts.append(f'<p>{p_rendered}</p>')
+    review_html = "\n".join(p_html_parts)
+
+    # Render cards
+    cards_html_parts = []
+    for idx, card in enumerate(cards):
+        q = card["quote"]
+        b = card["body"].strip()
+        b_paragraphs = [bp.strip() for bp in b.split('\n\n') if bp.strip()]
+        b_p_html = []
+        for bp in b_paragraphs:
+            b_rendered = render_markdown_block(bp)
+            b_p_html.append(f'<p>{b_rendered}</p>')
+        cards_body_html = "\n".join(b_p_html)
+
+        cards_html_parts.append(f"""
+        <div class="analysis-card" id="card-{num}-{lang}-{idx}">
+          <span class="card-quote">{q}</span>
+          <div class="card-body">
+            {cards_body_html}
+          </div>
+        </div>
+        """)
+    cards_rendered = "\n".join(cards_html_parts)
+
+    return f"""
+    <div class="lang-block lang-{lang}">
+      <div class="narrative-review">
+        {review_html}
+      </div>
+      <div class="analysis-cards-list">
+        {cards_rendered}
+      </div>
+    </div>
+    """
+
+def render_track_html(num, title, stanzas, de_info, en_info):
+    # Render stanzas
+    lyrics_html_parts = []
+    line_global_idx = 0
+    for s in stanzas:
+        lyrics_html_parts.append('<div class="stanza">')
+        if s["title"]:
+            lyrics_html_parts.append(f'<div class="stanza-title">{s["title"]}</div>')
+        for l in s["lines"]:
+            text = l["text"]
+            target_card = l["target_card"]
+            lyrics_html_parts.append(
+                f'<span class="lyric-line" data-line-idx="{line_global_idx}" data-target-card="{target_card}">{text}</span>'
+            )
+            line_global_idx += 1
+        lyrics_html_parts.append('</div>')
+    lyrics_rendered = "\n".join(lyrics_html_parts)
+
+    # Render German and English analysis blocks
+    de_analysis_html = render_analysis_column_for_lang(de_info["review"], de_info["cards"], num, "de")
+    en_analysis_html = render_analysis_column_for_lang(en_info["review"], en_info["cards"], num, "en")
+
+    return f"""
+    <section class="track-section" id="track-{num}">
+      <div class="track-header-bar">
+        <span class="track-num-badge">{num}</span>
+        <h2 class="track-heading">{title}</h2>
+      </div>
+      <div class="track-grid">
+        <div class="lyrics-col">
+          {lyrics_rendered}
+        </div>
+        <div class="analysis-col">
+          {de_analysis_html}
+          {en_analysis_html}
+        </div>
+      </div>
+    </section>
+    """
+
+HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
+<html lang="de">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>[[DOC_TITLE]]</title>
+  <title>TOMORA — Album Review & Interpretation</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <style>
     :root {
       --bg: #0c0c0f;
@@ -148,6 +241,10 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       overflow-x: hidden;
       position: relative;
     }
+
+    /* Dynamic Language Visibility */
+    body[data-lang="de"] .lang-en { display: none !important; }
+    body[data-lang="en"] .lang-de { display: none !important; }
 
     /* Animierter 35mm Analog-Film-Grain Canvas */
     #grainCanvas {
@@ -231,15 +328,6 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       line-height: 1;
     }
 
-    .brand-sub {
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      color: var(--magenta);
-      text-transform: uppercase;
-      margin-top: 4px;
-    }
-
     .nav-right {
       display: flex;
       justify-content: flex-end;
@@ -247,23 +335,32 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       gap: 16px;
     }
 
-    .lang-switch {
+    .lang-toggle-btn {
+      background: rgba(255, 255, 255, 0.06);
       color: var(--text-muted);
-      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 6px 14px;
+      border-radius: 4px;
       font-size: 0.75rem;
       font-weight: 800;
       letter-spacing: 0.15em;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      padding: 6px 12px;
-      border-radius: 4px;
-      transition: all 0.2s;
+      cursor: pointer;
       text-transform: uppercase;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
 
-    .lang-switch:hover {
+    .lang-toggle-btn:hover {
       color: #ffffff;
       border-color: var(--magenta);
       background: var(--magenta-dim);
+    }
+
+    .lang-toggle-btn span.active-indicator {
+      color: var(--magenta);
+      font-weight: 900;
     }
 
     /* Burger Drawer */
@@ -530,21 +627,18 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       gap: 32px;
     }
 
+    .lang-block {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
     .narrative-review {
       background: transparent;
       font-size: 1.05rem;
       color: #cfcfd4;
       line-height: 1.8;
       font-weight: 400;
-    }
-
-    .narrative-review h3 {
-      font-size: 1.35rem;
-      font-weight: 800;
-      color: #ffffff;
-      margin-bottom: 16px;
-      line-height: 1.3;
-      letter-spacing: -0.01em;
     }
 
     .narrative-review p {
@@ -623,7 +717,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     }
   </style>
 </head>
-<body>
+<body data-lang="de">
 
   <!-- Grain Overlay -->
   <canvas id="grainCanvas"></canvas>
@@ -641,7 +735,10 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       <div class="brand-title">TOMORA</div>
     </div>
     <div class="nav-right">
-      <a href="[[LANG_HREF]]" class="lang-switch">[[LANG_LABEL]]</a>
+      <button class="lang-toggle-btn" id="langToggleBtn" aria-label="Switch Language">
+        <span class="lang-de">EN</span>
+        <span class="lang-en">DE</span>
+      </button>
     </div>
   </nav>
 
@@ -653,7 +750,10 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         <span></span>
         <span></span>
       </button>
-      <div class="drawer-title">[[DRAWER_TITLE]]</div>
+      <div class="drawer-title">
+        <span class="lang-de">Titelauswahl</span>
+        <span class="lang-en">Track Selection</span>
+      </div>
     </div>
     <ul class="drawer-nav">
       [[DRAWER_ITEMS]]
@@ -670,9 +770,15 @@ HTML_TEMPLATE = """<!DOCTYPE html>
   <!-- Main Content -->
   <main class="main-wrapper">
     <header class="album-header">
-      <span class="album-meta-tag">[[HERO_TAG]]</span>
+      <span class="album-meta-tag">
+        <span class="lang-de">Vollständige Werkanalyse & Psychogramm</span>
+        <span class="lang-en">Full Work Analysis & Psychogram</span>
+      </span>
       <h1 class="album-main-title">TOMORA</h1>
-      <p class="album-subtitle">[[HERO_DESC]]</p>
+      <p class="album-subtitle">
+        <span class="lang-de">Eine detaillierte literarische und psychoanalytische Untersuchung über Bindung, Verlust, seelische Dekonstruktion und die Rückkehr zur autonomen Souveränität.</span>
+        <span class="lang-en">An in-depth literary and psychoanalytic examination of attachment, loss, psychological deconstruction, and the reclamation of sovereign autonomy.</span>
+      </p>
     </header>
 
     <div class="tracks-list">
@@ -681,8 +787,11 @@ HTML_TEMPLATE = """<!DOCTYPE html>
   </main>
 
   <footer>
-    <p><strong>TOMORA</strong> — [[FOOTER_TAG]]</p>
-    <p>[[FOOTER_SUB]]</p>
+    <p><strong>TOMORA</strong> — Album Review & Interpretation</p>
+    <p>
+      <span class="lang-de">Literarische und psychoanalytische Gesamtschau aller 12 Stücke.</span>
+      <span class="lang-en">Literary and psychoanalytic study across all 12 tracks.</span>
+    </p>
   </footer>
 
   <script>
@@ -750,7 +859,28 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       });
     });
 
-    // 3. Genius-Style Line Highlight & Scroll Interactivity
+    // 3. Dynamic Language Switcher (Instant & Non-Destructive)
+    let currentLang = localStorage.getItem('tomora_lang') || 'de';
+    const langToggleBtn = document.getElementById('langToggleBtn');
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      document.body.setAttribute('data-lang', lang);
+      document.documentElement.lang = lang;
+      localStorage.setItem('tomora_lang', lang);
+      document.title = (lang === 'de') 
+        ? 'TOMORA — Album Review & Psychoanalytische Interpretation'
+        : 'TOMORA — Album Review & Literary Interpretation';
+    }
+
+    langToggleBtn.addEventListener('click', () => {
+      setLanguage(currentLang === 'de' ? 'en' : 'de');
+    });
+
+    // Initialize Language
+    setLanguage(currentLang);
+
+    // 4. Genius-Style Line Highlight & Scroll Interactivity
     document.querySelectorAll('.lyric-line').forEach(lineEl => {
       lineEl.addEventListener('click', () => {
         const trackSection = lineEl.closest('.track-section');
@@ -760,16 +890,19 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         trackSection.querySelectorAll('.lyric-line').forEach(l => l.classList.remove('active'));
         lineEl.classList.add('active');
 
-        // Highlight matching card
-        const cards = trackSection.querySelectorAll('.analysis-card');
-        cards.forEach((card, idx) => {
-          if (idx.toString() === targetCardIdx) {
-            card.classList.add('active');
-            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          } else {
-            card.classList.remove('active');
-          }
-        });
+        // Highlight matching card in the active language block
+        const activeLangBlock = trackSection.querySelector(`.lang-${currentLang}`);
+        if (activeLangBlock) {
+          const cards = activeLangBlock.querySelectorAll('.analysis-card');
+          cards.forEach((card, idx) => {
+            if (idx.toString() === targetCardIdx) {
+              card.classList.add('active');
+              card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } else {
+              card.classList.remove('active');
+            }
+          });
+        }
       });
     });
   </script>
@@ -777,211 +910,37 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 </html>
 """
 
-def render_track_html(track, lang):
-    num = track["num"]
-    title = track["title"]
-    stanzas = track["stanzas"]
-    review_raw = track["review"]
-    cards = track["analysis_cards"]
+# Prepare all tracks
+tracks_rendered_parts = []
+drawer_items_parts = []
 
-    # Render stanzas
-    lyrics_html_parts = []
-    line_global_idx = 0
-    for s in stanzas:
-        lyrics_html_parts.append('<div class="stanza">')
-        if s["title"]:
-            lyrics_html_parts.append(f'<div class="stanza-title">{s["title"]}</div>')
-        for l in s["lines"]:
-            text = l["text"]
-            target_card = l["target_card"]
-            lyrics_html_parts.append(
-                f'<span class="lyric-line" data-line-idx="{line_global_idx}" data-target-card="{target_card}">{text}</span>'
-            )
-            line_global_idx += 1
-        lyrics_html_parts.append('</div>')
-    lyrics_rendered = "\n".join(lyrics_html_parts)
-
-def render_markdown_block(text):
-    text = text.strip()
-    # Handle bold **text**
-    text = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', text)
-    # Handle italic *text*
-    text = re.sub(r'(?<!\*)\*([^*]+?)\*(?!\*)', r'<em>\1</em>', text)
-    # Handle inline code `text`
-    text = re.sub(r'`([^`]+?)`', r'<code style="color:var(--magenta);font-family:monospace;">\1</code>', text)
-    return text
-
-def render_track_html(track, lang):
-    num = track["num"]
-    title = track["title"]
-    stanzas = track["stanzas"]
-    review_raw = track["review"]
-    cards = track["analysis_cards"]
-
-    # Render stanzas
-    lyrics_html_parts = []
-    line_global_idx = 0
-    for s in stanzas:
-        lyrics_html_parts.append('<div class="stanza">')
-        if s["title"]:
-            lyrics_html_parts.append(f'<div class="stanza-title">{s["title"]}</div>')
-        for l in s["lines"]:
-            text = l["text"]
-            target_card = l["target_card"]
-            lyrics_html_parts.append(
-                f'<span class="lyric-line" data-line-idx="{line_global_idx}" data-target-card="{target_card}">{text}</span>'
-            )
-            line_global_idx += 1
-        lyrics_html_parts.append('</div>')
-    lyrics_rendered = "\n".join(lyrics_html_parts)
-
-    # Render review markdown (strip out any redundant ### headers)
-    paragraphs = [p.strip() for p in review_raw.strip().split('\n\n') if p.strip()]
-    p_html_parts = []
-    for p in paragraphs:
-        if p.startswith('###'):
-            # If there's a thematic title, render as a sleek kicker without duplicating track num
-            kicker = re.sub(r'^###\s*(Track\s*\d+:?\s*[^—–\-]+[—–\-])?\s*', '', p).strip()
-            if kicker:
-                p_html_parts.append(f'<div style="font-size:1.15rem;font-weight:800;color:#ffffff;margin-bottom:16px;letter-spacing:-0.01em;">{render_markdown_block(kicker)}</div>')
-        else:
-            p_rendered = render_markdown_block(p)
-            p_html_parts.append(f'<p>{p_rendered}</p>')
-    review_html = "\n".join(p_html_parts)
-
-    # Render cards
-    cards_html_parts = []
-    for idx, card in enumerate(cards):
-        q = card["quote"]
-        b = card["body"].strip()
-        b_paragraphs = [bp.strip() for bp in b.split('\n\n') if bp.strip()]
-        b_p_html = []
-        for bp in b_paragraphs:
-            b_rendered = render_markdown_block(bp)
-            b_p_html.append(f'<p>{b_rendered}</p>')
-        cards_body_html = "\n".join(b_p_html)
-
-        cards_html_parts.append(f"""
-        <div class="analysis-card" id="card-{num}-{idx}">
-          <span class="card-quote">{q}</span>
-          <div class="card-body">
-            {cards_body_html}
-          </div>
-        </div>
-        """)
-    cards_rendered = "\n".join(cards_html_parts)
-
-    return f"""
-    <section class="track-section" id="track-{num}">
-      <div class="track-header-bar">
-        <span class="track-num-badge">{num}</span>
-        <h2 class="track-heading">{title}</h2>
-      </div>
-      <div class="track-grid">
-        <div class="lyrics-col">
-          {lyrics_rendered}
-        </div>
-        <div class="analysis-col">
-          <div class="narrative-review">
-            {review_html}
-          </div>
-          <div class="analysis-cards-list">
-            {cards_rendered}
-          </div>
-        </div>
-      </div>
-    </section>
-    """
-
-def generate_file(lang, tracks, local_path, alt_local_path, gdrive_path):
-    is_de = (lang == "de")
-    doc_title = "TOMORA — Album Review & Psychoanalytische Interpretation" if is_de else "TOMORA — Album Review & Literary Interpretation"
-    brand_sub = "Review & Interpretation" if is_de else "Review & Interpretation"
-    lang_label = "English" if is_de else "Deutsch"
-    lang_href = "ALBUM_REVIEW_READER_EN.html" if is_de else "index.html"
-    drawer_title = "Titelauswahl" if is_de else "Track Selection"
-    hero_tag = "Vollständige Werkanalyse & Psychogramm" if is_de else "Full Work Analysis & Psychogram"
-    hero_desc = "Eine detaillierte literarische und psychoanalytische Untersuchung über Bindung, Verlust, seelische Dekonstruktion und die Rückkehr zur autonomen Souveränität." if is_de else "An in-depth literary and psychoanalytic examination of attachment, loss, psychological deconstruction, and the reclamation of sovereign autonomy."
-    footer_tag = "Album Review & Interpretation"
-    footer_sub = "Literarische und psychoanalytische Gesamtschau aller 12 Stücke." if is_de else "Literary and psychoanalytic study across all 12 tracks."
-
-    # Drawer items
-    drawer_items_parts = []
-    for t in tracks:
-        drawer_items_parts.append(f'<li><a href="#track-{t["num"]}">{t["num"]} — {t["title"]}</a></li>')
-    drawer_items_html = "\n".join(drawer_items_parts)
-
-    # Tracks HTML
-    tracks_html_parts = []
-    for t in tracks:
-        tracks_html_parts.append(render_track_html(t, lang))
-    tracks_html = "\n".join(tracks_html_parts)
-
-    # Fill template
-    page = HTML_TEMPLATE
-    page = page.replace('[[LANG]]', lang)
-    page = page.replace('[[DOC_TITLE]]', doc_title)
-    page = page.replace('[[BRAND_SUB]]', brand_sub)
-    page = page.replace('[[LANG_LABEL]]', lang_label)
-    page = page.replace('[[LANG_HREF]]', lang_href)
-    page = page.replace('[[DRAWER_TITLE]]', drawer_title)
-    page = page.replace('[[DRAWER_ITEMS]]', drawer_items_html)
-    page = page.replace('[[HERO_TAG]]', hero_tag)
-    page = page.replace('[[HERO_DESC]]', hero_desc)
-    page = page.replace('[[TRACKS_HTML]]', tracks_html)
-    page = page.replace('[[FOOTER_TAG]]', footer_tag)
-    page = page.replace('[[FOOTER_SUB]]', footer_sub)
-
-    for p in [local_path, alt_local_path, gdrive_path]:
-        if not p: continue
-        dir_p = os.path.dirname(p)
-        if dir_p and not os.path.exists(dir_p):
-            os.makedirs(dir_p, exist_ok=True)
-        with open(p, 'w', encoding='utf-8') as f:
-            f.write(page)
-
-# Prepare DE Data
-de_tracks = []
 for num_str, title in track_names_map.items():
     de_info = de_tracks_deep.get(num_str, {"review": "", "cards": []})
-    stanzas = extract_stanzas_for_track(num_str, title, de_info["cards"])
-    de_tracks.append({
-        "num": num_str,
-        "title": title,
-        "stanzas": stanzas,
-        "review": de_info["review"],
-        "analysis_cards": de_info["cards"]
-    })
-
-# Prepare EN Data
-en_tracks = []
-for num_str, title in track_names_map.items():
     en_info = en_tracks_deep.get(num_str, {"review": "", "cards": []})
-    stanzas = extract_stanzas_for_track(num_str, title, en_info["cards"])
-    en_tracks.append({
-        "num": num_str,
-        "title": title,
-        "stanzas": stanzas,
-        "review": en_info["review"],
-        "analysis_cards": en_info["cards"]
-    })
+    stanzas = extract_stanzas_for_track(num_str, title, de_info["cards"])
+    
+    tracks_rendered_parts.append(render_track_html(num_str, title, stanzas, de_info, en_info))
+    drawer_items_parts.append(f'<li><a href="#track-{num_str}">{num_str} — {title}</a></li>')
 
-# Build German Edition
-generate_file(
-    "de",
-    de_tracks,
+full_page = HTML_MASTER_TEMPLATE
+full_page = full_page.replace('[[DRAWER_ITEMS]]', "\n".join(drawer_items_parts))
+full_page = full_page.replace('[[TRACKS_HTML]]', "\n".join(tracks_rendered_parts))
+
+# Write to all outputs:
+output_paths = [
     "c:/Users/Hakan/Documents/antigravity/modest-meitner/index.html",
     "c:/Users/Hakan/Documents/antigravity/modest-meitner/ALBUM_REVIEW_READER.html",
-    "H:/Meine Ablage/Album_Review_und_Interpretation/ALBUM_REVIEW_READER.html"
-)
-
-# Build English Edition
-generate_file(
-    "en",
-    en_tracks,
     "c:/Users/Hakan/Documents/antigravity/modest-meitner/ALBUM_REVIEW_READER_EN.html",
-    "c:/Users/Hakan/Documents/antigravity/modest-meitner/album_review_und_interpretation/index_en.html",
+    "H:/Meine Ablage/Album_Review_und_Interpretation/index.html",
+    "H:/Meine Ablage/Album_Review_und_Interpretation/ALBUM_REVIEW_READER.html",
     "H:/Meine Ablage/Album_Review_und_Interpretation/ALBUM_REVIEW_READER_EN.html"
-)
+]
 
-print("Exhaustive Modular Master Editions successfully compiled and synced!")
+for p in output_paths:
+    dir_p = os.path.dirname(p)
+    if dir_p and not os.path.exists(dir_p):
+        os.makedirs(dir_p, exist_ok=True)
+    with open(p, 'w', encoding='utf-8') as f:
+        f.write(full_page)
+
+print("Dynamic Bilingual Master successfully compiled and written to all targets!")
