@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://www.youtube.com/iframe_api"></script>
   <style>
     :root {
       --bg: #0c0c0f;
@@ -345,12 +346,52 @@
       gap: 16px;
     }
 
+    .track-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .song-play-btn {
+      background: var(--magenta);
+      border: 1px solid var(--magenta);
+      color: #ffffff;
+      padding: 6px 14px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      user-select: none;
+      box-shadow: 0 0 14px var(--magenta-glow);
+    }
+
+    .song-play-btn:hover {
+      background: #ff2b92;
+      border-color: #ff2b92;
+      box-shadow: 0 0 20px rgba(255, 0, 122, 0.6);
+      transform: translateY(-1px);
+    }
+
+    .song-play-btn.playing {
+      background: #ffffff;
+      color: #0c0c0f;
+      border-color: #ffffff;
+      box-shadow: 0 0 18px rgba(255, 255, 255, 0.6);
+    }
+
     .audio-play-btn {
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.15);
       color: #cfcfd4;
       padding: 6px 14px;
-      border-radius: 20px;
+      border-radius: 4px;
       font-size: 0.75rem;
       font-weight: 700;
       letter-spacing: 0.08em;
@@ -838,14 +879,24 @@
           <span class="track-num-badge">01</span>
           <h2 class="track-heading">Please</h2>
         </div>
-        <button class="audio-play-btn" data-track-num="01" aria-label="Listen to Audio Essay">
-          <svg class="play-icon" viewBox="0 0 24 24" width="13" height="13"><polygon points="6 4 20 12 6 20 6 4" fill="currentColor"></polygon></svg>
-          <svg class="pause-icon" viewBox="0 0 24 24" width="13" height="13" style="display:none;"><rect x="5" y="4" width="4" height="16" fill="currentColor"></rect><rect x="15" y="4" width="4" height="16" fill="currentColor"></rect></svg>
-          <span class="btn-text">
-            <span class="lang-de">Audio-Essay</span>
-            <span class="lang-en">Audio Essay</span>
-          </span>
-        </button>
+        <div class="track-actions">
+          <button class="song-play-btn" data-track-num="01" aria-label="Play Original Song">
+            <svg class="play-icon" viewBox="0 0 24 24" width="13" height="13"><polygon points="6 4 20 12 6 20 6 4" fill="currentColor"></polygon></svg>
+            <svg class="pause-icon" viewBox="0 0 24 24" width="13" height="13" style="display:none;"><rect x="5" y="4" width="4" height="16" fill="currentColor"></rect><rect x="15" y="4" width="4" height="16" fill="currentColor"></rect></svg>
+            <span class="btn-text">
+              <span class="lang-de">Song</span>
+              <span class="lang-en">Song</span>
+            </span>
+          </button>
+          <button class="audio-play-btn" data-track-num="01" aria-label="Listen to Audio Essay">
+            <svg class="play-icon" viewBox="0 0 24 24" width="13" height="13"><polygon points="6 4 20 12 6 20 6 4" fill="currentColor"></polygon></svg>
+            <svg class="pause-icon" viewBox="0 0 24 24" width="13" height="13" style="display:none;"><rect x="5" y="4" width="4" height="16" fill="currentColor"></rect><rect x="15" y="4" width="4" height="16" fill="currentColor"></rect></svg>
+            <span class="btn-text">
+              <span class="lang-de">Audio-Essay</span>
+              <span class="lang-en">Audio Essay</span>
+            </span>
+          </button>
+        </div>
       </div>
       <div class="track-grid">
         <div class="lyrics-col">
@@ -944,14 +995,24 @@
           <span class="track-num-badge">02</span>
           <h2 class="track-heading">Come Closer</h2>
         </div>
-        <button class="audio-play-btn" data-track-num="02" aria-label="Listen to Audio Essay">
-          <svg class="play-icon" viewBox="0 0 24 24" width="13" height="13"><polygon points="6 4 20 12 6 20 6 4" fill="currentColor"></polygon></svg>
-          <svg class="pause-icon" viewBox="0 0 24 24" width="13" height="13" style="display:none;"><rect x="5" y="4" width="4" height="16" fill="currentColor"></rect><rect x="15" y="4" width="4" height="16" fill="currentColor"></rect></svg>
-          <span class="btn-text">
-            <span class="lang-de">Audio-Essay</span>
-            <span class="lang-en">Audio Essay</span>
-          </span>
-        </button>
+        <div class="track-actions">
+          <button class="song-play-btn" data-track-num="02" aria-label="Play Original Song">
+            <svg class="play-icon" viewBox="0 0 24 24" width="13" height="13"><polygon points="6 4 20 12 6 20 6 4" fill="currentColor"></polygon></svg>
+            <svg class="pause-icon" viewBox="0 0 24 24" width="13" height="13" style="display:none;"><rect x="5" y="4" width="4" height="16" fill="currentColor"></rect><rect x="15" y="4" width="4" height="16" fill="currentColor"></rect></svg>
+            <span class="btn-text">
+              <span class="lang-de">Song</span>
+              <span class="lang-en">Song</span>
+            </span>
+          </button>
+          <button class="audio-play-btn" data-track-num="02" aria-label="Listen to Audio Essay">
+            <svg class="play-icon" viewBox="0 0 24 24" width="13" height="13"><polygon points="6 4 20 12 6 20 6 4" fill="currentColor"></polygon></svg>
+            <svg class="pause-icon" viewBox="0 0 24 24" width="13" height="13" style="display:none;"><rect x="5" y="4" width="4" height="16" fill="currentColor"></rect><rect x="15" y="4" width="4" height="16" fill="currentColor"></rect></svg>
+            <span class="btn-text">
+              <span class="lang-de">Audio-Essay</span>
+              <span class="lang-en">Audio Essay</span>
+            </span>
+          </button>
+        </div>
       </div>
       <div class="track-grid">
         <div class="lyrics-col">
@@ -1052,14 +1113,24 @@
           <span class="track-num-badge">03</span>
           <h2 class="track-heading">A Boy Like You</h2>
         </div>
-        <button class="audio-play-btn" data-track-num="03" aria-label="Listen to Audio Essay">
-          <svg class="play-icon" viewBox="0 0 24 24" width="13" height="13"><polygon points="6 4 20 12 6 20 6 4" fill="currentColor"></polygon></svg>
-          <svg class="pause-icon" viewBox="0 0 24 24" width="13" height="13" style="display:none;"><rect x="5" y="4" width="4" height="16" fill="currentColor"></rect><rect x="15" y="4" width="4" height="16" fill="currentColor"></rect></svg>
-          <span class="btn-text">
-            <span class="lang-de">Audio-Essay</span>
-            <span class="lang-en">Audio Essay</span>
-          </span>
-        </button>
+        <div class="track-actions">
+          <button class="song-play-btn" data-track-num="03" aria-label="Play Original Song">
+            <svg class="play-icon" viewBox="0 0 24 24" width="13" height="13"><polygon points="6 4 20 12 6 20 6 4" fill="currentColor"></polygon></svg>
+            <svg class="pause-icon" viewBox="0 0 24 24" width="13" height="13" style="display:none;"><rect x="5" y="4" width="4" height="16" fill="currentColor"></rect><rect x="15" y="4" width="4" height="16" fill="currentColor"></rect></svg>
+            <span class="btn-text">
+              <span class="lang-de">Song</span>
+              <span class="lang-en">Song</span>
+            </span>
+          </button>
+          <button class="audio-play-btn" data-track-num="03" aria-label="Listen to Audio Essay">
+            <svg class="play-icon" viewBox="0 0 24 24" width="13" height="13"><polygon points="6 4 20 12 6 20 6 4" fill="currentColor"></polygon></svg>
+            <svg class="pause-icon" viewBox="0 0 24 24" width="13" height="13" style="display:none;"><rect x="5" y="4" width="4" height="16" fill="currentColor"></rect><rect x="15" y="4" width="4" height="16" fill="currentColor"></rect></svg>
+            <span class="btn-text">
+              <span class="lang-de">Audio-Essay</span>
+              <span class="lang-en">Audio Essay</span>
+            </span>
+          </button>
+        </div>
       </div>
       <div class="track-grid">
         <div class="lyrics-col">
@@ -1172,14 +1243,24 @@
           <span class="track-num-badge">04</span>
           <h2 class="track-heading">Ring The Alarm</h2>
         </div>
-        <button class="audio-play-btn" data-track-num="04" aria-label="Listen to Audio Essay">
-          <svg class="play-icon" viewBox="0 0 24 24" width="13" height="13"><polygon points="6 4 20 12 6 20 6 4" fill="currentColor"></polygon></svg>
-          <svg class="pause-icon" viewBox="0 0 24 24" width="13" height="13" style="display:none;"><rect x="5" y="4" width="4" height="16" fill="currentColor"></rect><rect x="15" y="4" width="4" height="16" fill="currentColor"></rect></svg>
-          <span class="btn-text">
-            <span class="lang-de">Audio-Essay</span>
-            <span class="lang-en">Audio Essay</span>
-          </span>
-        </button>
+        <div class="track-actions">
+          <button class="song-play-btn" data-track-num="04" aria-label="Play Original Song">
+            <svg class="play-icon" viewBox="0 0 24 24" width="13" height="13"><polygon points="6 4 20 12 6 20 6 4" fill="currentColor"></polygon></svg>
+            <svg class="pause-icon" viewBox="0 0 24 24" width="13" height="13" style="display:none;"><rect x="5" y="4" width="4" height="16" fill="currentColor"></rect><rect x="15" y="4" width="4" height="16" fill="currentColor"></rect></svg>
+            <span class="btn-text">
+              <span class="lang-de">Song</span>
+              <span class="lang-en">Song</span>
+            </span>
+          </button>
+          <button class="audio-play-btn" data-track-num="04" aria-label="Listen to Audio Essay">
+            <svg class="play-icon" viewBox="0 0 24 24" width="13" height="13"><polygon points="6 4 20 12 6 20 6 4" fill="currentColor"></polygon></svg>
+            <svg class="pause-icon" viewBox="0 0 24 24" width="13" height="13" style="display:none;"><rect x="5" y="4" width="4" height="16" fill="currentColor"></rect><rect x="15" y="4" width="4" height="16" fill="currentColor"></rect></svg>
+            <span class="btn-text">
+              <span class="lang-de">Audio-Essay</span>
+              <span class="lang-en">Audio Essay</span>
+            </span>
+          </button>
+        </div>
       </div>
       <div class="track-grid">
         <div class="lyrics-col">
@@ -1307,14 +1388,24 @@
           <span class="track-num-badge">05</span>
           <h2 class="track-heading">My Baby</h2>
         </div>
-        <button class="audio-play-btn" data-track-num="05" aria-label="Listen to Audio Essay">
-          <svg class="play-icon" viewBox="0 0 24 24" width="13" height="13"><polygon points="6 4 20 12 6 20 6 4" fill="currentColor"></polygon></svg>
-          <svg class="pause-icon" viewBox="0 0 24 24" width="13" height="13" style="display:none;"><rect x="5" y="4" width="4" height="16" fill="currentColor"></rect><rect x="15" y="4" width="4" height="16" fill="currentColor"></rect></svg>
-          <span class="btn-text">
-            <span class="lang-de">Audio-Essay</span>
-            <span class="lang-en">Audio Essay</span>
-          </span>
-        </button>
+        <div class="track-actions">
+          <button class="song-play-btn" data-track-num="05" aria-label="Play Original Song">
+            <svg class="play-icon" viewBox="0 0 24 24" width="13" height="13"><polygon points="6 4 20 12 6 20 6 4" fill="currentColor"></polygon></svg>
+            <svg class="pause-icon" viewBox="0 0 24 24" width="13" height="13" style="display:none;"><rect x="5" y="4" width="4" height="16" fill="currentColor"></rect><rect x="15" y="4" width="4" height="16" fill="currentColor"></rect></svg>
+            <span class="btn-text">
+              <span class="lang-de">Song</span>
+              <span class="lang-en">Song</span>
+            </span>
+          </button>
+          <button class="audio-play-btn" data-track-num="05" aria-label="Listen to Audio Essay">
+            <svg class="play-icon" viewBox="0 0 24 24" width="13" height="13"><polygon points="6 4 20 12 6 20 6 4" fill="currentColor"></polygon></svg>
+            <svg class="pause-icon" viewBox="0 0 24 24" width="13" height="13" style="display:none;"><rect x="5" y="4" width="4" height="16" fill="currentColor"></rect><rect x="15" y="4" width="4" height="16" fill="currentColor"></rect></svg>
+            <span class="btn-text">
+              <span class="lang-de">Audio-Essay</span>
+              <span class="lang-en">Audio Essay</span>
+            </span>
+          </button>
+        </div>
       </div>
       <div class="track-grid">
         <div class="lyrics-col">
@@ -1444,14 +1535,24 @@
           <span class="track-num-badge">06</span>
           <h2 class="track-heading">Have You Seen Me Dance Alone</h2>
         </div>
-        <button class="audio-play-btn" data-track-num="06" aria-label="Listen to Audio Essay">
-          <svg class="play-icon" viewBox="0 0 24 24" width="13" height="13"><polygon points="6 4 20 12 6 20 6 4" fill="currentColor"></polygon></svg>
-          <svg class="pause-icon" viewBox="0 0 24 24" width="13" height="13" style="display:none;"><rect x="5" y="4" width="4" height="16" fill="currentColor"></rect><rect x="15" y="4" width="4" height="16" fill="currentColor"></rect></svg>
-          <span class="btn-text">
-            <span class="lang-de">Audio-Essay</span>
-            <span class="lang-en">Audio Essay</span>
-          </span>
-        </button>
+        <div class="track-actions">
+          <button class="song-play-btn" data-track-num="06" aria-label="Play Original Song">
+            <svg class="play-icon" viewBox="0 0 24 24" width="13" height="13"><polygon points="6 4 20 12 6 20 6 4" fill="currentColor"></polygon></svg>
+            <svg class="pause-icon" viewBox="0 0 24 24" width="13" height="13" style="display:none;"><rect x="5" y="4" width="4" height="16" fill="currentColor"></rect><rect x="15" y="4" width="4" height="16" fill="currentColor"></rect></svg>
+            <span class="btn-text">
+              <span class="lang-de">Song</span>
+              <span class="lang-en">Song</span>
+            </span>
+          </button>
+          <button class="audio-play-btn" data-track-num="06" aria-label="Listen to Audio Essay">
+            <svg class="play-icon" viewBox="0 0 24 24" width="13" height="13"><polygon points="6 4 20 12 6 20 6 4" fill="currentColor"></polygon></svg>
+            <svg class="pause-icon" viewBox="0 0 24 24" width="13" height="13" style="display:none;"><rect x="5" y="4" width="4" height="16" fill="currentColor"></rect><rect x="15" y="4" width="4" height="16" fill="currentColor"></rect></svg>
+            <span class="btn-text">
+              <span class="lang-de">Audio-Essay</span>
+              <span class="lang-en">Audio Essay</span>
+            </span>
+          </button>
+        </div>
       </div>
       <div class="track-grid">
         <div class="lyrics-col">
@@ -1580,14 +1681,24 @@
           <span class="track-num-badge">07</span>
           <h2 class="track-heading">Somewhere Else</h2>
         </div>
-        <button class="audio-play-btn" data-track-num="07" aria-label="Listen to Audio Essay">
-          <svg class="play-icon" viewBox="0 0 24 24" width="13" height="13"><polygon points="6 4 20 12 6 20 6 4" fill="currentColor"></polygon></svg>
-          <svg class="pause-icon" viewBox="0 0 24 24" width="13" height="13" style="display:none;"><rect x="5" y="4" width="4" height="16" fill="currentColor"></rect><rect x="15" y="4" width="4" height="16" fill="currentColor"></rect></svg>
-          <span class="btn-text">
-            <span class="lang-de">Audio-Essay</span>
-            <span class="lang-en">Audio Essay</span>
-          </span>
-        </button>
+        <div class="track-actions">
+          <button class="song-play-btn" data-track-num="07" aria-label="Play Original Song">
+            <svg class="play-icon" viewBox="0 0 24 24" width="13" height="13"><polygon points="6 4 20 12 6 20 6 4" fill="currentColor"></polygon></svg>
+            <svg class="pause-icon" viewBox="0 0 24 24" width="13" height="13" style="display:none;"><rect x="5" y="4" width="4" height="16" fill="currentColor"></rect><rect x="15" y="4" width="4" height="16" fill="currentColor"></rect></svg>
+            <span class="btn-text">
+              <span class="lang-de">Song</span>
+              <span class="lang-en">Song</span>
+            </span>
+          </button>
+          <button class="audio-play-btn" data-track-num="07" aria-label="Listen to Audio Essay">
+            <svg class="play-icon" viewBox="0 0 24 24" width="13" height="13"><polygon points="6 4 20 12 6 20 6 4" fill="currentColor"></polygon></svg>
+            <svg class="pause-icon" viewBox="0 0 24 24" width="13" height="13" style="display:none;"><rect x="5" y="4" width="4" height="16" fill="currentColor"></rect><rect x="15" y="4" width="4" height="16" fill="currentColor"></rect></svg>
+            <span class="btn-text">
+              <span class="lang-de">Audio-Essay</span>
+              <span class="lang-en">Audio Essay</span>
+            </span>
+          </button>
+        </div>
       </div>
       <div class="track-grid">
         <div class="lyrics-col">
@@ -1713,14 +1824,24 @@
           <span class="track-num-badge">08</span>
           <h2 class="track-heading">I Drink The Light</h2>
         </div>
-        <button class="audio-play-btn" data-track-num="08" aria-label="Listen to Audio Essay">
-          <svg class="play-icon" viewBox="0 0 24 24" width="13" height="13"><polygon points="6 4 20 12 6 20 6 4" fill="currentColor"></polygon></svg>
-          <svg class="pause-icon" viewBox="0 0 24 24" width="13" height="13" style="display:none;"><rect x="5" y="4" width="4" height="16" fill="currentColor"></rect><rect x="15" y="4" width="4" height="16" fill="currentColor"></rect></svg>
-          <span class="btn-text">
-            <span class="lang-de">Audio-Essay</span>
-            <span class="lang-en">Audio Essay</span>
-          </span>
-        </button>
+        <div class="track-actions">
+          <button class="song-play-btn" data-track-num="08" aria-label="Play Original Song">
+            <svg class="play-icon" viewBox="0 0 24 24" width="13" height="13"><polygon points="6 4 20 12 6 20 6 4" fill="currentColor"></polygon></svg>
+            <svg class="pause-icon" viewBox="0 0 24 24" width="13" height="13" style="display:none;"><rect x="5" y="4" width="4" height="16" fill="currentColor"></rect><rect x="15" y="4" width="4" height="16" fill="currentColor"></rect></svg>
+            <span class="btn-text">
+              <span class="lang-de">Song</span>
+              <span class="lang-en">Song</span>
+            </span>
+          </button>
+          <button class="audio-play-btn" data-track-num="08" aria-label="Listen to Audio Essay">
+            <svg class="play-icon" viewBox="0 0 24 24" width="13" height="13"><polygon points="6 4 20 12 6 20 6 4" fill="currentColor"></polygon></svg>
+            <svg class="pause-icon" viewBox="0 0 24 24" width="13" height="13" style="display:none;"><rect x="5" y="4" width="4" height="16" fill="currentColor"></rect><rect x="15" y="4" width="4" height="16" fill="currentColor"></rect></svg>
+            <span class="btn-text">
+              <span class="lang-de">Audio-Essay</span>
+              <span class="lang-en">Audio Essay</span>
+            </span>
+          </button>
+        </div>
       </div>
       <div class="track-grid">
         <div class="lyrics-col">
@@ -1870,14 +1991,24 @@
           <span class="track-num-badge">09</span>
           <h2 class="track-heading">Wavelengths</h2>
         </div>
-        <button class="audio-play-btn" data-track-num="09" aria-label="Listen to Audio Essay">
-          <svg class="play-icon" viewBox="0 0 24 24" width="13" height="13"><polygon points="6 4 20 12 6 20 6 4" fill="currentColor"></polygon></svg>
-          <svg class="pause-icon" viewBox="0 0 24 24" width="13" height="13" style="display:none;"><rect x="5" y="4" width="4" height="16" fill="currentColor"></rect><rect x="15" y="4" width="4" height="16" fill="currentColor"></rect></svg>
-          <span class="btn-text">
-            <span class="lang-de">Audio-Essay</span>
-            <span class="lang-en">Audio Essay</span>
-          </span>
-        </button>
+        <div class="track-actions">
+          <button class="song-play-btn" data-track-num="09" aria-label="Play Original Song">
+            <svg class="play-icon" viewBox="0 0 24 24" width="13" height="13"><polygon points="6 4 20 12 6 20 6 4" fill="currentColor"></polygon></svg>
+            <svg class="pause-icon" viewBox="0 0 24 24" width="13" height="13" style="display:none;"><rect x="5" y="4" width="4" height="16" fill="currentColor"></rect><rect x="15" y="4" width="4" height="16" fill="currentColor"></rect></svg>
+            <span class="btn-text">
+              <span class="lang-de">Song</span>
+              <span class="lang-en">Song</span>
+            </span>
+          </button>
+          <button class="audio-play-btn" data-track-num="09" aria-label="Listen to Audio Essay">
+            <svg class="play-icon" viewBox="0 0 24 24" width="13" height="13"><polygon points="6 4 20 12 6 20 6 4" fill="currentColor"></polygon></svg>
+            <svg class="pause-icon" viewBox="0 0 24 24" width="13" height="13" style="display:none;"><rect x="5" y="4" width="4" height="16" fill="currentColor"></rect><rect x="15" y="4" width="4" height="16" fill="currentColor"></rect></svg>
+            <span class="btn-text">
+              <span class="lang-de">Audio-Essay</span>
+              <span class="lang-en">Audio Essay</span>
+            </span>
+          </button>
+        </div>
       </div>
       <div class="track-grid">
         <div class="lyrics-col">
@@ -2002,14 +2133,24 @@
           <span class="track-num-badge">10</span>
           <h2 class="track-heading">Side By Side</h2>
         </div>
-        <button class="audio-play-btn" data-track-num="10" aria-label="Listen to Audio Essay">
-          <svg class="play-icon" viewBox="0 0 24 24" width="13" height="13"><polygon points="6 4 20 12 6 20 6 4" fill="currentColor"></polygon></svg>
-          <svg class="pause-icon" viewBox="0 0 24 24" width="13" height="13" style="display:none;"><rect x="5" y="4" width="4" height="16" fill="currentColor"></rect><rect x="15" y="4" width="4" height="16" fill="currentColor"></rect></svg>
-          <span class="btn-text">
-            <span class="lang-de">Audio-Essay</span>
-            <span class="lang-en">Audio Essay</span>
-          </span>
-        </button>
+        <div class="track-actions">
+          <button class="song-play-btn" data-track-num="10" aria-label="Play Original Song">
+            <svg class="play-icon" viewBox="0 0 24 24" width="13" height="13"><polygon points="6 4 20 12 6 20 6 4" fill="currentColor"></polygon></svg>
+            <svg class="pause-icon" viewBox="0 0 24 24" width="13" height="13" style="display:none;"><rect x="5" y="4" width="4" height="16" fill="currentColor"></rect><rect x="15" y="4" width="4" height="16" fill="currentColor"></rect></svg>
+            <span class="btn-text">
+              <span class="lang-de">Song</span>
+              <span class="lang-en">Song</span>
+            </span>
+          </button>
+          <button class="audio-play-btn" data-track-num="10" aria-label="Listen to Audio Essay">
+            <svg class="play-icon" viewBox="0 0 24 24" width="13" height="13"><polygon points="6 4 20 12 6 20 6 4" fill="currentColor"></polygon></svg>
+            <svg class="pause-icon" viewBox="0 0 24 24" width="13" height="13" style="display:none;"><rect x="5" y="4" width="4" height="16" fill="currentColor"></rect><rect x="15" y="4" width="4" height="16" fill="currentColor"></rect></svg>
+            <span class="btn-text">
+              <span class="lang-de">Audio-Essay</span>
+              <span class="lang-en">Audio Essay</span>
+            </span>
+          </button>
+        </div>
       </div>
       <div class="track-grid">
         <div class="lyrics-col">
@@ -2122,14 +2263,24 @@
           <span class="track-num-badge">11</span>
           <h2 class="track-heading">The Thing</h2>
         </div>
-        <button class="audio-play-btn" data-track-num="11" aria-label="Listen to Audio Essay">
-          <svg class="play-icon" viewBox="0 0 24 24" width="13" height="13"><polygon points="6 4 20 12 6 20 6 4" fill="currentColor"></polygon></svg>
-          <svg class="pause-icon" viewBox="0 0 24 24" width="13" height="13" style="display:none;"><rect x="5" y="4" width="4" height="16" fill="currentColor"></rect><rect x="15" y="4" width="4" height="16" fill="currentColor"></rect></svg>
-          <span class="btn-text">
-            <span class="lang-de">Audio-Essay</span>
-            <span class="lang-en">Audio Essay</span>
-          </span>
-        </button>
+        <div class="track-actions">
+          <button class="song-play-btn" data-track-num="11" aria-label="Play Original Song">
+            <svg class="play-icon" viewBox="0 0 24 24" width="13" height="13"><polygon points="6 4 20 12 6 20 6 4" fill="currentColor"></polygon></svg>
+            <svg class="pause-icon" viewBox="0 0 24 24" width="13" height="13" style="display:none;"><rect x="5" y="4" width="4" height="16" fill="currentColor"></rect><rect x="15" y="4" width="4" height="16" fill="currentColor"></rect></svg>
+            <span class="btn-text">
+              <span class="lang-de">Song</span>
+              <span class="lang-en">Song</span>
+            </span>
+          </button>
+          <button class="audio-play-btn" data-track-num="11" aria-label="Listen to Audio Essay">
+            <svg class="play-icon" viewBox="0 0 24 24" width="13" height="13"><polygon points="6 4 20 12 6 20 6 4" fill="currentColor"></polygon></svg>
+            <svg class="pause-icon" viewBox="0 0 24 24" width="13" height="13" style="display:none;"><rect x="5" y="4" width="4" height="16" fill="currentColor"></rect><rect x="15" y="4" width="4" height="16" fill="currentColor"></rect></svg>
+            <span class="btn-text">
+              <span class="lang-de">Audio-Essay</span>
+              <span class="lang-en">Audio Essay</span>
+            </span>
+          </button>
+        </div>
       </div>
       <div class="track-grid">
         <div class="lyrics-col">
@@ -2260,14 +2411,24 @@
           <span class="track-num-badge">12</span>
           <h2 class="track-heading">In A Minute</h2>
         </div>
-        <button class="audio-play-btn" data-track-num="12" aria-label="Listen to Audio Essay">
-          <svg class="play-icon" viewBox="0 0 24 24" width="13" height="13"><polygon points="6 4 20 12 6 20 6 4" fill="currentColor"></polygon></svg>
-          <svg class="pause-icon" viewBox="0 0 24 24" width="13" height="13" style="display:none;"><rect x="5" y="4" width="4" height="16" fill="currentColor"></rect><rect x="15" y="4" width="4" height="16" fill="currentColor"></rect></svg>
-          <span class="btn-text">
-            <span class="lang-de">Audio-Essay</span>
-            <span class="lang-en">Audio Essay</span>
-          </span>
-        </button>
+        <div class="track-actions">
+          <button class="song-play-btn" data-track-num="12" aria-label="Play Original Song">
+            <svg class="play-icon" viewBox="0 0 24 24" width="13" height="13"><polygon points="6 4 20 12 6 20 6 4" fill="currentColor"></polygon></svg>
+            <svg class="pause-icon" viewBox="0 0 24 24" width="13" height="13" style="display:none;"><rect x="5" y="4" width="4" height="16" fill="currentColor"></rect><rect x="15" y="4" width="4" height="16" fill="currentColor"></rect></svg>
+            <span class="btn-text">
+              <span class="lang-de">Song</span>
+              <span class="lang-en">Song</span>
+            </span>
+          </button>
+          <button class="audio-play-btn" data-track-num="12" aria-label="Listen to Audio Essay">
+            <svg class="play-icon" viewBox="0 0 24 24" width="13" height="13"><polygon points="6 4 20 12 6 20 6 4" fill="currentColor"></polygon></svg>
+            <svg class="pause-icon" viewBox="0 0 24 24" width="13" height="13" style="display:none;"><rect x="5" y="4" width="4" height="16" fill="currentColor"></rect><rect x="15" y="4" width="4" height="16" fill="currentColor"></rect></svg>
+            <span class="btn-text">
+              <span class="lang-de">Audio-Essay</span>
+              <span class="lang-en">Audio Essay</span>
+            </span>
+          </button>
+        </div>
       </div>
       <div class="track-grid">
         <div class="lyrics-col">
@@ -2393,6 +2554,11 @@
     </p>
   </footer>
 
+  <!-- Hidden YouTube Player Wrap for Audio Streaming -->
+  <div id="ytPlayerWrap" style="position: fixed; top: -500px; left: -500px; width: 200px; height: 200px; opacity: 0.01; pointer-events: none; z-index: -9999;">
+    <div id="ytPlayer"></div>
+  </div>
+
   <!-- Bottom Mini Player -->
   <div class="bottom-player" id="bottomPlayer">
     <div class="player-left">
@@ -2400,9 +2566,15 @@
         <span class="player-track-num" id="bpTrackNum">01</span>
         <span class="player-track-title" id="bpTrackTitle">PLEASE</span>
       </div>
-      <div class="player-subtitle">
-        <span class="lang-de">Neural Audio-Essay</span>
-        <span class="lang-en">Neural Audio Essay</span>
+      <div class="player-subtitle" id="bpSubtitle">
+        <span class="sub-mode-song">
+          <span class="lang-de">Original Song</span>
+          <span class="lang-en">Original Song</span>
+        </span>
+        <span class="sub-mode-essay" style="display: none;">
+          <span class="lang-de">Neural Audio-Essay</span>
+          <span class="lang-en">Neural Audio Essay</span>
+        </span>
       </div>
     </div>
 
@@ -2439,20 +2611,20 @@
   </div>
 
   <script>
-    // Track List Metadata
+    // Track List Metadata with YouTube Video IDs
     const trackList = [
-      { num: "01", title: "Please" },
-      { num: "02", title: "Come Closer" },
-      { num: "03", title: "A Boy Like You" },
-      { num: "04", title: "Ring The Alarm" },
-      { num: "05", title: "My Baby" },
-      { num: "06", title: "Have You Seen Me Dance Alone" },
-      { num: "07", title: "Somewhere Else" },
-      { num: "08", title: "I Drink The Light" },
-      { num: "09", title: "Wavelengths" },
-      { num: "10", title: "Side By Side" },
-      { num: "11", title: "The Thing" },
-      { num: "12", title: "In A Minute" }
+      { num: "01", title: "Please", ytId: "m_wfjyFCxvY" },
+      { num: "02", title: "Come Closer", ytId: "RIz_iTsc5TU" },
+      { num: "03", title: "A Boy Like You", ytId: "StWqigI3uUk" },
+      { num: "04", title: "Ring The Alarm", ytId: "zlOW7UMfjoc" },
+      { num: "05", title: "My Baby", ytId: "vXwpVDciU6A" },
+      { num: "06", title: "Have You Seen Me Dance Alone", ytId: "CIYsOazIn5U" },
+      { num: "07", title: "Somewhere Else", ytId: "Jpz6LarMR-w" },
+      { num: "08", title: "I Drink The Light", ytId: "dIpNKbNHslA" },
+      { num: "09", title: "Wavelengths", ytId: "n_tdle6HUOs" },
+      { num: "10", title: "Side By Side", ytId: "lx0kt-7lzwE" },
+      { num: "11", title: "The Thing", ytId: "7rv7T-0beXU" },
+      { num: "12", title: "In A Minute", ytId: "C3YY6PS3v58" }
     ];
 
     // 1. Animierter 35mm Analog-Film-Grain
@@ -2566,7 +2738,11 @@
       });
     });
 
-    // 5. Neural TTS Unified Audio Player (Header Buttons + Bottom Mini Player with Timeline)
+    // 5. Dual Media Audio Engine: YouTube Song + Neural TTS Audio Essay
+    let ytPlayer = null;
+    let ytReady = false;
+    let queuedVideoId = null;
+    let currentMode = 'song'; // 'song' | 'essay'
     let currentAudio = null;
     let currentTrackIdx = 0;
     let isPlaying = false;
@@ -2590,13 +2766,65 @@
       return `${m}:${s < 10 ? '0' : ''}${s}`;
     }
 
+    // YouTube IFrame API Ready Callback
+    window.onYouTubeIframeAPIReady = function() {
+      ytPlayer = new YT.Player('ytPlayer', {
+        height: '200',
+        width: '200',
+        videoId: trackList[0].ytId,
+        playerVars: {
+          playsinline: 1,
+          controls: 0,
+          disablekb: 1,
+          rel: 0
+        },
+        events: {
+          onReady: () => {
+            ytReady = true;
+            if (queuedVideoId) {
+              ytPlayer.loadVideoById(queuedVideoId);
+              if (isPlaying) ytPlayer.playVideo();
+              queuedVideoId = null;
+            }
+          },
+          onStateChange: (event) => {
+            if (currentMode !== 'song') return;
+            if (event.data === YT.PlayerState.PLAYING) {
+              isPlaying = true;
+              updateTrackUI(currentTrackIdx);
+            } else if (event.data === YT.PlayerState.PAUSED) {
+              isPlaying = false;
+              updateTrackUI(currentTrackIdx);
+            } else if (event.data === YT.PlayerState.ENDED) {
+              // "erst der song, dann die review automatisch danach"
+              playEssay(currentTrackIdx, true);
+            }
+          }
+        }
+      });
+    };
+
     function updateTrackUI(idx) {
       const track = trackList[idx];
       bpTrackNum.textContent = track.num;
       bpTrackTitle.textContent = track.title.toUpperCase();
 
+      const songSub = document.querySelector('.sub-mode-song');
+      const essaySub = document.querySelector('.sub-mode-essay');
+      if (songSub && essaySub) {
+        songSub.style.display = currentMode === 'song' ? 'inline' : 'none';
+        essaySub.style.display = currentMode === 'essay' ? 'inline' : 'none';
+      }
+
+      document.querySelectorAll('.song-play-btn').forEach(btn => {
+        const isThis = (btn.getAttribute('data-track-num') === track.num) && (currentMode === 'song');
+        btn.classList.toggle('playing', isThis && isPlaying);
+        btn.querySelector('.play-icon').style.display = (isThis && isPlaying) ? 'none' : 'inline-block';
+        btn.querySelector('.pause-icon').style.display = (isThis && isPlaying) ? 'inline-block' : 'none';
+      });
+
       document.querySelectorAll('.audio-play-btn').forEach(btn => {
-        const isThis = btn.getAttribute('data-track-num') === track.num;
+        const isThis = (btn.getAttribute('data-track-num') === track.num) && (currentMode === 'essay');
         btn.classList.toggle('playing', isThis && isPlaying);
         btn.querySelector('.play-icon').style.display = (isThis && isPlaying) ? 'none' : 'inline-block';
         btn.querySelector('.pause-icon').style.display = (isThis && isPlaying) ? 'inline-block' : 'none';
@@ -2606,11 +2834,45 @@
       bpPauseIcon.style.display = isPlaying ? 'inline-block' : 'none';
     }
 
-    function loadAndPlayTrack(idx, autoPlay = true) {
+    function playSong(idx, autoPlay = true) {
+      currentMode = 'song';
       currentTrackIdx = (idx + trackList.length) % trackList.length;
       const track = trackList[currentTrackIdx];
-      const audioSrc = `audio/track_${track.num}_${currentLang}.mp3`;
 
+      if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+      }
+
+      bpTimelineFill.style.width = '0%';
+      bpCurrentTime.textContent = '0:00';
+
+      if (ytReady && ytPlayer && typeof ytPlayer.loadVideoById === 'function') {
+        ytPlayer.loadVideoById(track.ytId);
+        if (autoPlay) {
+          ytPlayer.playVideo();
+          isPlaying = true;
+        } else {
+          ytPlayer.pauseVideo();
+          isPlaying = false;
+        }
+      } else {
+        queuedVideoId = track.ytId;
+        isPlaying = autoPlay;
+      }
+      updateTrackUI(currentTrackIdx);
+    }
+
+    function playEssay(idx, autoPlay = true) {
+      currentMode = 'essay';
+      currentTrackIdx = (idx + trackList.length) % trackList.length;
+      const track = trackList[currentTrackIdx];
+
+      if (ytReady && ytPlayer && typeof ytPlayer.pauseVideo === 'function') {
+        ytPlayer.pauseVideo();
+      }
+
+      const audioSrc = `audio/track_${track.num}_${currentLang}.mp3`;
       if (currentAudio) {
         currentAudio.pause();
         currentAudio = null;
@@ -2625,15 +2887,15 @@
       });
 
       currentAudio.addEventListener('timeupdate', () => {
-        if (!currentAudio) return;
+        if (!currentAudio || currentMode !== 'essay') return;
         bpCurrentTime.textContent = formatTime(currentAudio.currentTime);
         const pct = (currentAudio.currentTime / (currentAudio.duration || 1)) * 100;
         bpTimelineFill.style.width = `${pct}%`;
       });
 
       currentAudio.addEventListener('ended', () => {
-        // Auto-play next track
-        loadAndPlayTrack(currentTrackIdx + 1, true);
+        // Auto-play next track's song
+        playSong((currentTrackIdx + 1) % trackList.length, true);
       });
 
       if (autoPlay) {
@@ -2647,36 +2909,99 @@
 
     // Toggle Play/Pause on Bottom Player
     bpPlayPauseBtn.addEventListener('click', () => {
-      if (!currentAudio) {
-        loadAndPlayTrack(currentTrackIdx, true);
-        return;
-      }
-      if (currentAudio.paused) {
-        currentAudio.play();
-        isPlaying = true;
+      if (currentMode === 'song') {
+        if (ytReady && ytPlayer && typeof ytPlayer.getPlayerState === 'function') {
+          const state = ytPlayer.getPlayerState();
+          if (state === YT.PlayerState.PLAYING) {
+            ytPlayer.pauseVideo();
+            isPlaying = false;
+          } else {
+            ytPlayer.playVideo();
+            isPlaying = true;
+          }
+        } else {
+          playSong(currentTrackIdx, true);
+        }
       } else {
-        currentAudio.pause();
-        isPlaying = false;
+        if (!currentAudio) {
+          playEssay(currentTrackIdx, true);
+          return;
+        }
+        if (currentAudio.paused) {
+          currentAudio.play();
+          isPlaying = true;
+        } else {
+          currentAudio.pause();
+          isPlaying = false;
+        }
       }
       updateTrackUI(currentTrackIdx);
     });
 
     // Prev / Next Controls
     bpPrevBtn.addEventListener('click', () => {
-      loadAndPlayTrack(currentTrackIdx - 1, true);
+      if (currentMode === 'song') {
+        playSong(currentTrackIdx - 1, true);
+      } else {
+        playEssay(currentTrackIdx - 1, true);
+      }
     });
 
     bpNextBtn.addEventListener('click', () => {
-      loadAndPlayTrack(currentTrackIdx + 1, true);
+      if (currentMode === 'song') {
+        playSong(currentTrackIdx + 1, true);
+      } else {
+        playEssay(currentTrackIdx + 1, true);
+      }
     });
 
     // Timeline Scrubbing
     bpTimelineTrack.addEventListener('click', (e) => {
-      if (!currentAudio || !currentAudio.duration) return;
       const rect = bpTimelineTrack.getBoundingClientRect();
       const clickX = e.clientX - rect.left;
       const pct = Math.max(0, Math.min(1, clickX / rect.width));
-      currentAudio.currentTime = pct * currentAudio.duration;
+
+      if (currentMode === 'song' && ytReady && ytPlayer && typeof ytPlayer.getDuration === 'function') {
+        const dur = ytPlayer.getDuration() || 0;
+        ytPlayer.seekTo(pct * dur, true);
+      } else if (currentMode === 'essay' && currentAudio && currentAudio.duration) {
+        currentAudio.currentTime = pct * currentAudio.duration;
+      }
+    });
+
+    // YouTube Progress Polling
+    setInterval(() => {
+      if (currentMode === 'song' && ytReady && ytPlayer && typeof ytPlayer.getCurrentTime === 'function' && typeof ytPlayer.getDuration === 'function') {
+        const cur = ytPlayer.getCurrentTime() || 0;
+        const dur = ytPlayer.getDuration() || 0;
+        bpCurrentTime.textContent = formatTime(cur);
+        if (dur > 0) {
+          bpTotalTime.textContent = formatTime(dur);
+          const pct = (cur / dur) * 100;
+          bpTimelineFill.style.width = `${pct}%`;
+        }
+      }
+    }, 250);
+
+    // In-Page Track Song Play Buttons
+    document.querySelectorAll('.song-play-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const numStr = btn.getAttribute('data-track-num');
+        const targetIdx = trackList.findIndex(t => t.num === numStr);
+
+        if (targetIdx === currentTrackIdx && currentMode === 'song') {
+          if (isPlaying) {
+            if (ytReady && ytPlayer && typeof ytPlayer.pauseVideo === 'function') ytPlayer.pauseVideo();
+            isPlaying = false;
+          } else {
+            if (ytReady && ytPlayer && typeof ytPlayer.playVideo === 'function') ytPlayer.playVideo();
+            isPlaying = true;
+          }
+          updateTrackUI(currentTrackIdx);
+        } else {
+          playSong(targetIdx, true);
+        }
+      });
     });
 
     // In-Page Track Header Audio Play Buttons
@@ -2685,7 +3010,7 @@
         const numStr = btn.getAttribute('data-track-num');
         const targetIdx = trackList.findIndex(t => t.num === numStr);
 
-        if (targetIdx === currentTrackIdx && currentAudio) {
+        if (targetIdx === currentTrackIdx && currentMode === 'essay' && currentAudio) {
           if (currentAudio.paused) {
             currentAudio.play();
             isPlaying = true;
@@ -2695,7 +3020,7 @@
           }
           updateTrackUI(currentTrackIdx);
         } else {
-          loadAndPlayTrack(targetIdx, true);
+          playEssay(targetIdx, true);
         }
       });
     });
@@ -2704,10 +3029,10 @@
     const prevSetLang = setLanguage;
     setLanguage = function(lang) {
       const wasAudioPlaying = isPlaying;
-      const savedTime = currentAudio ? currentAudio.currentTime : 0;
+      const savedTime = (currentMode === 'essay' && currentAudio) ? currentAudio.currentTime : 0;
       prevSetLang(lang);
-      if (currentAudio) {
-        loadAndPlayTrack(currentTrackIdx, wasAudioPlaying);
+      if (currentMode === 'essay' && currentAudio) {
+        playEssay(currentTrackIdx, wasAudioPlaying);
         if (currentAudio) {
           currentAudio.currentTime = savedTime;
         }
