@@ -752,7 +752,7 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
     /* Footer */
     footer {
       border-top: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 60px 32px;
+      padding: 60px 32px 120px 32px;
       text-align: center;
       color: var(--text-muted);
       font-size: 0.85rem;
@@ -761,6 +761,192 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
 
     footer p {
       margin-bottom: 8px;
+    }
+
+    /* BOTTOM MINI PLAYER (Matching top navbar glass & drop-shadow) */
+    .bottom-player {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 75px;
+      background: rgba(12, 12, 15, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);
+      display: grid;
+      grid-template-columns: 280px 1fr 280px;
+      align-items: center;
+      padding: 0 32px;
+      z-index: 1000;
+    }
+
+    .player-left {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .player-track-info {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .player-track-num {
+      font-size: 0.8rem;
+      font-weight: 900;
+      color: var(--magenta);
+      letter-spacing: 0.08em;
+    }
+
+    .player-track-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .player-subtitle {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+
+    .player-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      max-width: 580px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .player-controls {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .ctrl-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px;
+      transition: all 0.2s;
+    }
+
+    .ctrl-btn:hover {
+      color: #ffffff;
+    }
+
+    .play-pause-circle {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #ffffff;
+      color: #0c0c0f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .play-pause-circle:hover {
+      background: var(--magenta);
+      color: #ffffff;
+      box-shadow: 0 0 15px var(--magenta-glow);
+    }
+
+    .timeline-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .time-stamp {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-variant-numeric: tabular-nums;
+      font-family: monospace;
+      min-width: 32px;
+    }
+
+    .timeline-track {
+      flex: 1;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 2px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .timeline-track:hover {
+      height: 6px;
+    }
+
+    .timeline-fill {
+      height: 100%;
+      background: var(--magenta);
+      border-radius: 2px;
+      width: 0%;
+      pointer-events: none;
+      position: relative;
+    }
+
+    .timeline-thumb {
+      position: absolute;
+      right: -5px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ffffff;
+      box-shadow: 0 0 8px var(--magenta-glow);
+      display: none;
+    }
+
+    .timeline-track:hover .timeline-thumb {
+      display: block;
+    }
+
+    .player-right {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .player-lang-badge {
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: var(--text-muted);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 3px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.1em;
+    }
+
+    @media (max-width: 850px) {
+      .bottom-player {
+        grid-template-columns: 1fr;
+        height: auto;
+        padding: 10px 18px;
+        gap: 8px;
+      }
+      .player-left { display: none; }
+      .player-right { display: none; }
     }
   </style>
 </head>
@@ -841,7 +1027,68 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
     </p>
   </footer>
 
+  <!-- Bottom Mini Player -->
+  <div class="bottom-player" id="bottomPlayer">
+    <div class="player-left">
+      <div class="player-track-info">
+        <span class="player-track-num" id="bpTrackNum">01</span>
+        <span class="player-track-title" id="bpTrackTitle">PLEASE</span>
+      </div>
+      <div class="player-subtitle">
+        <span class="lang-de">Neural Audio-Essay</span>
+        <span class="lang-en">Neural Audio Essay</span>
+      </div>
+    </div>
+
+    <div class="player-center">
+      <div class="player-controls">
+        <button class="ctrl-btn" id="bpPrevBtn" aria-label="Previous Track">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="19 20 9 12 19 4 19 20"></polygon><line x1="5" y1="4" x2="5" y2="20" stroke="currentColor" stroke-width="2.5"></line></svg>
+        </button>
+
+        <button class="play-pause-circle" id="bpPlayPauseBtn" aria-label="Play or Pause">
+          <svg class="bp-play-icon" viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><polygon points="7 4 19 12 7 20 7 4"></polygon></svg>
+          <svg class="bp-pause-icon" viewBox="0 0 24 24" width="14" height="14" fill="currentColor" style="display:none;"><rect x="6" y="4" width="3.5" height="16"></rect><rect x="14.5" y="4" width="3.5" height="16"></rect></svg>
+        </button>
+
+        <button class="ctrl-btn" id="bpNextBtn" aria-label="Next Track">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="5 4 15 12 5 20 5 4"></polygon><line x1="19" y1="4" x2="19" y2="20" stroke="currentColor" stroke-width="2.5"></line></svg>
+        </button>
+      </div>
+
+      <div class="timeline-wrap">
+        <span class="time-stamp" id="bpCurrentTime">0:00</span>
+        <div class="timeline-track" id="bpTimelineTrack">
+          <div class="timeline-fill" id="bpTimelineFill">
+            <div class="timeline-thumb"></div>
+          </div>
+        </div>
+        <span class="time-stamp" id="bpTotalTime">0:00</span>
+      </div>
+    </div>
+
+    <div class="player-right">
+      <span class="player-lang-badge" id="bpLangBadge">DE</span>
+    </div>
+  </div>
+
   <script>
+    // Track List Metadata
+    const trackList = [
+      { num: "01", title: "Please" },
+      { num: "02", title: "Come Closer" },
+      { num: "03", title: "A Boy Like You" },
+      { num: "04", title: "Ring The Alarm" },
+      { num: "05", title: "My Baby" },
+      { num: "06", title: "Have You Seen Me Dance Alone" },
+      { num: "07", title: "Somewhere Else" },
+      { num: "08", title: "I Drink The Light" },
+      { num: "09", title: "Wavelengths" },
+      { num: "10", title: "Side By Side" },
+      { num: "11", title: "The Thing" },
+      { num: "12", title: "In A Minute" }
+    ];
+
     // 1. Animierter 35mm Analog-Film-Grain
     (function initGrain() {
       const canvas = document.getElementById('grainCanvas');
@@ -918,13 +1165,15 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
       document.title = (lang === 'de') 
         ? 'TOMORA — Album Review & Psychoanalytische Interpretation'
         : 'TOMORA — Album Review & Literary Interpretation';
+      
+      const bpLangBadge = document.getElementById('bpLangBadge');
+      if (bpLangBadge) bpLangBadge.textContent = lang.toUpperCase();
     }
 
     langToggleBtn.addEventListener('click', () => {
       setLanguage(currentLang === 'de' ? 'en' : 'de');
     });
 
-    // Initialize Language
     setLanguage(currentLang);
 
     // 4. Genius-Style Line Highlight & Scroll Interactivity
@@ -933,11 +1182,9 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
         const trackSection = lineEl.closest('.track-section');
         const targetCardIdx = lineEl.getAttribute('data-target-card');
 
-        // Deactivate other lines in this track
         trackSection.querySelectorAll('.lyric-line').forEach(l => l.classList.remove('active'));
         lineEl.classList.add('active');
 
-        // Highlight matching card in the active language block
         const activeLangBlock = trackSection.querySelector(`.lang-${currentLang}`);
         if (activeLangBlock) {
           const cards = activeLangBlock.querySelectorAll('.analysis-card');
@@ -953,64 +1200,156 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
       });
     });
 
-    // 5. Neural TTS Audio Player Controller
+    // 5. Neural TTS Unified Audio Player (Header Buttons + Bottom Mini Player with Timeline)
     let currentAudio = null;
-    let currentPlayingBtn = null;
+    let currentTrackIdx = 0;
+    let isPlaying = false;
 
-    function stopCurrentAudio() {
-      if (currentAudio) {
-        currentAudio.pause();
-        currentAudio.currentTime = 0;
-        currentAudio = null;
-      }
-      if (currentPlayingBtn) {
-        currentPlayingBtn.classList.remove('playing');
-        currentPlayingBtn.querySelector('.play-icon').style.display = 'inline-block';
-        currentPlayingBtn.querySelector('.pause-icon').style.display = 'none';
-        currentPlayingBtn = null;
-      }
+    const bpTrackNum = document.getElementById('bpTrackNum');
+    const bpTrackTitle = document.getElementById('bpTrackTitle');
+    const bpPlayPauseBtn = document.getElementById('bpPlayPauseBtn');
+    const bpPlayIcon = bpPlayPauseBtn.querySelector('.bp-play-icon');
+    const bpPauseIcon = bpPlayPauseBtn.querySelector('.bp-pause-icon');
+    const bpPrevBtn = document.getElementById('bpPrevBtn');
+    const bpNextBtn = document.getElementById('bpNextBtn');
+    const bpCurrentTime = document.getElementById('bpCurrentTime');
+    const bpTotalTime = document.getElementById('bpTotalTime');
+    const bpTimelineTrack = document.getElementById('bpTimelineTrack');
+    const bpTimelineFill = document.getElementById('bpTimelineFill');
+
+    function formatTime(seconds) {
+      if (isNaN(seconds) || seconds === 0) return '0:00';
+      const m = Math.floor(seconds / 60);
+      const s = Math.floor(seconds % 60);
+      return `${m}:${s < 10 ? '0' : ''}${s}`;
     }
 
+    function updateTrackUI(idx) {
+      const track = trackList[idx];
+      bpTrackNum.textContent = track.num;
+      bpTrackTitle.textContent = track.title.toUpperCase();
+
+      document.querySelectorAll('.audio-play-btn').forEach(btn => {
+        const isThis = btn.getAttribute('data-track-num') === track.num;
+        btn.classList.toggle('playing', isThis && isPlaying);
+        btn.querySelector('.play-icon').style.display = (isThis && isPlaying) ? 'none' : 'inline-block';
+        btn.querySelector('.pause-icon').style.display = (isThis && isPlaying) ? 'inline-block' : 'none';
+      });
+
+      bpPlayIcon.style.display = isPlaying ? 'none' : 'inline-block';
+      bpPauseIcon.style.display = isPlaying ? 'inline-block' : 'none';
+    }
+
+    function loadAndPlayTrack(idx, autoPlay = true) {
+      currentTrackIdx = (idx + trackList.length) % trackList.length;
+      const track = trackList[currentTrackIdx];
+      const audioSrc = `audio/track_${track.num}_${currentLang}.mp3`;
+
+      if (currentAudio) {
+        currentAudio.pause();
+        currentAudio = null;
+      }
+
+      currentAudio = new Audio(audioSrc);
+      bpTimelineFill.style.width = '0%';
+      bpCurrentTime.textContent = '0:00';
+
+      currentAudio.addEventListener('loadedmetadata', () => {
+        bpTotalTime.textContent = formatTime(currentAudio.duration);
+      });
+
+      currentAudio.addEventListener('timeupdate', () => {
+        if (!currentAudio) return;
+        bpCurrentTime.textContent = formatTime(currentAudio.currentTime);
+        const pct = (currentAudio.currentTime / (currentAudio.duration || 1)) * 100;
+        bpTimelineFill.style.width = `${pct}%`;
+      });
+
+      currentAudio.addEventListener('ended', () => {
+        // Auto-play next track
+        loadAndPlayTrack(currentTrackIdx + 1, true);
+      });
+
+      if (autoPlay) {
+        isPlaying = true;
+        currentAudio.play().catch(e => console.log('Audio playback prevented:', e));
+      } else {
+        isPlaying = false;
+      }
+      updateTrackUI(currentTrackIdx);
+    }
+
+    // Toggle Play/Pause on Bottom Player
+    bpPlayPauseBtn.addEventListener('click', () => {
+      if (!currentAudio) {
+        loadAndPlayTrack(currentTrackIdx, true);
+        return;
+      }
+      if (currentAudio.paused) {
+        currentAudio.play();
+        isPlaying = true;
+      } else {
+        currentAudio.pause();
+        isPlaying = false;
+      }
+      updateTrackUI(currentTrackIdx);
+    });
+
+    // Prev / Next Controls
+    bpPrevBtn.addEventListener('click', () => {
+      loadAndPlayTrack(currentTrackIdx - 1, true);
+    });
+
+    bpNextBtn.addEventListener('click', () => {
+      loadAndPlayTrack(currentTrackIdx + 1, true);
+    });
+
+    // Timeline Scrubbing
+    bpTimelineTrack.addEventListener('click', (e) => {
+      if (!currentAudio || !currentAudio.duration) return;
+      const rect = bpTimelineTrack.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const pct = Math.max(0, Math.min(1, clickX / rect.width));
+      currentAudio.currentTime = pct * currentAudio.duration;
+    });
+
+    // In-Page Track Header Audio Play Buttons
     document.querySelectorAll('.audio-play-btn').forEach(btn => {
       btn.addEventListener('click', () => {
-        const trackNum = btn.getAttribute('data-track-num');
-        const audioSrc = `audio/track_${trackNum}_${currentLang}.mp3`;
+        const numStr = btn.getAttribute('data-track-num');
+        const targetIdx = trackList.findIndex(t => t.num === numStr);
 
-        if (currentPlayingBtn === btn && currentAudio && !currentAudio.paused) {
-          stopCurrentAudio();
-          return;
+        if (targetIdx === currentTrackIdx && currentAudio) {
+          if (currentAudio.paused) {
+            currentAudio.play();
+            isPlaying = true;
+          } else {
+            currentAudio.pause();
+            isPlaying = false;
+          }
+          updateTrackUI(currentTrackIdx);
+        } else {
+          loadAndPlayTrack(targetIdx, true);
         }
-
-        stopCurrentAudio();
-
-        currentAudio = new Audio(audioSrc);
-        currentPlayingBtn = btn;
-        btn.classList.add('playing');
-        btn.querySelector('.play-icon').style.display = 'none';
-        btn.querySelector('.pause-icon').style.display = 'inline-block';
-
-        currentAudio.play().catch(e => console.error('Audio play error:', e));
-
-        currentAudio.addEventListener('ended', () => {
-          stopCurrentAudio();
-        });
       });
     });
 
-    // Language switch hook
+    // Switch Audio when Language changes
     const prevSetLang = setLanguage;
     setLanguage = function(lang) {
+      const wasAudioPlaying = isPlaying;
+      const savedTime = currentAudio ? currentAudio.currentTime : 0;
+      prevSetLang(lang);
       if (currentAudio) {
-        const wasPlaying = currentPlayingBtn;
-        stopCurrentAudio();
-        prevSetLang(lang);
-        if (wasPlaying) {
-          wasPlaying.click();
+        loadAndPlayTrack(currentTrackIdx, wasAudioPlaying);
+        if (currentAudio) {
+          currentAudio.currentTime = savedTime;
         }
-      } else {
-        prevSetLang(lang);
       }
     };
+
+    // Initialize bottom player with track 1
+    updateTrackUI(0);
   </script>
 </body>
 </html>
