@@ -34,20 +34,14 @@ def clean_markdown_for_speech(text):
     text = text.replace('—', ', ').replace('–', ', ')
     return text.strip()
 
-def build_ssml_text(review_raw, cards, lang):
+def build_ssml_text(review_raw, lang):
     review_clean = clean_markdown_for_speech(review_raw)
     paragraphs = [p.strip() for p in review_clean.split('\n\n') if p.strip()]
     
     text_blocks = []
-    # Add review paragraphs with pauses
+    # Add review paragraphs with pauses (excluding cards)
     for p in paragraphs:
         text_blocks.append(p)
-    
-    # Add cards
-    for card in cards:
-        q_clean = clean_markdown_for_speech(card["quote"])
-        b_clean = clean_markdown_for_speech(card["body"])
-        text_blocks.append(f"{q_clean}. {b_clean}")
     
     # Join with distinct paragraph pauses (ellipses and line breaks give Edge TTS natural breathing)
     full_text = " ... \n\n".join(text_blocks)
@@ -56,15 +50,15 @@ def build_ssml_text(review_raw, cards, lang):
 async def generate_track_audio(num_str, de_info, en_info, output_dir):
     os.makedirs(output_dir, exist_ok=True)
     
-    # 1. German Audio
-    de_text = build_ssml_text(de_info["review"], de_info["cards"], "de")
+    # 1. German Audio (Review only)
+    de_text = build_ssml_text(de_info["review"], "de")
     de_file = os.path.join(output_dir, f"track_{num_str}_de.mp3")
     print(f"Generating German audio for Track {num_str} ({VOICE_DE})...")
     communicate_de = edge_tts.Communicate(de_text, VOICE_DE, rate="-4%", pitch="+0Hz")
     await communicate_de.save(de_file)
     
-    # 2. English Audio
-    en_text = build_ssml_text(en_info["review"], en_info["cards"], "en")
+    # 2. English Audio (Review only)
+    en_text = build_ssml_text(en_info["review"], "en")
     en_file = os.path.join(output_dir, f"track_{num_str}_en.mp3")
     print(f"Generating English audio for Track {num_str} ({VOICE_EN})...")
     communicate_en = edge_tts.Communicate(en_text, VOICE_EN, rate="-2%", pitch="+0Hz")
