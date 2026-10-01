@@ -186,8 +186,18 @@ def render_track_html(num, title, stanzas, de_info, en_info):
     return f"""
     <section class="track-section" id="track-{num}">
       <div class="track-header-bar">
-        <span class="track-num-badge">{num}</span>
-        <h2 class="track-heading">{title}</h2>
+        <div class="track-title-wrap">
+          <span class="track-num-badge">{num}</span>
+          <h2 class="track-heading">{title}</h2>
+        </div>
+        <button class="audio-play-btn" data-track-num="{num}" aria-label="Listen to Audio Essay">
+          <svg class="play-icon" viewBox="0 0 24 24" width="13" height="13"><polygon points="6 4 20 12 6 20 6 4" fill="currentColor"></polygon></svg>
+          <svg class="pause-icon" viewBox="0 0 24 24" width="13" height="13" style="display:none;"><rect x="5" y="4" width="4" height="16" fill="currentColor"></rect><rect x="15" y="4" width="4" height="16" fill="currentColor"></rect></svg>
+          <span class="btn-text">
+            <span class="lang-de">Audio-Essay</span>
+            <span class="lang-en">Audio Essay</span>
+          </span>
+        </button>
       </div>
       <div class="track-grid">
         <div class="lyrics-col">
@@ -536,8 +546,47 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
       margin-bottom: 40px;
       padding-bottom: 16px;
       display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .track-title-wrap {
+      display: flex;
       align-items: baseline;
       gap: 16px;
+    }
+
+    .audio-play-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #cfcfd4;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+
+    .audio-play-btn:hover {
+      color: #ffffff;
+      border-color: var(--magenta);
+      background: var(--magenta-dim);
+    }
+
+    .audio-play-btn.playing {
+      color: #ffffff;
+      border-color: var(--magenta);
+      background: rgba(255, 0, 122, 0.25);
+      box-shadow: 0 0 15px var(--magenta-glow);
     }
 
     .track-num-badge {
@@ -903,6 +952,65 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
         }
       });
     });
+
+    // 5. Neural TTS Audio Player Controller
+    let currentAudio = null;
+    let currentPlayingBtn = null;
+
+    function stopCurrentAudio() {
+      if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+        currentAudio = null;
+      }
+      if (currentPlayingBtn) {
+        currentPlayingBtn.classList.remove('playing');
+        currentPlayingBtn.querySelector('.play-icon').style.display = 'inline-block';
+        currentPlayingBtn.querySelector('.pause-icon').style.display = 'none';
+        currentPlayingBtn = null;
+      }
+    }
+
+    document.querySelectorAll('.audio-play-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const trackNum = btn.getAttribute('data-track-num');
+        const audioSrc = `audio/track_${trackNum}_${currentLang}.mp3`;
+
+        if (currentPlayingBtn === btn && currentAudio && !currentAudio.paused) {
+          stopCurrentAudio();
+          return;
+        }
+
+        stopCurrentAudio();
+
+        currentAudio = new Audio(audioSrc);
+        currentPlayingBtn = btn;
+        btn.classList.add('playing');
+        btn.querySelector('.play-icon').style.display = 'none';
+        btn.querySelector('.pause-icon').style.display = 'inline-block';
+
+        currentAudio.play().catch(e => console.error('Audio play error:', e));
+
+        currentAudio.addEventListener('ended', () => {
+          stopCurrentAudio();
+        });
+      });
+    });
+
+    // Language switch hook
+    const prevSetLang = setLanguage;
+    setLanguage = function(lang) {
+      if (currentAudio) {
+        const wasPlaying = currentPlayingBtn;
+        stopCurrentAudio();
+        prevSetLang(lang);
+        if (wasPlaying) {
+          wasPlaying.click();
+        }
+      } else {
+        prevSetLang(lang);
+      }
+    };
   </script>
 </body>
 </html>
