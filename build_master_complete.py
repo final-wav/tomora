@@ -763,24 +763,24 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
       margin-bottom: 8px;
     }
 
-    /* FLOATING BOTTOM MINI PLAYER (Glass Dock) */
+    /* FLOATING BOTTOM MINI PLAYER (Glass Dock - Sharp Rectangle) */
     .bottom-player {
       position: fixed;
-      bottom: 28px;
+      bottom: 24px;
       left: 50%;
       transform: translateX(-50%);
-      width: min(780px, calc(100vw - 32px));
+      width: min(840px, calc(100vw - 32px));
       height: 68px;
       background: rgba(12, 12, 15, 0.85);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 16px;
+      border-radius: 0px;
       box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65), 0 0 1px rgba(255, 255, 255, 0.15);
       display: grid;
-      grid-template-columns: 210px 1fr 50px;
+      grid-template-columns: 1fr auto 1fr;
       align-items: center;
-      padding: 0 20px;
+      padding: 0 24px;
       z-index: 1000;
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
@@ -790,6 +790,7 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
       flex-direction: column;
       gap: 2px;
       overflow: hidden;
+      justify-content: center;
     }
 
     .player-track-info {
@@ -829,21 +830,23 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 5px;
-      max-width: 460px;
-      margin: 0 auto;
-      width: 100%;
+      justify-content: center;
+      gap: 6px;
+      width: 380px;
+      max-width: 100%;
     }
 
     .player-controls {
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 16px;
     }
 
     .ctrl-btn {
       background: none;
       border: none;
+      border-radius: 0px;
       color: var(--text-muted);
       cursor: pointer;
       display: flex;
@@ -860,7 +863,7 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
     .play-pause-circle {
       width: 32px;
       height: 32px;
-      border-radius: 50%;
+      border-radius: 0px;
       background: #ffffff;
       color: #0c0c0f;
       display: flex;
@@ -880,6 +883,7 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
     .timeline-wrap {
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 10px;
       width: 100%;
     }
@@ -890,13 +894,14 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
       font-variant-numeric: tabular-nums;
       font-family: monospace;
       min-width: 28px;
+      text-align: center;
     }
 
     .timeline-track {
       flex: 1;
       height: 4px;
       background: rgba(255, 255, 255, 0.15);
-      border-radius: 2px;
+      border-radius: 0px;
       cursor: pointer;
       position: relative;
     }
@@ -908,7 +913,7 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
     .timeline-fill {
       height: 100%;
       background: var(--magenta);
-      border-radius: 2px;
+      border-radius: 0px;
       width: 0%;
       pointer-events: none;
       position: relative;
@@ -919,9 +924,9 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
       right: -4px;
       top: 50%;
       transform: translateY(-50%);
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
+      width: 8px;
+      height: 8px;
+      border-radius: 0px;
       background: #ffffff;
       box-shadow: 0 0 8px var(--magenta-glow);
       display: none;
@@ -943,7 +948,7 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
       color: var(--text-muted);
       border: 1px solid rgba(255, 255, 255, 0.12);
       padding: 2px 6px;
-      border-radius: 4px;
+      border-radius: 0px;
       letter-spacing: 0.08em;
     }
 
@@ -955,10 +960,11 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
         height: auto;
         padding: 10px 14px;
         gap: 6px;
-        border-radius: 14px;
+        border-radius: 0px;
       }
       .player-left { display: none; }
       .player-right { display: none; }
+      .player-center { width: 100%; }
     }
   </style>
 </head>
