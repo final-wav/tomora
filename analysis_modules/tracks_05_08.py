@@ -55,16 +55,34 @@ Der gemeinsame, erstickende Takt wird gekündigt: Das Ich findet seine eigene Ge
 Um den akuten Schmerz der Trennung überhaupt zu überleben, spaltet sich das Bewusstsein vom Körper ab (*Depersonalisation*): Man ist im Raum physisch anwesend, innerlich jedoch *„somewhere else“*. Nach der zerstörerischen Hitze von *Ring The Alarm* und der stickigen Enge von *My Baby* fungiert die Kälte nicht als Grausamkeit, sondern als notwendiges seelisches Antiseptikum – ein emotionaler Winterschlaf, in dem die tiefen Wunden ungestört abkühlen können.""",
         "cards": [
             {
-                "quote": "Somewhere Else / Die dissoziative Entkopplung",
-                "body": """Das Ich erlebt sich selbst wie eine distanzierte Beobachterin von außen. Das Bewusstsein entweicht an einen unantastbaren Ort, während der Körper im Raum verweilt.
+                "quote": "Somewhere else / Just living / Die Demütigung der banalen Fortexistenz",
+                "body": """Das Ich imaginiert den Anderen nicht als verstorben oder vernichtet, sondern banal und schmerzhaft als *„Somewhere else / Just living“*. Diese Vorstellung ist für die narzisstische Psyche unerträglicher als der Tod des Partners: Das Leben des Anderen geht einfach weiter, während die eigene Welt in Trümmern liegt.
 
-Diese Depersonalisation ist ein lebenserhaltender Schutzreflex: Das System drosselt die Empfindungen auf ein Minimum, um nicht an der akuten Überlastung zu zerbrechen."""
+Das Wort *„just“* degradiert die einstige Schicksalsbindung zur beiläufigen Tatsache und entzieht dem Drama jede romantische Bedeutung."""
             },
             {
-                "quote": "Die Kälte als heilendes Antiseptikum",
-                "body": """Wo zuvor Panik und Überhitzung herrschten, breitet sich nun eine gläserne, schützende Stille aus.
+                "quote": "We are not forgiven (Forgiven) / Das Ende der Erlösungstheologie",
+                "body": """Das radikale Ende jeder Tröstung: Reue (*„regret“*) führt nicht automatisch zu Vergebung. Das Ich erkennt an, dass manche Bindungskatastrophen irreversibel sind.
 
-Das Einfrieren der Gefühle ist kein Scheitern, sondern eine heilsame Schutzisolierung: Eine Phase der absoluten Schonung, die der Psyche die nötige Zeit gibt, sich im Stillen neu zu ordnen."""
+Das in Parenthese gehauchte Echo *(Forgiven)* verdeutlicht die körperliche Resignation: Der Hals schnürt sich zu, und die Psyche akzeptiert das unerbittliche Urteil der Nicht-Vergebung."""
+            },
+            {
+                "quote": "It's cold out here / What a rush / Die Kryophilie des Traumas",
+                "body": """Nach der Zerstörungshitze früherer Phasen wird die Kälte der Einsamkeit gesucht statt gefürchtet. Der Kälteschock bewirkt eine massive Vasokonstriktion und schüttet Noradrenalin sowie Endorphine aus (*„What a rush“*).
+
+Das Erfrieren wird zum neurochemischen Kick umgedeutet: Wer die Kälte liebt und zelebriert, kann im seelischen Eis nicht mehr vernichtet werden."""
+            },
+            {
+                "quote": "Carved on my body / I'll celebrate while you mourn me / Manische Abwehr",
+                "body": """Die somatische Fixierung des Traumas: Der Name des Partners ist wie eine physische Narbe in das Fleisch graviert (*„Carved on my body“*).
+
+Die Antithese *„I'll celebrate / While you mourn me“* ist der Gipfel der manischen Abwehr (Melanie Klein): Statt regulärer Trauerarbeit verkehrt das Ich den Schmerz in einen zynischen Triumphzug und erklärt sich selbst zur Ikone, die beweint werden muss."""
+            },
+            {
+                "quote": "But now I'm here / Die somatische Erdung im Hier und Jetzt",
+                "body": """Das fünfmalige, unerschütterliche *„But now I'm here“* im Outro ist das Ankommen in der nackten Realität.
+
+Keine Rechtfertigung mehr, kein Rachegefühl und kein Sehnen: Die Füße drücken wieder fest in den Boden. Die Macht liegt im schlichten Umstand, den Abgrund passiert zu haben und physisch anwesend zu sein."""
             }
         ]
     },
@@ -140,16 +158,34 @@ The suffocating shared cadence is severed: the protagonist reclaims her innate r
 To survive the sheer impact of loss, awareness detaches from the physical body (*Depersonalization*): physically occupying the room, but internally residing *“somewhere else”*. Following the destructive heat of *Ring The Alarm* and the claustrophobia of *My Baby*, coldness functions not as cruelty, but as a necessary psychological antiseptic—an emotional hibernation where deep lacerations can cool in silence.""",
         "cards": [
             {
-                "quote": "Somewhere Else / Dissociative detachment",
-                "body": """The self observes its own existence like a detached bystander. Awareness retreats to an untouchable sanctuary while the body lingers in the room.
+                "quote": "Somewhere else / Just living / The sting of mundane continuation",
+                "body": """The protagonist imagines the other not as destroyed, but banally *“Somewhere else / Just living”*. This realization is far more devastating to the ego than death: life moves on indifferently without them.
 
-This depersonalization is a vital defense mechanism: the system dials sensation down to zero to prevent the psyche from shattering under acute overwhelm."""
+The word *“just”* reduces the once sacred bond to mundane reality, stripping away all romantic mythology."""
             },
             {
-                "quote": "Ice as a healing antiseptic",
-                "body": """Where panic and burning friction once raged, an untouchable, crystalline silence now spreads.
+                "quote": "We are not forgiven (Forgiven) / The end of salvation",
+                "body": """The unvarnished collapse of romantic theology: regret (*“regret”*) does not grant absolution. The psyche acknowledges that certain fractures are permanent.
 
-Freezing is no defeat, but a protective quarantine: a period of complete stillness granting the psyche the necessary time to reorganize from within."""
+The parenthetical echo *(Forgiven)* captures somatic resignation: the throat constricts as the body absorbs the irrevocable sentence of non-forgiveness."""
+            },
+            {
+                "quote": "It's cold out here / What a rush / The cryophilia of trauma",
+                "body": """Following feverish overheating, the cold of solitary existence is actively courted. Thermal shock triggers peripheral vasoconstriction and endorphin release (*“What a rush”*).
+
+Freezing is reframed into a neurochemical thrill: one who embraces the ice can never be destroyed by frost again."""
+            },
+            {
+                "quote": "Carved on my body / I'll celebrate while you mourn me / Manic defense",
+                "body": """Somatic engraving of trauma: the partner's name is etched into the flesh like an indelible scar (*“Carved on my body”*).
+
+The antithesis *“I'll celebrate / While you mourn me”* exemplifies classic manic defense (Melanie Klein): bypassing grief to construct a bitter victory parade, turning the self into an untouchable monument."""
+            },
+            {
+                "quote": "But now I'm here / Grounding in physical presence",
+                "body": """The fivefold repetition of *“But now I'm here”* in the outro marks the return to grounded reality.
+
+No justifications, no vengeance, no pleading: feet firmly pressed against the earth. True sovereignty lies in the bare fact of having survived the abyss."""
             }
         ]
     },

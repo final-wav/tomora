@@ -45,7 +45,29 @@ phase1_dir = "c:/Users/Hakan/Documents/antigravity/modest-meitner/album_analyse_
 def clean_txt(t):
     return re.sub(r'[^a-zA-Z0-9]', '', t).lower()
 
-def extract_stanzas_for_track(num_str, title):
+def find_matching_card(line_text, cards):
+    line_lower = line_text.lower()
+    line_clean = clean_txt(line_text)
+    if not line_clean:
+        return None
+    
+    for idx, card in enumerate(cards):
+        q_raw = card.get("quote", "").split('/')[0].strip().lower()
+        q_clean = clean_txt(q_raw)
+        
+        # 1. Exact or substring quote match
+        if q_clean and (q_clean in line_clean or line_clean in q_clean):
+            return idx
+            
+        # 2. Key phrase tokens
+        tokens = [t.strip() for t in re.findall(r'[a-zA-Z]{3,}', q_raw) if t.strip() not in ['the', 'and', 'for', 'von', 'der', 'die', 'das', 'mit', 'wie', 'ein', 'eine', 'you']]
+        matched = [t for t in tokens if t in line_lower]
+        if len(tokens) > 0 and len(matched) >= min(len(tokens), 2 if len(tokens) >= 2 else 1):
+            return idx
+            
+    return None
+
+def extract_stanzas_for_track(num_str, title, analysis_cards):
     p1_file = f"{num_str}_{title.replace(' ', '_')}.md"
     p1_path = os.path.join(phase1_dir, p1_file)
     if not os.path.exists(p1_path):
@@ -85,7 +107,11 @@ def extract_stanzas_for_track(num_str, title):
                 stanzas.append(current_stanza)
             current_stanza = {"title": line_s, "lines": []}
         elif line_s:
-            current_stanza["lines"].append(line_s)
+            matched_card_idx = find_matching_card(line_s, analysis_cards)
+            current_stanza["lines"].append({
+                "text": line_s,
+                "target_card": matched_card_idx
+            })
         else:
             if current_stanza["lines"]:
                 stanzas.append(current_stanza)
@@ -118,6 +144,7 @@ def render_analysis_column_for_lang(review_raw, cards, num, lang):
 
     # Render cards
     cards_html_parts = []
+    total_cards = len(cards)
     for idx, card in enumerate(cards):
         q = card["quote"]
         b = card["body"].strip()
@@ -129,7 +156,18 @@ def render_analysis_column_for_lang(review_raw, cards, num, lang):
         cards_body_html = "\n".join(b_p_html)
 
         cards_html_parts.append(f"""
-        <div class="analysis-card" id="card-{num}-{lang}-{idx}">
+        <div class="analysis-card" id="card-{num}-{lang}-{idx}" data-card-idx="{idx}">
+          <div class="card-header-bar">
+            <button class="card-back-btn" data-track-num="{num}" data-lang="{lang}">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+              <span class="lang-de">Zurück zur Review</span>
+              <span class="lang-en">Back to Review</span>
+            </button>
+            <span class="card-badge-counter">
+              <span class="lang-de">Tiefen-Analyse {idx + 1} / {total_cards}</span>
+              <span class="lang-en">Deep Analysis {idx + 1} / {total_cards}</span>
+            </span>
+          </div>
           <span class="card-quote">{q}</span>
           <div class="card-body">
             {cards_body_html}
@@ -140,24 +178,38 @@ def render_analysis_column_for_lang(review_raw, cards, num, lang):
 
     return f"""
     <div class="lang-block lang-{lang}">
-      <div class="narrative-review">
-        {review_html}
-      </div>
-      <div class="analysis-cards-list">
-        {cards_rendered}
+      <div class="analysis-view-wrapper">
+        <div class="narrative-review" id="review-{num}-{lang}">
+          {review_html}
+        </div>
+        <div class="card-deck-view" id="card-deck-{num}-{lang}" style="display: none;">
+          {cards_rendered}
+        </div>
       </div>
     </div>
     """
 
 def render_track_html(num, title, stanzas, de_info, en_info):
-    # Render stanzas as pure text
     lyrics_html_parts = []
+    line_global_idx = 0
     for s in stanzas:
         lyrics_html_parts.append('<div class="stanza">')
         if s["title"]:
             lyrics_html_parts.append(f'<div class="stanza-title">{s["title"]}</div>')
-        for text in s["lines"]:
-            lyrics_html_parts.append(f'<div class="lyric-line">{text}</div>')
+        for l in s["lines"]:
+            text = l["text"]
+            target_card = l.get("target_card")
+            if target_card is not None:
+                lyrics_html_parts.append(
+                    f'<div class="lyric-line annotated" data-line-idx="{line_global_idx}">'
+                    f'<span class="lyric-trigger" data-track-num="{num}" data-target-card="{target_card}">{text}</span>'
+                    f'</div>'
+                )
+            else:
+                lyrics_html_parts.append(
+                    f'<div class="lyric-line plain" data-line-idx="{line_global_idx}">{text}</div>'
+                )
+            line_global_idx += 1
         lyrics_html_parts.append('</div>')
     lyrics_rendered = "\n".join(lyrics_html_parts)
 
@@ -663,6 +715,40 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
       font-weight: 500;
       color: rgba(255, 255, 255, 0.75);
       line-height: 1.65;
+      margin-bottom: 4px;
+    }
+
+    .lyric-line.plain {
+      cursor: default;
+    }
+
+    .lyric-line.annotated {
+      cursor: pointer;
+    }
+
+    .lyric-trigger {
+      display: inline-block;
+      color: #ffffff;
+      border-bottom: 2px solid rgba(255, 0, 122, 0.45);
+      padding: 1px 4px;
+      margin: 0 -4px;
+      border-radius: 4px;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .lyric-trigger:hover {
+      background: rgba(255, 0, 122, 0.18);
+      border-bottom-color: var(--magenta);
+      color: #ffffff;
+      box-shadow: 0 0 12px var(--magenta-glow);
+    }
+
+    .lyric-trigger.active {
+      background: var(--magenta);
+      border-bottom-color: #ffffff;
+      color: #ffffff;
+      font-weight: 700;
+      box-shadow: 0 0 16px var(--magenta-glow);
     }
 
     /* Right Column: Analysis */
@@ -678,12 +764,18 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
       gap: 32px;
     }
 
+    .analysis-view-wrapper {
+      position: relative;
+      width: 100%;
+    }
+
     .narrative-review {
       background: transparent;
       font-size: 1.05rem;
       color: #cfcfd4;
       line-height: 1.8;
       font-weight: 400;
+      transition: opacity 0.3s ease;
     }
 
     .narrative-review p {
@@ -713,33 +805,68 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
       font-weight: 700;
     }
 
-    .analysis-cards-list {
+    .card-deck-view {
       display: flex;
       flex-direction: column;
       gap: 20px;
+      animation: fadeInCard 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes fadeInCard {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card-header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .card-back-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .card-back-btn:hover {
+      background: var(--magenta-dim);
+      border-color: var(--magenta);
+      color: #ffffff;
+      box-shadow: 0 0 12px var(--magenta-glow);
+    }
+
+    .card-badge-counter {
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
     }
 
     .analysis-card {
       background: var(--bg-surface);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 8px;
       padding: 24px 28px;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      scroll-margin-top: 130px;
-      position: relative;
-      cursor: pointer;
-    }
-
-    .analysis-card:hover {
-      border-color: rgba(255, 0, 122, 0.35);
-      background: #18181e;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+      display: none;
     }
 
     .analysis-card.active {
-      background: #181822;
-      border-color: var(--magenta);
-      box-shadow: 0 0 0 1.5px var(--magenta), 0 12px 30px rgba(0, 0, 0, 0.6);
-      transform: translateY(-2px);
+      display: block;
     }
 
     .card-quote {
@@ -1224,7 +1351,75 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
 
     setLanguage(currentLang);
 
-    // 4. Dual Media Audio Engine: YouTube Song + Neural TTS Audio Essay
+    // 4. Interactive Lyric Triggers & Card Deck Visibility
+    document.querySelectorAll('.lyric-trigger').forEach(trigger => {
+      trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const trackNum = trigger.getAttribute('data-track-num');
+        const targetCardIdx = trigger.getAttribute('data-target-card');
+        const trackSection = document.getElementById('track-' + trackNum);
+        if (!trackSection) return;
+
+        const isCurrentlyActive = trigger.classList.contains('active');
+
+        if (isCurrentlyActive) {
+          closeCardDeck(trackSection);
+        } else {
+          openCardDeck(trackSection, targetCardIdx);
+        }
+      });
+    });
+
+    function openCardDeck(trackSection, targetCardIdx) {
+      const activeLang = currentLang;
+      const reviewEl = trackSection.querySelector(`.lang-${activeLang} .narrative-review`);
+      const deckEl = trackSection.querySelector(`.lang-${activeLang} .card-deck-view`);
+      
+      if (!deckEl) return;
+
+      // Update trigger active states in this track section
+      trackSection.querySelectorAll('.lyric-trigger').forEach(tr => {
+        const isMatch = tr.getAttribute('data-target-card') === targetCardIdx;
+        tr.classList.toggle('active', isMatch);
+      });
+
+      // Hide review, show deck
+      if (reviewEl) reviewEl.style.display = 'none';
+      deckEl.style.display = 'flex';
+
+      // Activate specific card
+      deckEl.querySelectorAll('.analysis-card').forEach((c, idx) => {
+        if (idx.toString() === targetCardIdx) {
+          c.classList.add('active');
+        } else {
+          c.classList.remove('active');
+        }
+      });
+
+      deckEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function closeCardDeck(trackSection) {
+      const activeLang = currentLang;
+      const reviewEl = trackSection.querySelector(`.lang-${activeLang} .narrative-review`);
+      const deckEl = trackSection.querySelector(`.lang-${activeLang} .card-deck-view`);
+
+      trackSection.querySelectorAll('.lyric-trigger').forEach(tr => tr.classList.remove('active'));
+
+      if (deckEl) deckEl.style.display = 'none';
+      if (reviewEl) reviewEl.style.display = 'block';
+    }
+
+    document.querySelectorAll('.card-back-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const trackNum = btn.getAttribute('data-track-num');
+        const trackSection = document.getElementById('track-' + trackNum);
+        if (trackSection) closeCardDeck(trackSection);
+      });
+    });
+
+    // 5. Dual Media Audio Engine: YouTube Song + Neural TTS Audio Essay
     let ytPlayer = null;
     let ytReady = false;
     let queuedVideoId = null;
@@ -1539,7 +1734,7 @@ drawer_items_parts = []
 for num_str, title in track_names_map.items():
     de_info = de_tracks_deep.get(num_str, {"review": "", "cards": []})
     en_info = en_tracks_deep.get(num_str, {"review": "", "cards": []})
-    stanzas = extract_stanzas_for_track(num_str, title)
+    stanzas = extract_stanzas_for_track(num_str, title, de_info["cards"])
     
     tracks_rendered_parts.append(render_track_html(num_str, title, stanzas, de_info, en_info))
     drawer_items_parts.append(f'<li><a href="#track-{num_str}">{num_str} — {title}</a></li>')

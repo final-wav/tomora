@@ -25,21 +25,33 @@ Wellenlängen beschreiben das Verlassen der toxischen Resonanz: Das Subjekt dock
         ]
     },
     "10": {
-        "review": """Ein Moment reifer, kristallklarer Einsicht und friedvoller Abgrenzung. *Side By Side* ist keine sentimentale Hoffnung auf ein romantisches Comeback, sondern der würdevolle Rückblick auf die Beziehung aus sicherer, autonomer Distanz.
+        "review": """Die Agonie des Einsturzes und der finale semantische Umschlag. *Side By Side* dekonstruiert das scheinbar heroische Treueversprechen und enthüllt die nackte seelische Zerrissenheit einer sterbenden Bindung.
 
-Die Haltung transformiert sich von der toxischen Einverleibung (*„Come closer / inside each other“*) hin zu einer friedlichen, parallelen Koexistenz: Zwei getrennte Wesen dürfen nebeneinander im Universum existieren, ohne sich gegenseitig zu verschlingen. Der Nebel aus Projektionen und kindlichen Idealen hat sich vollständig verzogen. Man erkennt das Gegenüber in seiner vollen menschlichen Begrenztheit und Alterität – ohne Hass, ohne Rachegelüste, aber mit einer glasklaren, atmenden Grenze.""",
+Hinter dem mantrischen Bekenntnis *„Even if I cry / I'll be by your side“* verbirgt sich kein romantischer Triumph, sondern das erdrückende Pflichtgefühl eines Wächters an einem längst verlorenen Posten. Die eigentliche Triebfeder der Beziehung tritt ungeschminkt zutage: die panische Angst vor der solitären Existenz (*„I don't wanna be alone“*). Als die verbale Grausamkeit des Partners die Psyche physisch zu Boden zwingt (*„And I crumble at your feet / It's the way you speak to me“*), kippt das Werk genial um: Das Weinen war niemals ein Schwur für die Ewigkeit, sondern die bittere physiologische Katharsis des endgültigen Abschieds (*„It's the way to say goodbye“*).""",
         "cards": [
             {
-                "quote": "Side By Side / Parallele Koexistenz statt Verschmelzung",
-                "body": """Die Transformation von toxischer Inkorporation (Track 2) zur friedlichen Parallele: Man berührt sich nicht mehr destruktiv, sondern geht auf getrennten, respektvollen Bahnen.
+                "quote": "Even if I cry / I'll be by your side / Die Täuschung der falschen Loyalität",
+                "body": """Das dreifache *„Even if“* offenbart den immensen inneren Widerstand: Das Bleiben an der Seite des Partners geschieht unter extremem seelischem Schmerz (*„even if I cry“*).
 
-Die Haltung ist zentriert und gefestigt: Kein Groll, keine Bitterkeit, sondern eine würdevolle Anerkennung dessen, was war und was nie wieder zugelassen wird."""
+Es ist die pathologische Loyalität eines Gefangenen zu seinem Kerkermeister – das Festhalten an einer toxisch gewordenen Pflichtethik, die fälschlicherweise als Liebe interpretiert wird."""
             },
             {
-                "quote": "Die Anerkennung der Alterität & Grenze",
-                "body": """Die Grenze zwischen dem Selbst und dem Anderen ist keine Festungsmauer aus Angst mehr, sondern eine gesunde, atmende Schutzhaut.
+                "quote": "A shadow calling mine / I don't wanna be alone / Die Ur-Angst vor der Isolation",
+                "body": """Das verdrängte Schatten-Selbst (C.G. Jung) fordert seine Rechte ein (*„a shadow calling mine“*), während der Partner zu einer verblassenden Erinnerung wird (*„you feel like a song“* – entmenschlicht zu einer bloßen Melodie).
 
-Das Gegenüber wird endlich als fremdes, unverfügbares Wesen akzeptiert: Man muss den Anderen nicht mehr verändern oder retten, um bei sich selbst im Reinen zu sein."""
+Der verzweifelte Ausruf *„I don't wanna be alone“* legt die Wurzel der gesamten Albumtragödie offen: Nicht Liebe hielt das System aufrecht, sondern die existenzielle Panik vor dem Alleinsein."""
+            },
+            {
+                "quote": "And I crumble at your feet / Kollaps durch verbale Destruktion",
+                "body": """Das Verb *„crumble“* (zerbröckeln) beschreibt das vollständige somatische Einknicken: Knie, Becken und Wirbelsäule verlieren jegliche Haltung unter der Wucht der Worte des Partners (*„the way you speak to me“*).
+
+Hier wird die Ursache der Zerstörung demaskiert: Die Sprache des Gegenübers war kein Balsam, sondern ein unablässiger seelischer Abrisshammer."""
+            },
+            {
+                "quote": "It's the way to say goodbye / Der geniale semantische Umschlag",
+                "body": """Im Outro ersetzt der Song *„I'll be by your side“* durch *„It's the way to say goodbye“*.
+
+Die Tränen waren nie ein Treueschwur für die Zukunft, sondern die notwendige physiologische Trauerarbeit des Abschieds. Im Moment des Einsturzes begreift das Ich, dass die Bindung unwiederbringlich vorüber ist."""
             }
         ]
     },
@@ -104,21 +116,33 @@ Wavelengths symbolize severance from toxic resonance: the subject disconnects fr
         ]
     },
     "10": {
-        "review": """A moment of mature, crystalline lucidity and peaceful demarcation. *Side By Side* is not a sentimental plea for a romantic reunion, but a dignified, clear-headed look back across the relationship from a place of unshakeable autonomy.
+        "review": """The agony of collapse and the ultimate semantic pivot. *Side By Side* deconstructs the seemingly heroic vow of fidelity, exposing the raw torment of a dying codependency.
 
-The posture transforms from toxic incorporation (*“Come closer / inside each other”*) into peaceful, parallel coexistence: two distinct beings are permitted to walk alongside each other under the stars without consuming one another. The fog of projection and infantile fantasy has completely lifted. The partner is perceived in all their human limitation and alterity—without malice or vengeance, but secured behind an uncompromised, living boundary.""",
+Behind the mantric declaration *“Even if I cry / I'll be by your side”* lies no romantic victory, but the suffocating obligation of a sentry guarding an already abandoned post. The core engine of the relationship is laid bare: existential terror of solitary existence (*“I don't wanna be alone”*). When the partner's verbal cruelty physically drives the self to the floor (*“And I crumble at your feet / It's the way you speak to me”*), the song executes a brilliant reversal: tears were never an eternal vow, but the bitter somatic catharsis of final parting (*“It's the way to say goodbye”*).""",
         "cards": [
             {
-                "quote": "Side By Side / Parallel coexistence over enmeshment",
-                "body": """The evolution from destructive incorporation (Track 2) to peaceful parallel trajectories: no longer colliding, but walking along distinct, respectful paths.
+                "quote": "Even if I cry / I'll be by your side / The illusion of false loyalty",
+                "body": """The threefold *“Even if”* exposes profound internal resistance: remaining at the partner's side occurs under immense psychological agony (*“even if I cry”*).
 
-The posture is centered and resolute: no lingering bitterness, but a dignified honoring of what was, combined with an absolute refusal to ever surrender one's boundaries again."""
+It reflects the pathological loyalty of a prisoner to their jailer—clinging to a toxic duty ethic mistaken for genuine love."""
             },
             {
-                "quote": "Honoring alterity & living boundaries",
-                "body": """The perimeter between Self and Other is no longer a fearful fortress wall, but healthy, breathing skin.
+                "quote": "A shadow calling mine / I don't wanna be alone / The primal fear of isolation",
+                "body": """The repressed shadow-self (C.G. Jung) stakes its claim (*“a shadow calling mine”*), while the partner fades into an abstraction (*“you feel like a song”*—dehumanized into a mere melody).
 
-The partner is finally acknowledged in their full alterity: one no longer needs to fix, change, or save the other to be completely at peace with oneself."""
+The cry *“I don't wanna be alone”* exposes the root cause of the album's tragedy: not devotion, but terror of solitude sustained the bond."""
+            },
+            {
+                "quote": "And I crumble at your feet / Collapse through verbal destruction",
+                "body": """The verb *“crumble”* depicts complete somatic collapse: knees, pelvis, and spine surrender under the impact of the partner's words (*“the way you speak to me”*).
+
+The instrument of harm is unmasked: the partner's communication functioned not as shelter, but as a destructive wrecking ball."""
+            },
+            {
+                "quote": "It's the way to say goodbye / The brilliant semantic pivot",
+                "body": """In the outro, *“I'll be by your side”* is definitively replaced with *“It's the way to say goodbye”*.
+
+The tears were never a promise for tomorrow, but the necessary somatic work of mourning. In the midst of collapse, the self realizes that the relationship has reached its irrevocable end."""
             }
         ]
     },
