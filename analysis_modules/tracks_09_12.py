@@ -27,17 +27,23 @@ Wellenlängen beschreiben das Verlassen der toxischen Resonanz: Das Subjekt dock
     "10": {
         "review": """Die Agonie des Einsturzes und der finale semantische Umschlag. *Side By Side* dekonstruiert das scheinbar heroische Treueversprechen und enthüllt die nackte seelische Zerrissenheit einer sterbenden Bindung.
 
-Hinter dem mantrischen Bekenntnis *„Even if I cry / I'll be by your side“* verbirgt sich kein romantischer Triumph, sondern das erdrückende Pflichtgefühl eines Wächters an einem längst verlorenen Posten. Die eigentliche Triebfeder der Beziehung tritt ungeschminkt zutage: die panische Angst vor der solitären Existenz (*„I don't wanna be alone“*). Als die unbarmherzige Zeit und die verbale Grausamkeit des Partners die Psyche physisch zu Boden zwingen (*„Time, time, time / And I crumble at your feet / It's the way you speak to me“*), kippt das Werk genial um: Das Weinen war niemals ein Schwur für die Ewigkeit, sondern die bittere physiologische Katharsis des endgültigen Abschieds (*„It's the way to say goodbye“*).""",
+Hinter dem mantrischen Bekenntnis *„Even if, even if, even if I cry / I'll be by your side“* verbirgt sich kein romantischer Triumph, sondern das erdrückende Pflichtgefühl eines Wächters an einem längst verlorenen Posten. Das „Zuhause“ (*„where we built a home“*) wird zur statischen Geisel, an der man sich festhält, während die Frage *„If I go now, will you follow?“* den verzweifelten Test auf Echtheit darstellt. Im Schatteneinbruch (*„a shadow calling mine“*) entmenschlicht sich das Gegenüber zu einem bloßen Lied (*„you feel like a song“*), bis die eigentliche Triebfeder nackt daliegt: *„I don't wanna be alone“*. Als die Zeit und die verbale Grausamkeit des Partners die Psyche physisch zu Boden zwingen (*„Time, time, time / And I crumble at your feet / It's the way you speak to me“*), kippt das Werk genial um: Das Weinen war niemals ein Schwur für die Ewigkeit, sondern die bittere physiologische Katharsis des endgültigen Abschieds (*„It's the way to say goodbye“*).""",
         "cards": [
             {
-                "quote": "Even if I cry / I'll be by your side / Die Täuschung der falschen Loyalität",
+                "quote": "Even if, even if, even if I cry / I'll be by your side / Die Täuschung der falschen Loyalität",
                 "body": """Das dreifache *„Even if“* offenbart den immensen inneren Widerstand: Das Bleiben an der Seite des Partners geschieht unter extremem seelischem Schmerz (*„even if I cry“*).
 
 Es ist die pathologische Loyalität eines Gefangenen zu seinem Kerkermeister – das Festhalten an einer toxisch gewordenen Pflichtethik, die fälschlicherweise als Liebe interpretiert wird."""
             },
             {
-                "quote": "A shadow calling mine / I don't wanna be alone / Die Ur-Angst vor der Isolation",
-                "body": """Das verdrängte Schatten-Selbst (C.G. Jung) fordert seine Rechte ein (*„a shadow calling mine“*), während der Partner zu einer verblassenden Erinnerung wird (*„you feel like a song“* – entmenschlicht zu einer bloßen Melodie).
+                "quote": "Where we built a home / If I go now, will you follow? / Das Zuhause als Geisel",
+                "body": """Das gemeinsam errichtete Zuhause (*„where we built a home“*) ist kein Schutzraum mehr, sondern ein museales Denkmal, an dem sich beide festkrallen.
+
+Die Frage *„If I go now, will you follow?“* ist der finale Test auf Verbindlichkeit: Kann die Bindung außerhalb der gewohnten toxischen Dynamik überleben? Die Musik beantwortet die Frage mit eisiger Stille."""
+            },
+            {
+                "quote": "A shadow calling mine / You feel like a song / I don't wanna be alone / Die Ur-Angst",
+                "body": """Das verdrängte Schatten-Selbst (C.G. Jung) fordert seine Rechte ein (*„a shadow calling mine“*), während der Partner zu einer verblassenden Abstraktion wird (*„you feel like a song“* – entmenschlicht zu einer bloßen Melodie).
 
 Der verzweifelte Ausruf *„I don't wanna be alone“* legt die Wurzel der gesamten Albumtragödie offen: Nicht Liebe hielt das System aufrecht, sondern die existenzielle Panik vor dem Alleinsein."""
             },
@@ -48,7 +54,7 @@ Der verzweifelte Ausruf *„I don't wanna be alone“* legt die Wurzel der gesam
 Hier wird die Ursache der Zerstörung demaskiert: Die Sprache des Gegenübers war kein Schutz, sondern ein unablässiger seelischer Abrisshammer."""
             },
             {
-                "quote": "It's the way to say goodbye / Der geniale semantische Umschlag",
+                "quote": "Even if I cry / It's the way to say goodbye / Der geniale semantische Umschlag",
                 "body": """Im Outro ersetzt der Song *„I'll be by your side“* durch *„It's the way to say goodbye“*.
 
 Die Tränen waren nie ein Treueschwur für die Zukunft, sondern die notwendige physiologische Trauerarbeit des Abschieds. Im Moment des Einsturzes begreift das Ich, dass die Bindung unwiederbringlich vorüber ist."""
@@ -67,7 +73,7 @@ Der Song beginnt mit existenziellen, fast kindlich-ontologischen Grundfragen: *�
 Liebe verliert ihr kitschiges Pathos und wird als elementare Physik begriffen: Gras neigt sich dem Wind, Gefühle neigen sich den Kräften des Lebens. Ein Blick von archaischer Schlichtheit und Klarheit."""
             },
             {
-                "quote": "I have loved kings / I have forged ring / Die mythologische Überhöhung",
+                "quote": "I have loved kings / I have forged ring / Die mythologische Selbstermächtigung",
                 "body": """Das Ich erinnert sich an seine königliche, heroische Dimension: Das Lieben von Königen und das Schmieden von Ringen (archetypische Schicksalssymbole).
 
 Es ist die bewusste Rückbesinnung auf die eigene seelische Größe: Wer Könige lieben und Ringe schmieden konnte, wird an einem profanen Bindungsbruch nicht zugrunde gehen."""
@@ -92,7 +98,7 @@ Nerven und Gefühle können schwanken, doch das Skelett – die unantastbare Wü
 Nach der eisigen Nacht von Track 7, der künstlichen Lichtsucht von Track 8 und der Stille von Track 9 bricht die Sonne als reine kosmische Präsenz durch: *„The sun / The sun / The sun / The sun“*. Licht muss nicht mehr gierig getrunken werden – es ist einfach da, wärmend und unaufgeregt. Der Titel *„In A Minute“* offenbart die befreiende Relativität des Leids: Was sich in der Dunkelheit wie eine endlose Ewigkeit anfühlte, ist im Licht der Heilung nur ein flüchtiger Augenblick. Der finale Imperativ ist ein lebenslanger Schwur – das Versprechen an die eigene Seele, sich nie wieder für die Illusion von Nähe selbst zu verraten.""",
         "cards": [
             {
-                "quote": "The sun, the sun, the sun / Die solare Epiphanie & reine Gegenwärtigkeit",
+                "quote": "The sun, the sun, the sun, the sun / Die solare Epiphanie & reine Gegenwärtigkeit",
                 "body": """Die vierfache Anrufung der Sonne (*„The sun / The sun / The sun / The sun“*) markiert die vollständige Re-Integration.
 
 Das Licht wird nicht mehr wie in Track 8 manisch einverleibt, um eine Leere zu betäuben, sondern in stiller Ehrfurcht bezeugt. Es ist das Symbol für das ewige, unzerstörbare Bewusstsein, das hinter allen Traumata unberührt bleibt."""
@@ -136,16 +142,22 @@ Wavelengths symbolize severance from toxic resonance: the subject disconnects fr
     "10": {
         "review": """The agony of collapse and the ultimate semantic pivot. *Side By Side* deconstructs the seemingly heroic vow of fidelity, exposing the raw torment of a dying codependency.
 
-Behind the mantric declaration *“Even if I cry / I'll be by your side”* lies no romantic victory, but the suffocating obligation of a sentry guarding an already abandoned post. The core engine of the relationship is laid bare: existential terror of solitary existence (*“I don't wanna be alone”*). When relentless time and the partner's verbal cruelty physically drive the self to the floor (*“Time, time, time / And I crumble at your feet / It's the way you speak to me”*), the song executes a brilliant reversal: tears were never an eternal vow, but the bitter somatic catharsis of final parting (*“It's the way to say goodbye”*).""",
+Behind the mantric declaration *“Even if, even if, even if I cry / I'll be by your side”* lies no romantic victory, but the suffocating obligation of a sentry guarding an already abandoned post. The home construct (*“where we built a home”*) becomes a hostage monument, while the question *“If I go now, will you follow?”* poses the desperate test of devotion. In the shadow's emergence (*“a shadow calling mine”*), the partner fades into abstraction (*“you feel like a song”*), until the root fear is laid bare: *“I don't wanna be alone”*. When relentless time and verbal cruelty drive the self to the floor (*“Time, time, time / And I crumble at your feet / It's the way you speak to me”*), the song executes a brilliant reversal: tears were never an eternal vow, but the bitter somatic catharsis of final parting (*“It's the way to say goodbye”*).""",
         "cards": [
             {
-                "quote": "Even if I cry / I'll be by your side / The illusion of false loyalty",
+                "quote": "Even if, even if, even if I cry / I'll be by your side / The illusion of false loyalty",
                 "body": """The threefold *“Even if”* exposes profound internal resistance: remaining at the partner's side occurs under immense psychological agony (*“even if I cry”*).
 
 It reflects the pathological loyalty of a prisoner to their jailer—clinging to a toxic duty ethic mistaken for genuine love."""
             },
             {
-                "quote": "A shadow calling mine / I don't wanna be alone / The primal fear of isolation",
+                "quote": "Where we built a home / If I go now, will you follow? / Home as hostage",
+                "body": """The shared sanctuary (*“where we built a home”*) is no longer shelter, but a frozen monument both partners cling to.
+
+*“If I go now, will you follow?”* executes the final test of reciprocity: can the bond survive outside established codependent dynamics? The music answers with chilling silence."""
+            },
+            {
+                "quote": "A shadow calling mine / You feel like a song / I don't wanna be alone / Primal fear",
                 "body": """The repressed shadow-self (C.G. Jung) stakes its claim (*“a shadow calling mine”*), while the partner fades into an abstraction (*“you feel like a song”*—dehumanized into a mere melody).
 
 The cry *“I don't wanna be alone”* exposes the root cause of the album's tragedy: not devotion, but terror of solitude sustained the bond."""
@@ -157,7 +169,7 @@ The cry *“I don't wanna be alone”* exposes the root cause of the album's tra
 The instrument of harm is unmasked: the partner's communication functioned not as shelter, but as a destructive wrecking ball."""
             },
             {
-                "quote": "It's the way to say goodbye / The brilliant semantic pivot",
+                "quote": "Even if I cry / It's the way to say goodbye / The brilliant semantic pivot",
                 "body": """In the outro, *“I'll be by your side”* is definitively replaced with *“It's the way to say goodbye”*.
 
 The tears were never a promise for tomorrow, but the necessary somatic work of mourning. In the midst of collapse, the self realizes that the relationship has reached its irrevocable end."""
@@ -201,7 +213,7 @@ Nerves and transient emotions may fluctuate, but the skeletal foundation—innat
 Following the frozen night of Track 7, the manic hunger of Track 8, and the ground zero of Track 9, the sun breaks through in cosmic clarity: *“The sun / The sun / The sun / The sun”*. Light no longer needs to be ravenously gulped down—it simply shines, steady and enduring. The title *“In A Minute”* illuminates the liberating relativity of suffering: what felt like an eternity of torment in the dark shrinks to a passing heartbeat in the dawn of healing. The final imperative is a lifelong sacred oath—a pledge to the soul never again to barter one's dignity for the illusion of belonging.""",
         "cards": [
             {
-                "quote": "The sun, the sun, the sun / Solar epiphany & pure presence",
+                "quote": "The sun, the sun, the sun, the sun / Solar epiphany & pure presence",
                 "body": """The fourfold invocation of the sun (*“The sun / The sun / The sun / The sun”*) signals total integration.
 
 Light is no longer ingested as a dopamine rush to mask inner void, but witnessed in reverence. It stands as the emblem of indestructible consciousness surviving beneath all trauma."""

@@ -58,19 +58,19 @@ Der Partner existiert nicht mehr als autonomes Gegenüber, sondern wird zum rein
     "03": {
         "review": """Ein harter, dramatischer Bruch in der Architektur des Albums: Das hilflose Flehen schlägt in eiskalte, chirurgische Beobachtung und intellektuelle Demontage um. *A Boy Like You* ist die messerscharfe Sezierung des Partners aus einer scheinbaren Position kognitiver Überlegenheit.
 
-Aus panischer Angst vor der eigenen Verwundbarkeit zieht sich die Protagonistin in den Kopf zurück: *„I know you / You don't know me / I've seen your mind / I've seen your dreams“*. Das Ich maßt sich an, den Anderen lückenlos zu durchschauen, verweigert sich selbst jedoch jeder Offenlegung. Die bittere Reduktion auf die Formel *„You know how to please / A girl like me / A boy, a boy“* entlarvt die regressive Mechanik: Hinter der zynischen Fassade liegt die schmerzhafte Erkenntnis, wie berechenbar und manipulativ das Spiel der falschen Bedürfnisbefriedigung funktioniert.""",
+Aus panischer Angst vor der eigenen Verwundbarkeit zieht sich die Protagonistin in den Kopf zurück: *„I know you / You don't know me / I've seen your mind / I've seen your dreams“*. Das Ich maßt sich an, den Anderen lückenlos zu durchschauen, verweigert sich selbst jedoch jeder Offenlegung. Die bittere Reduktion auf die Formel *„You know how to please / A girl like me / A girl like me / A boy, a boy“* entlarvt die regressive Mechanik: Hinter der zynischen Fassade liegt die schmerzhafte Erkenntnis, wie berechenbar und manipulativ das Spiel der falschen Bedürfnisbefriedigung funktioniert.""",
         "cards": [
             {
-                "quote": "I know you / You don't know me / Die asymmetrische Wissenshierarchie",
+                "quote": "I know you / You don't know me / I've seen your mind / I've seen your dreams / Asymmetrische Wissenshierarchie",
                 "body": """Die ultimative Schutzpanzerung: *„Ich kenne dich in- und auswendig, aber du hast keinen Zugriff auf mein Innerstes.“*
 
 Indem das Ich den Geist und die Träume des Partners katalogisiert (*„I've seen your mind / I've seen your dreams“*), entzieht es ihm das Geheimnis und damit die Macht, unvorbereitet Schmerz zuzufügen. Es ist eine Festung aus Wissen, errichtet aus Angst vor echter Intimität."""
             },
             {
-                "quote": "You know how to please / A girl like me / A boy, a boy / Die zynische Entmachtung",
+                "quote": "You know how to please / A girl like me / A boy, a boy / Die zynische Entmachtung & Bedürfnis-Falle",
                 "body": """Die bewusste Herabstufung des Partners zum *„Boy“* (wiederholt im stammelnden *„A boy, a boy“*) dekonstruiert dessen Männlichkeit und Reife.
 
-Der Satz *„You know how to please a girl like me“* ist kein Kompliment, sondern bittere Ironie: Das Gegenüber weiß genau, welche Knöpfe es drücken muss, um die Bedürftigkeit zu bedienen. Das Ich durchschaut den Trick – und verfällt ihm im selben Atemzug."""
+Der Satz *„You know how to please a girl like me“* ist kein Kompliment, sondern bittere Ironie: Das Gegenüber weiß genau, welche Knöpfe es drücken muss, um die kindliche Bedürftigkeit zu bedienen. Das Ich durchschaut den Trick – und verfällt der Manipulation im selben Atemzug."""
             }
         ]
     },
@@ -80,7 +80,7 @@ Der Satz *„You know how to please a girl like me“* ist kein Kompliment, sond
 Hier kapituliert die menschliche Sprache vollständig vor der vegetativen Not: Das Nervensystem vokalisiert in reiner Glossolalie (*„La la la tey oh, la la la tey oh...“*) – Wörter sind zu viel geworden, der Verstand ist überlastet. Das hilflose Eingeständnis *„Don't know why I do it, I don't know why I do it“* entlarvt den totalen Kontrollverlust über den eigenen Wiederholungszwang. Die Sirenen heulen auf, weil die fundamentale Toxizität der Bindung nicht mehr geleugnet werden kann, das Subjekt aber unfähig ist, die Flucht zu ergreifen.""",
         "cards": [
             {
-                "quote": "La la la tey oh / Die präverbale Regression & Sprachkollaps",
+                "quote": "La la la tey oh / Die präverbale Regression & Glossolalie",
                 "body": """Wenn der Schockpegel das Sprachzentrum im Gehirn (Broca-Areal) lahmlegt, regrediert die Stimme zu archaischen Lauten (*„La la la tey oh“*).
 
 Es gibt keine Worte mehr für das erlebte Trauma. Die Phonation wird zur reinen motorischen Druckentlastung eines überforderten Nervensystems."""
@@ -158,13 +158,13 @@ The partner is stripped of autonomy, reduced to raw emotional fuel to plug the s
 Terrified of her own vulnerability, the protagonist retreats entirely into the intellect: *“I know you / You don't know me / I've seen your mind / I've seen your dreams”*. The self claims total omniscience over the other while fiercely withholding its own interior. The reduction to the formula *“You know how to please / A girl like me / A boy, a boy”* exposes the regressive mechanism: beneath cynical bravado lies bitter recognition of how predictable the game of false gratification truly is.""",
         "cards": [
             {
-                "quote": "I know you / You don't know me / Asymmetric knowledge hierarchy",
+                "quote": "I know you / You don't know me / I've seen your mind / I've seen your dreams / Asymmetric knowledge hierarchy",
                 "body": """The armor of intellectual omniscience: *“I know you completely, yet you have zero access to my core.”*
 
 By cataloging the partner's mind and dreams (*“I've seen your mind / I've seen your dreams”*), the self strips away their mystery and power to hurt. It is a fortress built of intellect out of terror of genuine intimacy."""
             },
             {
-                "quote": "You know how to please / A girl like me / A boy, a boy / Cynical dismantling",
+                "quote": "You know how to please / A girl like me / A boy, a boy / Cynical dismantling & gratification trap",
                 "body": """Deliberate diminution to *“Boy”* (echoed in the stuttering *“A boy, a boy”*) infantilizes the partner and strips away their mystique.
 
 *“You know how to please a girl like me”* is no compliment, but searing irony: recognizing that the partner knows precisely which levers to pull to exploit her craving for validation."""

@@ -8,7 +8,7 @@ de_tracks_05_08 = {
     "05": {
         "review": """Nach der krisenhaften Überhitzung in *Ring The Alarm* vollzieht die Psyche eine dramatische Fluchtbewegung: die Flucht in die affektive Autosuggestion und die kollektive Verleugnung (*Folie à deux*). *My Baby* blendet den soeben erlebten Einsturz komplett aus, indem sich das Ich vor dem Verstand in die reine Körperempfindung flieht.
 
-Das mantrenhafte Bekenntnis *„I feel it“* wird zur emotionalen Selbsthypnose erhoben: Das bloße Empfinden soll beweisen, dass die Bindung noch intakt ist, obwohl der Verstand um die Trümmer weiß. Das Ich bildet sich verzweifelt ein: *„My baby just cares for me“* – eine fatale Verwechslung von intermittierender Aufmerksamkeit mit echter Fürsorge. Im repetitiven Stakkato *„Me, Me / Me, Me“* und der Forderung *„Let your mind see / There's no one in the world but me“* bricht der narzisstische Symbiosenhunger unmaskiert durch: Die Außenwelt wird solipsistisch ausgelöscht. Die beiden errichten eine hermetisch abgeriegelte Festung, in der selbst die Sprache kollabiert: Im bewussten Grammatikbruch *„only me and my baby knows“* verschmelzen zwei getrennte Subjekte sprachlich zu einer einzigen, unteilbaren Monade gegen den Rest der Realität.""",
+Das mantrenhafte Bekenntnis *„I feel it“* wird zur emotionalen Selbsthypnose erhoben: Das bloße Empfinden soll beweisen, dass die Bindung noch intakt ist, obwohl der Verstand um die Trümmer weiß. Das Ich bildet sich verzweifelt ein: *„My baby just cares for me“* – eine fatale Verwechslung von intermittierender Aufmerksamkeit mit echter Fürsorge. Im repetitiven Stakkato *„Me, Me / Me, Me“* und der somatischen Hypnose *„Open up your mind / Let your body see / There's no one in the world but me“* bricht der narzisstische Symbiosenhunger unmaskiert durch: Die Außenwelt wird solipsistisch ausgelöscht. Die beiden errichten eine hermetisch abgeriegelte Festung, in der selbst die Sprache kollabiert: Im bewussten Grammatikbruch *„only me and my baby knows“* verschmelzen zwei getrennte Subjekte sprachlich zu einer einzigen, unteilbaren Monade gegen den Rest der Realität.""",
         "cards": [
             {
                 "quote": "My baby just cares for me / Die Illusion der Fürsorge & intermittierende Verstärkung",
@@ -23,10 +23,10 @@ Es ist die klassische kindliche Projektion: Man klammert sich an das Bild des f�
 Das Ich verlangt, der einzige Fixpunkt im Universum des Partners zu sein. Jedes Interesse des Anderen an der Außenwelt wird als existenzielle Bedrohung erlebt."""
             },
             {
-                "quote": "Let your mind see / There's no one in the world but me / Der solipsistische Wahn",
-                "body": """Die vollendete Errichtung einer Zweier-Psychose (*Folie à deux*): Die Realität wird geleugnet, bis nur noch das isolierte Paar existiert.
+                "quote": "Open up your mind / Let your body see / There's no one in the world but me / Die somatische Hypnose",
+                "body": """Ein brillanter psychologischer Kunstgriff: Der Befehl *„Let your body see“* (Lass deinen Körper sehen) verbindet das Sehen mit dem somatischen Empfinden. Die rationale Kognition (*mind*) wird gezielt umgangen, um das vegetative Nervensystem des Partners direkt zu hypnotisieren.
 
-Wer verlangt, dass der Andere niemanden außer einem selbst im Geist sieht, hat die Realitätsprüfung aufgegeben und flieht in eine hermetische Traumwelt."""
+Die Zeile *„There's no one in the world but me“* vollendet die solipsistische Auslöschung aller Drittpersonen: Die reale Welt wird radikal geleugnet, bis nur noch das isolierte Paar im Raum existiert."""
             },
             {
                 "quote": "I feel it / Die affektive Autosuggestion als Realitätsfilter",
@@ -51,10 +51,10 @@ Es gibt kein *Ich* und *Du* mehr, sondern nur noch eine symbiotische Monade (*En
     "06": {
         "review": """Der fundamentale, majestätische Wendepunkt des gesamten Albums. *Have You Seen Me Dance Alone* ist keine wehmütige Trennungsklage, sondern der Moment, in dem die unmaskierte Lebendigkeit die Illusion der Abhängigkeit wie Glas zersprengt.
 
-Der Befreiungsprozess beginnt mit einem dramatischen somatischen Ringen: Das Ich stottert, das Sprachzentrum blockiert vor Schock und Zensur (*„I-I-I-I wanted to, wanted to, wanted to fee-, -ted to feel...“*). Das Wort *„feel“* kann kaum über die Lippen gebracht werden, bevor die Lebenskraft die Lähmung durchbricht. Die Titelfrage ist keine zaghafte Bitte um Erlaubnis, sondern eine stolze Grenzziehung und die Konfrontation mit einer vollendeten Tatsache. Nach den vorherigen Phasen der Verschmelzung kündigt das Ich den gemeinsamen Takt radikal auf. Das Alleintanzen ist der Akt der **somatischen Rückaneignung**: Während der Körper in den ersten Tracks dem Partner ausgeliefert war, gehorcht er nun wieder dem eigenen Lebensrhythmus. In dem Augenblick, in dem das Subjekt begreift, dass es ohne die Bestätigung des Anderen vollständig und lebendig ist, verliert die toxische Bindung augenblicklich ihre Macht.""",
+Der Befreiungsprozess beginnt mit einem dramatischen somatischen Ringen: Das Ich stottert, das Sprachzentrum blockiert vor Schock und Zensur (*„I-I-I-I wanted to, wanted to fee-, -ted to feel...“*). Das Wort *„feel“* kann kaum über die Lippen gebracht werden, bevor die Lebenskraft die Lähmung durchbricht. Die Titelfrage ist keine zaghafte Bitte um Erlaubnis, sondern eine stolze Grenzziehung und die Konfrontation mit einer vollendeten Tatsache. Nach den vorherigen Phasen der Verschmelzung kündigt das Ich den gemeinsamen Takt radikal auf. Das Alleintanzen ist der Akt der **somatischen Rückaneignung**: Während der Körper in den ersten Tracks dem Partner ausgeliefert war, gehorcht er nun wieder dem eigenen Lebensrhythmus. In dem Augenblick, in dem das Subjekt begreift, dass es ohne die Bestätigung des Anderen vollständig und lebendig ist, verliert die toxische Bindung augenblicklich ihre Macht.""",
         "cards": [
             {
-                "quote": "I-I-I-I wanted to feel / Das somatische Stottern & die Sprachblockade",
+                "quote": "I-I-I-I wanted to feel / Das somatische Stottern & die Kehlkopf-Blockade",
                 "body": """Das dramatische Ringen um die eigene Empfindungsfähigkeit: Das Wort zerbricht in morphematische Splitter (*„-ted to fee-, -ted to feel“*).
 
 Die seelische Zensur und die Angst vor der eigenen Lebendigkeit blockieren den Kehlkopf. Erst durch das wiederholte, rhythmische Aufbrechen der Silben befreit sich die Stimme aus der Erstarrung."""
@@ -76,7 +76,7 @@ Der gemeinsame, erstickende Takt wird gekündigt: Das Ich findet seine eigene Ge
     "07": {
         "review": """Auf die Euphorie des Ausbruchs folgt der unvermeidliche, existenzielle Preis: die dissoziative Kältestarre (*Freeze*). *Somewhere Else* fängt den Zustand ein, wenn der erste Adrenalinschub verfliegt und die Wucht des Bindungsabbruchs das Bewusstsein erreicht.
 
-Um den akuten Schmerz der Trennung überhaupt zu überleben, spaltet sich das Bewusstsein vom Körper ab (*Depersonalisation*): Man ist im Raum physisch anwesend, innerlich jedoch *„somewhere else / just living“*. Nach der zerstörerischen Hitze von *Ring The Alarm* und der stickigen Enge von *My Baby* fungiert die Kälte nicht als Grausamkeit, sondern als notwendiges seelisches Antiseptikum. In zynischer manischer Abwehr zelebriert das Ich den thermischen Schock (*„It's cold out here / What a rush it's giving“*) und die somatische Gravur des Verlusts (*„I got your name carved on my body / I'll celebrate while you mourn me“*), bis das Werk im Outro in der nackten, erdenden Gegenwärtigkeit ankommt: *„But now I'm here“*.""",
+Um den akuten Schmerz der Trennung überhaupt zu überleben, spaltet sich das Bewusstsein vom Körper ab (*Depersonalisation*): Man ist im Raum physisch anwesend, innerlich jedoch *„Somewhere else / Just living“*. Der Partner wird introjiziert (*„I'll take you everywhere / I forget I'm living“*), während das Ich die Kälte als neurochemischen Kick umdeutet (*„It's cold out here / What a rush it's giving“*). Die somatische Narbenbildung (*„I got your name / Carved on my body“*) und die manische Melanie-Klein-Abwehr (*„I'll celebrate / While you mourn me“*) errichten ein Monument des Trotzes, bis das Werk im Outro in der nackten, unerschütterlichen Erdung ankommt: *„But now I'm here“*.""",
         "cards": [
             {
                 "quote": "Somewhere else / Just living / Die Demütigung der banalen Fortexistenz",
@@ -91,13 +91,19 @@ Das Wort *„just“* degradiert die einstige Schicksalsbindung zur beiläufigen
 Das in Parenthese gehauchte Echo *(Forgiven)* verdeutlicht die körperliche Resignation: Der Hals schnürt sich zu, und die Psyche akzeptiert das unerbittliche Urteil der Nicht-Vergebung."""
             },
             {
-                "quote": "It's cold out here / What a rush / Die Kryophilie des Traumas",
+                "quote": "I'll take you everywhere / I forget I'm living / Introjektion & Depersonalisation",
+                "body": """Das Subjekt internalisiert das Bild des Partners (*„I'll take you everywhere“*): Er wird zum ständigen inneren Dämon gemacht.
+
+Gleichzeitig kappt das Ich den Kontakt zum eigenen Körper (*„I forget I'm living“* – klassische Depersonalisation). Man existiert nur noch als Träger der Erinnerung."""
+            },
+            {
+                "quote": "It's cold out here / What a rush it's giving / Die Kryophilie des Traumas",
                 "body": """Nach der Zerstörungshitze früherer Phasen wird die Kälte der Einsamkeit gesucht statt gefürchtet. Der Kälteschock bewirkt eine massive Vasokonstriktion und schüttet Noradrenalin sowie Endorphine aus (*„What a rush“*).
 
 Das Erfrieren wird zum neurochemischen Kick umgedeutet: Wer die Kälte liebt und zelebriert, kann im seelischen Eis nicht mehr vernichtet werden."""
             },
             {
-                "quote": "Carved on my body / I'll celebrate while you mourn me / Manische Abwehr",
+                "quote": "I got your name / Carved on my body / I'll celebrate while you mourn me / Manische Rache",
                 "body": """Die somatische Fixierung des Traumas: Der Name des Partners ist wie eine physische Narbe in das Fleisch graviert (*„Carved on my body“*).
 
 Die Antithese *„I'll celebrate / While you mourn me“* ist der Gipfel der manischen Abwehr (Melanie Klein): Statt regulärer Trauerarbeit verkehrt das Ich den Schmerz in einen zynischen Triumphzug und erklärt sich selbst zur Ikone, die beweint werden muss."""
@@ -113,8 +119,20 @@ Keine Rechtfertigung mehr, kein Rachegefühl und kein Sehnen: Die Füße drücke
     "08": {
         "review": """Das Verharren in der Kältestarre wird auf Dauer unerträglich. *I Drink The Light* ist der manische Gegenangriff der Psyche gegen die drohende emotionale Taubheit: Der Versuch, die innere Leere durch extreme, synästhetische Sinnesüberflutung zu überwinden.
 
-Der Song blickt zurück auf die mythologische Ur-Identität vor der Verwundung: *„Once I was a river with the wisdom of a child / Like an avalanche of raindrops from the mountain to your eye“*. Das Subjekt war einst eine unbändige Naturkraft, bis es im Blick des Anderen kollidierte und in völliger Orientierungslosigkeit strandete (*„no forward, no behind“*). Die poetische Synästhesie, *„das Licht zu trinken“*, verbindet das optische Wahrnehmen mit dem oralen Einverleiben von Dopamin und Lebensenergie, während der Refrain in die eskapistische Sehnsucht flieht: *„I always wanted to / Sail away, ooh, sail away“*.""",
+Der Song blickt zurück auf die mythologische Ur-Identität vor der Verwundung: *„Once I was a river with the wisdom of a child / Like an avalanche of raindrops from the mountain to your eye“*. Das Subjekt war einst eine unbändige Naturkraft, bis es im Blick des Anderen kollidierte und in völliger Orientierungslosigkeit strandete (*„no forward, no behind“*). Die Psyche wird von einem unstillbaren Durst übermannt (*„Unclenching thirst / I came here first / I'll drink it all“*) und bricht alle inneren Tabus: *„I wanted to touch what I couldn't / I wanted to feel what I shouldn't feel / I wanted to taste the whole world from my palm“*. Es ist der Versuch, die Welt in der eigenen Handfläche zu kosten, während der Refrain in die eskapistische Sehnsucht flieht: *„I always wanted to / Sail away, ooh, sail away“*.""",
         "cards": [
+            {
+                "quote": "I don't think I understand / Unclenching thirst / I'll drink it all / Die orale Gier",
+                "body": """Die Konfrontation mit einem unkontrollierbaren, krampfhaften Trieb (*„Unclenching thirst“*). Das Ich versteht die eigene Überwältigung nicht (*„I don't think I understand this feeling“*).
+
+Der Satz *„I came here first / I'll drink it all“* ist die pure orale Fixierung: Die innere Leere wird mit Licht und Reizen geflutet, um den seelischen Hungertod abzuwenden."""
+            },
+            {
+                "quote": "Touch what I couldn't / Feel what I shouldn't feel / Taste the world from my palm / Die Tabubefreiung",
+                "body": """Der Ausbruch über alle erlernten Grenzen hinweg: Das Ich verlangt nach dem Verbotenen (*„touch what I couldn't / feel what I shouldn't feel“*).
+
+Die Zeile *„taste the whole world from my palm“* (die ganze Welt aus meiner Handfläche schmecken) ist das ultimative Bild somatischer Autonomie: Die Welt schrumpft auf die eigene Handfläche zusammen – man braucht den Partner nicht mehr als Vermittler von Lebendigkeit."""
+            },
             {
                 "quote": "Once I was a river with the wisdom of a child / Die unberührte Ur-Identität",
                 "body": """Die Erinnerung an das Selbst vor dem Beziehungstrauma: Ein fließender Fluss mit der instinktiven Weisheit eines Kindes.
@@ -132,12 +150,6 @@ Der Satz *„no forward, no behind“* beschreibt die totale seelische Desorient
                 "body": """Das mantrische *„Sail away, ooh, sail away“* ist der unbändige Wunsch, den Schauplatz der Verwundung für immer hinter sich zu lassen.
 
 Es ist der maritime Mythos des Aufbruchs: Die Seele will alle toxischen Küsten hinter sich lassen und ins offene, unbegrenzte Meer der Freiheit segeln."""
-            },
-            {
-                "quote": "I drink the light / Die orale Synästhesie & Dopamin-Suche",
-                "body": """Die Verknüpfung von Licht (visuell) und Trinken (oral) beschreibt den archaischen Versuch, die seelische Taubheit durch maximale Reizzufuhr augenblicklich zu fluten.
-
-Das Licht wird zur Nahrung für eine ausgehungerte Seele: Ein manischer Kraftakt, um sich selbst zu beweisen, dass die Lebensgeister noch brennen."""
             }
         ]
     }
@@ -147,7 +159,7 @@ en_tracks_05_08 = {
     "05": {
         "review": """Following the catastrophic system overheat in *Ring The Alarm*, the psyche executes a dramatic evasive maneuver: retreating into affective autosuggestion and shared denial (*Folie à deux*). *My Baby* completely whites out the structural collapse by fleeing from conscious reason into raw somatic sensation.
 
-The mantric declaration *“I feel it”* is elevated to emotional self-hypnosis: sensation is weaponized to prove that the bond remains intact, even as the conscious mind recognizes the wreckage. The self desperately rationalizes: *“My baby just cares for me”*—a fatal misreading of intermittent reinforcement for authentic devotion. In the hammering staccato *“Me, Me / Me, Me”* and the demand *“Let your mind see / There's no one in the world but me”*, pure narcissistic hunger for enmeshment breaks through, solipsistically annihilating the outside world. In the deliberate syntactic break *“only me and my baby knows”*, two distinct subjects fuse into a single, indivisible monad against reality.""",
+The mantric declaration *“I feel it”* is elevated to emotional self-hypnosis: sensation is weaponized to prove that the bond remains intact, even as the conscious mind recognizes the wreckage. The self desperately rationalizes: *“My baby just cares for me”*—a fatal misreading of intermittent reinforcement for authentic devotion. In the hammering staccato *“Me, Me / Me, Me”* and the somatic command *“Open up your mind / Let your body see / There's no one in the world but me”*, pure narcissistic hunger for enmeshment breaks through, solipsistically annihilating the outside world. In the deliberate syntactic break *“only me and my baby knows”*, two distinct subjects fuse into a single, indivisible monad against reality.""",
         "cards": [
             {
                 "quote": "My baby just cares for me / The illusion of care & intermittent reinforcement",
@@ -162,10 +174,10 @@ A classic infantile projection: clinging to the myth of the devoted savior to av
 The self demands to be the sole gravitational center of the partner's cosmos; any outside engagement by the other is experienced as lethal rejection."""
             },
             {
-                "quote": "Let your mind see / There's no one in the world but me / Solipsistic delusion",
-                "body": """The culmination of shared psychosis (*Folie à deux*): denying outer reality until only the isolated dyad remains.
+                "quote": "Open up your mind / Let your body see / There's no one in the world but me / Somatic hypnosis",
+                "body": """A brilliant psychological command: *“Let your body see”* connects vision with somatic feeling, intentionally bypassing cognitive scrutiny (*mind*) to hypnotize the partner's autonomic nervous system.
 
-Demanding that the partner perceive no other human consciousness abandons reality testing to construct an airtight fantasy fortress."""
+*“There's no one in the world but me”* completes the solipsistic erasure of third parties: reality is denied until only the isolated dyad remains."""
             },
             {
                 "quote": "I feel it / Affective autosuggestion as reality filter",
@@ -215,7 +227,7 @@ The suffocating shared cadence is severed: the protagonist reclaims her innate r
     "07": {
         "review": """Following the euphoria of the breakout comes the inevitable existential toll: dissociative freeze. *Somewhere Else* captures the hollow state when the initial adrenaline fades and the reality of severing the bond penetrates consciousness.
 
-To survive the sheer impact of loss, awareness detaches from the physical body (*Depersonalization*): physically occupying the room, but internally residing *“somewhere else / just living”*. Following the destructive heat of *Ring The Alarm* and the claustrophobia of *My Baby*, coldness functions not as cruelty, but as a necessary psychological antiseptic. In cynical manic defense, the self celebrates thermal shock (*“It's cold out here / What a rush it's giving”*) and somatically engraves the trauma (*“I got your name carved on my body / I'll celebrate while you mourn me”*), until the outro lands in grounded physical presence: *“But now I'm here”*.""",
+To survive the sheer impact of loss, awareness detaches from the physical body (*Depersonalization*): physically occupying the room, but internally residing *“Somewhere else / Just living”*. The partner is introjected (*“I'll take you everywhere / I forget I'm living”*), while cold is reframed as a neurochemical rush (*“It's cold out here / What a rush it's giving”*). Somatic scarification (*“I got your name / Carved on my body”*) and manic Melanie Klein defense (*“I'll celebrate / While you mourn me”*) erect an unshakeable monument of defiance, until the outro lands in grounded physical presence: *“But now I'm here”*.""",
         "cards": [
             {
                 "quote": "Somewhere else / Just living / The sting of mundane continuation",
@@ -230,13 +242,19 @@ The word *“just”* reduces the once sacred bond to mundane reality, stripping
 The parenthetical echo *(Forgiven)* captures somatic resignation: the throat constricts as the body absorbs the irrevocable sentence of non-forgiveness."""
             },
             {
+                "quote": "I'll take you everywhere / I forget I'm living / Introjection & Depersonalization",
+                "body": """The subject internalizes the partner's image (*“I'll take you everywhere”*), keeping them as a perpetual internal haunt.
+
+Simultaneously, the self severs connection with its physical body (*“I forget I'm living”*—classic depersonalization). Living only as a vessel for memory."""
+            },
+            {
                 "quote": "It's cold out here / What a rush / The cryophilia of trauma",
                 "body": """Following feverish overheating, the cold of solitary existence is actively courted. Thermal shock triggers peripheral vasoconstriction and endorphin release (*“What a rush”*).
 
 Freezing is reframed into a neurochemical thrill: one who embraces the ice can never be destroyed by frost again."""
             },
             {
-                "quote": "Carved on my body / I'll celebrate while you mourn me / Manic defense",
+                "quote": "Carved on my body / I'll celebrate while you mourn me / Manic revenge",
                 "body": """Somatic engraving of trauma: the partner's name is etched into the flesh like an indelible scar (*“Carved on my body”*).
 
 The antithesis *“I'll celebrate / While you mourn me”* exemplifies classic manic defense (Melanie Klein): bypassing grief to construct a bitter victory parade, turning the self into an untouchable monument."""
@@ -252,8 +270,20 @@ No justifications, no vengeance, no pleading: feet firmly pressed against the ea
     "08": {
         "review": """Lingering in the freeze becomes unbearable over time. *I Drink The Light* is the psyche's manic counter-offensive against threatening numbness: a desperate bid to flood the internal void through extreme, synesthetic sensory stimulation.
 
-The song reflects back upon archaic wholeness before trauma: *“Once I was a river with the wisdom of a child / Like an avalanche of raindrops from the mountain to your eye”*. The self was once an untamed force of nature before crashing into the partner's gaze, leaving it stranded without bearing (*“no forward, no behind”*). Poetic synesthesia—*“drinking the light”*—merges optical perception with the oral ingestion of dopamine and life force, while the chorus flees into oceanic escapism: *“I always wanted to / Sail away, ooh, sail away”*.""",
+The song reflects back upon archaic wholeness before trauma: *“Once I was a river with the wisdom of a child / Like an avalanche of raindrops from the mountain to your eye”*. The self was once an untamed force of nature before crashing into the partner's gaze, leaving it stranded without bearing (*“no forward, no behind”*). Overcome by insatiable craving (*“Unclenching thirst / I came here first / I'll drink it all”*), the psyche shatters every taboo: *“I wanted to touch what I couldn't / I wanted to feel what I shouldn't feel / I wanted to taste the whole world from my palm”*. It is an attempt to taste the cosmos from one's own palm, while the chorus flees into oceanic escapism: *“I always wanted to / Sail away, ooh, sail away”*.""",
         "cards": [
+            {
+                "quote": "I don't think I understand / Unclenching thirst / I'll drink it all / Oral craving",
+                "body": """Confronting an uncontrollable, spasmodic drive (*“Unclenching thirst”*). The self cannot comprehend its own visceral overwhelm (*“I don't think I understand this feeling”*).
+
+*“I came here first / I'll drink it all”* manifests raw oral fixation: flooding the inner void with intense sensory light to stave off psychological starvation."""
+            },
+            {
+                "quote": "Touch what I couldn't / Feel what I shouldn't feel / Taste the world from my palm / Shattering taboos",
+                "body": """Breaking through all conditioned boundaries: craving the forbidden (*“touch what I couldn't / feel what I shouldn't feel”*).
+
+*“Taste the whole world from my palm”* serves as the ultimate image of somatic autonomy: the universe shrinks to one's own palm—no longer needing the partner as a broker of vitality."""
+            },
             {
                 "quote": "Once I was a river with the wisdom of a child / Pristine primal identity",
                 "body": """Remembering the self prior to relational trauma: a flowing river possessing the instinctual wisdom of childhood.
@@ -271,12 +301,6 @@ Invoking the soul's original blueprint—wild, vibrant, completely uncorrupted b
                 "body": """The mantric *“Sail away, ooh, sail away”* voices the insatiable urge to abandon the landscape of injury.
 
 The maritime myth of departure: leaving toxic shorelines behind to sail into the boundless, uncharted ocean of sovereign freedom."""
-            },
-            {
-                "quote": "I drink the light / Oral synesthesia & dopamine pursuit",
-                "body": """Fusing light (visual) with drinking (oral) illustrates the primal urge to instantly overwhelm emotional numbness with intense sensory stimulation.
-
-Light becomes nourishment for a starving soul: a manic assertion of energy to prove to oneself that vitality still burns within."""
             }
         ]
     }

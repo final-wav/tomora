@@ -48,22 +48,26 @@ def clean_txt(t):
 def find_matching_card(line_text, cards):
     line_lower = line_text.lower()
     line_clean = clean_txt(line_text)
-    if not line_clean:
+    if not line_clean or len(line_clean) < 2:
         return None
     
     for idx, card in enumerate(cards):
-        q_raw = card.get("quote", "").split('/')[0].strip().lower()
-        q_clean = clean_txt(q_raw)
+        q_full = card.get("quote", "").lower()
+        parts = [p.strip() for p in q_full.split('/')]
         
-        # 1. Exact or substring quote match
-        if q_clean and (q_clean in line_clean or line_clean in q_clean):
-            return idx
-            
-        # 2. Key phrase tokens
-        tokens = [t.strip() for t in re.findall(r'[a-zA-Z]{3,}', q_raw) if t.strip() not in ['the', 'and', 'for', 'von', 'der', 'die', 'das', 'mit', 'wie', 'ein', 'eine', 'you']]
-        matched = [t for t in tokens if t in line_lower]
-        if len(tokens) > 0 and len(matched) >= min(len(tokens), 2 if len(tokens) >= 2 else 1):
-            return idx
+        for p in parts:
+            p_clean = clean_txt(p)
+            if p_clean and (p_clean in line_clean or line_clean in p_clean):
+                return idx
+                
+        # Key phrase tokens
+        for p in parts:
+            tokens = [t.strip() for t in re.findall(r'[a-zA-Z]{3,}', p) if t.strip() not in ['the', 'and', 'for', 'von', 'der', 'die', 'das', 'mit', 'wie', 'ein', 'eine', 'you', 'ooh', 'mm']]
+            matched = [t for t in tokens if t in line_lower]
+            if len(tokens) >= 2 and len(matched) >= min(len(tokens), 2):
+                return idx
+            elif len(tokens) == 1 and len(matched) == 1 and len(tokens[0]) >= 4:
+                return idx
             
     return None
 
