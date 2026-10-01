@@ -158,10 +158,8 @@ def render_analysis_column_for_lang(review_raw, cards, num, lang):
         cards_html_parts.append(f"""
         <div class="analysis-card" id="card-{num}-{lang}-{idx}" data-card-idx="{idx}">
           <div class="card-header-bar">
-            <button class="card-back-btn" data-track-num="{num}" data-lang="{lang}">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
-              <span class="lang-de">Zurück zur Review</span>
-              <span class="lang-en">Back to Review</span>
+            <button class="card-back-btn" data-track-num="{num}" data-lang="{lang}" aria-label="Zurück zur Review">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
             </button>
             <span class="card-badge-counter">
               <span class="lang-de">Tiefen-Analyse {idx + 1} / {total_cards}</span>
@@ -809,6 +807,7 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
       display: flex;
       flex-direction: column;
       gap: 20px;
+      transition: margin-top 0.25s cubic-bezier(0.16, 1, 0.3, 1);
       animation: fadeInCard 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
@@ -827,25 +826,24 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
     }
 
     .card-back-btn {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      color: #ffffff;
-      padding: 6px 14px;
-      border-radius: 6px;
-      font-size: 0.8rem;
-      font-weight: 700;
+      background: none;
+      border: none;
+      color: rgba(255, 255, 255, 0.6);
+      padding: 4px;
+      margin: 0;
+      cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      cursor: pointer;
-      transition: all 0.2s ease;
+      justify-content: center;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .card-back-btn:hover {
-      background: var(--magenta-dim);
-      border-color: var(--magenta);
-      color: #ffffff;
-      box-shadow: 0 0 12px var(--magenta-glow);
+      background: none;
+      border: none;
+      color: var(--magenta);
+      transform: translateX(-4px);
+      box-shadow: none;
     }
 
     .card-badge-counter {
@@ -1365,12 +1363,12 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
         if (isCurrentlyActive) {
           closeCardDeck(trackSection);
         } else {
-          openCardDeck(trackSection, targetCardIdx);
+          openCardDeck(trackSection, targetCardIdx, trigger);
         }
       });
     });
 
-    function openCardDeck(trackSection, targetCardIdx) {
+    function openCardDeck(trackSection, targetCardIdx, triggerEl) {
       const activeLang = currentLang;
       const reviewEl = trackSection.querySelector(`.lang-${activeLang} .narrative-review`);
       const deckEl = trackSection.querySelector(`.lang-${activeLang} .card-deck-view`);
@@ -1382,6 +1380,17 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
         const isMatch = tr.getAttribute('data-target-card') === targetCardIdx;
         tr.classList.toggle('active', isMatch);
       });
+
+      // Calculate vertical alignment with clicked lyric line
+      if (triggerEl && window.innerWidth > 992) {
+        const gridEl = trackSection.querySelector('.track-grid');
+        const triggerRect = triggerEl.getBoundingClientRect();
+        const gridRect = gridEl.getBoundingClientRect();
+        const relativeTop = triggerRect.top - gridRect.top;
+        deckEl.style.marginTop = `${Math.max(0, Math.round(relativeTop))}px`;
+      } else {
+        deckEl.style.marginTop = '0px';
+      }
 
       // Hide review, show deck
       if (reviewEl) reviewEl.style.display = 'none';
@@ -1396,7 +1405,9 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
         }
       });
 
-      deckEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      if (window.innerWidth <= 992) {
+        deckEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
     }
 
     function closeCardDeck(trackSection) {
@@ -1406,7 +1417,10 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
 
       trackSection.querySelectorAll('.lyric-trigger').forEach(tr => tr.classList.remove('active'));
 
-      if (deckEl) deckEl.style.display = 'none';
+      if (deckEl) {
+        deckEl.style.display = 'none';
+        deckEl.style.marginTop = '0px';
+      }
       if (reviewEl) reviewEl.style.display = 'block';
     }
 
