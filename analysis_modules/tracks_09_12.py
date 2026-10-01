@@ -1,83 +1,83 @@
 # -*- coding: utf-8 -*-
 """
 Master Analysis Module: Tracks 09 to 12 (German & English)
-Focus: Literary, Psychological, Metaphorical & Narrative Analysis (No guessed audio)
+Focus: Literary, Psychological, Metaphorical & Narrative Analysis (World-Class Close Reading)
 """
 
 de_tracks_09_12 = {
     "09": {
-        "review": """Nachdem der manische Rausch aus Track 8 verraucht ist, kehrt in *Wavelengths* tiefgreifende Stille ein. Es ist das Herzstück der inneren Einkehr: Hier fallen alle künstlichen Schutzschichten, Rollenmuster und antrainierten Persönlichkeitsmasken endgültig in sich zusammen.
+        "review": """Nachdem der manische Rausch aus *I Drink The Light* verraucht ist, kehrt in *Wavelengths* tiefgreifende, unbestechliche Stille ein. Es ist das meditative Herzstück der gesamten Reise: Hier fallen alle künstlichen Schutzschichten, Rollenmuster und erlernten Anpassungsmasken endgültig in sich zusammen.
 
-Die fundamentale Kernfrage *„Who am I?“* steht nackt im Raum. Es vollzieht sich der symbolische Tod des falschen, abhängigen Selbst. Das Ich begreift, dass alle bisherigen Verhaltensweisen – das Bitten, das Klammern, das Intellektualisieren, das Verleugnen – lediglich verzweifelte Anpassungsstrategien waren. Die Stille wird hier nicht mehr als existenzielle Bedrohung bekämpft, sondern als ein Zustand unbestechlicher, heilsamer Wahrheit angenommen.""",
+Die fundamentale Kernfrage **„Who am I?“** steht wie ein dekonstruktiver Zen-Koan nackt im Raum. Es vollzieht sich der feierliche Tod des falschen, abhängigen Selbst. Das Ich begreift, dass alle bisherigen Verhaltensweisen – das Bitten, das Klammern, das Rationalisieren, das Verleugnen – lediglich Überlebensstrategien eines verängstigten Nervensystems waren. Mit der Metapher der *„Wavelengths“* verlässt die Seele die zerstörerische Fremdfrequenz des Partners und kalibriert zum ersten Mal ihre eigene, unverfälschte Basisschwingung im seelischen Nullpunkt.""",
         "cards": [
             {
-                "quote": "Who am I? / Das Begraben der Masken",
-                "body": """Die Frage nach der eigenen Identität steht im Zentrum. Alle Rollen – die des Retters, der braven Gefallenden oder des bedürftigen Liebhabers – werden feierlich zu Grabe getragen.
+                "quote": "Who am I? / Das Begraben des falschen Selbst",
+                "body": """Die Frage nach der Identität steht im Zentrum des Nullpunkts. Alle Rollen – die des Retters, der braven Gefallenden oder des bedürftigen Liebhabers – werden feierlich zu Grabe getragen.
 
-Die krampfhafte Suche nach Bestätigung weicht einer tiefen inneren Ruhe: Es gibt nichts mehr vorzuspielen und niemanden mehr zu überzeugen."""
+Die krampfhafte Suche nach Bestätigung weicht einer tiefen inneren Stille: Es gibt nichts mehr vorzuspielen, niemanden mehr zu überzeugen und keine Fassade mehr zu halten."""
             },
             {
-                "quote": "Wavelengths / Die Klarheit im Nullpunkt",
-                "body": """An die Stelle von innerem Chaos und Sirenen tritt eine unaufgeregte, nüchterne Klarheit.
+                "quote": "Wavelengths / Die Kalibrierung der eigenen Frequenz",
+                "body": """An die Stelle von Sirenen und manischem Rausch tritt eine unaufgeregte, nüchterne Klarheit.
 
-Es ist der absolute seelische Nullpunkt – der Moment vollständiger Entgiftung, an dem echte Selbstwerdung und Neuanfang überhaupt erst möglich werden."""
+Wellenlängen beschreiben das Verlassen der toxischen Resonanz: Das Subjekt dockt sich von fremden Schwingungen ab und findet den Zugang zur eigenen, unzerstörbaren Frequenz wieder."""
             }
         ]
     },
     "10": {
-        "review": """Ein Moment reifer, kristallklarer Einsicht. *Side By Side* ist keine sentimentale Hoffnung auf ein Comeback, sondern der würdevolle Rückblick auf die Beziehung aus sicherer, autonomer Distanz.
+        "review": """Ein Moment reifer, kristallklarer Einsicht und friedvoller Abgrenzung. *Side By Side* ist keine sentimentale Hoffnung auf ein romantisches Comeback, sondern der würdevolle Rückblick auf die Beziehung aus sicherer, autonomer Distanz.
 
-Das lyrische Ich blickt nun gemeinsam mit dem Hörer auf die Landkarte der Vergangenheit zurück. Der Nebel aus Projektionen und kindlichen Hoffnungen hat sich verzogen. Man erkennt das Gegenüber in seiner ganzen Begrenztheit – ohne Hass, aber auch ohne jede Verklärung. Die Fähigkeit zur autarken Selbstregulation ist zurückgekehrt: Man kann nebeneinander existieren, ohne sich ineinander aufzulösen.""",
+Die Haltung transformiert sich von der toxischen Einverleibung (*„Come closer / inside each other“*) hin zu einer friedlichen, parallelen Koexistenz: Zwei getrennte Wesen dürfen nebeneinander im Universum existieren, ohne sich gegenseitig zu verschlingen. Der Nebel aus Projektionen und kindlichen Idealen hat sich vollständig verzogen. Man erkennt das Gegenüber in seiner vollen menschlichen Begrenztheit und Alterität – ohne Hass, ohne Rachegelüste, aber mit einer glasklaren, atmenden Grenze.""",
         "cards": [
             {
-                "quote": "Side By Side / Frieden mit der Distanz",
-                "body": """Man akzeptiert, dass man zwei getrennte Wesen ist, die ihren eigenen Raum beanspruchen dürfen.
+                "quote": "Side By Side / Parallele Koexistenz statt Verschmelzung",
+                "body": """Die Transformation von toxischer Inkorporation (Track 2) zur friedlichen Parallele: Man berührt sich nicht mehr destruktiv, sondern geht auf getrennten, respektvollen Bahnen.
 
-Die Haltung ist zentriert und gefestigt: Kein Groll, keine Rachegelüste, sondern eine würdevolle Anerkennung dessen, was war und was nie wieder sein wird."""
+Die Haltung ist zentriert und gefestigt: Kein Groll, keine Bitterkeit, sondern eine würdevolle Anerkennung dessen, was war und was nie wieder zugelassen wird."""
             },
             {
-                "quote": "Die Wiederherstellung der Grenze",
-                "body": """Die Grenze zwischen dem Selbst und dem Anderen ist nun keine Mauer aus Angst mehr, sondern eine gesunde, atmende Schutzhaut.
+                "quote": "Die Anerkennung der Alterität & Grenze",
+                "body": """Die Grenze zwischen dem Selbst und dem Anderen ist keine Festungsmauer aus Angst mehr, sondern eine gesunde, atmende Schutzhaut.
 
-Das Ich hat gelernt, bei sich zu bleiben, selbst wenn Erinnerungen an die alte Verbindung auftauchen."""
+Das Gegenüber wird endlich als fremdes, unverfügbares Wesen akzeptiert: Man muss den Anderen nicht mehr verändern oder retten, um bei sich selbst im Reinen zu sein."""
             }
         ]
     },
     "11": {
-        "review": """Das unverrückbare Fundament des Wiederaufbaus. In *The Thing* wird der erlittene Schmerz nicht mehr als melodramatische Seifenoper inszeniert, sondern mit schonungsloser Nüchternheit wie ein schweres, physisches Objekt (*„The Thing“*) auf den Tisch gelegt und seziert.
+        "review": """Das unverrückbare Granitfundament der Wiedergeburt. In *The Thing* wird der erlittene Schmerz nicht mehr als melodramatisches Spektakel inszeniert, sondern mit stoischer Nüchternheit wie ein schweres, physisches Objekt (*„The Thing“*) auf den Tisch gelegt, gewogen und dekonstruiert.
 
-Hier beginnt der Wiederaufbau des Menschen – und zwar nicht an der Oberfläche der Fassaden, sondern rein von innen heraus, aus der eigenen Knochensubstanz (*„Build my body from the bone“*). Es ist ein Manifest radikaler Selbstverantwortung: Man verlangt absolut nichts mehr von der Welt, von den Eltern oder vom Ex-Partner. Die eigene Existenz wird wie ein Gebäude aus unzerstörbarem Granit Stein für Stein neu errichtet.""",
+Durch diese Reifizierung (Verdinglichung) verliert das Trauma seinen unheimlichen, beherrschenden Zauber. Hier beginnt der Wiederaufbau des Menschen – und zwar nicht an der zerbrechlichen Oberfläche, sondern rein aus der Knochensubstanz (*„Build my body from the bone“*). Es ist ein Manifest radikaler Selbstverantwortung: Fleisch und Nerven können nachgeben, aber das Skelett aus Werten, Würde und unantastbaren Grenzen bleibt für alle Zeiten unerschütterlich.""",
         "cards": [
             {
-                "quote": "The Thing / Den Schmerz verdinglichen",
-                "body": """Indem das Trauma als greifbares *„Ding“* betrachtet wird, verliert es seine unheimliche, beherrschende Macht. Man nimmt es in die Hand, begutachtet es und legt es bewusst zur Seite.
+                "quote": "The Thing / Die Verdinglichung des Traumas",
+                "body": """Indem das seelische Trauma als greifbares, begrenztes *„Ding“* betrachtet wird, verliert es seine unheimliche, bodenlose Macht. Man nimmt es in die Hand, begutachtet die Kanten und legt es bewusst zur Seite.
 
 Die Opferhaltung wird endgültig abgestreift: Kein Warten auf Entschuldigungen von außen, sondern die bewusste Integration der Narben in das eigene Fundament."""
             },
             {
-                "quote": "Build my body from the bone / Das eiserne Fundament",
-                "body": """Der Wiederaufbau erfolgt Knochen für Knochen, Muskelstrang für Muskelstrang.
+                "quote": "Build my body from the bone / Das eiserne Skelett der Autonomie",
+                "body": """Der Wiederaufbau erfolgt Knochen für Knochen, Struktur für Struktur.
 
-Es ist eine stoische, disziplinierte Rekonstruktion des Charakters: Aus dem erlebten Einsturz erwächst eine innere Härte und Standfestigkeit, die nicht mehr erschüttert werden kann."""
+Nerven und Gefühle können schwanken, doch das Skelett – die unantastbare Würde und die eigenen Kernwerte – bildet ein unzerstörbares Bollwerk, das nie wieder erodieren kann."""
             }
         ]
     },
     "12": {
-        "review": """Das majestätische, triumphale Finale einer tiefgreifenden Wandlung. *In A Minute* verzichtet auf kitschige Illusionen und gipfelt in dem wichtigsten Leitsatz des gesamten Werks: **„Don’t you forget about yourself“**.
+        "review": """Das majestätische, triumphale Finale einer tiefgreifenden seelischen Metamorphose. *In A Minute* verzichtet auf kitschige Happy-End-Illusionen und gipfelt in dem wichtigsten Leitsatz des gesamten Werks: **„Don’t you forget about yourself“**.
 
-Der Kreis schließt sich: Aus dem verängstigten, bettelnden Ich aus Track 1 ist eine unantastbare, souveräne Persönlichkeit geworden. Der finale Imperativ richtet sich an das eigene Bewusstsein – als lebenslanger Schwur, sich nie wieder für die Illusion von Nähe selbst zu verraten oder die eigene Würde zur Disposition zu stellen. Das Album endet nicht im Schmerz des Abschieds, sondern im stolzen Beginn eines selbstbestimmten, freien Lebens.""",
+Der Kreis schließt sich in vollendeter Symmetrie: Aus dem verängstigten, flehenden Wesen aus Track 1 ist eine unantastbare, souveräne Persönlichkeit hervorgegangen. Der Titel *„In A Minute“* offenbart die befreiende Relativität des Leids: Was sich in der Dunkelheit wie eine endlose Ewigkeit anfühlte, ist im Licht der Heilung nur ein flüchtiger Augenblick. Der finale Imperativ ist ein lebenslanger Schwur – das Versprechen an die eigene Seele, sich nie wieder für die Illusion von Nähe selbst zu verraten.""",
         "cards": [
             {
-                "quote": "Don't you forget about yourself / Der heilige Schwur",
-                "body": """Die finale Mahnung geht nach innen: Vergiss dich selbst nie wieder. Mache deine Existenz nie wieder von den Launen eines Anderen abhängig.
+                "quote": "In a minute / Die befreiende Relativität des Traumas",
+                "body": """Im Zustand akuter Krise fühlt sich Schmerz wie ein unendliches Gefängnis an. Im Rückblick der Reife schrumpft das gesamte Drama auf einen winzigen Moment (*„in a minute“*) zusammen.
 
-Die Transformation ist vollendet: Aus der Asche kindlicher Bedürftigkeit ist ein souveränes, in sich ruhendes Selbst hervorgegangen."""
+Die Zeit heilt nicht passiv, sondern das Ich wächst über die Enge der Vergangenheit hinaus und blickt mit erhabener Gelassenheit auf den Weg zurück."""
             },
             {
-                "quote": "Triumphale Vollendung & Katharsis",
-                "body": """Die innere Reise findet ihren Abschluss in einer tief empfundenen Katharsis.
+                "quote": "Don't you forget about yourself / Der heilige Souveränitätsschwur",
+                "body": """Die finale Mahnung geht nach innen: Vergiss dich selbst nie wieder. Mache deine Würde und Existenz nie wieder von der Gnade eines Anderen abhängig.
 
-*TOMORA* feiert die Rückkehr zur Unteilbarkeit: Das Individuum ist geheilt, frei und bereit für das eigene, ungeschriebene Morgen."""
+Die Transformation von *TOMORA* ist vollendet: Aus der Asche kindlicher Bedürftigkeit ist ein souveränes, unteilbares Selbst hervorgegangen, das bereit für das eigene, freie Morgen ist."""
             }
         ]
     }
@@ -85,78 +85,78 @@ Die Transformation ist vollendet: Aus der Asche kindlicher Bedürftigkeit ist ei
 
 en_tracks_09_12 = {
     "09": {
-        "review": """As the manic rush of Track 8 burns to ash, a profound stillness settles in *Wavelengths*. It is the contemplative heart of the entire journey: here, all artificial defense mechanisms, survival roles, and conditioned personas completely dissolve.
+        "review": """As the manic frenzy of *I Drink The Light* burns to ash, a profound, incorruptible stillness settles across *Wavelengths*. It is the contemplative heart of the entire journey: here, all artificial defense mechanisms, survival personas, and conditioned adaptation masks permanently collapse.
 
-The fundamental core question—**“Who am I?”**—stands naked in the room. This marks the symbolic death of the false, codependent self. The protagonist realizes that all previous behaviors—pleading, clinging, intellectualizing, denying—were merely frantic adaptation strategies. Solitude is no longer fought as an existential threat, but embraced as a sanctuary of unvarnished truth.""",
+The fundamental core question—**“Who am I?”**—stands naked in the room like a deconstructive Zen koan. This marks the formal death of the false, codependent self. The protagonist understands that all previous behaviors—pleading, clinging, rationalizing, denying—were merely survival strategies of a terrified nervous system. Through the metaphor of *“Wavelengths”*, the soul uncouples from the partner's toxic frequency and calibrates its own authentic vibration at psychological ground zero.""",
         "cards": [
             {
-                "quote": "Who am I? / Burying the masks",
-                "body": """The question of true identity occupies the center. Every role—the caretaker, the people-pleaser, the desperate lover—is formally laid to rest.
+                "quote": "Who am I? / Burying the false self",
+                "body": """The identity question occupies the center of ground zero. Every conditioned role—the caretaker, the people-pleaser, the desperate lover—is formally laid to rest.
 
-The compulsive hunger for validation yields to deep inner calm: there is nothing left to perform, and no one left to convince."""
+The compulsive hunger for validation yields to profound stillness: there is nothing left to perform, no one left to convince, and no facade left to uphold."""
             },
             {
-                "quote": "Wavelengths / Clarity at ground zero",
-                "body": """Internal chaos and alarm give way to sober, clear-headed composure.
+                "quote": "Wavelengths / Calibrating authentic resonance",
+                "body": """In place of blaring sirens and manic rushes, an unshakeable, sober clarity emerges.
 
-It is ground zero for the soul—the moment of complete detoxification from which genuine individuation and rebirth become possible."""
+Wavelengths symbolize severance from toxic resonance: the subject disconnects from foreign frequencies and reclaims access to its own indestructible rhythm."""
             }
         ]
     },
     "10": {
-        "review": """A moment of mature, crystalline lucidity. *Side By Side* is not a sentimental plea for a reunion, but a dignified, clear-headed look back across past terrain from a place of safety and strength.
+        "review": """A moment of mature, crystalline lucidity and peaceful demarcation. *Side By Side* is not a sentimental plea for a romantic reunion, but a dignified, clear-headed look back across the relationship from a place of unshakeable autonomy.
 
-Looking across the wreckage of the past happens without bitterness and without any urge to cross back over. The fog of projection and infantile hope has completely lifted. The partner is perceived in all their human limitation—without hatred, but equally without romantic distortion. Autonomic self-regulation is restored: two entities can exist side by side without consuming each other.""",
+The posture transforms from toxic incorporation (*“Come closer / inside each other”*) into peaceful, parallel coexistence: two distinct beings are permitted to walk alongside each other under the stars without consuming one another. The fog of projection and infantile fantasy has completely lifted. The partner is perceived in all their human limitation and alterity—without malice or vengeance, but secured behind an uncompromised, living boundary.""",
         "cards": [
             {
-                "quote": "Side By Side / Peace with the distance",
-                "body": """Accepting that two people can exist as separate beings, each claiming their own rightful space.
+                "quote": "Side By Side / Parallel coexistence over enmeshment",
+                "body": """The evolution from destructive incorporation (Track 2) to peaceful parallel trajectories: no longer colliding, but walking along distinct, respectful paths.
 
-The posture is centered and resolute: no lingering malice, but a dignified honor for what was, and clear boundaries for what will never be permitted again."""
+The posture is centered and resolute: no lingering bitterness, but a dignified honoring of what was, combined with an absolute refusal to ever surrender one's boundaries again."""
             },
             {
-                "quote": "Restoring the perimeter",
-                "body": """The boundary between Self and Other is no longer a fortress built of terror, but living, healthy skin.
+                "quote": "Honoring alterity & living boundaries",
+                "body": """The perimeter between Self and Other is no longer a fearful fortress wall, but healthy, breathing skin.
 
-The self has learned to remain anchored within itself, even when memories of the old attachment resurface."""
+The partner is finally acknowledged in their full alterity: one no longer needs to fix, change, or save the other to be completely at peace with oneself."""
             }
         ]
     },
     "11": {
-        "review": """The unyielding bedrock of rebirth. In *The Thing*, emotional agony is no longer staged as a dramatic spectacle, but placed plainly on the table like a physical artifact (*“The Thing”*) to be weighed and dismantled.
+        "review": """The unyielding granite foundation of rebirth. In *The Thing*, emotional agony is no longer staged as a dramatic spectacle, but placed plainly on the table like a physical artifact (*“The Thing”*), to be weighed, inspected, and dismantled with stoic precision.
 
-Here begins the reconstruction of the individual—not on superficial facades, but from the core outward, straight from bone marrow (*“Build my body from the bone”*). It is a manifesto of radical self-ownership: demanding nothing from the world, from parents, or from the ex-partner. Existence is reconstructed like a fortress of granite, stone by stone.""",
+Through this reification (objectification), trauma is stripped of its haunting, paralyzing spell. Here begins the reconstruction of the human being—not upon fragile facades, but from the bone marrow outward (*“Build my body from the bone”*). It is a manifesto of radical self-ownership: flesh and nerves may yield under pressure, but the skeletal core of values, dignity, and inviolable boundaries stands unshakeable for all time.""",
         "cards": [
             {
                 "quote": "The Thing / Objectifying the trauma",
-                "body": """By viewing trauma as a tangible object, its haunting spell is broken. You take it in your hands, inspect it, and intentionally set it down.
+                "body": """By viewing psychological trauma as a tangible, bounded *“Thing”*, its bottomless, overwhelming spell is permanently broken. One takes it in hand, inspects its edges, and intentionally sets it aside.
 
-The victim stance is permanently retired: no waiting for external apologies, but intentionally metabolizing the scars into personal foundation."""
+The victim stance is permanently retired: no waiting for external validation or apologies, but actively metabolizing the scars into a personal bedrock."""
             },
             {
-                "quote": "Build my body from the bone / The iron foundation",
-                "body": """Rebuilding proceeds bone by bone, sinew by sinew.
+                "quote": "Build my body from the bone / The skeletal core of autonomy",
+                "body": """Reconstruction proceeds bone by bone, structural pillar by pillar.
 
-It is a stoic, disciplined reconstruction of character: from total structural collapse rises an inner resilience that cannot be broken again."""
+Nerves and transient emotions may fluctuate, but the skeletal foundation—innate dignity and core integrity—constitutes an impenetrable fortress that can never erode again."""
             }
         ]
     },
     "12": {
-        "review": """The magnificent, triumphant culmination of a heroic journey. *In A Minute* avoids cheap illusions and peaks in the most vital imperative of the entire work: **“Don’t you forget about yourself”**.
+        "review": """The majestic, triumphant finale of a profound spiritual metamorphosis. *In A Minute* eschews shallow fairy-tale tropes to culminate in the central guiding principle of the entire opus: **“Don’t you forget about yourself”**.
 
-The circle closes: the trembling, begging soul of Track 1 has evolved into a sovereign, inviolable individual. The final command is addressed inward to one's own consciousness—as a lifelong sacred oath never again to barter personal sovereignty for the illusion of intimacy, nor place one's dignity on the auction block. The album ends not in the sorrow of goodbye, but in the proud sunrise of a self-directed, liberated life.""",
+The circle closes in perfect symmetry: from the terrified, begging creature of Track 1 emerges an untouchable, sovereign self. The title *“In A Minute”* illuminates the liberating relativity of suffering: what felt like an eternity of torment in the dark shrinks to a passing heartbeat in the dawn of healing. The final imperative is a lifelong sacred oath—a pledge to the soul never again to barter one's dignity for the illusion of belonging.""",
         "cards": [
             {
-                "quote": "Don't you forget about yourself / The sacred vow",
-                "body": """The final command turns inward: never forget who you are. Never again make your existence dependent on another's validation.
+                "quote": "In a minute / The liberating relativity of trauma",
+                "body": """In acute crisis, agony feels like an eternal sentence. In the clarity of maturity, the entire ordeal shrinks to a fleeting moment (*“in a minute”*).
 
-Transformation is complete: from the ashes of codependency rises a sovereign, self-contained soul."""
+Time does not passively heal; rather, the self outgrows the claustrophobia of the past and looks back across the journey with serene, sovereign composure."""
             },
             {
-                "quote": "Triumphant culmination & Catharsis",
-                "body": """The inward voyage reaches its resolution in deep, liberating catharsis.
+                "quote": "Don't you forget about yourself / The sacred oath of sovereignty",
+                "body": """The final imperative echoes inward: never forget yourself again. Never again make your existence and dignity conditional upon the mercy of another.
 
-*TOMORA* celebrates the restoration of indivisibility: the self is healed, free, and ready to author its own tomorrow."""
+The transformation of *TOMORA* is complete: from the ashes of dependency rises a sovereign, undivided self, fully prepared for its own unwritten tomorrow."""
             }
         ]
     }
