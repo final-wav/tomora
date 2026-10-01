@@ -45,6 +45,28 @@ phase1_dir = "c:/Users/Hakan/Documents/antigravity/modest-meitner/album_analyse_
 def clean_txt(t):
     return re.sub(r'[^a-zA-Z0-9]', '', t).lower()
 
+def find_matching_card(line_text, cards):
+    line_lower = line_text.lower()
+    line_clean = clean_txt(line_text)
+    if not line_clean:
+        return None
+    
+    for idx, card in enumerate(cards):
+        q_raw = card.get("quote", "").split('/')[0].strip().lower()
+        q_clean = clean_txt(q_raw)
+        
+        # 1. Exact or substring quote match
+        if q_clean and (q_clean in line_clean or line_clean in q_clean):
+            return idx
+            
+        # 2. Key phrase tokens
+        tokens = [t.strip() for t in re.findall(r'[a-zA-Z]{3,}', q_raw) if t.strip() not in ['the', 'and', 'for', 'von', 'der', 'die', 'das', 'mit', 'wie', 'ein', 'eine', 'you']]
+        matched = [t for t in tokens if t in line_lower]
+        if len(tokens) > 0 and len(matched) >= min(len(tokens), 2 if len(tokens) >= 2 else 1):
+            return idx
+            
+    return None
+
 def extract_stanzas_for_track(num_str, title, analysis_cards):
     p1_file = f"{num_str}_{title.replace(' ', '_')}.md"
     p1_path = os.path.join(phase1_dir, p1_file)
@@ -78,9 +100,6 @@ def extract_stanzas_for_track(num_str, title, analysis_cards):
         if not is_title_line:
             cleaned_raw_lines.append(line)
 
-    total_valid_lines = len([l for l in cleaned_raw_lines if l.strip() and not (l.strip().startswith('[') and l.strip().endswith(']'))])
-    line_idx_tracker = 0
-
     for line in cleaned_raw_lines:
         line_s = line.strip()
         if line_s.startswith('[') and line_s.endswith(']'):
@@ -88,16 +107,12 @@ def extract_stanzas_for_track(num_str, title, analysis_cards):
                 stanzas.append(current_stanza)
             current_stanza = {"title": line_s, "lines": []}
         elif line_s:
-            matched_card_idx = 0
-            if len(analysis_cards) > 1:
-                ratio = line_idx_tracker / max(1, total_valid_lines)
-                matched_card_idx = min(int(ratio * len(analysis_cards)), len(analysis_cards) - 1)
-
+            matched_card_idx = find_matching_card(line_s, analysis_cards)
             current_stanza["lines"].append({
                 "text": line_s,
+                "is_annotated": matched_card_idx is not None,
                 "target_card": matched_card_idx
             })
-            line_idx_tracker += 1
         else:
             if current_stanza["lines"]:
                 stanzas.append(current_stanza)
@@ -141,7 +156,7 @@ def render_analysis_column_for_lang(review_raw, cards, num, lang):
         cards_body_html = "\n".join(b_p_html)
 
         cards_html_parts.append(f"""
-        <div class="analysis-card" id="card-{num}-{lang}-{idx}">
+        <div class="analysis-card" id="card-{num}-{lang}-{idx}" data-card-idx="{idx}">
           <span class="card-quote">{q}</span>
           <div class="card-body">
             {cards_body_html}
@@ -171,10 +186,17 @@ def render_track_html(num, title, stanzas, de_info, en_info):
             lyrics_html_parts.append(f'<div class="stanza-title">{s["title"]}</div>')
         for l in s["lines"]:
             text = l["text"]
-            target_card = l["target_card"]
-            lyrics_html_parts.append(
-                f'<span class="lyric-line" data-line-idx="{line_global_idx}" data-target-card="{target_card}">{text}</span>'
-            )
+            if l["is_annotated"]:
+                target_card = l["target_card"]
+                lyrics_html_parts.append(
+                    f'<div class="lyric-line annotated" data-line-idx="{line_global_idx}" data-target-card="{target_card}">'
+                    f'<span class="annotation-highlight">{text}</span>'
+                    f'</div>'
+                )
+            else:
+                lyrics_html_parts.append(
+                    f'<div class="lyric-line plain" data-line-idx="{line_global_idx}">{text}</div>'
+                )
             line_global_idx += 1
         lyrics_html_parts.append('</div>')
     lyrics_rendered = "\n".join(lyrics_html_parts)
@@ -677,29 +699,49 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
     }
 
     .lyric-line {
-      font-size: 1.08rem;
-      font-weight: 500;
-      color: rgba(255, 255, 255, 0.75);
-      cursor: pointer;
-      padding: 4px 8px;
-      margin-left: -8px;
-      border-radius: 4px;
-      transition: all 0.2s ease;
+      font-size: 1.05rem;
+      line-height: 1.85;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.45);
+      margin-bottom: 4px;
       user-select: none;
       display: block;
       width: fit-content;
     }
 
-    .lyric-line:hover {
-      color: var(--magenta);
-      background-color: var(--magenta-dim);
+    .lyric-line.plain {
+      cursor: default;
     }
 
-    .lyric-line.active {
+    .lyric-line.annotated {
+      cursor: pointer;
       color: #ffffff;
-      background-color: var(--magenta-dim);
+    }
+
+    .annotation-highlight {
+      display: inline-block;
+      padding: 1px 6px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.08);
+      border-bottom: 2px solid rgba(255, 0, 122, 0.65);
+      color: #ffffff;
+      font-weight: 500;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .lyric-line.annotated:hover .annotation-highlight {
+      background: rgba(255, 0, 122, 0.22);
+      border-bottom-color: var(--magenta);
+      color: #ffffff;
+      box-shadow: 0 0 12px var(--magenta-glow);
+    }
+
+    .lyric-line.annotated.active .annotation-highlight {
+      background: var(--magenta);
+      border-bottom-color: #ffffff;
+      color: #ffffff;
       font-weight: 700;
-      box-shadow: 0 0 20px var(--magenta-glow);
+      box-shadow: 0 0 16px var(--magenta-glow);
     }
 
     /* Right Column: Analysis */
@@ -749,16 +791,25 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
 
     .analysis-card {
       background: var(--bg-surface);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 8px;
       padding: 24px 28px;
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      scroll-margin-top: 120px;
+      scroll-margin-top: 130px;
       position: relative;
+      cursor: pointer;
+    }
+
+    .analysis-card:hover {
+      border-color: rgba(255, 0, 122, 0.35);
+      background: #18181e;
     }
 
     .analysis-card.active {
-      background: #18181e;
-      box-shadow: 0 0 0 2px var(--magenta), 0 12px 30px rgba(0, 0, 0, 0.5);
+      background: #181822;
+      border-color: var(--magenta);
+      box-shadow: 0 0 0 1.5px var(--magenta), 0 12px 30px rgba(0, 0, 0, 0.6);
+      transform: translateY(-2px);
     }
 
     .card-quote {
@@ -1239,14 +1290,17 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
 
     setLanguage(currentLang);
 
-    // 4. Genius-Style Line Highlight & Scroll Interactivity
-    document.querySelectorAll('.lyric-line').forEach(lineEl => {
+    // 4. Genius-Style Annotation Interactivity (Two-Way Sync)
+    document.querySelectorAll('.lyric-line.annotated').forEach(lineEl => {
       lineEl.addEventListener('click', () => {
         const trackSection = lineEl.closest('.track-section');
         const targetCardIdx = lineEl.getAttribute('data-target-card');
 
-        trackSection.querySelectorAll('.lyric-line').forEach(l => l.classList.remove('active'));
-        lineEl.classList.add('active');
+        // Deactivate active states across all lines in this section
+        trackSection.querySelectorAll('.lyric-line.annotated').forEach(l => l.classList.remove('active'));
+        
+        // Highlight all lines matching this target card
+        trackSection.querySelectorAll(`.lyric-line.annotated[data-target-card="${targetCardIdx}"]`).forEach(l => l.classList.add('active'));
 
         const activeLangBlock = trackSection.querySelector(`.lang-${currentLang}`);
         if (activeLangBlock) {
@@ -1254,12 +1308,33 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
           cards.forEach((card, idx) => {
             if (idx.toString() === targetCardIdx) {
               card.classList.add('active');
-              card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             } else {
               card.classList.remove('active');
             }
           });
         }
+      });
+    });
+
+    document.querySelectorAll('.analysis-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const trackSection = card.closest('.track-section');
+        const cardIdx = card.getAttribute('data-card-idx') || card.id.split('-').pop();
+
+        const activeLangBlock = trackSection.querySelector(`.lang-${currentLang}`);
+        if (activeLangBlock) {
+          activeLangBlock.querySelectorAll('.analysis-card').forEach(c => c.classList.remove('active'));
+          card.classList.add('active');
+        }
+
+        trackSection.querySelectorAll('.lyric-line.annotated').forEach(l => {
+          const isMatch = l.getAttribute('data-target-card') === cardIdx;
+          l.classList.toggle('active', isMatch);
+          if (isMatch) {
+            l.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+        });
       });
     });
 

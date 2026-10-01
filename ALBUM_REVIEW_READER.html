@@ -460,29 +460,49 @@
     }
 
     .lyric-line {
-      font-size: 1.08rem;
-      font-weight: 500;
-      color: rgba(255, 255, 255, 0.75);
-      cursor: pointer;
-      padding: 4px 8px;
-      margin-left: -8px;
-      border-radius: 4px;
-      transition: all 0.2s ease;
+      font-size: 1.05rem;
+      line-height: 1.85;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.45);
+      margin-bottom: 4px;
       user-select: none;
       display: block;
       width: fit-content;
     }
 
-    .lyric-line:hover {
-      color: var(--magenta);
-      background-color: var(--magenta-dim);
+    .lyric-line.plain {
+      cursor: default;
     }
 
-    .lyric-line.active {
+    .lyric-line.annotated {
+      cursor: pointer;
       color: #ffffff;
-      background-color: var(--magenta-dim);
+    }
+
+    .annotation-highlight {
+      display: inline-block;
+      padding: 1px 6px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.08);
+      border-bottom: 2px solid rgba(255, 0, 122, 0.65);
+      color: #ffffff;
+      font-weight: 500;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .lyric-line.annotated:hover .annotation-highlight {
+      background: rgba(255, 0, 122, 0.22);
+      border-bottom-color: var(--magenta);
+      color: #ffffff;
+      box-shadow: 0 0 12px var(--magenta-glow);
+    }
+
+    .lyric-line.annotated.active .annotation-highlight {
+      background: var(--magenta);
+      border-bottom-color: #ffffff;
+      color: #ffffff;
       font-weight: 700;
-      box-shadow: 0 0 20px var(--magenta-glow);
+      box-shadow: 0 0 16px var(--magenta-glow);
     }
 
     /* Right Column: Analysis */
@@ -532,16 +552,25 @@
 
     .analysis-card {
       background: var(--bg-surface);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 8px;
       padding: 24px 28px;
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      scroll-margin-top: 120px;
+      scroll-margin-top: 130px;
       position: relative;
+      cursor: pointer;
+    }
+
+    .analysis-card:hover {
+      border-color: rgba(255, 0, 122, 0.35);
+      background: #18181e;
     }
 
     .analysis-card.active {
-      background: #18181e;
-      box-shadow: 0 0 0 2px var(--magenta), 0 12px 30px rgba(0, 0, 0, 0.5);
+      background: #181822;
+      border-color: var(--magenta);
+      box-shadow: 0 0 0 1.5px var(--magenta), 0 12px 30px rgba(0, 0, 0, 0.6);
+      transform: translateY(-2px);
     }
 
     .card-quote {
@@ -885,11 +914,11 @@
         <div class="lyrics-col">
           <div class="stanza">
 <div class="stanza-title">[Intro]</div>
-<span class="lyric-line" data-line-idx="0" data-target-card="0">Please (Please)</span>
-<span class="lyric-line" data-line-idx="1" data-target-card="0">Please (Please)</span>
-<span class="lyric-line" data-line-idx="2" data-target-card="1">Come (Please come)</span>
-<span class="lyric-line" data-line-idx="3" data-target-card="1">Closer, closer, closer, closer</span>
-<span class="lyric-line" data-line-idx="4" data-target-card="2">Closer, closer, closer, closer</span>
+<div class="lyric-line annotated" data-line-idx="0" data-target-card="0"><span class="annotation-highlight">Please (Please)</span></div>
+<div class="lyric-line annotated" data-line-idx="1" data-target-card="0"><span class="annotation-highlight">Please (Please)</span></div>
+<div class="lyric-line annotated" data-line-idx="2" data-target-card="0"><span class="annotation-highlight">Come (Please come)</span></div>
+<div class="lyric-line annotated" data-line-idx="3" data-target-card="2"><span class="annotation-highlight">Closer, closer, closer, closer</span></div>
+<div class="lyric-line annotated" data-line-idx="4" data-target-card="2"><span class="annotation-highlight">Closer, closer, closer, closer</span></div>
 </div>
         </div>
         <div class="analysis-col">
@@ -901,7 +930,7 @@
       </div>
       <div class="analysis-cards-list">
         
-        <div class="analysis-card" id="card-01-de-0">
+        <div class="analysis-card" id="card-01-de-0" data-card-idx="0">
           <span class="card-quote">Please (Please) / Die polyphone Schichtung & das Gedränge im Kopf</span>
           <div class="card-body">
             <p>Die Wörter sind akustisch und typografisch übereinandergelagert: Das laute <em>„Please“</em> und das eingeklammerte Flüstern <code style="color:var(--magenta);font-family:monospace;">(Please)</code> kollidieren gleichzeitig. Es ist das psychologische Abbild einer Panikattacke, in der die Sub-Stimme des Zweifels das Verlassenwerden bereits vorwegnimmt, während der Verstand noch um Rettung fleht.</p>
@@ -910,7 +939,7 @@
         </div>
         
 
-        <div class="analysis-card" id="card-01-de-1">
+        <div class="analysis-card" id="card-01-de-1" data-card-idx="1">
           <span class="card-quote">Come (Please come) / Der zögernde Notruf</span>
           <div class="card-body">
             <p>Mit dem Wort <em>„Come“</em> versucht das Ich zum ersten Mal, eine Handlungsanweisung einzufordern – doch die lähmende Angst vor Zurückweisung schiebt sofort das unterwürfige <em>„(Please come)“</em> hinterher.</p>
@@ -919,7 +948,7 @@
         </div>
         
 
-        <div class="analysis-card" id="card-01-de-2">
+        <div class="analysis-card" id="card-01-de-2" data-card-idx="2">
           <span class="card-quote">Closer, closer, closer / Die Tilgung des Zwischenraums</span>
           <div class="card-body">
             <p>Die ständige Beschleunigung von <em>„closer“</em> spiegelt eine somatische Hyperventilation wider: Der Körper versucht, die einsetzende Panik durch das vollständige Auslöschen jedes physischen Zwischenraums niederzukämpfen.</p>
@@ -938,7 +967,7 @@
       </div>
       <div class="analysis-cards-list">
         
-        <div class="analysis-card" id="card-01-en-0">
+        <div class="analysis-card" id="card-01-en-0" data-card-idx="0">
           <span class="card-quote">Please (Please) / Polyphonic layering & cognitive crowding</span>
           <div class="card-body">
             <p>The words are stacked acoustically and typographically: the audible <em>“Please”</em> and the parenthetical whisper <code style="color:var(--magenta);font-family:monospace;">(Please)</code> collide in real time. It is the psychological snapshot of a panic state, where the sub-voice of self-doubt anticipates abandonment even as the conscious mind begs for rescue.</p>
@@ -947,7 +976,7 @@
         </div>
         
 
-        <div class="analysis-card" id="card-01-en-1">
+        <div class="analysis-card" id="card-01-en-1" data-card-idx="1">
           <span class="card-quote">Come (Please come) / The hesitant distress signal</span>
           <div class="card-body">
             <p>With <em>“Come”</em>, the speaker attempts to issue a demand—yet terror of rejection immediately cushions the command with a submissive <em>“(Please come)”</em>.</p>
@@ -956,7 +985,7 @@
         </div>
         
 
-        <div class="analysis-card" id="card-01-en-2">
+        <div class="analysis-card" id="card-01-en-2" data-card-idx="2">
           <span class="card-quote">Closer, closer, closer / Eradicating the space between</span>
           <div class="card-body">
             <p>The rapid acceleration of <em>“closer”</em> mirrors somatic hyperventilation: the body frantically attempts to outrun acute panic by eradicating every trace of physical separation.</p>
@@ -995,31 +1024,31 @@
         <div class="lyrics-col">
           <div class="stanza">
 <div class="stanza-title">[Chorus]</div>
-<span class="lyric-line" data-line-idx="0" data-target-card="0">Come closer to me</span>
-<span class="lyric-line" data-line-idx="1" data-target-card="0">To me, to me, to me</span>
-<span class="lyric-line" data-line-idx="2" data-target-card="0">Come closer to me</span>
-<span class="lyric-line" data-line-idx="3" data-target-card="0">Come closer to me</span>
-<span class="lyric-line" data-line-idx="4" data-target-card="0">(Come, come, come)</span>
-<span class="lyric-line" data-line-idx="5" data-target-card="0">Come closer to me</span>
-<span class="lyric-line" data-line-idx="6" data-target-card="0">Come closer to me</span>
-<span class="lyric-line" data-line-idx="7" data-target-card="0">Come closer to me</span>
-<span class="lyric-line" data-line-idx="8" data-target-card="0">To me, to me, to me</span>
-<span class="lyric-line" data-line-idx="9" data-target-card="0">Come closer to me</span>
-<span class="lyric-line" data-line-idx="10" data-target-card="1">Come closer, come closer</span>
+<div class="lyric-line annotated" data-line-idx="0" data-target-card="0"><span class="annotation-highlight">Come closer to me</span></div>
+<div class="lyric-line annotated" data-line-idx="1" data-target-card="1"><span class="annotation-highlight">To me, to me, to me</span></div>
+<div class="lyric-line annotated" data-line-idx="2" data-target-card="0"><span class="annotation-highlight">Come closer to me</span></div>
+<div class="lyric-line annotated" data-line-idx="3" data-target-card="0"><span class="annotation-highlight">Come closer to me</span></div>
+<div class="lyric-line plain" data-line-idx="4">(Come, come, come)</div>
+<div class="lyric-line annotated" data-line-idx="5" data-target-card="0"><span class="annotation-highlight">Come closer to me</span></div>
+<div class="lyric-line annotated" data-line-idx="6" data-target-card="0"><span class="annotation-highlight">Come closer to me</span></div>
+<div class="lyric-line annotated" data-line-idx="7" data-target-card="0"><span class="annotation-highlight">Come closer to me</span></div>
+<div class="lyric-line annotated" data-line-idx="8" data-target-card="1"><span class="annotation-highlight">To me, to me, to me</span></div>
+<div class="lyric-line annotated" data-line-idx="9" data-target-card="0"><span class="annotation-highlight">Come closer to me</span></div>
+<div class="lyric-line annotated" data-line-idx="10" data-target-card="0"><span class="annotation-highlight">Come closer, come closer</span></div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Chorus]</div>
-<span class="lyric-line" data-line-idx="11" data-target-card="1">Come closer to me</span>
-<span class="lyric-line" data-line-idx="12" data-target-card="1">Come closer to me</span>
-<span class="lyric-line" data-line-idx="13" data-target-card="1">Come closer to me</span>
-<span class="lyric-line" data-line-idx="14" data-target-card="1">To me, to me, to me</span>
-<span class="lyric-line" data-line-idx="15" data-target-card="1">Come closer to me</span>
-<span class="lyric-line" data-line-idx="16" data-target-card="1">Come closer, come closer</span>
+<div class="lyric-line annotated" data-line-idx="11" data-target-card="0"><span class="annotation-highlight">Come closer to me</span></div>
+<div class="lyric-line annotated" data-line-idx="12" data-target-card="0"><span class="annotation-highlight">Come closer to me</span></div>
+<div class="lyric-line annotated" data-line-idx="13" data-target-card="0"><span class="annotation-highlight">Come closer to me</span></div>
+<div class="lyric-line annotated" data-line-idx="14" data-target-card="1"><span class="annotation-highlight">To me, to me, to me</span></div>
+<div class="lyric-line annotated" data-line-idx="15" data-target-card="0"><span class="annotation-highlight">Come closer to me</span></div>
+<div class="lyric-line annotated" data-line-idx="16" data-target-card="0"><span class="annotation-highlight">Come closer, come closer</span></div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Outro]</div>
-<span class="lyric-line" data-line-idx="17" data-target-card="1">(Come closer to me)</span>
-<span class="lyric-line" data-line-idx="18" data-target-card="1">(Come closer to me)</span>
+<div class="lyric-line annotated" data-line-idx="17" data-target-card="0"><span class="annotation-highlight">(Come closer to me)</span></div>
+<div class="lyric-line annotated" data-line-idx="18" data-target-card="0"><span class="annotation-highlight">(Come closer to me)</span></div>
 </div>
         </div>
         <div class="analysis-col">
@@ -1031,7 +1060,7 @@
       </div>
       <div class="analysis-cards-list">
         
-        <div class="analysis-card" id="card-02-de-0">
+        <div class="analysis-card" id="card-02-de-0" data-card-idx="0">
           <span class="card-quote">Come closer to me / Das Verlangen nach Verschmelzung</span>
           <div class="card-body">
             <p>Die monotone Wiederholung der Aufforderung fungiert wie ein magischer Beschwörungsritus: Man will den Partner so dicht an sich heranziehen, dass kein Gedanke an Trennung, Zweifel oder die reale Welt mehr dazwischenpasst.</p>
@@ -1040,7 +1069,7 @@
         </div>
         
 
-        <div class="analysis-card" id="card-02-de-1">
+        <div class="analysis-card" id="card-02-de-1" data-card-idx="1">
           <span class="card-quote">To me, to me, to me / Die Tilgung der Ich-Grenzen</span>
           <div class="card-body">
             <p>Die grammatische Fixierung auf das Akkusativ-Objekt <em>„to me“</em> (nicht <em>„us“</em>, nicht <em>„together“</em>) offenbart die narzisstische Einverleibung: Die gesamte Außenwelt schrumpft auf den Abstand zwischen dem Anderen und dem eigenen unersättlichen Mangel zusammen.</p>
@@ -1059,7 +1088,7 @@
       </div>
       <div class="analysis-cards-list">
         
-        <div class="analysis-card" id="card-02-en-0">
+        <div class="analysis-card" id="card-02-en-0" data-card-idx="0">
           <span class="card-quote">Come closer to me / The craving for fusion</span>
           <div class="card-body">
             <p>The monotone repetition of the command functions like a ritual incantation: pulling the partner so close that no thought of separation, doubt, or external reality can squeeze between.</p>
@@ -1068,7 +1097,7 @@
         </div>
         
 
-        <div class="analysis-card" id="card-02-en-1">
+        <div class="analysis-card" id="card-02-en-1" data-card-idx="1">
           <span class="card-quote">To me, to me, to me / Erasing ego boundaries</span>
           <div class="card-body">
             <p>The grammatical fixation on the accusative <em>“to me”</em> (not <em>“us”</em>, not <em>“together”</em>) exposes narcissistic incorporation: the entire world shrinks to the distance between the other and one's own insatiable emptiness.</p>
@@ -1107,43 +1136,43 @@
         <div class="lyrics-col">
           <div class="stanza">
 <div class="stanza-title">[Verse 1]</div>
-<span class="lyric-line" data-line-idx="0" data-target-card="0">Body, hard, rhythm, start</span>
-<span class="lyric-line" data-line-idx="1" data-target-card="0">Simmer, blood, water, mud</span>
+<div class="lyric-line plain" data-line-idx="0">Body, hard, rhythm, start</div>
+<div class="lyric-line plain" data-line-idx="1">Simmer, blood, water, mud</div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Refrain]</div>
-<span class="lyric-line" data-line-idx="2" data-target-card="0">I know what to do</span>
-<span class="lyric-line" data-line-idx="3" data-target-card="0">With a boy like you</span>
-<span class="lyric-line" data-line-idx="4" data-target-card="0">A boy like you</span>
-<span class="lyric-line" data-line-idx="5" data-target-card="0">A boy, a boy</span>
-<span class="lyric-line" data-line-idx="6" data-target-card="0">A boy like you</span>
+<div class="lyric-line plain" data-line-idx="2">I know what to do</div>
+<div class="lyric-line annotated" data-line-idx="3" data-target-card="0"><span class="annotation-highlight">With a boy like you</span></div>
+<div class="lyric-line annotated" data-line-idx="4" data-target-card="0"><span class="annotation-highlight">A boy like you</span></div>
+<div class="lyric-line plain" data-line-idx="5">A boy, a boy</div>
+<div class="lyric-line annotated" data-line-idx="6" data-target-card="0"><span class="annotation-highlight">A boy like you</span></div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Verse 2]</div>
-<span class="lyric-line" data-line-idx="7" data-target-card="0">Fire, boil, tainted soil</span>
-<span class="lyric-line" data-line-idx="8" data-target-card="0">Growing pain, heaven, rain</span>
+<div class="lyric-line plain" data-line-idx="7">Fire, boil, tainted soil</div>
+<div class="lyric-line plain" data-line-idx="8">Growing pain, heaven, rain</div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Refrain]</div>
-<span class="lyric-line" data-line-idx="9" data-target-card="0">I know what to do (I know, I know)</span>
-<span class="lyric-line" data-line-idx="10" data-target-card="0">With a boy like you</span>
-<span class="lyric-line" data-line-idx="11" data-target-card="1">A boy like you</span>
-<span class="lyric-line" data-line-idx="12" data-target-card="1">A boy, a boy</span>
-<span class="lyric-line" data-line-idx="13" data-target-card="1">A boy like you</span>
+<div class="lyric-line plain" data-line-idx="9">I know what to do (I know, I know)</div>
+<div class="lyric-line annotated" data-line-idx="10" data-target-card="0"><span class="annotation-highlight">With a boy like you</span></div>
+<div class="lyric-line annotated" data-line-idx="11" data-target-card="0"><span class="annotation-highlight">A boy like you</span></div>
+<div class="lyric-line plain" data-line-idx="12">A boy, a boy</div>
+<div class="lyric-line annotated" data-line-idx="13" data-target-card="0"><span class="annotation-highlight">A boy like you</span></div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Bridge]</div>
-<span class="lyric-line" data-line-idx="14" data-target-card="1">I know you</span>
-<span class="lyric-line" data-line-idx="15" data-target-card="1">You don't know me</span>
-<span class="lyric-line" data-line-idx="16" data-target-card="1">I've seen your mind</span>
-<span class="lyric-line" data-line-idx="17" data-target-card="1">I've seen your dreams</span>
+<div class="lyric-line plain" data-line-idx="14">I know you</div>
+<div class="lyric-line plain" data-line-idx="15">You don't know me</div>
+<div class="lyric-line plain" data-line-idx="16">I've seen your mind</div>
+<div class="lyric-line plain" data-line-idx="17">I've seen your dreams</div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Refrain]</div>
-<span class="lyric-line" data-line-idx="18" data-target-card="1">You know how to please</span>
-<span class="lyric-line" data-line-idx="19" data-target-card="1">A girl like me</span>
-<span class="lyric-line" data-line-idx="20" data-target-card="1">A girl like me</span>
-<span class="lyric-line" data-line-idx="21" data-target-card="1">A boy, a boy</span>
+<div class="lyric-line plain" data-line-idx="18">You know how to please</div>
+<div class="lyric-line plain" data-line-idx="19">A girl like me</div>
+<div class="lyric-line plain" data-line-idx="20">A girl like me</div>
+<div class="lyric-line plain" data-line-idx="21">A boy, a boy</div>
 </div>
         </div>
         <div class="analysis-col">
@@ -1155,7 +1184,7 @@
       </div>
       <div class="analysis-cards-list">
         
-        <div class="analysis-card" id="card-03-de-0">
+        <div class="analysis-card" id="card-03-de-0" data-card-idx="0">
           <span class="card-quote">A Boy Like You / Die Diminutiv-Entmachtung</span>
           <div class="card-body">
             <p>Die bewusste Herabstufung des Partners zum <em>„Boy“</em> ist ein meisterhafter Abwehrmechanismus (<em>Counter-Defense</em>): Ein Junge ist unfertig, emotional unreif und beherrschbar. Indem sie ihn so tituliert, stellt sich das Ich unbewusst in eine überlegene Position.</p>
@@ -1164,7 +1193,7 @@
         </div>
         
 
-        <div class="analysis-card" id="card-03-de-1">
+        <div class="analysis-card" id="card-03-de-1" data-card-idx="1">
           <span class="card-quote">Die Kälte der Erkenntnis</span>
           <div class="card-body">
             <p>Hinter der analytischen Überlegenheit liegt eine tiefe, bittere Ernüchterung: Die schmerzhafte Einsicht, dass der reale Mensch vor einem niemals das Idealbild erfüllen wird, das man in ihn hineinprojiziert hat.</p>
@@ -1183,7 +1212,7 @@
       </div>
       <div class="analysis-cards-list">
         
-        <div class="analysis-card" id="card-03-en-0">
+        <div class="analysis-card" id="card-03-en-0" data-card-idx="0">
           <span class="card-quote">A Boy Like You / Diminutive disempowerment</span>
           <div class="card-body">
             <p>The deliberate demotion of the partner to a <em>“Boy”</em> is a masterclass in psychological defense (<em>Counter-Defense</em>): a boy is immature, impulsive, and manageable. By labeling him as such, the self unconsciously claims moral and psychological high ground.</p>
@@ -1192,7 +1221,7 @@
         </div>
         
 
-        <div class="analysis-card" id="card-03-en-1">
+        <div class="analysis-card" id="card-03-en-1" data-card-idx="1">
           <span class="card-quote">The chill of disillusionment</span>
           <div class="card-body">
             <p>Beneath the analytical arrogance lies bitter disillusionment: the agonizing realization that the flesh-and-blood human in front of her will never fulfill the projection she cast upon him.</p>
@@ -1230,59 +1259,59 @@
       <div class="track-grid">
         <div class="lyrics-col">
           <div class="stanza">
-<span class="lyric-line" data-line-idx="0" data-target-card="0">Aah-aah-aah-aah</span>
-<span class="lyric-line" data-line-idx="1" data-target-card="0">Aah-aah-aah-aah</span>
-<span class="lyric-line" data-line-idx="2" data-target-card="0">Aah-aah-aah-aah</span>
+<div class="lyric-line plain" data-line-idx="0">Aah-aah-aah-aah</div>
+<div class="lyric-line plain" data-line-idx="1">Aah-aah-aah-aah</div>
+<div class="lyric-line plain" data-line-idx="2">Aah-aah-aah-aah</div>
 </div>
 <div class="stanza">
-<span class="lyric-line" data-line-idx="3" data-target-card="0">Ring the alarm, ring the alarm, ring the alarm, ring the alarm</span>
-<span class="lyric-line" data-line-idx="4" data-target-card="0">Ring the alarm, ring the alarm, ring the alarm, ring the alarm</span>
-<span class="lyric-line" data-line-idx="5" data-target-card="0">Ring the alarm, ring the alarm, ring the alarm, ring the alarm</span>
-<span class="lyric-line" data-line-idx="6" data-target-card="0">Ring the alarm, ring the alarm, ring the alarm, ring the alarm</span>
+<div class="lyric-line annotated" data-line-idx="3" data-target-card="0"><span class="annotation-highlight">Ring the alarm, ring the alarm, ring the alarm, ring the alarm</span></div>
+<div class="lyric-line annotated" data-line-idx="4" data-target-card="0"><span class="annotation-highlight">Ring the alarm, ring the alarm, ring the alarm, ring the alarm</span></div>
+<div class="lyric-line annotated" data-line-idx="5" data-target-card="0"><span class="annotation-highlight">Ring the alarm, ring the alarm, ring the alarm, ring the alarm</span></div>
+<div class="lyric-line annotated" data-line-idx="6" data-target-card="0"><span class="annotation-highlight">Ring the alarm, ring the alarm, ring the alarm, ring the alarm</span></div>
 </div>
 <div class="stanza">
-<span class="lyric-line" data-line-idx="7" data-target-card="0">La la la tey oh, la la la tey oh, la la la tey oh, la la la tey oh</span>
-<span class="lyric-line" data-line-idx="8" data-target-card="0">La la la tey oh, la la la tey oh, la la la tey oh, la la la tey oh</span>
+<div class="lyric-line plain" data-line-idx="7">La la la tey oh, la la la tey oh, la la la tey oh, la la la tey oh</div>
+<div class="lyric-line plain" data-line-idx="8">La la la tey oh, la la la tey oh, la la la tey oh, la la la tey oh</div>
 </div>
 <div class="stanza">
-<span class="lyric-line" data-line-idx="9" data-target-card="0">Ring the alarm, ring the alarm, ring the alarm, ring the alarm</span>
-<span class="lyric-line" data-line-idx="10" data-target-card="0">Ring the alarm, ring the alarm, ring the alarm</span>
+<div class="lyric-line annotated" data-line-idx="9" data-target-card="0"><span class="annotation-highlight">Ring the alarm, ring the alarm, ring the alarm, ring the alarm</span></div>
+<div class="lyric-line annotated" data-line-idx="10" data-target-card="0"><span class="annotation-highlight">Ring the alarm, ring the alarm, ring the alarm</span></div>
 </div>
 <div class="stanza">
-<span class="lyric-line" data-line-idx="11" data-target-card="0">Don't know why I do it, I don't know why I do it</span>
-<span class="lyric-line" data-line-idx="12" data-target-card="0">Don't know why I do it, I don't know</span>
-<span class="lyric-line" data-line-idx="13" data-target-card="0">Don't know why I do it, I don't know why I do it</span>
-<span class="lyric-line" data-line-idx="14" data-target-card="0">Don't know why I do it</span>
-<span class="lyric-line" data-line-idx="15" data-target-card="0">Don't know why I do it, I don't know why I do it</span>
-<span class="lyric-line" data-line-idx="16" data-target-card="0">Don't know why I do it, I don't know</span>
-<span class="lyric-line" data-line-idx="17" data-target-card="0">Don't know why I do it, I don't know why I do it</span>
-<span class="lyric-line" data-line-idx="18" data-target-card="0">Don't know why I do it (Yeah, that was-)</span>
-<span class="lyric-line" data-line-idx="19" data-target-card="1">(Ring the alarm, ring the alarm, ring the alarm, ring the alarm)</span>
+<div class="lyric-line plain" data-line-idx="11">Don't know why I do it, I don't know why I do it</div>
+<div class="lyric-line plain" data-line-idx="12">Don't know why I do it, I don't know</div>
+<div class="lyric-line plain" data-line-idx="13">Don't know why I do it, I don't know why I do it</div>
+<div class="lyric-line plain" data-line-idx="14">Don't know why I do it</div>
+<div class="lyric-line plain" data-line-idx="15">Don't know why I do it, I don't know why I do it</div>
+<div class="lyric-line plain" data-line-idx="16">Don't know why I do it, I don't know</div>
+<div class="lyric-line plain" data-line-idx="17">Don't know why I do it, I don't know why I do it</div>
+<div class="lyric-line plain" data-line-idx="18">Don't know why I do it (Yeah, that was-)</div>
+<div class="lyric-line annotated" data-line-idx="19" data-target-card="0"><span class="annotation-highlight">(Ring the alarm, ring the alarm, ring the alarm, ring the alarm)</span></div>
 </div>
 <div class="stanza">
-<span class="lyric-line" data-line-idx="20" data-target-card="1">La la la tey oh, la la la tey oh, la la la tey oh, la la la tey oh</span>
-<span class="lyric-line" data-line-idx="21" data-target-card="1">La la la tey oh, la la la tey oh, la la la tey oh, la la la tey oh</span>
+<div class="lyric-line plain" data-line-idx="20">La la la tey oh, la la la tey oh, la la la tey oh, la la la tey oh</div>
+<div class="lyric-line plain" data-line-idx="21">La la la tey oh, la la la tey oh, la la la tey oh, la la la tey oh</div>
 </div>
 <div class="stanza">
-<span class="lyric-line" data-line-idx="22" data-target-card="1">Ring the alarm, ring the alarm, ring the alarm, ring the alarm</span>
-<span class="lyric-line" data-line-idx="23" data-target-card="1">Ring the alarm, ring the alarm, ring the alarm, ring the alarm</span>
-<span class="lyric-line" data-line-idx="24" data-target-card="1">Ring the alarm, ring the alarm, ring the alarm, ring the alarm</span>
-<span class="lyric-line" data-line-idx="25" data-target-card="1">Ring the alarm, ring the alarm, ring the alarm, ring the alarm</span>
-<span class="lyric-line" data-line-idx="26" data-target-card="1">Ring the alarm, ring the alarm, ring the alarm, ring the alarm (Ring the alarm, ring the alarm, ring the alarm, ring the alarm)</span>
-<span class="lyric-line" data-line-idx="27" data-target-card="1">Ring the alarm, ring the alarm, ring the alarm, ring the alarm (Ring the alarm, ring the alarm, ring the alarm, ring the alarm)</span>
+<div class="lyric-line annotated" data-line-idx="22" data-target-card="0"><span class="annotation-highlight">Ring the alarm, ring the alarm, ring the alarm, ring the alarm</span></div>
+<div class="lyric-line annotated" data-line-idx="23" data-target-card="0"><span class="annotation-highlight">Ring the alarm, ring the alarm, ring the alarm, ring the alarm</span></div>
+<div class="lyric-line annotated" data-line-idx="24" data-target-card="0"><span class="annotation-highlight">Ring the alarm, ring the alarm, ring the alarm, ring the alarm</span></div>
+<div class="lyric-line annotated" data-line-idx="25" data-target-card="0"><span class="annotation-highlight">Ring the alarm, ring the alarm, ring the alarm, ring the alarm</span></div>
+<div class="lyric-line annotated" data-line-idx="26" data-target-card="0"><span class="annotation-highlight">Ring the alarm, ring the alarm, ring the alarm, ring the alarm (Ring the alarm, ring the alarm, ring the alarm, ring the alarm)</span></div>
+<div class="lyric-line annotated" data-line-idx="27" data-target-card="0"><span class="annotation-highlight">Ring the alarm, ring the alarm, ring the alarm, ring the alarm (Ring the alarm, ring the alarm, ring the alarm, ring the alarm)</span></div>
 </div>
 <div class="stanza">
-<span class="lyric-line" data-line-idx="28" data-target-card="1">(Ring the alarm, ring the alarm, ring the alarm)</span>
-<span class="lyric-line" data-line-idx="29" data-target-card="1">(Ring the alarm, ring the alarm, ring the alarm)</span>
-<span class="lyric-line" data-line-idx="30" data-target-card="1">Ring the alarm</span>
-<span class="lyric-line" data-line-idx="31" data-target-card="1">La la la tey oh, la la la tey oh, la la la tey oh, la la la tey oh</span>
-<span class="lyric-line" data-line-idx="32" data-target-card="1">La la la tey oh, la la la tey oh, la la la tey oh, la la la tey oh</span>
+<div class="lyric-line annotated" data-line-idx="28" data-target-card="0"><span class="annotation-highlight">(Ring the alarm, ring the alarm, ring the alarm)</span></div>
+<div class="lyric-line annotated" data-line-idx="29" data-target-card="0"><span class="annotation-highlight">(Ring the alarm, ring the alarm, ring the alarm)</span></div>
+<div class="lyric-line annotated" data-line-idx="30" data-target-card="0"><span class="annotation-highlight">Ring the alarm</span></div>
+<div class="lyric-line plain" data-line-idx="31">La la la tey oh, la la la tey oh, la la la tey oh, la la la tey oh</div>
+<div class="lyric-line plain" data-line-idx="32">La la la tey oh, la la la tey oh, la la la tey oh, la la la tey oh</div>
 </div>
 <div class="stanza">
-<span class="lyric-line" data-line-idx="33" data-target-card="1">Ring the alarm, ring the alarm, ring the alarm, ring the alarm</span>
-<span class="lyric-line" data-line-idx="34" data-target-card="1">Ring the alarm, ring the alarm, ring the alarm</span>
-<span class="lyric-line" data-line-idx="35" data-target-card="1">Ring the alarm, ring the alarm, ring the alarm, ring the alarm</span>
-<span class="lyric-line" data-line-idx="36" data-target-card="1">Ring the alarm, ring the alarm, ring the alarm</span>
+<div class="lyric-line annotated" data-line-idx="33" data-target-card="0"><span class="annotation-highlight">Ring the alarm, ring the alarm, ring the alarm, ring the alarm</span></div>
+<div class="lyric-line annotated" data-line-idx="34" data-target-card="0"><span class="annotation-highlight">Ring the alarm, ring the alarm, ring the alarm</span></div>
+<div class="lyric-line annotated" data-line-idx="35" data-target-card="0"><span class="annotation-highlight">Ring the alarm, ring the alarm, ring the alarm, ring the alarm</span></div>
+<div class="lyric-line annotated" data-line-idx="36" data-target-card="0"><span class="annotation-highlight">Ring the alarm, ring the alarm, ring the alarm</span></div>
 </div>
         </div>
         <div class="analysis-col">
@@ -1294,7 +1323,7 @@
       </div>
       <div class="analysis-cards-list">
         
-        <div class="analysis-card" id="card-04-de-0">
+        <div class="analysis-card" id="card-04-de-0" data-card-idx="0">
           <span class="card-quote">Ring the alarm / Die vegetative Reizüberflutung</span>
           <div class="card-body">
             <p>Der Alarm ist kein abstraktes Symbol, sondern die klangliche Manifestation eines überreizten Nervensystems. Körper und Psyche befinden sich im absoluten Ausnahmezustand.</p>
@@ -1303,7 +1332,7 @@
         </div>
         
 
-        <div class="analysis-card" id="card-04-de-1">
+        <div class="analysis-card" id="card-04-de-1" data-card-idx="1">
           <span class="card-quote">Die Paradoxie des Alarmsystems</span>
           <div class="card-body">
             <p>Ein Alarm soll vor drohender Gefahr warnen – hier ist der Alarm jedoch das offizielle Eingeständnis des bereits eingetretenen Kollapses.</p>
@@ -1322,7 +1351,7 @@
       </div>
       <div class="analysis-cards-list">
         
-        <div class="analysis-card" id="card-04-en-0">
+        <div class="analysis-card" id="card-04-en-0" data-card-idx="0">
           <span class="card-quote">Ring the alarm / Autonomic nervous overload</span>
           <div class="card-body">
             <p>The alarm is no abstract metaphor, but the sonic embodiment of an overwhelmed nervous system. Body and psyche enter red-alert crisis.</p>
@@ -1331,7 +1360,7 @@
         </div>
         
 
-        <div class="analysis-card" id="card-04-en-1">
+        <div class="analysis-card" id="card-04-en-1" data-card-idx="1">
           <span class="card-quote">The paradox of the alarm</span>
           <div class="card-body">
             <p>An alarm is meant to warn of incoming danger—yet here, the blare is the formal admission that structural destruction has already occurred.</p>
@@ -1370,60 +1399,60 @@
         <div class="lyrics-col">
           <div class="stanza">
 <div class="stanza-title">[Intro]</div>
-<span class="lyric-line" data-line-idx="0" data-target-card="0">My baby just cares for me</span>
-<span class="lyric-line" data-line-idx="1" data-target-card="0">My baby just cares for me</span>
-<span class="lyric-line" data-line-idx="2" data-target-card="0">My baby just cares for me</span>
-<span class="lyric-line" data-line-idx="3" data-target-card="0">My baby just cares for me</span>
-<span class="lyric-line" data-line-idx="4" data-target-card="0">For me, for me</span>
-<span class="lyric-line" data-line-idx="5" data-target-card="0">For me</span>
+<div class="lyric-line plain" data-line-idx="0">My baby just cares for me</div>
+<div class="lyric-line plain" data-line-idx="1">My baby just cares for me</div>
+<div class="lyric-line plain" data-line-idx="2">My baby just cares for me</div>
+<div class="lyric-line plain" data-line-idx="3">My baby just cares for me</div>
+<div class="lyric-line plain" data-line-idx="4">For me, for me</div>
+<div class="lyric-line plain" data-line-idx="5">For me</div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Chorus]</div>
-<span class="lyric-line" data-line-idx="6" data-target-card="0">My baby just cares for me</span>
-<span class="lyric-line" data-line-idx="7" data-target-card="0">My baby just cares for me</span>
-<span class="lyric-line" data-line-idx="8" data-target-card="0">My baby just cares for me</span>
-<span class="lyric-line" data-line-idx="9" data-target-card="0">My baby just cares for</span>
+<div class="lyric-line plain" data-line-idx="6">My baby just cares for me</div>
+<div class="lyric-line plain" data-line-idx="7">My baby just cares for me</div>
+<div class="lyric-line plain" data-line-idx="8">My baby just cares for me</div>
+<div class="lyric-line plain" data-line-idx="9">My baby just cares for</div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Post-Chorus]</div>
-<span class="lyric-line" data-line-idx="10" data-target-card="0">Me, Me</span>
-<span class="lyric-line" data-line-idx="11" data-target-card="0">Me, Me</span>
+<div class="lyric-line plain" data-line-idx="10">Me, Me</div>
+<div class="lyric-line plain" data-line-idx="11">Me, Me</div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Chorus]</div>
-<span class="lyric-line" data-line-idx="12" data-target-card="1">I feel it, I feel it</span>
-<span class="lyric-line" data-line-idx="13" data-target-card="1">I feel it, I feel it</span>
+<div class="lyric-line annotated" data-line-idx="12" data-target-card="0"><span class="annotation-highlight">I feel it, I feel it</span></div>
+<div class="lyric-line annotated" data-line-idx="13" data-target-card="0"><span class="annotation-highlight">I feel it, I feel it</span></div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Bridge]</div>
-<span class="lyric-line" data-line-idx="14" data-target-card="1">Round and round in circles we go</span>
-<span class="lyric-line" data-line-idx="15" data-target-card="1">Only me and my baby knows</span>
-<span class="lyric-line" data-line-idx="16" data-target-card="1">Round and round in circles we go</span>
-<span class="lyric-line" data-line-idx="17" data-target-card="1">Only me and my baby knows</span>
-<span class="lyric-line" data-line-idx="18" data-target-card="1">Round and round in circles we go</span>
-<span class="lyric-line" data-line-idx="19" data-target-card="1">Only me and my baby knows</span>
-<span class="lyric-line" data-line-idx="20" data-target-card="1">Round and round in circles we go</span>
-<span class="lyric-line" data-line-idx="21" data-target-card="1">Only me and my baby knows</span>
-<span class="lyric-line" data-line-idx="22" data-target-card="1">Round and round in circles we go</span>
-<span class="lyric-line" data-line-idx="23" data-target-card="1">Only me and my baby knows</span>
-<span class="lyric-line" data-line-idx="24" data-target-card="2">Round and round in circles we go</span>
-<span class="lyric-line" data-line-idx="25" data-target-card="2">Only me and my baby knows</span>
-<span class="lyric-line" data-line-idx="26" data-target-card="2">Round and round in circles we go</span>
-<span class="lyric-line" data-line-idx="27" data-target-card="2">Only me and my baby knows</span>
-<span class="lyric-line" data-line-idx="28" data-target-card="2">Round and round in circles we go</span>
-<span class="lyric-line" data-line-idx="29" data-target-card="2">Only me and my baby knows</span>
+<div class="lyric-line annotated" data-line-idx="14" data-target-card="1"><span class="annotation-highlight">Round and round in circles we go</span></div>
+<div class="lyric-line annotated" data-line-idx="15" data-target-card="2"><span class="annotation-highlight">Only me and my baby knows</span></div>
+<div class="lyric-line annotated" data-line-idx="16" data-target-card="1"><span class="annotation-highlight">Round and round in circles we go</span></div>
+<div class="lyric-line annotated" data-line-idx="17" data-target-card="2"><span class="annotation-highlight">Only me and my baby knows</span></div>
+<div class="lyric-line annotated" data-line-idx="18" data-target-card="1"><span class="annotation-highlight">Round and round in circles we go</span></div>
+<div class="lyric-line annotated" data-line-idx="19" data-target-card="2"><span class="annotation-highlight">Only me and my baby knows</span></div>
+<div class="lyric-line annotated" data-line-idx="20" data-target-card="1"><span class="annotation-highlight">Round and round in circles we go</span></div>
+<div class="lyric-line annotated" data-line-idx="21" data-target-card="2"><span class="annotation-highlight">Only me and my baby knows</span></div>
+<div class="lyric-line annotated" data-line-idx="22" data-target-card="1"><span class="annotation-highlight">Round and round in circles we go</span></div>
+<div class="lyric-line annotated" data-line-idx="23" data-target-card="2"><span class="annotation-highlight">Only me and my baby knows</span></div>
+<div class="lyric-line annotated" data-line-idx="24" data-target-card="1"><span class="annotation-highlight">Round and round in circles we go</span></div>
+<div class="lyric-line annotated" data-line-idx="25" data-target-card="2"><span class="annotation-highlight">Only me and my baby knows</span></div>
+<div class="lyric-line annotated" data-line-idx="26" data-target-card="1"><span class="annotation-highlight">Round and round in circles we go</span></div>
+<div class="lyric-line annotated" data-line-idx="27" data-target-card="2"><span class="annotation-highlight">Only me and my baby knows</span></div>
+<div class="lyric-line annotated" data-line-idx="28" data-target-card="1"><span class="annotation-highlight">Round and round in circles we go</span></div>
+<div class="lyric-line annotated" data-line-idx="29" data-target-card="2"><span class="annotation-highlight">Only me and my baby knows</span></div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Pre-Chorus]</div>
-<span class="lyric-line" data-line-idx="30" data-target-card="2">I feel it, I feel it</span>
-<span class="lyric-line" data-line-idx="31" data-target-card="2">I feel it, I feel it</span>
+<div class="lyric-line annotated" data-line-idx="30" data-target-card="0"><span class="annotation-highlight">I feel it, I feel it</span></div>
+<div class="lyric-line annotated" data-line-idx="31" data-target-card="0"><span class="annotation-highlight">I feel it, I feel it</span></div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Chorus]</div>
-<span class="lyric-line" data-line-idx="32" data-target-card="2">My baby just cares for me</span>
-<span class="lyric-line" data-line-idx="33" data-target-card="2">My baby just cares for me</span>
-<span class="lyric-line" data-line-idx="34" data-target-card="2">I feel it, I feel it</span>
-<span class="lyric-line" data-line-idx="35" data-target-card="2">I feel it, I feel it</span>
+<div class="lyric-line plain" data-line-idx="32">My baby just cares for me</div>
+<div class="lyric-line plain" data-line-idx="33">My baby just cares for me</div>
+<div class="lyric-line annotated" data-line-idx="34" data-target-card="0"><span class="annotation-highlight">I feel it, I feel it</span></div>
+<div class="lyric-line annotated" data-line-idx="35" data-target-card="0"><span class="annotation-highlight">I feel it, I feel it</span></div>
 </div>
         </div>
         <div class="analysis-col">
@@ -1435,7 +1464,7 @@
       </div>
       <div class="analysis-cards-list">
         
-        <div class="analysis-card" id="card-05-de-0">
+        <div class="analysis-card" id="card-05-de-0" data-card-idx="0">
           <span class="card-quote">I feel it / Die affektive Autosuggestion als Realitätsfilter</span>
           <div class="card-body">
             <p>Wenn das Ich wiederholt <em>„I feel it“</em> deklariert, ist das kein passives Wahrnehmen, sondern ein aktiver Akt der Selbstüberredung. Da die Fakten gegen die Beziehung sprechen, flieht die Person in die unanfechtbare Sphäre des Gefühls: <em>„Ich fühle es doch so stark, also muss es wahr und richtig sein.“</em></p>
@@ -1444,7 +1473,7 @@
         </div>
         
 
-        <div class="analysis-card" id="card-05-de-1">
+        <div class="analysis-card" id="card-05-de-1" data-card-idx="1">
           <span class="card-quote">Round in circles we go / Der traumatische Wiederholungszwang</span>
           <div class="card-body">
             <p>Die Kreisbewegung ist das klassische psychoanalytische Symbol für den Wiederholungszwang (<em>Compulsion to Repeat</em>): <em>Streit → Panik → Wiederannäherung → Verleugnung → erneuter Kollaps</em>.</p>
@@ -1453,7 +1482,7 @@
         </div>
         
 
-        <div class="analysis-card" id="card-05-de-2">
+        <div class="analysis-card" id="card-05-de-2" data-card-idx="2">
           <span class="card-quote">Only me and my baby knows / Die symbiotische Grammatikverschmelzung</span>
           <div class="card-body">
             <p>Ein brillanter linguistischer Clou: Grammatikalisch müssten zwei Subjekte (<em>„me and my baby“</em>) im Plural stehen (<em>„know“</em>). Die bewusste Reduktion auf die 3. Person Singular (<em>„knows“</em>) verschmilzt beide Partner sprachlich zu einem einzigen, unteilbaren Wesen.</p>
@@ -1472,7 +1501,7 @@
       </div>
       <div class="analysis-cards-list">
         
-        <div class="analysis-card" id="card-05-en-0">
+        <div class="analysis-card" id="card-05-en-0" data-card-idx="0">
           <span class="card-quote">I feel it / Affective autosuggestion as reality filter</span>
           <div class="card-body">
             <p>When the speaker repeatedly asserts <em>“I feel it”</em>, this is no passive observation, but an active act of self-persuasion. Since factual reality disproves the relationship, the protagonist flees into somatic certainty: <em>“I feel it so intensely, therefore it must be real and right.”</em></p>
@@ -1481,7 +1510,7 @@
         </div>
         
 
-        <div class="analysis-card" id="card-05-en-1">
+        <div class="analysis-card" id="card-05-en-1" data-card-idx="1">
           <span class="card-quote">Round in circles we go / The compulsion to repeat</span>
           <div class="card-body">
             <p>Circular motion is the textbook psychoanalytic emblem of the repetition compulsion (<em>Wiederholungszwang</em>): <em>Conflict → Panic → Reconciliation → Denial → Re-collapse</em>.</p>
@@ -1490,7 +1519,7 @@
         </div>
         
 
-        <div class="analysis-card" id="card-05-en-2">
+        <div class="analysis-card" id="card-05-en-2" data-card-idx="2">
           <span class="card-quote">Only me and my baby knows / The symbiotic grammatical fusion</span>
           <div class="card-body">
             <p>A brilliant linguistic coup: syntactically, two subjects (<em>“me and my baby”</em>) require a plural verb (<em>“know”</em>). The deliberate collapse into third-person singular (<em>“knows”</em>) grammatically welds both partners into a singular, indivisible entity.</p>
@@ -1529,59 +1558,59 @@
         <div class="lyrics-col">
           <div class="stanza">
 <div class="stanza-title">[Intro]</div>
-<span class="lyric-line" data-line-idx="0" data-target-card="0">Open up your mind</span>
-<span class="lyric-line" data-line-idx="1" data-target-card="0">Let your body see</span>
-<span class="lyric-line" data-line-idx="2" data-target-card="0">There's no one in the world but me</span>
+<div class="lyric-line plain" data-line-idx="0">Open up your mind</div>
+<div class="lyric-line plain" data-line-idx="1">Let your body see</div>
+<div class="lyric-line plain" data-line-idx="2">There's no one in the world but me</div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Verse 1]</div>
-<span class="lyric-line" data-line-idx="3" data-target-card="0">Have you seen me dance?</span>
-<span class="lyric-line" data-line-idx="4" data-target-card="0">Have you seen me dance alone?</span>
-<span class="lyric-line" data-line-idx="5" data-target-card="0">Have you seen me dance?</span>
-<span class="lyric-line" data-line-idx="6" data-target-card="0">Have you seen me dance alone?</span>
+<div class="lyric-line annotated" data-line-idx="3" data-target-card="0"><span class="annotation-highlight">Have you seen me dance?</span></div>
+<div class="lyric-line annotated" data-line-idx="4" data-target-card="0"><span class="annotation-highlight">Have you seen me dance alone?</span></div>
+<div class="lyric-line annotated" data-line-idx="5" data-target-card="0"><span class="annotation-highlight">Have you seen me dance?</span></div>
+<div class="lyric-line annotated" data-line-idx="6" data-target-card="0"><span class="annotation-highlight">Have you seen me dance alone?</span></div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Chorus]</div>
-<span class="lyric-line" data-line-idx="7" data-target-card="0">Let your mind see</span>
-<span class="lyric-line" data-line-idx="8" data-target-card="0">There's no one in the world but me</span>
+<div class="lyric-line plain" data-line-idx="7">Let your mind see</div>
+<div class="lyric-line plain" data-line-idx="8">There's no one in the world but me</div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Verse 2]</div>
-<span class="lyric-line" data-line-idx="9" data-target-card="0">Have you seen me dance?</span>
-<span class="lyric-line" data-line-idx="10" data-target-card="0">Have you seen me dance alone?</span>
-<span class="lyric-line" data-line-idx="11" data-target-card="0">Have you seen me dance?</span>
-<span class="lyric-line" data-line-idx="12" data-target-card="0">Have you seen me dance alone?</span>
+<div class="lyric-line annotated" data-line-idx="9" data-target-card="0"><span class="annotation-highlight">Have you seen me dance?</span></div>
+<div class="lyric-line annotated" data-line-idx="10" data-target-card="0"><span class="annotation-highlight">Have you seen me dance alone?</span></div>
+<div class="lyric-line annotated" data-line-idx="11" data-target-card="0"><span class="annotation-highlight">Have you seen me dance?</span></div>
+<div class="lyric-line annotated" data-line-idx="12" data-target-card="0"><span class="annotation-highlight">Have you seen me dance alone?</span></div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Chorus]</div>
-<span class="lyric-line" data-line-idx="13" data-target-card="0">Let your mind see</span>
-<span class="lyric-line" data-line-idx="14" data-target-card="0">There's no one in the world but me</span>
-<span class="lyric-line" data-line-idx="15" data-target-card="1">Have you seen me dance?</span>
+<div class="lyric-line plain" data-line-idx="13">Let your mind see</div>
+<div class="lyric-line plain" data-line-idx="14">There's no one in the world but me</div>
+<div class="lyric-line annotated" data-line-idx="15" data-target-card="0"><span class="annotation-highlight">Have you seen me dance?</span></div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Verse 3]</div>
-<span class="lyric-line" data-line-idx="16" data-target-card="1">Have you seen me dance?</span>
-<span class="lyric-line" data-line-idx="17" data-target-card="1">Have you seen me dance alone?</span>
-<span class="lyric-line" data-line-idx="18" data-target-card="1">Have you seen me dance alone?</span>
-<span class="lyric-line" data-line-idx="19" data-target-card="1">Have you seen me dance alone?</span>
+<div class="lyric-line annotated" data-line-idx="16" data-target-card="0"><span class="annotation-highlight">Have you seen me dance?</span></div>
+<div class="lyric-line annotated" data-line-idx="17" data-target-card="0"><span class="annotation-highlight">Have you seen me dance alone?</span></div>
+<div class="lyric-line annotated" data-line-idx="18" data-target-card="0"><span class="annotation-highlight">Have you seen me dance alone?</span></div>
+<div class="lyric-line annotated" data-line-idx="19" data-target-card="0"><span class="annotation-highlight">Have you seen me dance alone?</span></div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Chorus]</div>
-<span class="lyric-line" data-line-idx="20" data-target-card="1">Let your mind see</span>
-<span class="lyric-line" data-line-idx="21" data-target-card="1">There's no one in the world but me</span>
+<div class="lyric-line plain" data-line-idx="20">Let your mind see</div>
+<div class="lyric-line plain" data-line-idx="21">There's no one in the world but me</div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Verse 4]</div>
-<span class="lyric-line" data-line-idx="22" data-target-card="1">Have you seen me dance?</span>
-<span class="lyric-line" data-line-idx="23" data-target-card="1">Have you seen me dance alone?</span>
-<span class="lyric-line" data-line-idx="24" data-target-card="1">Have you seen me dance alone?</span>
-<span class="lyric-line" data-line-idx="25" data-target-card="1">Have you seen me dance alone?</span>
+<div class="lyric-line annotated" data-line-idx="22" data-target-card="0"><span class="annotation-highlight">Have you seen me dance?</span></div>
+<div class="lyric-line annotated" data-line-idx="23" data-target-card="0"><span class="annotation-highlight">Have you seen me dance alone?</span></div>
+<div class="lyric-line annotated" data-line-idx="24" data-target-card="0"><span class="annotation-highlight">Have you seen me dance alone?</span></div>
+<div class="lyric-line annotated" data-line-idx="25" data-target-card="0"><span class="annotation-highlight">Have you seen me dance alone?</span></div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Chorus]</div>
-<span class="lyric-line" data-line-idx="26" data-target-card="1">Let your mind see</span>
-<span class="lyric-line" data-line-idx="27" data-target-card="1">There's no one in the world but me</span>
-<span class="lyric-line" data-line-idx="28" data-target-card="1">Have you seen me dance?</span>
+<div class="lyric-line plain" data-line-idx="26">Let your mind see</div>
+<div class="lyric-line plain" data-line-idx="27">There's no one in the world but me</div>
+<div class="lyric-line annotated" data-line-idx="28" data-target-card="0"><span class="annotation-highlight">Have you seen me dance?</span></div>
 </div>
         </div>
         <div class="analysis-col">
@@ -1593,7 +1622,7 @@
       </div>
       <div class="analysis-cards-list">
         
-        <div class="analysis-card" id="card-06-de-0">
+        <div class="analysis-card" id="card-06-de-0" data-card-idx="0">
           <span class="card-quote">Have you seen me dance alone? / Die vollendete Selbstbehauptung</span>
           <div class="card-body">
             <p>Das Ich fragt nicht <em>„Darf ich?“</em>, sondern stellt das Gegenüber vor vollendete Tatsachen: <em>„Hast du mich je allein tanzen sehen?“</em> Wer allein tanzt und dabei Freude empfindet, hat die seelischen Fesseln der Abhängigkeit abgestreift.</p>
@@ -1602,7 +1631,7 @@
         </div>
         
 
-        <div class="analysis-card" id="card-06-de-1">
+        <div class="analysis-card" id="card-06-de-1" data-card-idx="1">
           <span class="card-quote">Der Tanz als somatische Rückaneignung</span>
           <div class="card-body">
             <p>Der Tanz ist hier kein gesellschaftliches Ritual, sondern die Wiederaneignung des eigenen Körpers und Nervensystems.</p>
@@ -1621,7 +1650,7 @@
       </div>
       <div class="analysis-cards-list">
         
-        <div class="analysis-card" id="card-06-en-0">
+        <div class="analysis-card" id="card-06-en-0" data-card-idx="0">
           <span class="card-quote">Have you seen me dance alone? / Sovereign self-assertion</span>
           <div class="card-body">
             <p>The protagonist does not ask <em>“May I?”</em>, but confronts the other with an already realized reality: <em>“Have you seen me dance alone?”</em> One who can dance solo and experience radiant joy has broken the chains of dependency.</p>
@@ -1630,7 +1659,7 @@
         </div>
         
 
-        <div class="analysis-card" id="card-06-en-1">
+        <div class="analysis-card" id="card-06-en-1" data-card-idx="1">
           <span class="card-quote">Dancing as somatic reclamation</span>
           <div class="card-body">
             <p>Dancing here is no decorative pastime, but the full reclamation of one's own nervous system and physical sovereignty.</p>
@@ -1669,56 +1698,56 @@
         <div class="lyrics-col">
           <div class="stanza">
 <div class="stanza-title">[Intro]</div>
-<span class="lyric-line" data-line-idx="0" data-target-card="0">Ta-da-da-da, ta-da-da, ta-da-da-da-da-da</span>
-<span class="lyric-line" data-line-idx="1" data-target-card="0">Ta-da-da-da, ta-da-da-da, ta-da-da-da-da-da</span>
+<div class="lyric-line plain" data-line-idx="0">Ta-da-da-da, ta-da-da, ta-da-da-da-da-da</div>
+<div class="lyric-line plain" data-line-idx="1">Ta-da-da-da, ta-da-da-da, ta-da-da-da-da-da</div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Verse 1]</div>
-<span class="lyric-line" data-line-idx="2" data-target-card="0">I still imagine you just left</span>
-<span class="lyric-line" data-line-idx="3" data-target-card="0">Somewhere else</span>
-<span class="lyric-line" data-line-idx="4" data-target-card="0">Just living</span>
-<span class="lyric-line" data-line-idx="5" data-target-card="0">And even though we feel regret</span>
-<span class="lyric-line" data-line-idx="6" data-target-card="0">We are not forgiven</span>
-<span class="lyric-line" data-line-idx="7" data-target-card="0">(Forgiven)</span>
+<div class="lyric-line plain" data-line-idx="2">I still imagine you just left</div>
+<div class="lyric-line annotated" data-line-idx="3" data-target-card="0"><span class="annotation-highlight">Somewhere else</span></div>
+<div class="lyric-line plain" data-line-idx="4">Just living</div>
+<div class="lyric-line plain" data-line-idx="5">And even though we feel regret</div>
+<div class="lyric-line plain" data-line-idx="6">We are not forgiven</div>
+<div class="lyric-line plain" data-line-idx="7">(Forgiven)</div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Chorus]</div>
-<span class="lyric-line" data-line-idx="8" data-target-card="0">Ta-da-da-da, ta-da-da, ta-da-da-da-da-da</span>
-<span class="lyric-line" data-line-idx="9" data-target-card="0">Ta-da-da-da, ta-da-da-da, ta-da-da-da-da-da</span>
+<div class="lyric-line plain" data-line-idx="8">Ta-da-da-da, ta-da-da, ta-da-da-da-da-da</div>
+<div class="lyric-line plain" data-line-idx="9">Ta-da-da-da, ta-da-da-da, ta-da-da-da-da-da</div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Verse 2]</div>
-<span class="lyric-line" data-line-idx="10" data-target-card="0">I'll take you everywhere</span>
-<span class="lyric-line" data-line-idx="11" data-target-card="0">I forget I'm living</span>
-<span class="lyric-line" data-line-idx="12" data-target-card="0">It's cold out here</span>
-<span class="lyric-line" data-line-idx="13" data-target-card="0">What a rush it's giving</span>
-<span class="lyric-line" data-line-idx="14" data-target-card="0">I got your name</span>
-<span class="lyric-line" data-line-idx="15" data-target-card="0">Carved on my body</span>
-<span class="lyric-line" data-line-idx="16" data-target-card="0">I'll celebrate</span>
-<span class="lyric-line" data-line-idx="17" data-target-card="0">While you mourn me</span>
+<div class="lyric-line plain" data-line-idx="10">I'll take you everywhere</div>
+<div class="lyric-line plain" data-line-idx="11">I forget I'm living</div>
+<div class="lyric-line plain" data-line-idx="12">It's cold out here</div>
+<div class="lyric-line plain" data-line-idx="13">What a rush it's giving</div>
+<div class="lyric-line plain" data-line-idx="14">I got your name</div>
+<div class="lyric-line plain" data-line-idx="15">Carved on my body</div>
+<div class="lyric-line plain" data-line-idx="16">I'll celebrate</div>
+<div class="lyric-line plain" data-line-idx="17">While you mourn me</div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Bridge]</div>
-<span class="lyric-line" data-line-idx="18" data-target-card="1">Ta-da-da-da, ta-da-da, ta-da-da-da-da-da</span>
-<span class="lyric-line" data-line-idx="19" data-target-card="1">Ta-da-da-da, ta-da-da-da, ta-da-da-da-da-da</span>
-<span class="lyric-line" data-line-idx="20" data-target-card="1">Ta-da-da-da, ta-da-da, ta-da-da-da-da-da</span>
-<span class="lyric-line" data-line-idx="21" data-target-card="1">Ta-da-da-da, ta-da-da-da, ta-da-da-da-da-da</span>
-<span class="lyric-line" data-line-idx="22" data-target-card="1">I've been so low</span>
-<span class="lyric-line" data-line-idx="23" data-target-card="1">I've been so alone</span>
-<span class="lyric-line" data-line-idx="24" data-target-card="1">I've been so low</span>
-<span class="lyric-line" data-line-idx="25" data-target-card="1">I've been so alone</span>
-<span class="lyric-line" data-line-idx="26" data-target-card="1">Ta-da-da-da, ta-da-da-da, ta-da-da-do-do</span>
-<span class="lyric-line" data-line-idx="27" data-target-card="1">Da-do-do, da-do-do, da-do-do</span>
-<span class="lyric-line" data-line-idx="28" data-target-card="1">Da-do-da-do-da-do-da-do</span>
-<span class="lyric-line" data-line-idx="29" data-target-card="1">Ta-da-da-da, ta-da-da-da, ta-da-da-da-da-da</span>
+<div class="lyric-line plain" data-line-idx="18">Ta-da-da-da, ta-da-da, ta-da-da-da-da-da</div>
+<div class="lyric-line plain" data-line-idx="19">Ta-da-da-da, ta-da-da-da, ta-da-da-da-da-da</div>
+<div class="lyric-line plain" data-line-idx="20">Ta-da-da-da, ta-da-da, ta-da-da-da-da-da</div>
+<div class="lyric-line plain" data-line-idx="21">Ta-da-da-da, ta-da-da-da, ta-da-da-da-da-da</div>
+<div class="lyric-line plain" data-line-idx="22">I've been so low</div>
+<div class="lyric-line plain" data-line-idx="23">I've been so alone</div>
+<div class="lyric-line plain" data-line-idx="24">I've been so low</div>
+<div class="lyric-line plain" data-line-idx="25">I've been so alone</div>
+<div class="lyric-line plain" data-line-idx="26">Ta-da-da-da, ta-da-da-da, ta-da-da-do-do</div>
+<div class="lyric-line plain" data-line-idx="27">Da-do-do, da-do-do, da-do-do</div>
+<div class="lyric-line plain" data-line-idx="28">Da-do-da-do-da-do-da-do</div>
+<div class="lyric-line plain" data-line-idx="29">Ta-da-da-da, ta-da-da-da, ta-da-da-da-da-da</div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Outro]</div>
-<span class="lyric-line" data-line-idx="30" data-target-card="1">But now I'm here</span>
-<span class="lyric-line" data-line-idx="31" data-target-card="1">But now I'm here</span>
-<span class="lyric-line" data-line-idx="32" data-target-card="1">But now I'm here</span>
-<span class="lyric-line" data-line-idx="33" data-target-card="1">But now I'm here</span>
-<span class="lyric-line" data-line-idx="34" data-target-card="1">But now I'm here</span>
+<div class="lyric-line plain" data-line-idx="30">But now I'm here</div>
+<div class="lyric-line plain" data-line-idx="31">But now I'm here</div>
+<div class="lyric-line plain" data-line-idx="32">But now I'm here</div>
+<div class="lyric-line plain" data-line-idx="33">But now I'm here</div>
+<div class="lyric-line plain" data-line-idx="34">But now I'm here</div>
 </div>
         </div>
         <div class="analysis-col">
@@ -1730,7 +1759,7 @@
       </div>
       <div class="analysis-cards-list">
         
-        <div class="analysis-card" id="card-07-de-0">
+        <div class="analysis-card" id="card-07-de-0" data-card-idx="0">
           <span class="card-quote">Somewhere Else / Die dissoziative Entkopplung</span>
           <div class="card-body">
             <p>Das Ich erlebt sich selbst wie eine distanzierte Beobachterin von außen. Das Bewusstsein entweicht an einen unantastbaren Ort, während der Körper im Raum verweilt.</p>
@@ -1739,7 +1768,7 @@
         </div>
         
 
-        <div class="analysis-card" id="card-07-de-1">
+        <div class="analysis-card" id="card-07-de-1" data-card-idx="1">
           <span class="card-quote">Die Kälte als heilendes Antiseptikum</span>
           <div class="card-body">
             <p>Wo zuvor Panik und Überhitzung herrschten, breitet sich nun eine gläserne, schützende Stille aus.</p>
@@ -1758,7 +1787,7 @@
       </div>
       <div class="analysis-cards-list">
         
-        <div class="analysis-card" id="card-07-en-0">
+        <div class="analysis-card" id="card-07-en-0" data-card-idx="0">
           <span class="card-quote">Somewhere Else / Dissociative detachment</span>
           <div class="card-body">
             <p>The self observes its own existence like a detached bystander. Awareness retreats to an untouchable sanctuary while the body lingers in the room.</p>
@@ -1767,7 +1796,7 @@
         </div>
         
 
-        <div class="analysis-card" id="card-07-en-1">
+        <div class="analysis-card" id="card-07-en-1" data-card-idx="1">
           <span class="card-quote">Ice as a healing antiseptic</span>
           <div class="card-body">
             <p>Where panic and burning friction once raged, an untouchable, crystalline silence now spreads.</p>
@@ -1806,80 +1835,80 @@
         <div class="lyrics-col">
           <div class="stanza">
 <div class="stanza-title">[Verse 1]</div>
-<span class="lyric-line" data-line-idx="0" data-target-card="0">I don't think I understand</span>
-<span class="lyric-line" data-line-idx="1" data-target-card="0">This feeling</span>
-<span class="lyric-line" data-line-idx="2" data-target-card="0">Unclenching thirst</span>
-<span class="lyric-line" data-line-idx="3" data-target-card="0">I came here first</span>
-<span class="lyric-line" data-line-idx="4" data-target-card="0">I'll drink it all</span>
-<span class="lyric-line" data-line-idx="5" data-target-card="0">(I don't think I understand this sensation)</span>
+<div class="lyric-line plain" data-line-idx="0">I don't think I understand</div>
+<div class="lyric-line plain" data-line-idx="1">This feeling</div>
+<div class="lyric-line plain" data-line-idx="2">Unclenching thirst</div>
+<div class="lyric-line plain" data-line-idx="3">I came here first</div>
+<div class="lyric-line plain" data-line-idx="4">I'll drink it all</div>
+<div class="lyric-line plain" data-line-idx="5">(I don't think I understand this sensation)</div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Verse 2]</div>
-<span class="lyric-line" data-line-idx="6" data-target-card="0">I wanted to touch what I couldn't</span>
-<span class="lyric-line" data-line-idx="7" data-target-card="0">I wanted to feel what I shouldn't feel</span>
-<span class="lyric-line" data-line-idx="8" data-target-card="0">I wanted to taste the whole world from my palm</span>
-<span class="lyric-line" data-line-idx="9" data-target-card="0">Oh, I drink the light</span>
-<span class="lyric-line" data-line-idx="10" data-target-card="0">Oh, I drink the light</span>
-<span class="lyric-line" data-line-idx="11" data-target-card="0">I drink the light</span>
+<div class="lyric-line plain" data-line-idx="6">I wanted to touch what I couldn't</div>
+<div class="lyric-line plain" data-line-idx="7">I wanted to feel what I shouldn't feel</div>
+<div class="lyric-line plain" data-line-idx="8">I wanted to taste the whole world from my palm</div>
+<div class="lyric-line annotated" data-line-idx="9" data-target-card="0"><span class="annotation-highlight">Oh, I drink the light</span></div>
+<div class="lyric-line annotated" data-line-idx="10" data-target-card="0"><span class="annotation-highlight">Oh, I drink the light</span></div>
+<div class="lyric-line annotated" data-line-idx="11" data-target-card="0"><span class="annotation-highlight">I drink the light</span></div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Hook]</div>
-<span class="lyric-line" data-line-idx="12" data-target-card="0">Wanted to feel, wanted to feel</span>
-<span class="lyric-line" data-line-idx="13" data-target-card="0">Wanted to feel, wanted to feel</span>
-<span class="lyric-line" data-line-idx="14" data-target-card="0">Wanted to feel, wanted to feel</span>
-<span class="lyric-line" data-line-idx="15" data-target-card="0">Wanted to feel, wanted to feel</span>
-<span class="lyric-line" data-line-idx="16" data-target-card="0">Wanted to feel, wanted to feel</span>
-<span class="lyric-line" data-line-idx="17" data-target-card="0">Wanted to feel, wanted to feel</span>
-<span class="lyric-line" data-line-idx="18" data-target-card="0">Wanted to feel, wanted to feel</span>
-<span class="lyric-line" data-line-idx="19" data-target-card="0">(I wanted to feel, wanted to feel something)</span>
-<span class="lyric-line" data-line-idx="20" data-target-card="0">Wanted to feel, wanted to feel</span>
-<span class="lyric-line" data-line-idx="21" data-target-card="0">(I wanted to feel, wanted to feel something)</span>
-<span class="lyric-line" data-line-idx="22" data-target-card="0">Wanted to feel, wanted</span>
+<div class="lyric-line plain" data-line-idx="12">Wanted to feel, wanted to feel</div>
+<div class="lyric-line plain" data-line-idx="13">Wanted to feel, wanted to feel</div>
+<div class="lyric-line plain" data-line-idx="14">Wanted to feel, wanted to feel</div>
+<div class="lyric-line plain" data-line-idx="15">Wanted to feel, wanted to feel</div>
+<div class="lyric-line plain" data-line-idx="16">Wanted to feel, wanted to feel</div>
+<div class="lyric-line plain" data-line-idx="17">Wanted to feel, wanted to feel</div>
+<div class="lyric-line plain" data-line-idx="18">Wanted to feel, wanted to feel</div>
+<div class="lyric-line plain" data-line-idx="19">(I wanted to feel, wanted to feel something)</div>
+<div class="lyric-line plain" data-line-idx="20">Wanted to feel, wanted to feel</div>
+<div class="lyric-line plain" data-line-idx="21">(I wanted to feel, wanted to feel something)</div>
+<div class="lyric-line plain" data-line-idx="22">Wanted to feel, wanted</div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Verse 3]</div>
-<span class="lyric-line" data-line-idx="23" data-target-card="0">As I count the lights on the runway</span>
-<span class="lyric-line" data-line-idx="24" data-target-card="0">I'm chasing the speed of an airplane</span>
-<span class="lyric-line" data-line-idx="25" data-target-card="0">I just want to feel the whole sun in my mouth</span>
-<span class="lyric-line" data-line-idx="26" data-target-card="0">I drink the light</span>
-<span class="lyric-line" data-line-idx="27" data-target-card="0">I drink the light</span>
+<div class="lyric-line plain" data-line-idx="23">As I count the lights on the runway</div>
+<div class="lyric-line plain" data-line-idx="24">I'm chasing the speed of an airplane</div>
+<div class="lyric-line plain" data-line-idx="25">I just want to feel the whole sun in my mouth</div>
+<div class="lyric-line annotated" data-line-idx="26" data-target-card="0"><span class="annotation-highlight">I drink the light</span></div>
+<div class="lyric-line annotated" data-line-idx="27" data-target-card="0"><span class="annotation-highlight">I drink the light</span></div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Hook]</div>
-<span class="lyric-line" data-line-idx="28" data-target-card="1">I wanted to feel</span>
-<span class="lyric-line" data-line-idx="29" data-target-card="1">I wanted to feel</span>
-<span class="lyric-line" data-line-idx="30" data-target-card="1">I feel</span>
-<span class="lyric-line" data-line-idx="31" data-target-card="1">I wanted to feel, I wanted to feel</span>
-<span class="lyric-line" data-line-idx="32" data-target-card="1">I wanted to feel, I wanted to feel</span>
+<div class="lyric-line plain" data-line-idx="28">I wanted to feel</div>
+<div class="lyric-line plain" data-line-idx="29">I wanted to feel</div>
+<div class="lyric-line plain" data-line-idx="30">I feel</div>
+<div class="lyric-line plain" data-line-idx="31">I wanted to feel, I wanted to feel</div>
+<div class="lyric-line plain" data-line-idx="32">I wanted to feel, I wanted to feel</div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Verse 4]</div>
-<span class="lyric-line" data-line-idx="33" data-target-card="1">With the weight for the world over my brain</span>
-<span class="lyric-line" data-line-idx="34" data-target-card="1">I'm reaching the height of a flood wave</span>
-<span class="lyric-line" data-line-idx="35" data-target-card="1">I want to be one with the fabric of life</span>
-<span class="lyric-line" data-line-idx="36" data-target-card="1">I drink the light</span>
-<span class="lyric-line" data-line-idx="37" data-target-card="1">I drink the light</span>
-<span class="lyric-line" data-line-idx="38" data-target-card="1">I drink the light</span>
-<span class="lyric-line" data-line-idx="39" data-target-card="1">I drink the light</span>
-<span class="lyric-line" data-line-idx="40" data-target-card="1">I drink the light</span>
-<span class="lyric-line" data-line-idx="41" data-target-card="1">I drink the light</span>
-<span class="lyric-line" data-line-idx="42" data-target-card="1">I drink the light</span>
-<span class="lyric-line" data-line-idx="43" data-target-card="1">I drink the light</span>
+<div class="lyric-line plain" data-line-idx="33">With the weight for the world over my brain</div>
+<div class="lyric-line plain" data-line-idx="34">I'm reaching the height of a flood wave</div>
+<div class="lyric-line plain" data-line-idx="35">I want to be one with the fabric of life</div>
+<div class="lyric-line annotated" data-line-idx="36" data-target-card="0"><span class="annotation-highlight">I drink the light</span></div>
+<div class="lyric-line annotated" data-line-idx="37" data-target-card="0"><span class="annotation-highlight">I drink the light</span></div>
+<div class="lyric-line annotated" data-line-idx="38" data-target-card="0"><span class="annotation-highlight">I drink the light</span></div>
+<div class="lyric-line annotated" data-line-idx="39" data-target-card="0"><span class="annotation-highlight">I drink the light</span></div>
+<div class="lyric-line annotated" data-line-idx="40" data-target-card="0"><span class="annotation-highlight">I drink the light</span></div>
+<div class="lyric-line annotated" data-line-idx="41" data-target-card="0"><span class="annotation-highlight">I drink the light</span></div>
+<div class="lyric-line annotated" data-line-idx="42" data-target-card="0"><span class="annotation-highlight">I drink the light</span></div>
+<div class="lyric-line annotated" data-line-idx="43" data-target-card="0"><span class="annotation-highlight">I drink the light</span></div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Outro]</div>
-<span class="lyric-line" data-line-idx="44" data-target-card="1">I-I-I-I wanted to, wanted to, wanted to, wanted to</span>
-<span class="lyric-line" data-line-idx="45" data-target-card="1">Wanted to, wanted to, wanted to, wanted to</span>
-<span class="lyric-line" data-line-idx="46" data-target-card="1">Wanted to fee-, -ted to fee-, -ted to, -ted to</span>
-<span class="lyric-line" data-line-idx="47" data-target-card="1">-Ted to feel, -ted to feel, -ted to feel, -ted to feel</span>
-<span class="lyric-line" data-line-idx="48" data-target-card="1">-Ted to feel, -ted to feel, -ted to feel, -ted to feel</span>
-<span class="lyric-line" data-line-idx="49" data-target-card="1">-Ted to feel, -ted to feel, -ted to feel, -ted to feel</span>
-<span class="lyric-line" data-line-idx="50" data-target-card="1">-Ted to feel, -ted to feel, -ted to feel, -ted to feel</span>
-<span class="lyric-line" data-line-idx="51" data-target-card="1">-Ted to feel, -ted to feel, -ted to feel, -ted to feel</span>
-<span class="lyric-line" data-line-idx="52" data-target-card="1">-Ted to feel, -ted to feel, -ted to feel, -ted to feel</span>
-<span class="lyric-line" data-line-idx="53" data-target-card="1">-Ted to feel, -ted to feel, -ted to feel, -ted to feel</span>
-<span class="lyric-line" data-line-idx="54" data-target-card="1">-Ted to feel, -ted to feel, -ted to feel, -ted to feel</span>
-<span class="lyric-line" data-line-idx="55" data-target-card="1">-Ted to feel, -ted to feel, -ted to feel, -ted to feel</span>
+<div class="lyric-line plain" data-line-idx="44">I-I-I-I wanted to, wanted to, wanted to, wanted to</div>
+<div class="lyric-line plain" data-line-idx="45">Wanted to, wanted to, wanted to, wanted to</div>
+<div class="lyric-line plain" data-line-idx="46">Wanted to fee-, -ted to fee-, -ted to, -ted to</div>
+<div class="lyric-line plain" data-line-idx="47">-Ted to feel, -ted to feel, -ted to feel, -ted to feel</div>
+<div class="lyric-line plain" data-line-idx="48">-Ted to feel, -ted to feel, -ted to feel, -ted to feel</div>
+<div class="lyric-line plain" data-line-idx="49">-Ted to feel, -ted to feel, -ted to feel, -ted to feel</div>
+<div class="lyric-line plain" data-line-idx="50">-Ted to feel, -ted to feel, -ted to feel, -ted to feel</div>
+<div class="lyric-line plain" data-line-idx="51">-Ted to feel, -ted to feel, -ted to feel, -ted to feel</div>
+<div class="lyric-line plain" data-line-idx="52">-Ted to feel, -ted to feel, -ted to feel, -ted to feel</div>
+<div class="lyric-line plain" data-line-idx="53">-Ted to feel, -ted to feel, -ted to feel, -ted to feel</div>
+<div class="lyric-line plain" data-line-idx="54">-Ted to feel, -ted to feel, -ted to feel, -ted to feel</div>
+<div class="lyric-line plain" data-line-idx="55">-Ted to feel, -ted to feel, -ted to feel, -ted to feel</div>
 </div>
         </div>
         <div class="analysis-col">
@@ -1891,7 +1920,7 @@
       </div>
       <div class="analysis-cards-list">
         
-        <div class="analysis-card" id="card-08-de-0">
+        <div class="analysis-card" id="card-08-de-0" data-card-idx="0">
           <span class="card-quote">I drink the light / Die orale Synästhesie & Dopamin-Suche</span>
           <div class="card-body">
             <p>Die Verknüpfung von Licht (visuell) und Trinken (oral) beschreibt den archaischen Versuch, die seelische Taubheit durch maximale Reizzufuhr augenblicklich zu fluten.</p>
@@ -1900,7 +1929,7 @@
         </div>
         
 
-        <div class="analysis-card" id="card-08-de-1">
+        <div class="analysis-card" id="card-08-de-1" data-card-idx="1">
           <span class="card-quote">Der Rausch gegen das Vergessen</span>
           <div class="card-body">
             <p>Der Versuch, Schmerz und Leere durch pure Aktivität und Rausch zu überdecken, verleiht dem Track eine flirrende, fast gefährliche Dringlichkeit.</p>
@@ -1919,7 +1948,7 @@
       </div>
       <div class="analysis-cards-list">
         
-        <div class="analysis-card" id="card-08-en-0">
+        <div class="analysis-card" id="card-08-en-0" data-card-idx="0">
           <span class="card-quote">I drink the light / Oral synesthesia & dopamine pursuit</span>
           <div class="card-body">
             <p>Fusing light (visual) with drinking (oral) illustrates the primal urge to instantly overwhelm emotional numbness with intense sensory stimulation.</p>
@@ -1928,7 +1957,7 @@
         </div>
         
 
-        <div class="analysis-card" id="card-08-en-1">
+        <div class="analysis-card" id="card-08-en-1" data-card-idx="1">
           <span class="card-quote">The rush against oblivion</span>
           <div class="card-body">
             <p>Attempting to drown out grief and emptiness with pure kinetic frenzy lends the track a vibrating, almost perilous urgency.</p>
@@ -1967,55 +1996,55 @@
         <div class="lyrics-col">
           <div class="stanza">
 <div class="stanza-title">[Verse 1]</div>
-<span class="lyric-line" data-line-idx="0" data-target-card="0">Once I was a river with the wisdom of a child</span>
-<span class="lyric-line" data-line-idx="1" data-target-card="0">Like an avalanche of raindrops from the mountain to your eye</span>
-<span class="lyric-line" data-line-idx="2" data-target-card="0">And I don't know how I got here, no forward, no behind</span>
-<span class="lyric-line" data-line-idx="3" data-target-card="0">Just still standing on the wavelengths of my mind</span>
+<div class="lyric-line plain" data-line-idx="0">Once I was a river with the wisdom of a child</div>
+<div class="lyric-line plain" data-line-idx="1">Like an avalanche of raindrops from the mountain to your eye</div>
+<div class="lyric-line plain" data-line-idx="2">And I don't know how I got here, no forward, no behind</div>
+<div class="lyric-line annotated" data-line-idx="3" data-target-card="1"><span class="annotation-highlight">Just still standing on the wavelengths of my mind</span></div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Verse 2]</div>
-<span class="lyric-line" data-line-idx="4" data-target-card="0">So far I've fallen, and the only way is down</span>
-<span class="lyric-line" data-line-idx="5" data-target-card="0">But the mother always saves me before she lets me drown</span>
-<span class="lyric-line" data-line-idx="6" data-target-card="0">And the world might forget me, but I won't regret</span>
-<span class="lyric-line" data-line-idx="7" data-target-card="0">Leaving no traces on the hearts that I've met</span>
+<div class="lyric-line plain" data-line-idx="4">So far I've fallen, and the only way is down</div>
+<div class="lyric-line plain" data-line-idx="5">But the mother always saves me before she lets me drown</div>
+<div class="lyric-line plain" data-line-idx="6">And the world might forget me, but I won't regret</div>
+<div class="lyric-line plain" data-line-idx="7">Leaving no traces on the hearts that I've met</div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Pre-Chorus]</div>
-<span class="lyric-line" data-line-idx="8" data-target-card="0">On the hearts that I've met</span>
-<span class="lyric-line" data-line-idx="9" data-target-card="0">On the hearts that I've met</span>
+<div class="lyric-line plain" data-line-idx="8">On the hearts that I've met</div>
+<div class="lyric-line plain" data-line-idx="9">On the hearts that I've met</div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Verse 3]</div>
-<span class="lyric-line" data-line-idx="10" data-target-card="0">Oh, white sailor, is there time</span>
-<span class="lyric-line" data-line-idx="11" data-target-card="0">To sail beyond the wavelengths of my mind?</span>
-<span class="lyric-line" data-line-idx="12" data-target-card="0">Oh, the wavelengths of my mind</span>
-<span class="lyric-line" data-line-idx="13" data-target-card="0">The wavelengths of my mind</span>
-<span class="lyric-line" data-line-idx="14" data-target-card="1">Mm, the wavelengths of my mind, mm</span>
+<div class="lyric-line plain" data-line-idx="10">Oh, white sailor, is there time</div>
+<div class="lyric-line annotated" data-line-idx="11" data-target-card="1"><span class="annotation-highlight">To sail beyond the wavelengths of my mind?</span></div>
+<div class="lyric-line annotated" data-line-idx="12" data-target-card="1"><span class="annotation-highlight">Oh, the wavelengths of my mind</span></div>
+<div class="lyric-line annotated" data-line-idx="13" data-target-card="1"><span class="annotation-highlight">The wavelengths of my mind</span></div>
+<div class="lyric-line annotated" data-line-idx="14" data-target-card="1"><span class="annotation-highlight">Mm, the wavelengths of my mind, mm</span></div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Chorus]</div>
-<span class="lyric-line" data-line-idx="15" data-target-card="1">Who am I? Who am I?</span>
-<span class="lyric-line" data-line-idx="16" data-target-card="1">Who am I? Who am I?</span>
+<div class="lyric-line annotated" data-line-idx="15" data-target-card="0"><span class="annotation-highlight">Who am I? Who am I?</span></div>
+<div class="lyric-line annotated" data-line-idx="16" data-target-card="0"><span class="annotation-highlight">Who am I? Who am I?</span></div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Refrain]</div>
-<span class="lyric-line" data-line-idx="17" data-target-card="1">(Sail away) Who am I?</span>
-<span class="lyric-line" data-line-idx="18" data-target-card="1">(Sail away) Who am I?</span>
-<span class="lyric-line" data-line-idx="19" data-target-card="1">(Sail away) Who am I?</span>
-<span class="lyric-line" data-line-idx="20" data-target-card="1">(Sail away) Who am I?</span>
+<div class="lyric-line annotated" data-line-idx="17" data-target-card="0"><span class="annotation-highlight">(Sail away) Who am I?</span></div>
+<div class="lyric-line annotated" data-line-idx="18" data-target-card="0"><span class="annotation-highlight">(Sail away) Who am I?</span></div>
+<div class="lyric-line annotated" data-line-idx="19" data-target-card="0"><span class="annotation-highlight">(Sail away) Who am I?</span></div>
+<div class="lyric-line annotated" data-line-idx="20" data-target-card="0"><span class="annotation-highlight">(Sail away) Who am I?</span></div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Bridge]</div>
-<span class="lyric-line" data-line-idx="21" data-target-card="1">I always wanted to</span>
-<span class="lyric-line" data-line-idx="22" data-target-card="1">Sail away, ooh, sail away, ooh</span>
-<span class="lyric-line" data-line-idx="23" data-target-card="1">Sail away, ooh, sail away, ooh</span>
-<span class="lyric-line" data-line-idx="24" data-target-card="1">Sail away, ooh, sail away, ooh</span>
-<span class="lyric-line" data-line-idx="25" data-target-card="1">Sail away, ooh, sail away, ooh</span>
+<div class="lyric-line plain" data-line-idx="21">I always wanted to</div>
+<div class="lyric-line plain" data-line-idx="22">Sail away, ooh, sail away, ooh</div>
+<div class="lyric-line plain" data-line-idx="23">Sail away, ooh, sail away, ooh</div>
+<div class="lyric-line plain" data-line-idx="24">Sail away, ooh, sail away, ooh</div>
+<div class="lyric-line plain" data-line-idx="25">Sail away, ooh, sail away, ooh</div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Outro]</div>
-<span class="lyric-line" data-line-idx="26" data-target-card="1">Sail away, sail away</span>
-<span class="lyric-line" data-line-idx="27" data-target-card="1">Sail away</span>
+<div class="lyric-line plain" data-line-idx="26">Sail away, sail away</div>
+<div class="lyric-line plain" data-line-idx="27">Sail away</div>
 </div>
         </div>
         <div class="analysis-col">
@@ -2027,7 +2056,7 @@
       </div>
       <div class="analysis-cards-list">
         
-        <div class="analysis-card" id="card-09-de-0">
+        <div class="analysis-card" id="card-09-de-0" data-card-idx="0">
           <span class="card-quote">Who am I? / Das Begraben des falschen Selbst</span>
           <div class="card-body">
             <p>Die Frage nach der Identität steht im Zentrum des Nullpunkts. Alle Rollen – die des Retters, der braven Gefallenden oder des bedürftigen Liebhabers – werden feierlich zu Grabe getragen.</p>
@@ -2036,7 +2065,7 @@
         </div>
         
 
-        <div class="analysis-card" id="card-09-de-1">
+        <div class="analysis-card" id="card-09-de-1" data-card-idx="1">
           <span class="card-quote">Wavelengths / Die Kalibrierung der eigenen Frequenz</span>
           <div class="card-body">
             <p>An die Stelle von Sirenen und manischem Rausch tritt eine unaufgeregte, nüchterne Klarheit.</p>
@@ -2055,7 +2084,7 @@
       </div>
       <div class="analysis-cards-list">
         
-        <div class="analysis-card" id="card-09-en-0">
+        <div class="analysis-card" id="card-09-en-0" data-card-idx="0">
           <span class="card-quote">Who am I? / Burying the false self</span>
           <div class="card-body">
             <p>The identity question occupies the center of ground zero. Every conditioned role—the caretaker, the people-pleaser, the desperate lover—is formally laid to rest.</p>
@@ -2064,7 +2093,7 @@
         </div>
         
 
-        <div class="analysis-card" id="card-09-en-1">
+        <div class="analysis-card" id="card-09-en-1" data-card-idx="1">
           <span class="card-quote">Wavelengths / Calibrating authentic resonance</span>
           <div class="card-body">
             <p>In place of blaring sirens and manic rushes, an unshakeable, sober clarity emerges.</p>
@@ -2103,43 +2132,43 @@
         <div class="lyrics-col">
           <div class="stanza">
 <div class="stanza-title">[Chorus]</div>
-<span class="lyric-line" data-line-idx="0" data-target-card="0">Even if, even if, even if I cry</span>
-<span class="lyric-line" data-line-idx="1" data-target-card="0">I'll be by your side</span>
-<span class="lyric-line" data-line-idx="2" data-target-card="0">Even if, even if, even if I cry</span>
+<div class="lyric-line plain" data-line-idx="0">Even if, even if, even if I cry</div>
+<div class="lyric-line annotated" data-line-idx="1" data-target-card="0"><span class="annotation-highlight">I'll be by your side</span></div>
+<div class="lyric-line plain" data-line-idx="2">Even if, even if, even if I cry</div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Verse 1]</div>
-<span class="lyric-line" data-line-idx="3" data-target-card="0">In the back of my mind</span>
-<span class="lyric-line" data-line-idx="4" data-target-card="0">I know we've got time</span>
-<span class="lyric-line" data-line-idx="5" data-target-card="0">'Cause we hold on to where we built a home</span>
-<span class="lyric-line" data-line-idx="6" data-target-card="0">If I go now, will you follow?</span>
+<div class="lyric-line plain" data-line-idx="3">In the back of my mind</div>
+<div class="lyric-line plain" data-line-idx="4">I know we've got time</div>
+<div class="lyric-line plain" data-line-idx="5">'Cause we hold on to where we built a home</div>
+<div class="lyric-line plain" data-line-idx="6">If I go now, will you follow?</div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Verse 2]</div>
-<span class="lyric-line" data-line-idx="7" data-target-card="0">There's a shadow calling mine</span>
-<span class="lyric-line" data-line-idx="8" data-target-card="0">And you feel like a song</span>
-<span class="lyric-line" data-line-idx="9" data-target-card="0">And the colours call me home</span>
-<span class="lyric-line" data-line-idx="10" data-target-card="0">And I don't know, I don't know</span>
-<span class="lyric-line" data-line-idx="11" data-target-card="1">But I, I don't wanna be alone</span>
+<div class="lyric-line plain" data-line-idx="7">There's a shadow calling mine</div>
+<div class="lyric-line plain" data-line-idx="8">And you feel like a song</div>
+<div class="lyric-line plain" data-line-idx="9">And the colours call me home</div>
+<div class="lyric-line plain" data-line-idx="10">And I don't know, I don't know</div>
+<div class="lyric-line plain" data-line-idx="11">But I, I don't wanna be alone</div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Chorus]</div>
-<span class="lyric-line" data-line-idx="12" data-target-card="1">Even if, even if I cry</span>
-<span class="lyric-line" data-line-idx="13" data-target-card="1">Even if, even if, even if I cry</span>
-<span class="lyric-line" data-line-idx="14" data-target-card="1">Cry</span>
+<div class="lyric-line plain" data-line-idx="12">Even if, even if I cry</div>
+<div class="lyric-line plain" data-line-idx="13">Even if, even if, even if I cry</div>
+<div class="lyric-line plain" data-line-idx="14">Cry</div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Bridge]</div>
-<span class="lyric-line" data-line-idx="15" data-target-card="1">Time, time, time, time, time</span>
-<span class="lyric-line" data-line-idx="16" data-target-card="1">And I crumble</span>
-<span class="lyric-line" data-line-idx="17" data-target-card="1">And I crumble at your feet</span>
-<span class="lyric-line" data-line-idx="18" data-target-card="1">It's the way you speak to me</span>
+<div class="lyric-line plain" data-line-idx="15">Time, time, time, time, time</div>
+<div class="lyric-line plain" data-line-idx="16">And I crumble</div>
+<div class="lyric-line plain" data-line-idx="17">And I crumble at your feet</div>
+<div class="lyric-line plain" data-line-idx="18">It's the way you speak to me</div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Outro]</div>
-<span class="lyric-line" data-line-idx="19" data-target-card="1">Even if, even if, even if I cry</span>
-<span class="lyric-line" data-line-idx="20" data-target-card="1">It's the way to say goodbye</span>
-<span class="lyric-line" data-line-idx="21" data-target-card="1">It's the way to say goodbye</span>
+<div class="lyric-line plain" data-line-idx="19">Even if, even if, even if I cry</div>
+<div class="lyric-line plain" data-line-idx="20">It's the way to say goodbye</div>
+<div class="lyric-line plain" data-line-idx="21">It's the way to say goodbye</div>
 </div>
         </div>
         <div class="analysis-col">
@@ -2151,7 +2180,7 @@
       </div>
       <div class="analysis-cards-list">
         
-        <div class="analysis-card" id="card-10-de-0">
+        <div class="analysis-card" id="card-10-de-0" data-card-idx="0">
           <span class="card-quote">Side By Side / Parallele Koexistenz statt Verschmelzung</span>
           <div class="card-body">
             <p>Die Transformation von toxischer Inkorporation (Track 2) zur friedlichen Parallele: Man berührt sich nicht mehr destruktiv, sondern geht auf getrennten, respektvollen Bahnen.</p>
@@ -2160,7 +2189,7 @@
         </div>
         
 
-        <div class="analysis-card" id="card-10-de-1">
+        <div class="analysis-card" id="card-10-de-1" data-card-idx="1">
           <span class="card-quote">Die Anerkennung der Alterität & Grenze</span>
           <div class="card-body">
             <p>Die Grenze zwischen dem Selbst und dem Anderen ist keine Festungsmauer aus Angst mehr, sondern eine gesunde, atmende Schutzhaut.</p>
@@ -2179,7 +2208,7 @@
       </div>
       <div class="analysis-cards-list">
         
-        <div class="analysis-card" id="card-10-en-0">
+        <div class="analysis-card" id="card-10-en-0" data-card-idx="0">
           <span class="card-quote">Side By Side / Parallel coexistence over enmeshment</span>
           <div class="card-body">
             <p>The evolution from destructive incorporation (Track 2) to peaceful parallel trajectories: no longer colliding, but walking along distinct, respectful paths.</p>
@@ -2188,7 +2217,7 @@
         </div>
         
 
-        <div class="analysis-card" id="card-10-en-1">
+        <div class="analysis-card" id="card-10-en-1" data-card-idx="1">
           <span class="card-quote">Honoring alterity & living boundaries</span>
           <div class="card-body">
             <p>The perimeter between Self and Other is no longer a fearful fortress wall, but healthy, breathing skin.</p>
@@ -2227,61 +2256,61 @@
         <div class="lyrics-col">
           <div class="stanza">
 <div class="stanza-title">[Intro]</div>
-<span class="lyric-line" data-line-idx="0" data-target-card="0">Ooh</span>
-<span class="lyric-line" data-line-idx="1" data-target-card="0">Ooh</span>
+<div class="lyric-line plain" data-line-idx="0">Ooh</div>
+<div class="lyric-line plain" data-line-idx="1">Ooh</div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Verse 1]</div>
-<span class="lyric-line" data-line-idx="2" data-target-card="0">What are feelings?</span>
-<span class="lyric-line" data-line-idx="3" data-target-card="0">Are they real things?</span>
-<span class="lyric-line" data-line-idx="4" data-target-card="0">Ooh</span>
-<span class="lyric-line" data-line-idx="5" data-target-card="0">I am hollow</span>
-<span class="lyric-line" data-line-idx="6" data-target-card="0">I am sorrow</span>
-<span class="lyric-line" data-line-idx="7" data-target-card="0">Ooh</span>
-<span class="lyric-line" data-line-idx="8" data-target-card="0">I've built myself a wooden stove</span>
-<span class="lyric-line" data-line-idx="9" data-target-card="0">I'll build my body from the bone</span>
-<span class="lyric-line" data-line-idx="10" data-target-card="0">Mm (Ooh)</span>
-<span class="lyric-line" data-line-idx="11" data-target-card="0">Mm (Ooh)</span>
+<div class="lyric-line plain" data-line-idx="2">What are feelings?</div>
+<div class="lyric-line annotated" data-line-idx="3" data-target-card="0"><span class="annotation-highlight">Are they real things?</span></div>
+<div class="lyric-line plain" data-line-idx="4">Ooh</div>
+<div class="lyric-line plain" data-line-idx="5">I am hollow</div>
+<div class="lyric-line plain" data-line-idx="6">I am sorrow</div>
+<div class="lyric-line plain" data-line-idx="7">Ooh</div>
+<div class="lyric-line plain" data-line-idx="8">I've built myself a wooden stove</div>
+<div class="lyric-line annotated" data-line-idx="9" data-target-card="1"><span class="annotation-highlight">I'll build my body from the bone</span></div>
+<div class="lyric-line plain" data-line-idx="10">Mm (Ooh)</div>
+<div class="lyric-line plain" data-line-idx="11">Mm (Ooh)</div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Refrain]</div>
-<span class="lyric-line" data-line-idx="12" data-target-card="0">Ooh</span>
-<span class="lyric-line" data-line-idx="13" data-target-card="0">Ooh</span>
+<div class="lyric-line plain" data-line-idx="12">Ooh</div>
+<div class="lyric-line plain" data-line-idx="13">Ooh</div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Verse 2]</div>
-<span class="lyric-line" data-line-idx="14" data-target-card="0">What does love mean?</span>
-<span class="lyric-line" data-line-idx="15" data-target-card="0">Why do grass lean?</span>
-<span class="lyric-line" data-line-idx="16" data-target-card="0">Ooh</span>
-<span class="lyric-line" data-line-idx="17" data-target-card="0">I have loved kings</span>
-<span class="lyric-line" data-line-idx="18" data-target-card="0">I have forged ring</span>
-<span class="lyric-line" data-line-idx="19" data-target-card="0">Ooh</span>
-<span class="lyric-line" data-line-idx="20" data-target-card="0">I have walked inside a hospital</span>
-<span class="lyric-line" data-line-idx="21" data-target-card="0">But then, I don't feel unwell at all</span>
-<span class="lyric-line" data-line-idx="22" data-target-card="1">Mm (Ooh)</span>
-<span class="lyric-line" data-line-idx="23" data-target-card="1">Mm (Ooh)</span>
+<div class="lyric-line plain" data-line-idx="14">What does love mean?</div>
+<div class="lyric-line plain" data-line-idx="15">Why do grass lean?</div>
+<div class="lyric-line plain" data-line-idx="16">Ooh</div>
+<div class="lyric-line plain" data-line-idx="17">I have loved kings</div>
+<div class="lyric-line plain" data-line-idx="18">I have forged ring</div>
+<div class="lyric-line plain" data-line-idx="19">Ooh</div>
+<div class="lyric-line plain" data-line-idx="20">I have walked inside a hospital</div>
+<div class="lyric-line plain" data-line-idx="21">But then, I don't feel unwell at all</div>
+<div class="lyric-line plain" data-line-idx="22">Mm (Ooh)</div>
+<div class="lyric-line plain" data-line-idx="23">Mm (Ooh)</div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Outro]</div>
-<span class="lyric-line" data-line-idx="24" data-target-card="1">It's</span>
-<span class="lyric-line" data-line-idx="25" data-target-card="1">It's the thing</span>
-<span class="lyric-line" data-line-idx="26" data-target-card="1">It's the thing (Ooh)</span>
-<span class="lyric-line" data-line-idx="27" data-target-card="1">It's</span>
-<span class="lyric-line" data-line-idx="28" data-target-card="1">It's</span>
-<span class="lyric-line" data-line-idx="29" data-target-card="1">Thing, it's the thing (Ooh)</span>
-<span class="lyric-line" data-line-idx="30" data-target-card="1">It's the thing</span>
-<span class="lyric-line" data-line-idx="31" data-target-card="1">It must be</span>
-<span class="lyric-line" data-line-idx="32" data-target-card="1">It's the thing (Ooh)</span>
-<span class="lyric-line" data-line-idx="33" data-target-card="1">It is</span>
-<span class="lyric-line" data-line-idx="34" data-target-card="1">The thing</span>
-<span class="lyric-line" data-line-idx="35" data-target-card="1">It's the thing (Ooh)</span>
-<span class="lyric-line" data-line-idx="36" data-target-card="1">It is</span>
-<span class="lyric-line" data-line-idx="37" data-target-card="1">The thing</span>
-<span class="lyric-line" data-line-idx="38" data-target-card="1">It's the thing (Ooh)</span>
-<span class="lyric-line" data-line-idx="39" data-target-card="1">It's the thing</span>
-<span class="lyric-line" data-line-idx="40" data-target-card="1">It must be</span>
-<span class="lyric-line" data-line-idx="41" data-target-card="1">It's the thing</span>
-<span class="lyric-line" data-line-idx="42" data-target-card="1">It must be</span>
+<div class="lyric-line plain" data-line-idx="24">It's</div>
+<div class="lyric-line annotated" data-line-idx="25" data-target-card="0"><span class="annotation-highlight">It's the thing</span></div>
+<div class="lyric-line annotated" data-line-idx="26" data-target-card="0"><span class="annotation-highlight">It's the thing (Ooh)</span></div>
+<div class="lyric-line plain" data-line-idx="27">It's</div>
+<div class="lyric-line plain" data-line-idx="28">It's</div>
+<div class="lyric-line annotated" data-line-idx="29" data-target-card="0"><span class="annotation-highlight">Thing, it's the thing (Ooh)</span></div>
+<div class="lyric-line annotated" data-line-idx="30" data-target-card="0"><span class="annotation-highlight">It's the thing</span></div>
+<div class="lyric-line plain" data-line-idx="31">It must be</div>
+<div class="lyric-line annotated" data-line-idx="32" data-target-card="0"><span class="annotation-highlight">It's the thing (Ooh)</span></div>
+<div class="lyric-line plain" data-line-idx="33">It is</div>
+<div class="lyric-line annotated" data-line-idx="34" data-target-card="0"><span class="annotation-highlight">The thing</span></div>
+<div class="lyric-line annotated" data-line-idx="35" data-target-card="0"><span class="annotation-highlight">It's the thing (Ooh)</span></div>
+<div class="lyric-line plain" data-line-idx="36">It is</div>
+<div class="lyric-line annotated" data-line-idx="37" data-target-card="0"><span class="annotation-highlight">The thing</span></div>
+<div class="lyric-line annotated" data-line-idx="38" data-target-card="0"><span class="annotation-highlight">It's the thing (Ooh)</span></div>
+<div class="lyric-line annotated" data-line-idx="39" data-target-card="0"><span class="annotation-highlight">It's the thing</span></div>
+<div class="lyric-line plain" data-line-idx="40">It must be</div>
+<div class="lyric-line annotated" data-line-idx="41" data-target-card="0"><span class="annotation-highlight">It's the thing</span></div>
+<div class="lyric-line plain" data-line-idx="42">It must be</div>
 </div>
         </div>
         <div class="analysis-col">
@@ -2293,7 +2322,7 @@
       </div>
       <div class="analysis-cards-list">
         
-        <div class="analysis-card" id="card-11-de-0">
+        <div class="analysis-card" id="card-11-de-0" data-card-idx="0">
           <span class="card-quote">The Thing / Die Verdinglichung des Traumas</span>
           <div class="card-body">
             <p>Indem das seelische Trauma als greifbares, begrenztes <em>„Ding“</em> betrachtet wird, verliert es seine unheimliche, bodenlose Macht. Man nimmt es in die Hand, begutachtet die Kanten und legt es bewusst zur Seite.</p>
@@ -2302,7 +2331,7 @@
         </div>
         
 
-        <div class="analysis-card" id="card-11-de-1">
+        <div class="analysis-card" id="card-11-de-1" data-card-idx="1">
           <span class="card-quote">Build my body from the bone / Das eiserne Skelett der Autonomie</span>
           <div class="card-body">
             <p>Der Wiederaufbau erfolgt Knochen für Knochen, Struktur für Struktur.</p>
@@ -2321,7 +2350,7 @@
       </div>
       <div class="analysis-cards-list">
         
-        <div class="analysis-card" id="card-11-en-0">
+        <div class="analysis-card" id="card-11-en-0" data-card-idx="0">
           <span class="card-quote">The Thing / Objectifying the trauma</span>
           <div class="card-body">
             <p>By viewing psychological trauma as a tangible, bounded <em>“Thing”</em>, its bottomless, overwhelming spell is permanently broken. One takes it in hand, inspects its edges, and intentionally sets it aside.</p>
@@ -2330,7 +2359,7 @@
         </div>
         
 
-        <div class="analysis-card" id="card-11-en-1">
+        <div class="analysis-card" id="card-11-en-1" data-card-idx="1">
           <span class="card-quote">Build my body from the bone / The skeletal core of autonomy</span>
           <div class="card-body">
             <p>Reconstruction proceeds bone by bone, structural pillar by pillar.</p>
@@ -2369,52 +2398,52 @@
         <div class="lyrics-col">
           <div class="stanza">
 <div class="stanza-title">[Intro]</div>
-<span class="lyric-line" data-line-idx="0" data-target-card="0">Don't you forget about it</span>
-<span class="lyric-line" data-line-idx="1" data-target-card="0">Don't you forget about it</span>
-<span class="lyric-line" data-line-idx="2" data-target-card="0">Don't you forget about it</span>
-<span class="lyric-line" data-line-idx="3" data-target-card="0">Don't you forget about it</span>
-<span class="lyric-line" data-line-idx="4" data-target-card="0">Don't you forget about it</span>
-<span class="lyric-line" data-line-idx="5" data-target-card="0">Don't you forget about it</span>
-<span class="lyric-line" data-line-idx="6" data-target-card="0">Don't you forget about it</span>
-<span class="lyric-line" data-line-idx="7" data-target-card="0">Don't you forget about yourself</span>
+<div class="lyric-line annotated" data-line-idx="0" data-target-card="1"><span class="annotation-highlight">Don't you forget about it</span></div>
+<div class="lyric-line annotated" data-line-idx="1" data-target-card="1"><span class="annotation-highlight">Don't you forget about it</span></div>
+<div class="lyric-line annotated" data-line-idx="2" data-target-card="1"><span class="annotation-highlight">Don't you forget about it</span></div>
+<div class="lyric-line annotated" data-line-idx="3" data-target-card="1"><span class="annotation-highlight">Don't you forget about it</span></div>
+<div class="lyric-line annotated" data-line-idx="4" data-target-card="1"><span class="annotation-highlight">Don't you forget about it</span></div>
+<div class="lyric-line annotated" data-line-idx="5" data-target-card="1"><span class="annotation-highlight">Don't you forget about it</span></div>
+<div class="lyric-line annotated" data-line-idx="6" data-target-card="1"><span class="annotation-highlight">Don't you forget about it</span></div>
+<div class="lyric-line annotated" data-line-idx="7" data-target-card="1"><span class="annotation-highlight">Don't you forget about yourself</span></div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Chorus]</div>
-<span class="lyric-line" data-line-idx="8" data-target-card="0">In a minute, I would see, see the sun</span>
-<span class="lyric-line" data-line-idx="9" data-target-card="0">In a minute, I would see, see the sun</span>
-<span class="lyric-line" data-line-idx="10" data-target-card="0">In a minute, I would see, see the sun</span>
-<span class="lyric-line" data-line-idx="11" data-target-card="0">In a minute, I would see, see the sun</span>
-<span class="lyric-line" data-line-idx="12" data-target-card="0">In a minute, I would see, see the sun</span>
-<span class="lyric-line" data-line-idx="13" data-target-card="0">In a minute, I would see, see the sun</span>
-<span class="lyric-line" data-line-idx="14" data-target-card="0">In a minute, I would see, see the sun</span>
-<span class="lyric-line" data-line-idx="15" data-target-card="0">In a minute, I would see, see the sun</span>
-<span class="lyric-line" data-line-idx="16" data-target-card="0">In a minute, I would see, see the sun</span>
-<span class="lyric-line" data-line-idx="17" data-target-card="1">In a minute, I would see, see the sun</span>
-<span class="lyric-line" data-line-idx="18" data-target-card="1">In a minute, I would see, see the sun</span>
-<span class="lyric-line" data-line-idx="19" data-target-card="1">In a minute, I would see, see the sun</span>
+<div class="lyric-line annotated" data-line-idx="8" data-target-card="0"><span class="annotation-highlight">In a minute, I would see, see the sun</span></div>
+<div class="lyric-line annotated" data-line-idx="9" data-target-card="0"><span class="annotation-highlight">In a minute, I would see, see the sun</span></div>
+<div class="lyric-line annotated" data-line-idx="10" data-target-card="0"><span class="annotation-highlight">In a minute, I would see, see the sun</span></div>
+<div class="lyric-line annotated" data-line-idx="11" data-target-card="0"><span class="annotation-highlight">In a minute, I would see, see the sun</span></div>
+<div class="lyric-line annotated" data-line-idx="12" data-target-card="0"><span class="annotation-highlight">In a minute, I would see, see the sun</span></div>
+<div class="lyric-line annotated" data-line-idx="13" data-target-card="0"><span class="annotation-highlight">In a minute, I would see, see the sun</span></div>
+<div class="lyric-line annotated" data-line-idx="14" data-target-card="0"><span class="annotation-highlight">In a minute, I would see, see the sun</span></div>
+<div class="lyric-line annotated" data-line-idx="15" data-target-card="0"><span class="annotation-highlight">In a minute, I would see, see the sun</span></div>
+<div class="lyric-line annotated" data-line-idx="16" data-target-card="0"><span class="annotation-highlight">In a minute, I would see, see the sun</span></div>
+<div class="lyric-line annotated" data-line-idx="17" data-target-card="0"><span class="annotation-highlight">In a minute, I would see, see the sun</span></div>
+<div class="lyric-line annotated" data-line-idx="18" data-target-card="0"><span class="annotation-highlight">In a minute, I would see, see the sun</span></div>
+<div class="lyric-line annotated" data-line-idx="19" data-target-card="0"><span class="annotation-highlight">In a minute, I would see, see the sun</span></div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Interlude]</div>
-<span class="lyric-line" data-line-idx="20" data-target-card="1">Don't you forget about it</span>
-<span class="lyric-line" data-line-idx="21" data-target-card="1">Don't you forget about it</span>
+<div class="lyric-line annotated" data-line-idx="20" data-target-card="1"><span class="annotation-highlight">Don't you forget about it</span></div>
+<div class="lyric-line annotated" data-line-idx="21" data-target-card="1"><span class="annotation-highlight">Don't you forget about it</span></div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Chorus]</div>
-<span class="lyric-line" data-line-idx="22" data-target-card="1">In a minute, I would see, see the sun</span>
-<span class="lyric-line" data-line-idx="23" data-target-card="1">In a minute, I would see, see the sun</span>
-<span class="lyric-line" data-line-idx="24" data-target-card="1">In a minute, I would see, see the sun</span>
-<span class="lyric-line" data-line-idx="25" data-target-card="1">In a minute, I would see, see the sun</span>
-<span class="lyric-line" data-line-idx="26" data-target-card="1">In a minute, I would see, see the sun</span>
-<span class="lyric-line" data-line-idx="27" data-target-card="1">In a minute, I would see, see the sun</span>
-<span class="lyric-line" data-line-idx="28" data-target-card="1">In a minute, I would see, see the sun</span>
-<span class="lyric-line" data-line-idx="29" data-target-card="1">In a minute, I would see, see the sun</span>
+<div class="lyric-line annotated" data-line-idx="22" data-target-card="0"><span class="annotation-highlight">In a minute, I would see, see the sun</span></div>
+<div class="lyric-line annotated" data-line-idx="23" data-target-card="0"><span class="annotation-highlight">In a minute, I would see, see the sun</span></div>
+<div class="lyric-line annotated" data-line-idx="24" data-target-card="0"><span class="annotation-highlight">In a minute, I would see, see the sun</span></div>
+<div class="lyric-line annotated" data-line-idx="25" data-target-card="0"><span class="annotation-highlight">In a minute, I would see, see the sun</span></div>
+<div class="lyric-line annotated" data-line-idx="26" data-target-card="0"><span class="annotation-highlight">In a minute, I would see, see the sun</span></div>
+<div class="lyric-line annotated" data-line-idx="27" data-target-card="0"><span class="annotation-highlight">In a minute, I would see, see the sun</span></div>
+<div class="lyric-line annotated" data-line-idx="28" data-target-card="0"><span class="annotation-highlight">In a minute, I would see, see the sun</span></div>
+<div class="lyric-line annotated" data-line-idx="29" data-target-card="0"><span class="annotation-highlight">In a minute, I would see, see the sun</span></div>
 </div>
 <div class="stanza">
 <div class="stanza-title">[Bridge]</div>
-<span class="lyric-line" data-line-idx="30" data-target-card="1">The sun</span>
-<span class="lyric-line" data-line-idx="31" data-target-card="1">The sun</span>
-<span class="lyric-line" data-line-idx="32" data-target-card="1">The sun</span>
-<span class="lyric-line" data-line-idx="33" data-target-card="1">The sun</span>
+<div class="lyric-line plain" data-line-idx="30">The sun</div>
+<div class="lyric-line plain" data-line-idx="31">The sun</div>
+<div class="lyric-line plain" data-line-idx="32">The sun</div>
+<div class="lyric-line plain" data-line-idx="33">The sun</div>
 </div>
         </div>
         <div class="analysis-col">
@@ -2426,7 +2455,7 @@
       </div>
       <div class="analysis-cards-list">
         
-        <div class="analysis-card" id="card-12-de-0">
+        <div class="analysis-card" id="card-12-de-0" data-card-idx="0">
           <span class="card-quote">In a minute / Die befreiende Relativität des Traumas</span>
           <div class="card-body">
             <p>Im Zustand akuter Krise fühlt sich Schmerz wie ein unendliches Gefängnis an. Im Rückblick der Reife schrumpft das gesamte Drama auf einen winzigen Moment (<em>„in a minute“</em>) zusammen.</p>
@@ -2435,7 +2464,7 @@
         </div>
         
 
-        <div class="analysis-card" id="card-12-de-1">
+        <div class="analysis-card" id="card-12-de-1" data-card-idx="1">
           <span class="card-quote">Don't you forget about yourself / Der heilige Souveränitätsschwur</span>
           <div class="card-body">
             <p>Die finale Mahnung geht nach innen: Vergiss dich selbst nie wieder. Mache deine Würde und Existenz nie wieder von der Gnade eines Anderen abhängig.</p>
@@ -2454,7 +2483,7 @@
       </div>
       <div class="analysis-cards-list">
         
-        <div class="analysis-card" id="card-12-en-0">
+        <div class="analysis-card" id="card-12-en-0" data-card-idx="0">
           <span class="card-quote">In a minute / The liberating relativity of trauma</span>
           <div class="card-body">
             <p>In acute crisis, agony feels like an eternal sentence. In the clarity of maturity, the entire ordeal shrinks to a fleeting moment (<em>“in a minute”</em>).</p>
@@ -2463,7 +2492,7 @@
         </div>
         
 
-        <div class="analysis-card" id="card-12-en-1">
+        <div class="analysis-card" id="card-12-en-1" data-card-idx="1">
           <span class="card-quote">Don't you forget about yourself / The sacred oath of sovereignty</span>
           <div class="card-body">
             <p>The final imperative echoes inward: never forget yourself again. Never again make your existence and dignity conditional upon the mercy of another.</p>
@@ -2649,14 +2678,17 @@
 
     setLanguage(currentLang);
 
-    // 4. Genius-Style Line Highlight & Scroll Interactivity
-    document.querySelectorAll('.lyric-line').forEach(lineEl => {
+    // 4. Genius-Style Annotation Interactivity (Two-Way Sync)
+    document.querySelectorAll('.lyric-line.annotated').forEach(lineEl => {
       lineEl.addEventListener('click', () => {
         const trackSection = lineEl.closest('.track-section');
         const targetCardIdx = lineEl.getAttribute('data-target-card');
 
-        trackSection.querySelectorAll('.lyric-line').forEach(l => l.classList.remove('active'));
-        lineEl.classList.add('active');
+        // Deactivate active states across all lines in this section
+        trackSection.querySelectorAll('.lyric-line.annotated').forEach(l => l.classList.remove('active'));
+        
+        // Highlight all lines matching this target card
+        trackSection.querySelectorAll(`.lyric-line.annotated[data-target-card="${targetCardIdx}"]`).forEach(l => l.classList.add('active'));
 
         const activeLangBlock = trackSection.querySelector(`.lang-${currentLang}`);
         if (activeLangBlock) {
@@ -2664,12 +2696,33 @@
           cards.forEach((card, idx) => {
             if (idx.toString() === targetCardIdx) {
               card.classList.add('active');
-              card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             } else {
               card.classList.remove('active');
             }
           });
         }
+      });
+    });
+
+    document.querySelectorAll('.analysis-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const trackSection = card.closest('.track-section');
+        const cardIdx = card.getAttribute('data-card-idx') || card.id.split('-').pop();
+
+        const activeLangBlock = trackSection.querySelector(`.lang-${currentLang}`);
+        if (activeLangBlock) {
+          activeLangBlock.querySelectorAll('.analysis-card').forEach(c => c.classList.remove('active'));
+          card.classList.add('active');
+        }
+
+        trackSection.querySelectorAll('.lyric-line.annotated').forEach(l => {
+          const isMatch = l.getAttribute('data-target-card') === cardIdx;
+          l.classList.toggle('active', isMatch);
+          if (isMatch) {
+            l.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+        });
       });
     });
 
