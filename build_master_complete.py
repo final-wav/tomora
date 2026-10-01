@@ -125,7 +125,7 @@ def extract_stanzas_for_track(num_str, title, analysis_cards):
 def render_markdown_block(text):
     text = text.strip()
     text = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', text)
-    text = re.sub(r'(?<!\*)\*([^*]+?)\*(?!\*)', r'<em>\1</em>', text)
+    text = re.sub(r'(?<!\*)\*([^*]+?)\*(?!\*)', r'<span class="lyric-quote-highlight">\1</span>', text)
     text = re.sub(r'`([^`]+?)`', r'<code style="color:var(--magenta);font-family:monospace;">\1</code>', text)
     return text
 
@@ -702,11 +702,12 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
       font-size: 1.05rem;
       line-height: 1.85;
       font-weight: 400;
-      color: rgba(255, 255, 255, 0.45);
+      color: rgba(255, 255, 255, 0.65);
       margin-bottom: 4px;
-      user-select: none;
+      user-select: text;
       display: block;
       width: fit-content;
+      transition: all 0.2s ease;
     }
 
     .lyric-line.plain {
@@ -715,31 +716,32 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
 
     .lyric-line.annotated {
       cursor: pointer;
-      color: #ffffff;
     }
 
     .annotation-highlight {
-      display: inline-block;
-      padding: 1px 6px;
-      border-radius: 4px;
-      background: rgba(255, 255, 255, 0.08);
-      border-bottom: 2px solid rgba(255, 0, 122, 0.65);
+      display: inline;
+      color: inherit;
+      transition: all 0.2s ease;
+    }
+
+    .lyric-line.annotated:hover {
       color: #ffffff;
-      font-weight: 500;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .lyric-line.annotated:hover .annotation-highlight {
-      background: rgba(255, 0, 122, 0.22);
-      border-bottom-color: var(--magenta);
+      color: var(--magenta);
+      text-shadow: 0 0 10px rgba(255, 0, 122, 0.4);
+    }
+
+    .lyric-line.annotated.active {
       color: #ffffff;
-      box-shadow: 0 0 12px var(--magenta-glow);
     }
 
     .lyric-line.annotated.active .annotation-highlight {
-      background: var(--magenta);
-      border-bottom-color: #ffffff;
       color: #ffffff;
+      background: var(--magenta);
+      padding: 2px 8px;
+      border-radius: 4px;
       font-weight: 700;
       box-shadow: 0 0 16px var(--magenta-glow);
     }
@@ -773,12 +775,21 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
       margin-bottom: 0;
     }
 
-    .narrative-review em {
-      color: #ffffff;
-      font-style: italic;
+    .lyric-quote-highlight {
+      color: var(--magenta);
+      background: rgba(255, 0, 122, 0.12);
+      padding: 1px 7px;
+      border-radius: 4px;
+      font-weight: 600;
+      font-style: normal;
+      display: inline;
+      border: 1px solid rgba(255, 0, 122, 0.25);
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
     }
 
-    .narrative-review strong {
+    .narrative-review strong,
+    .card-body strong {
       color: #ffffff;
       font-weight: 700;
     }
@@ -813,12 +824,16 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
     }
 
     .card-quote {
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       font-weight: 800;
       color: var(--magenta);
+      background: rgba(255, 0, 122, 0.10);
+      border-left: 3px solid var(--magenta);
+      padding: 6px 12px;
+      border-radius: 4px;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
       display: block;
     }
 
