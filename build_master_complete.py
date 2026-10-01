@@ -1369,6 +1369,11 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
     });
 
     function openCardDeck(trackSection, targetCardIdx, triggerEl) {
+      // Close other open decks across the page
+      document.querySelectorAll('.track-section').forEach(ts => {
+        if (ts !== trackSection) closeCardDeck(ts);
+      });
+
       const activeLang = currentLang;
       const reviewEl = trackSection.querySelector(`.lang-${activeLang} .narrative-review`);
       const deckEl = trackSection.querySelector(`.lang-${activeLang} .card-deck-view`);
@@ -1431,6 +1436,13 @@ HTML_MASTER_TEMPLATE = """<!DOCTYPE html>
         const trackSection = document.getElementById('track-' + trackNum);
         if (trackSection) closeCardDeck(trackSection);
       });
+    });
+
+    // Close on outside click
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.analysis-card') && !e.target.closest('.lyric-trigger')) {
+        document.querySelectorAll('.track-section').forEach(ts => closeCardDeck(ts));
+      }
     });
 
     // 5. Dual Media Audio Engine: YouTube Song + Neural TTS Audio Essay

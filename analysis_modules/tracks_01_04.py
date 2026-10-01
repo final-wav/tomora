@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 """
 Master Analysis Module: Tracks 01 to 04 (German & English)
-Focus: Literary, Psychological, Metaphorical & Narrative Analysis (World-Class Close Reading)
+Focus: Deep Literary, Psychoanalytic, Somatic & Linguistic Close Reading
 """
 
 de_tracks_01_04 = {
     "01": {
-        "review": """Das Album beginnt nicht mit einer souveränen These oder einer stabilen Positionierung im Raum, sondern mit einem reinen Vokativ der Entäußerung: **„Please“**. Es ist ein Einstieg von klaustrophobischer Intimität. Hier spricht kein Subjekt, das um Liebe wirbt, sondern eine Stimme, deren gesamtes seelisches Gleichgewicht an der unmittelbaren Reaktion des Gegenübers hängt. Nähe wird nicht als partnerschaftliche Zärtlichkeit verhandelt, sondern als nackter, existenzieller Überlebensreflex.
+        "review": """Das Album beginnt nicht mit einer souveränen These oder einer stabilen Positionierung im Raum, sondern mit einem reinen Vokativ der Entäußerung: **„Please“**. Es ist ein Einstieg von klaustrophobischer Intimität. Hier spricht kein Subjekt, das um partnerschaftliche Liebe wirbt, sondern eine Stimme, deren gesamtes seelisches Überleben an der unmittelbaren Reaktion des Gegenübers hängt. Nähe wird nicht als Zärtlichkeit verhandelt, sondern als nackter, existenzieller Überlebensreflex.
 
-Die klangliche und sprachliche Struktur wirft uns mitten in eine akute Reizüberflutung: Die Wörter *(„Please“, „Come“, „(Please come)“, „Closer“)* laufen nicht linear ab, sondern sind polyphon übereinandergeschichtet (*Vocal Layering*). Die Gedanken überholen sich gegenseitig; das Bitten, das Zweifeln, das Nachhallen und das Forcieren von Nähe kollidieren simultan im selben Atemzug. Jeder Millimeter Abstand wird als Absturz ins Bodenlose erlebt.""",
+Die klangliche und sprachliche Struktur wirft uns mitten in eine akute kognitive und sensorische Reizüberflutung: Die Wörter *(„Please“, „Come“, „(Please come)“, „Closer“)* laufen nicht linear ab, sondern sind polyphon übereinandergeschichtet (*Vocal Layering*). Die Gedanken überholen sich gegenseitig; das Bitten, das Zweifeln, das Nachhallen und das Forcieren von Nähe kollidieren simultan im selben Atemzug. Jeder Millimeter Abstand wird als Absturz ins Bodenlose erlebt. Es gibt keine Vorgeschichte und keine Rationalisierung – nur das blanke Ausgeliefertsein eines Ichs, das ohne den Anderen zu ersticken droht.""",
         "cards": [
             {
                 "quote": "Please (Please) / Die polyphone Schichtung & das Gedränge im Kopf",
@@ -31,59 +31,71 @@ Es geht längst nicht mehr um gesunde Intimität, sondern um die schutzlose Gren
         ]
     },
     "02": {
-        "review": """Was im Intro als zitterndes Bitten begann, verwandelt sich in *Come Closer* in einen unerbittlichen, zentripetalen Sog. Der Track seziert die gefährliche Sehnsucht nach totaler seelischer Verschmelzung (*Enmeshment*): Die physische und emotionale Nähe des Partners wird zum einzigen Schutzwall gegen die eigene Fragmentierung deklariert.
+        "review": """Was im Intro als zitterndes Bitten begann, verwandelt sich in *Come Closer* in einen unerbittlichen, archaischen Sog. Der Track seziert die gefährliche Sehnsucht nach totaler seelischer Verschmelzung (*Enmeshment*): Die physische und emotionale Nähe des Partners wird zum einzigen Schutzwall gegen die eigene Fragmentierung deklariert.
 
-Hier verliert das Ich jeglichen Kontakt zur eigenen Mitte. Es verwechselt die bloße Heranführung des Anderen mit innerem Frieden. Die repetitive Beschwörung lässt keinen Raum für Reflexion, Pause oder gesunde Distanz – es ist der hypnotische Rausch einer Bindung, die alle Grenzen zwischen zwei Individuen radikal einreißt und das Gegenüber als reine Nahrung für die innere Leere beansprucht.""",
+Die Sprache zerfällt hier in stakkatoartige Nomen-Ketten und elementare Ur-Substanzen: *„Body, hard, rhythm, start / Simmer, blood, water, mud“*. Es gibt keine vermittelnde Grammatik mehr, sondern nur noch vegetative Zustände – das Kochen des Blutes, Schlamm, Feuer und verseuchte Erde (*„Fire, boil, tainted soil“*). Der Schmerz wird zur zwingenden Bedingung für Wachstum erklärt (*„Growing pain, heaven, rain“*). Das Ich verliert jeden Kontakt zur eigenen Mitte und verwechselt das zentripetale Einverleiben des Anderen mit innerem Frieden.""",
         "cards": [
             {
-                "quote": "Come closer to me / Das Verlangen nach Verschmelzung",
-                "body": """Die monotone Wiederholung der Aufforderung fungiert wie ein magischer Beschwörungsritus: Man will den Partner so dicht an sich heranziehen, dass kein Gedanke an Trennung, Zweifel oder die reale Welt mehr dazwischenpasst.
+                "quote": "Body, hard, rhythm, start / Simmer, blood, water, mud / Die somatische Reduktion",
+                "body": """Die Sprache kapituliert vor der Wucht des Körpers: Keine Verben, keine reflexive Syntax, sondern reine Nomen-Blöcke.
 
-Jedes kleinste Zögern des Gegenübers wird sofort als existenzielle Bedrohung interpretiert. Das Verlangen kippt hier endgültig in reinen psychischen Zwang um."""
+Das Nervensystem ist auf archaische Ur-Elemente heruntergebrochen: Das Kochen des Blutes (*simmer, blood*), die Schwere des Körpers (*body, hard*) und die Regression in Schlamm und Wasser (*water, mud*). Nähe ist hier kein romantisches Konzept, sondern ein somatischer Urzustand."""
             },
             {
-                "quote": "To me, to me, to me / Die Tilgung der Ich-Grenzen",
-                "body": """Die grammatische Fixierung auf das Akkusativ-Objekt *„to me“* (nicht *„us“*, nicht *„together“*) offenbart die narzisstische Einverleibung: Die gesamte Außenwelt schrumpft auf den Abstand zwischen dem Anderen und dem eigenen unersättlichen Mangel zusammen.
+                "quote": "Fire, boil, tainted soil / Growing pain, heaven, rain / Die toxische Alchemie",
+                "body": """Eine explosive Metaphorik der Zersetzung: Das Fundament ist verseucht (*tainted soil*), das System überhitzt (*fire, boil*).
 
-Der Partner existiert in diesem Moment nicht mehr als autonomer Mensch mit eigenen Gefühlen, sondern wird zum reinen Lückenbüßer für die eigene seelische Leere degradiert."""
+Der Satz *„Growing pain, heaven, rain“* offenbart die fatale Rationalisierung der toxischen Bindung: Schmerz wird mit heiligem Wachstum verwechselt. Man erträgt die Zerstörung, weil man sich einredet, dass aus dem seelischen Fieber die Erlösung (*heaven*) erwachsen muss."""
+            },
+            {
+                "quote": "Come closer to me / To me, to me, to me / Die Tilgung der Ich-Grenzen",
+                "body": """Die monotone Wiederholung der Aufforderung fungiert wie ein magischer Beschwörungsritus. Die grammatikalische Fixierung auf das Akkusativ-Objekt *„to me“* (nicht *„us“*, nicht *„together“*) offenbart die narzisstische Einverleibung.
+
+Der Partner existiert nicht mehr als autonomes Gegenüber, sondern wird zum reinen Lückenbüßer für die eigene seelische Leere degradiert."""
             }
         ]
     },
     "03": {
-        "review": """Ein harter, dramatischer Bruch in der Architektur des Albums: Das hilflose Flehen schlägt in eiskalte, chirurgische Beobachtung um. *A Boy Like You* ist die messerscharfe Demontage des Partners auf der Ebene des reinen Intellekts.
+        "review": """Ein harter, dramatischer Bruch in der Architektur des Albums: Das hilflose Flehen schlägt in eiskalte, chirurgische Beobachtung und intellektuelle Demontage um. *A Boy Like You* ist die messerscharfe Sezierung des Partners aus einer scheinbaren Position kognitiver Überlegenheit.
 
-Aus panischer Angst vor der eigenen Verwundbarkeit zieht sich die Protagonistin in den Kopf zurück und seziert das Gegenüber mit schonungsloser Distanz. Es ist der archetypische Schutzpanzer der Rationalisierung: Indem sie den Partner durch das Diminutiv *„Boy“* (statt *„Man“*) entmachtet und ihn als berechenbaren Archetypus katalogisiert, kann er ihr Herz nicht mehr unvorbereitet verletzen. Die Kälte der Analyse dient als seelische Anästhesie.""",
+Aus panischer Angst vor der eigenen Verwundbarkeit zieht sich die Protagonistin in den Kopf zurück: *„I know you / You don't know me / I've seen your mind / I've seen your dreams“*. Das Ich maßt sich an, den Anderen lückenlos zu durchschauen, verweigert sich selbst jedoch jeder Offenlegung. Die bittere Reduktion auf die Formel *„You know how to please / A girl like me / A boy, a boy“* entlarvt die regressive Mechanik: Hinter der zynischen Fassade liegt die schmerzhafte Erkenntnis, wie berechenbar und manipulativ das Spiel der falschen Bedürfnisbefriedigung funktioniert.""",
         "cards": [
             {
-                "quote": "A Boy Like You / Die Diminutiv-Entmachtung",
-                "body": """Die bewusste Herabstufung des Partners zum *„Boy“* ist ein meisterhafter Abwehrmechanismus (*Counter-Defense*): Ein Junge ist unfertig, emotional unreif und beherrschbar. Indem sie ihn so tituliert, stellt sich das Ich unbewusst in eine überlegene Position.
+                "quote": "I know you / You don't know me / Die asymmetrische Wissenshierarchie",
+                "body": """Die ultimative Schutzpanzerung: *„Ich kenne dich in- und auswendig, aber du hast keinen Zugriff auf mein Innerstes.“*
 
-Die Bedrohlichkeit des Partners wird neutralisiert: Wer als unreifes Klischee entlarvt ist, verliert das Geheimnis und damit die Macht über das Herz."""
+Indem das Ich den Geist und die Träume des Partners katalogisiert (*„I've seen your mind / I've seen your dreams“*), entzieht es ihm das Geheimnis und damit die Macht, unvorbereitet Schmerz zuzufügen. Es ist eine Festung aus Wissen, errichtet aus Angst vor echter Intimität."""
             },
             {
-                "quote": "Die Kälte der Erkenntnis",
-                "body": """Hinter der analytischen Überlegenheit liegt eine tiefe, bittere Ernüchterung: Die schmerzhafte Einsicht, dass der reale Mensch vor einem niemals das Idealbild erfüllen wird, das man in ihn hineinprojiziert hat.
+                "quote": "You know how to please / A girl like me / A boy, a boy / Die zynische Entmachtung",
+                "body": """Die bewusste Herabstufung des Partners zum *„Boy“* (wiederholt im stammelnden *„A boy, a boy“*) dekonstruiert dessen Männlichkeit und Reife.
 
-Die intellektuelle Dekonstruktion schützt vor dem akuten Schmerz, hinterlässt jedoch eine unüberbrückbare, eisige Distanz zwischen beiden Seelen."""
+Der Satz *„You know how to please a girl like me“* ist kein Kompliment, sondern bittere Ironie: Das Gegenüber weiß genau, welche Knöpfe es drücken muss, um die Bedürftigkeit zu bedienen. Das Ich durchschaut den Trick – und verfällt ihm im selben Atemzug."""
             }
         ]
     },
     "04": {
-        "review": """Wenn der Verstand die emotionale Wucht nicht mehr kontrollieren kann, bricht das gesamte Abwehrsystem in sich zusammen. *Ring The Alarm* ist der seelische Notstand: Die vegetative Überreizung bricht unkontrolliert als akute Panik hervor.
+        "review": """Wenn der Verstand die emotionale Wucht nicht mehr kontrollieren kann, bricht das gesamte Abwehrsystem in sich zusammen. *Ring The Alarm* ist der seelische Notstand: Die vegetative Überreizung bricht unkontrolliert als akute Panik im *Fight-or-Flight*-Modus hervor.
 
-Hier gibt es keine kühle Analyse und keine Rationalisierung mehr. Das Nervensystem feuert im vollen *Fight-or-Flight*-Modus. Die Sirenen heulen auf, weil die fundamentale Toxizität der Bindung nicht mehr geleugnet werden kann. Der Song fängt die traumatische Paradoxie ein: Der Verstand weiß, dass das System kollabiert, doch die Angst vor dem Alleinsein blockiert jeden geordneten Rückzug.""",
+Hier kapituliert die menschliche Sprache vollständig vor der vegetativen Not: Das Nervensystem vokalisiert in reiner Glossolalie (*„La la la tey oh, la la la tey oh...“*) – Wörter sind zu viel geworden, der Verstand ist überlastet. Das hilflose Eingeständnis *„Don't know why I do it, I don't know why I do it“* entlarvt den totalen Kontrollverlust über den eigenen Wiederholungszwang. Die Sirenen heulen auf, weil die fundamentale Toxizität der Bindung nicht mehr geleugnet werden kann, das Subjekt aber unfähig ist, die Flucht zu ergreifen.""",
         "cards": [
             {
-                "quote": "Ring the alarm / Die vegetative Reizüberflutung",
-                "body": """Der Alarm ist kein abstraktes Symbol, sondern die klangliche Manifestation eines überreizten Nervensystems. Körper und Psyche befinden sich im absoluten Ausnahmezustand.
+                "quote": "La la la tey oh / Die präverbale Regression & Sprachkollaps",
+                "body": """Wenn der Schockpegel das Sprachzentrum im Gehirn (Broca-Areal) lahmlegt, regrediert die Stimme zu archaischen Lauten (*„La la la tey oh“*).
 
-Fluchtreflex und Klammerreflex kollidieren: Die unausweichliche Erkenntnis, dass die Bindung zerstört ist, trifft mit voller Wucht auf die nackte Urangst vor der Isolation."""
+Es gibt keine Worte mehr für das erlebte Trauma. Die Phonation wird zur reinen motorischen Druckentlastung eines überforderten Nervensystems."""
             },
             {
-                "quote": "Die Paradoxie des Alarmsystems",
-                "body": """Ein Alarm soll vor drohender Gefahr warnen – hier ist der Alarm jedoch das offizielle Eingeständnis des bereits eingetretenen Kollapses.
+                "quote": "Don't know why I do it / Der Zwang jenseits des Willens",
+                "body": """Der Satz *„Don't know why I do it“* markiert die schmerzhafteste psychoanalytische Einsicht: Die Entkopplung von Handlung und bewusster Absicht.
 
-Es ist der absolute Nullpunkt der Kontrolle: Das Ich muss kapitulieren und anerkennen, dass die Beziehung mit Worten, Vorwürfen und Gedanken nicht mehr vor dem Untergang gerettet werden kann."""
+Das Ich beobachtet sich fassungslos selbst dabei, wie es immer wieder in dieselben zerstörerischen Verhaltensmuster zurückfällt. Der Wiederholungszwang agiert als eigenständige Macht gegen jede Vernunft."""
+            },
+            {
+                "quote": "Ring the alarm / Die vegetative Reizüberflutung",
+                "body": """Der Alarm ist kein abstraktes Symbol, sondern die klangliche Manifestation eines überhitzten Nervensystems im akuten Schockzustand.
+
+Fluchtreflex und Klammerreflex kollidieren: Die unausweichliche Erkenntnis, dass die Bindung zerstört ist, trifft mit voller Wucht auf die nackte Urangst vor der Isolation."""
             }
         ]
     }
@@ -99,76 +111,88 @@ The sonic and linguistic architecture thrusts the listener into acute sensory ov
                 "quote": "Please (Please) / Polyphonic layering & cognitive crowding",
                 "body": """The words are stacked acoustically and typographically: the audible *“Please”* and the parenthetical whisper `(Please)` collide in real time. It is the psychological snapshot of a panic state, where the sub-voice of self-doubt anticipates abandonment even as the conscious mind begs for rescue.
 
-This vocal crowding yields no dialogue, but a claustrophobic thicket of voices: impulses suffocating one another in mid-air."""
+Layering vocal tracks denies linear thought: multiple survival impulses crowd the psyche at once, stealing the speaker's breath."""
             },
             {
-                "quote": "Come (Please come) / The hesitant distress signal",
-                "body": """With *“Come”*, the speaker attempts to issue a demand—yet terror of rejection immediately cushions the command with a submissive *“(Please come)”*.
+                "quote": "Come (Please come) / The faltering distress call",
+                "body": """With *“Come”*, the speaker attempts to issue a command—only for terror of rejection to immediately inject the submissive parenthetical *“(Please come)”*.
 
-The urge for contact pulls forward, yet internal paralysis pins the protagonist in place. The entire burden of bridging the distance is dumped unconditionally onto the partner."""
+Desire for connection pulls forward while somatic freeze anchors the body in place, offloading the entire burden of bridging the void onto the partner."""
             },
             {
-                "quote": "Closer, closer, closer / Eradicating the space between",
-                "body": """The rapid acceleration of *“closer”* mirrors somatic hyperventilation: the body frantically attempts to outrun acute panic by eradicating every trace of physical separation.
+                "quote": "Closer, closer, closer / Eradicating the buffer zone",
+                "body": """The accelerating cadence of *“closer”* mirrors somatic hyperventilation: the organism attempts to master rising panic by entirely eliminating physical distance.
 
-This is no longer about healthy intimacy, but about the frantic grip of a drowning person dragging their rescuer into the abyss."""
+This is no longer healthy intimacy, but the boundary-erasing panic of a drowning swimmer pulling their rescuer beneath the surface."""
             }
         ]
     },
     "02": {
-        "review": """What began in the intro as a trembling plea accelerates in *Come Closer* into an unyielding, centripetal undertow. The track dissects the perilous hunger for absolute emotional fusion (*Enmeshment*): the partner's physical proximity is declared the sole fortress against internal fragmentation.
+        "review": """What began as a trembling plea in the opening transforms into an archaic, centripetal vortex in *Come Closer*. The track dissects the dangerous hunger for absolute enmeshment: physical and emotional proximity to the partner is declared the sole barrier against internal fragmentation.
 
-Here, the self loses all touch with its own center. It mistakes the physical dragging of the other into its orbit for genuine peace. Constant incantatory repetition leaves no room for reflection, hesitation, or healthy boundaries—it captures the hypnotic intoxication of a bond that razes all ego perimeters, claiming the counterpart as mere sustenance for an internal void.""",
+Language disintegrates into staccato noun-chains and raw elemental matter: *“Body, hard, rhythm, start / Simmer, blood, water, mud”*. Syntax gives way to autonomic states—simmering blood, mud, fire, and contaminated ground (*“Fire, boil, tainted soil”*). Pain is elevated to an essential prerequisite for growth (*“Growing pain, heaven, rain”*). The self loses touch with its own core, mistaking the centripetal swallowing of the other for authentic inner peace.""",
         "cards": [
             {
-                "quote": "Come closer to me / The craving for fusion",
-                "body": """The monotone repetition of the command functions like a ritual incantation: pulling the partner so close that no thought of separation, doubt, or external reality can squeeze between.
+                "quote": "Body, hard, rhythm, start / Simmer, blood, water, mud / Somatic reduction",
+                "body": """Language surrenders to somatic density: no connecting verbs, no reflective syntax, only heavy blocks of nouns.
 
-Any subtle hesitation from the other is decoded as existential abandonment. Yearning permanently flips into psychological compulsion."""
+The nervous system regresses to primal elements: blood coming to a boil (*simmer, blood*), physical rigidity (*body, hard*), and sinking into mire (*water, mud*). Proximity is experienced as an autonomic state of matter."""
             },
             {
-                "quote": "To me, to me, to me / Erasing ego boundaries",
-                "body": """The grammatical fixation on the accusative *“to me”* (not *“us”*, not *“together”*) exposes narcissistic incorporation: the entire world shrinks to the distance between the other and one's own insatiable emptiness.
+                "quote": "Fire, boil, tainted soil / Growing pain, heaven, rain / Toxic alchemy",
+                "body": """Explosive metaphors of decomposition: corrupted foundations (*tainted soil*) and systemic overheating (*fire, boil*).
 
-The partner ceases to exist as an autonomous person with boundaries, reduced to a functional plug for the protagonist's emotional void."""
+*“Growing pain, heaven, rain”* exposes the classic rationalization of trauma bonding: mistaking structural harm for spiritual evolution, enduring destruction in the fantasy that agony will birth redemption (*heaven*)."""
+            },
+            {
+                "quote": "Come closer to me / To me, to me, to me / Eradication of ego boundaries",
+                "body": """Monotone repetition acts as an incantatory ritual. Syntactic obsession with the accusative object *“to me”* (not *“us”*, not *“together”*) reveals narcissistic incorporation.
+
+The partner is stripped of autonomy, reduced to raw emotional fuel to plug the speaker's internal void."""
             }
         ]
     },
     "03": {
-        "review": """A sharp, theatrical rupture in the album's architecture: helpless pleading flips into surgical, ice-cold observation. *A Boy Like You* is the forensic dismantling of the partner on the level of pure intellect.
+        "review": """A sharp, dramatic rupture in the album's architecture: helpless pleading flips into surgical detachment and intellectual dismantling. *A Boy Like You* executes the razor-sharp deconstruction of the partner from an alleged position of cognitive superiority.
 
-Terrified of her own raw vulnerability, the protagonist retreats entirely into the cognitive sphere and dissects the counterpart with detached precision. It is the textbook armor of rationalization: by diminishing the partner into a *“Boy”* (rather than a *“Man”*) and cataloging him as a predictable archetype, he can never catch her heart unguarded again. Analytical detachment serves as emotional anesthesia.""",
+Terrified of her own vulnerability, the protagonist retreats entirely into the intellect: *“I know you / You don't know me / I've seen your mind / I've seen your dreams”*. The self claims total omniscience over the other while fiercely withholding its own interior. The reduction to the formula *“You know how to please / A girl like me / A boy, a boy”* exposes the regressive mechanism: beneath cynical bravado lies bitter recognition of how predictable the game of false gratification truly is.""",
         "cards": [
             {
-                "quote": "A Boy Like You / Diminutive disempowerment",
-                "body": """The deliberate demotion of the partner to a *“Boy”* is a masterclass in psychological defense (*Counter-Defense*): a boy is immature, impulsive, and manageable. By labeling him as such, the self unconsciously claims moral and psychological high ground.
+                "quote": "I know you / You don't know me / Asymmetric knowledge hierarchy",
+                "body": """The armor of intellectual omniscience: *“I know you completely, yet you have zero access to my core.”*
 
-The threat of the partner is neutralized: once stripped down to a predictable trope, he loses his mystery and his power over her heart."""
+By cataloging the partner's mind and dreams (*“I've seen your mind / I've seen your dreams”*), the self strips away their mystery and power to hurt. It is a fortress built of intellect out of terror of genuine intimacy."""
             },
             {
-                "quote": "The chill of disillusionment",
-                "body": """Beneath the analytical arrogance lies bitter disillusionment: the agonizing realization that the flesh-and-blood human in front of her will never fulfill the projection she cast upon him.
+                "quote": "You know how to please / A girl like me / A boy, a boy / Cynical dismantling",
+                "body": """Deliberate diminution to *“Boy”* (echoed in the stuttering *“A boy, a boy”*) infantilizes the partner and strips away their mystique.
 
-Intellectual deconstruction shields against acute pain, yet leaves an unbridgeable, glacial distance between both souls."""
+*“You know how to please a girl like me”* is no compliment, but searing irony: recognizing that the partner knows precisely which levers to pull to exploit her craving for validation."""
             }
         ]
     },
     "04": {
-        "review": """When cognitive control can no longer contain the emotional tsunami, the entire defense perimeter collapses. *Ring The Alarm* is a state of psychological emergency: autonomic nervous system overload erupts into full-blown panic.
+        "review": """When the intellect can no longer contain emotional velocity, the defensive apparatus collapses entirely. *Ring The Alarm* represents systemic emergency: autonomic overload erupting as uncontained fight-or-flight panic.
 
-Here, all intellectualizing and cool rationalization burn away. The system fires in full *Fight-or-Flight* overdrive. The alarm blares because the fundamental toxicity of the bond can no longer be denied. The track captures traumatic dissonance: reason recognizes the imminent crash, yet terror of isolation paralyzes any orderly retreat.""",
+Human language surrenders to vegetative distress: the nervous system vocalizes in pure glossolalia (*“La la la tey oh, la la la tey oh...”*)—words are too heavy, cognitive processing has shut down. The helpless admission *“Don't know why I do it, I don't know why I do it”* exposes total loss of agency over the repetition compulsion. Sirens blare because systemic toxicity can no longer be denied, yet the self remains paralyzed and unable to flee.""",
         "cards": [
             {
-                "quote": "Ring the alarm / Autonomic nervous overload",
-                "body": """The alarm is no abstract metaphor, but the sonic embodiment of an overwhelmed nervous system. Body and psyche enter red-alert crisis.
+                "quote": "La la la tey oh / Pre-verbal regression & language collapse",
+                "body": """When traumatic shock paralyzes the brain's linguistic centers (Broca's area), the voice regresses to primal syllables (*“La la la tey oh”*).
 
-Fight-or-flight and anxious attachment clash simultaneously: the undeniable truth of a broken bond collides head-on with primal fear of abandonment."""
+Words fail. Phonation becomes the raw kinetic venting of an overloaded nervous system."""
             },
             {
-                "quote": "The paradox of the alarm",
-                "body": """An alarm is meant to warn of incoming danger—yet here, the blare is the formal admission that structural destruction has already occurred.
+                "quote": "Don't know why I do it / Compulsion beyond volition",
+                "body": """The phrase *“Don't know why I do it”* articulates the most agonizing psychoanalytic truth: the severance of action from conscious intent.
 
-It marks ground zero for control: the self must surrender and acknowledge that the relationship can no longer be held together by words, accusations, or sheer willpower."""
+The self observes its own self-destructive cycles in horror, driven by a repetition compulsion operating completely outside conscious control."""
+            },
+            {
+                "quote": "Ring the alarm / Autonomic sensory overload",
+                "body": """The alarm is no decorative metaphor, but the sonic manifestation of a nervous system undergoing acute shock.
+
+Flight and cling reflexes collide: stark awareness of relational destruction crashing violently against the primal terror of isolation."""
             }
         ]
     }
