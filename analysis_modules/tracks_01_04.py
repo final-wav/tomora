@@ -56,21 +56,29 @@ Der Partner existiert nicht mehr als autonomes Gegenüber, sondern wird zum rein
         ]
     },
     "03": {
-        "review": """Ein harter, dramatischer Bruch in der Architektur des Albums: Das hilflose Flehen schlägt in eiskalte, chirurgische Beobachtung und intellektuelle Demontage um. *A Boy Like You* ist die messerscharfe Sezierung des Partners aus einer scheinbaren Position kognitiver Überlegenheit.
+        "review": """Ein harter, dramatischer Bruch in der Architektur des Albums: Das hilflose Flehen schlägt in chirurgische Beobachtung und intellektuelle Demontage um. *A Boy Like You* ist die messerscharfe Sezierung des Partners aus einer scheinbaren Position kognitiver Überlegenheit.
 
-Aus panischer Angst vor der eigenen Verwundbarkeit zieht sich die Protagonistin in den Kopf zurück: *„I know you / You don't know me / I've seen your mind / I've seen your dreams“*. Das Ich maßt sich an, den Anderen lückenlos zu durchschauen, verweigert sich selbst jedoch jeder Offenlegung. Die bittere Reduktion auf die Formel *„You know how to please / A girl like me / A girl like me / A boy, a boy“* entlarvt die regressive Mechanik: Hinter der zynischen Fassade liegt die schmerzhafte Erkenntnis, wie berechenbar und manipulativ das Spiel der falschen Bedürfnisbefriedigung funktioniert.""",
+Aus panischer Angst vor der eigenen Verwundbarkeit zieht sich die Protagonistin in den Kopf zurück: *„I know you / You don't know me / I've seen your mind / I've seen your dreams“*. Das Ich maßt sich an, den Anderen lückenlos zu durchschauen, verweigert sich selbst jedoch jeder Offenlegung. Doch die eigentliche Tragödie des Songs liegt in der **Lücke des Durchschauens**: Der Satz *„You know how to please a girl like me“* entlarvt, dass das Ich keineswegs kalt oder unverwundbar ist. Trotz aller intellektuellen Demontage will sich das Ich einlassen – es verlangt nach der Hingabe und der Berührung des Anderen, obwohl der Verstand das Gegenüber als unreifen *„Boy“* entwertet hat. Das Wissen um die Falle schützt nicht vor dem Verlangen nach ihrer Lust.""",
         "cards": [
             {
                 "quote": "I know you / You don't know me / I've seen your mind / I've seen your dreams / Asymmetrische Wissenshierarchie",
-                "body": """Die ultimative Schutzpanzerung: *„Ich kenne dich in- und auswendig, aber du hast keinen Zugriff auf mein Innerstes.“*
+                "body": """Die Festung aus Intellekt: *„Ich kenne dich in- und auswendig, aber du hast keinen Zugriff auf mein Innerstes.“*
 
-Indem das Ich den Geist und die Träume des Partners katalogisiert (*„I've seen your mind / I've seen your dreams“*), entzieht es ihm das Geheimnis und damit die Macht, unvorbereitet Schmerz zuzufügen. Es ist eine Festung aus Wissen, errichtet aus Angst vor echter Intimität."""
+Indem das Ich den Geist und die Träume des Partners katalogisiert (*„I've seen your mind / I've seen your dreams“*), entzieht es ihm das Geheimnis und damit die Macht, unvorbereitet Schmerz zuzufügen. Es ist eine Schutzpanzerung, errichtet aus nackter Angst vor echter Intimität."""
             },
             {
-                "quote": "You know how to please / A girl like me / A boy, a boy / Die zynische Entmachtung & Bedürfnis-Falle",
-                "body": """Die bewusste Herabstufung des Partners zum *„Boy“* (wiederholt im stammelnden *„A boy, a boy“*) dekonstruiert dessen Männlichkeit und Reife.
+                "quote": "You know how to please / Die Lücke des Durchschauens & die Sehnsucht nach Hingabe",
+                "body": """Hier bricht die intellektuelle Abwehr spektakulär ein: Das Ich ist eben *nicht* gefühlskalt oder unantastbar.
 
-Der Satz *„You know how to please a girl like me“* ist kein Kompliment, sondern bittere Ironie: Das Gegenüber weiß genau, welche Knöpfe es drücken muss, um die kindliche Bedürftigkeit zu bedienen. Das Ich durchschaut den Trick – und verfällt der Manipulation im selben Atemzug."""
+Trotz der vollkommenen Demontage des Partners gesteht das Ich die eigene Verwundbarkeit ein: *„Du weißt genau, wie du mir Lust gibst, wie du mich erreichst und schwach machst.“*
+
+Das Subjekt **will sich einlassen** – es sehnt sich nach der Überwältigung und dem Gefallenwerden, obwohl der Verstand um die Banalität des Spiels weiß. Das ist der tragische Kern: Man durchschaut die Illusion vollkommen und erliegt ihr dennoch freiwillig."""
+            },
+            {
+                "quote": "A girl like me / A boy, a boy / Die regressive Spiegelung",
+                "body": """Das repetitive Stammeln (*„a girl like me / a boy, a boy“*) reduziert beide Partner auf infantile Archetypen.
+
+Das Ich entmachtet den Partner zum unreifen *„Boy“*, stellt sich jedoch durch das *„girl“* auf dieselbe regressive Entwicklungsstufe: Zwei verletzte Kinder, die im Sandkasten der Projektionen gefangen sind."""
             }
         ]
     },
@@ -155,7 +163,7 @@ The partner is stripped of autonomy, reduced to raw emotional fuel to plug the s
     "03": {
         "review": """A sharp, dramatic rupture in the album's architecture: helpless pleading flips into surgical detachment and intellectual dismantling. *A Boy Like You* executes the razor-sharp deconstruction of the partner from an alleged position of cognitive superiority.
 
-Terrified of her own vulnerability, the protagonist retreats entirely into the intellect: *“I know you / You don't know me / I've seen your mind / I've seen your dreams”*. The self claims total omniscience over the other while fiercely withholding its own interior. The reduction to the formula *“You know how to please / A girl like me / A boy, a boy”* exposes the regressive mechanism: beneath cynical bravado lies bitter recognition of how predictable the game of false gratification truly is.""",
+Terrified of her own vulnerability, the protagonist retreats entirely into the intellect: *“I know you / You don't know me / I've seen your mind / I've seen your dreams”*. The self claims total omniscience over the other while fiercely withholding its own interior. Yet the true tragedy of the song lies in the **gap of total disillusionment**: *“You know how to please a girl like me”* proves that the self is neither invulnerable nor cold. Despite seeing through the partner completely, the protagonist **longs to surrender**—craving the partner's touch and pleasure even while conscious reason reduces him to an immature *“Boy”*. Knowing the trap does not diminish the hunger to fall into it.""",
         "cards": [
             {
                 "quote": "I know you / You don't know me / I've seen your mind / I've seen your dreams / Asymmetric knowledge hierarchy",
@@ -164,10 +172,18 @@ Terrified of her own vulnerability, the protagonist retreats entirely into the i
 By cataloging the partner's mind and dreams (*“I've seen your mind / I've seen your dreams”*), the self strips away their mystery and power to hurt. It is a fortress built of intellect out of terror of genuine intimacy."""
             },
             {
-                "quote": "You know how to please / A girl like me / A boy, a boy / Cynical dismantling & gratification trap",
-                "body": """Deliberate diminution to *“Boy”* (echoed in the stuttering *“A boy, a boy”*) infantilizes the partner and strips away their mystique.
+                "quote": "You know how to please / The gap in defense & the urge to surrender",
+                "body": """Here, the intellectual defense ruptures completely: the self is *not* cold or invulnerable.
 
-*“You know how to please a girl like me”* is no compliment, but searing irony: recognizing that the partner knows precisely which levers to pull to exploit her craving for validation."""
+Despite totally dismantling the partner, the self confesses its deepest open flank: *“You know precisely how to give me pleasure, how to reach me, and how to make me yield.”*
+
+The protagonist **wants to surrender**—hungering for touch and gratification even while conscious intellect recognizes the game. The tragic paradox: seeing through the illusion completely, yet willingly succumbing to its pleasure."""
+            },
+            {
+                "quote": "A girl like me / A boy, a boy / Regressive mirroring",
+                "body": """Rhythmic stuttering (*“a girl like me / a boy, a boy”*) reduces both individuals to infantile archetypes.
+
+Diminishing the partner to a *“Boy”* while identifying as a *“girl”* places both on the same regressive developmental plane: two wounded children trapped in the sandbox of mutual projection."""
             }
         ]
     },
