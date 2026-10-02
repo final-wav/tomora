@@ -59,15 +59,15 @@ Durch das rhythmische Hämmern soll jeglicher kognitive Widerstand des Gegenübe
     "03": {
         "review": """Ein harter, dramatischer Bruch in der Architektur des Albums: Das hilflose Flehen schlägt in chirurgische Beobachtung und intellektuelle Demontage um. *A Boy Like You* ist die messerscharfe Sezierung des Partners aus einer scheinbaren Position kognitiver Überlegenheit.
 
-Die Sprache zerfällt hier in stakkatoartige Nomen-Ketten und elementare Ur-Substanzen: *„Body, hard, rhythm, start / Simmer, blood, water, mud“*. Es gibt keine vermittelnde Grammatik mehr, sondern nur noch vegetative Zustände – das Kochen des Blutes, Schlamm, Feuer und verseuchte Erde (*„Fire, boil, tainted soil“*). Der Schmerz wird zur zwingenden Bedingung für Wachstum erklärt (*„Growing pain, heaven, rain“*). Aus panischer Angst vor der eigenen Verwundbarkeit zieht sich die Protagonistin in den Kopf zurück: *„I know you / You don't know me / I've seen your mind / I've seen your dreams“*.
+Die Sprache zerfällt hier in stakkatoartige Nomen-Ketten und einen unerbittlichen Countdown: *„Body, heart, rhythm, start / Simmer, blood, water, mud“*. Der Körper (*Body*) und das schlagende, verwundbare Herz (*Heart*) werden direkt an den Rhythmus des Nervensystems gekoppelt, während das Blut zu kochen beginnt (*„Simmer, blood“*). Das Fundament ist verseucht, doch der Schmerz wird fatal als notwendiges Wachstum verklärt (*„Fire, boil, tainted soil / Growing pain, heaven, rain“*). Aus panischer Angst vor der eigenen Verwundbarkeit zieht sich die Protagonistin in den Kopf zurück: *„I know you / You don't know me / I've seen your mind / I've seen your dreams“*.
 
-Doch die eigentliche Tragödie des Songs liegt in der **Lücke des Durchschauens**: Der Satz *„You know how to please a girl like me“* entlarvt, dass das Ich keineswegs kalt oder unverwundbar ist. Trotz aller intellektuellen Demontage **will sich das Ich einlassen** – es verlangt nach der Hingabe, der Berührung und der Lust, obwohl der Verstand das Gegenüber als unreifen *„Boy“* entwertet hat. Das Wissen um die Falle schützt nicht vor dem Verlangen nach ihrer Erfüllung.""",
+Doch die eigentliche Tragödie des Songs liegt in der **Lücke des Durchschauens**: Der Satz *„You know how to please a girl like me“* entlarvt, dass das Ich keineswegs kalt oder unantastbar ist. Das Herz (*Heart*), das schon in der ersten Zeile zündete, **will sich einlassen** – es verlangt nach der Hingabe, der Berührung und der Lust, obwohl der Verstand das Gegenüber als unreifen *„Boy“* entwertet hat. Das Wissen um die Falle schützt nicht vor dem Verlangen nach ihrer Erfüllung.""",
         "cards": [
             {
-                "quote": "Body, hard, rhythm, start / Simmer, blood, water, mud / Die somatische Reduktion",
-                "body": """Die Sprache kapituliert vor der Wucht des Körpers: Keine Verben, keine reflexive Syntax, sondern reine Nomen-Blöcke.
+                "quote": "Body, heart, rhythm, start / Simmer, blood, water, mud / Die viszerale Zündung & das verwundbare Herz",
+                "body": """Die Sprache kapituliert vor der Wucht des Körpers und des Affekts: Keine Verben, sondern ein existenzieller Countdown.
 
-Das Nervensystem ist auf archaische Ur-Elemente heruntergebrochen: Das Kochen des Blutes (*simmer, blood*), die Schwere des Körpers (*body, hard*) und die Regression in Schlamm und Wasser (*water, mud*). Nähe ist hier ein somatischer Urzustand."""
+Der physische Körper (*Body*), das verwundbare Gefühlszentrum (*Heart*), der beschleunigende Takt (*Rhythm*) und die Zündung (*Start*). Das Herz lässt sich nicht wegrationalisieren: Während das Blut kocht (*simmer, blood*) und die Sinne in Schlamm und Wasser versinken (*water, mud*), beweist dieser Zündfunke, dass das Ich von der ersten Sekunde an emotional involviert ist."""
             },
             {
                 "quote": "I know what to do / With a boy like you / Die scheinbare Überlegenheit",
@@ -184,15 +184,15 @@ Rhythmic pounding aims to dissolve all cognitive resistance in the other, enforc
     "03": {
         "review": """A sharp, dramatic rupture in the album's architecture: helpless pleading flips into surgical detachment and intellectual dismantling. *A Boy Like You* executes the razor-sharp deconstruction of the partner from an alleged position of cognitive superiority.
 
-Language disintegrates into staccato noun-chains and raw elemental matter: *“Body, hard, rhythm, start / Simmer, blood, water, mud”*. Syntax gives way to autonomic states—simmering blood, mud, fire, and contaminated ground (*“Fire, boil, tainted soil”*). Pain is elevated to an essential prerequisite for growth (*“Growing pain, heaven, rain”*). Terrified of her own vulnerability, the protagonist retreats entirely into the intellect: *“I know you / You don't know me / I've seen your mind / I've seen your dreams”*.
+Language disintegrates into staccato noun-chains and an inexorable countdown: *“Body, heart, rhythm, start / Simmer, blood, water, mud”*. The physical vessel (*Body*) and the vulnerable pulsing heart (*Heart*) lock directly into the nervous system's biological tempo (*Rhythm*) as blood surges toward a boil (*“Simmer, blood”*). The foundation is poisoned, yet destruction is rationalized as necessary evolution (*“Fire, boil, tainted soil / Growing pain, heaven, rain”*). Terrified of her own vulnerability, the protagonist retreats entirely into the intellect: *“I know you / You don't know me / I've seen your mind / I've seen your dreams”*.
 
-Yet the true tragedy of the song lies in the **gap of total disillusionment**: *“You know how to please a girl like me”* proves that the self is neither invulnerable nor cold. Despite seeing through the partner completely, the protagonist **longs to surrender**—craving the partner's touch and pleasure even while conscious reason reduces him to an immature *“Boy”*. Knowing the trap does not diminish the hunger to fall into it.""",
+Yet the true tragedy of the song lies in the **gap of total disillusionment**: *“You know how to please a girl like me”* proves that the self is neither invulnerable nor cold. The heart (*Heart*), ignited in the very first line, **longs to surrender**—craving the partner's touch and pleasure even while conscious reason reduces him to an immature *“Boy”*. Knowing the trap does not diminish the hunger to fall into it.""",
         "cards": [
             {
-                "quote": "Body, hard, rhythm, start / Simmer, blood, water, mud / Somatic reduction",
-                "body": """Language surrenders to somatic density: no connecting verbs, no reflective syntax, only heavy blocks of nouns.
+                "quote": "Body, heart, rhythm, start / Simmer, blood, water, mud / Visceral ignition & the vulnerable heart",
+                "body": """Language surrenders to somatic density and visceral affect: no connecting verbs, but an existential countdown.
 
-The nervous system regresses to primal elements: blood coming to a boil (*simmer, blood*), physical rigidity (*body, hard*), and sinking into mire (*water, mud*). Proximity is experienced as an autonomic state of matter."""
+The physical body (*Body*), the vulnerable affective core (*Heart*), surging tempo (*Rhythm*), and ignition (*Start*). The heart cannot be rationalized away: while blood comes to a boil (*simmer, blood*) and instincts sink into primal mire (*water, mud*), this opening proves the self is deeply emotionally engaged from the very first beat."""
             },
             {
                 "quote": "I know what to do / With a boy like you / Illusory cognitive mastery",

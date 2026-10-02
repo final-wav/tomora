@@ -11,7 +11,7 @@
 [Instrumental Intro]
 
 [Verse 1]
-Body, hard, rhythm, start
+Body, heart, rhythm, start
 Simmer, blood, water, mud
 
 [Refrain]
@@ -55,9 +55,9 @@ A boy, a boy
 
 ### 2. Zeile-für-Zeile-Dekonstruktion & Psychodynamische Kausalität
 
-#### `[Verse 1] Body, hard, rhythm, start / Simmer, blood, water, mud`
-* **Psychodynamische Kausalität:** Nach der reinen regressiven Verschmelzungssehnsucht der ersten beiden Tracks vollzieht das Subjekt hier eine radikale Wende zur analytischen Kategorisierung. Die Sprache zerfällt in nominale und adjektivische Grundbausteine: *„Body, hard, rhythm, start“*. Das Gegenüber und die eigene Körperlichkeit werden nicht mehr als beseelte Wesenheiten wahrgenommen, sondern wie rohe, alchemistische Materie auditiert. Die Begrifflichkeiten (*„Simmer, blood, water, mud“*) verweisen auf basale, biologisch-viszerale Prozesse. Es ist der Versuch, das unberechenbare psychische Erleben auf kalkulierbare physische Zustände (Temperatur, Viskosität, Aggregatzustand) zu reduzieren, um die drohende emotionale Überwältigung durch kognitive Dekomposition abzuwehren.
-* **Körpersprache & Somatik:** Die Somatik des Hochdruckkessels: *„Simmer“* und *„blood“* beschreiben eine ansteigende Vasokonstriktion und erhöhten arteriellen Blutdruck. *„Water, mud“* verweisen auf Schwere, Viskosität und das Versinken im Unstrukturierten. Die Muskulatur verharrt in isometrischer Kontraktion; der Körper bereitet sich auf eine Konfrontation vor, die gleichzeitig libidinös und bedrohlich aufgeladen ist.
+#### `[Verse 1] Body, heart, rhythm, start / Simmer, blood, water, mud`
+* **Psychodynamische Kausalität:** Nach der reinen regressiven Verschmelzungssehnsucht der ersten beiden Tracks setzt hier ein existenzieller Countdown ein. Die Sprache zerfällt in nominale Grundbausteine: *„Body, heart, rhythm, start“*. Der Körper (*Body*) und das verwundbare Gefühlsorgan (*Heart*) werden direkt an den biologischen Takt (*Rhythm*) gekoppelt, der unausweichlich zündet (*Start*). Die anschließenden Begrifflichkeiten (*„Simmer, blood, water, mud“*) verweisen auf kochende Viskosität und archaische Erregung. Das Herz ist von der ersten Sekunde an im Spiel – trotz aller intellektuellen Schutzpanzerung.
+* **Körpersprache & Somatik:** Das Nervensystem auf Hochtouren: Die Kombination aus *„Heart“*, *„Rhythm“*, *„Simmer“* und *„Blood“* markiert eine massive kardiovaskuläre Beschleunigung, Vasokonstriktion und steigenden Blutdruck. *„Water, mud“* verweisen auf schwere Viskosität und das Versinken im Elementaren. Der Körper bereitet sich auf eine Konfrontation vor, die gleichzeitig libidinös aufgeladen und bedrohlich ist.
 * **Macht- und Kontrollmechanismen:** Das Subjekt entzieht dem Anderen seine Individualität und reduziert ihn auf einen biologischen Archetyp (*„Body“*, *„blood“*). Indem der Andere als bloße Materie definiert wird, verliert er die Fähigkeit, das Subjekt emotional zu verletzen. Wer nur noch „Blut und Schlamm“ ist, besitzt keinen seelischen Hebel mehr.
 * **Klang- und Raumwirkung:** Trockene, kantige Rhythmik. Die Worte werden isoliert artikuliert, fast wie Transienten auf einer Snare-Drum, ohne melodischen Bogen. Akustisch entsteht ein trockener, analytischer Laborraum.
 
