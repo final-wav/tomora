@@ -3,13 +3,15 @@
 TOMORA Album Review & Literary Interpretation
 Horizontal Carousel Reader (Track-by-Track, Modern < / > Navigation)
 Preserves 100% of Typography, Palette, Pink Highlights, Grain & Audio/YouTube Engine.
+Supports Bilingual DE / EN Toggle without reloading, preserving active slide & playback.
 """
 
 import os
 import re
 import json
 
-p1_dir = 'album_analyse_fallstudie/Phase_1_Mikro_Dekonstruktion'
+p1_de_dir = 'album_analyse_fallstudie/Phase_1_Mikro_Dekonstruktion'
+p1_en_dir = 'album_analyse_fallstudie/Phase_1_Mikro_Dekonstruktion_EN'
 
 track_names_map = {
     "01": "Please",
@@ -46,20 +48,19 @@ def clean_txt(t):
 
 def render_md(text):
     text = text.strip()
-    # Replace German and straight quotes first, before any HTML span tags are inserted
     text = re.sub(r'„([^“\n]+?)“', r'QQSTART\1QQEND', text)
     text = re.sub(r'"([^"\n]+?)"', r'QQSTART\1QQEND', text)
     text = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', text)
     text = re.sub(r'(?<!\*)\*([^*]+?)\*(?!\*)', r'<span class="lyric-quote-highlight">\1</span>', text)
     text = re.sub(r'`([^`]+?)`', r'<code style="color:var(--magenta);font-family:monospace;">\1</code>', text)
-    text = text.replace('QQSTART', '<span class="lyric-quote-highlight">„').replace('QQEND', '“</span>')
+    text = text.replace('QQSTART', '<span class="lyric-quote-highlight">“').replace('QQEND', '”</span>')
     return text
 
-def parse_phase1(num_str):
+def parse_phase1(dir_path, num_str):
     filepath = None
-    for f in os.listdir(p1_dir):
+    for f in os.listdir(dir_path):
         if f.startswith(num_str) and f.endswith('.md'):
-            filepath = os.path.join(p1_dir, f)
+            filepath = os.path.join(dir_path, f)
             break
     if not filepath:
         return "", [], "", [], ""
@@ -100,7 +101,7 @@ def parse_phase1(num_str):
         stanzas.append(current_stanza)
 
     # Dramaturgie / Context
-    dram_m = re.search(r'### I\.\s*Album-Dramaturgie:[^\n]*\n(.*?)(?=### II\.)', raw, re.DOTALL)
+    dram_m = re.search(r'### I\.\s*(?:Album-Dramaturgie|Album Dramaturgy):[^\n]*\n(.*?)(?=### II\.)', raw, re.DOTALL)
     if not dram_m:
         dram_m = re.search(r'### 2\.\s*Textanalyse im Albumkontext\n(.*?)(?=####)', raw, re.DOTALL)
     if not dram_m:
@@ -114,7 +115,7 @@ def parse_phase1(num_str):
         points.append({'title': title.strip(), 'body': body.strip()})
 
     # Synthesis / Finale
-    syn_m = re.search(r'### IV\.\s*Synthese:[^\n]*\n(.*?)(?=\Z)', raw, re.DOTALL)
+    syn_m = re.search(r'### IV\.\s*(?:Synthese|Synthesis):[^\n]*\n(.*?)(?=\Z)', raw, re.DOTALL)
     if not syn_m:
         syn_m = re.search(r'### Die eigentliche Funktion[^\n]*\n(.*?)(?=\Z)', raw, re.DOTALL)
     if not syn_m:
@@ -125,20 +126,7 @@ def parse_phase1(num_str):
 
     return subtitle, stanzas, dramaturgie, points, synthesis
 
-def render_track_slide(num_str, title, subtitle, stanzas, dramaturgie, points, synthesis, is_active):
-    active_cls = " active" if is_active else ""
-    
-    # Render lyrics block
-    stanzas_html = []
-    for s in stanzas:
-        lines_html = []
-        for l in s["lines"]:
-            lines_html.append(f'<div class="lyric-line-hero"><span class="lyric-hero-text">{render_md(l)}</span></div>')
-        lines_str = "\n".join(lines_html)
-        title_str = f'<div class="stanza-hero-tag">{s["title"]}</div>' if s["title"] else ''
-        stanzas_html.append(f'<div class="stanza-hero-wrap">{title_str}\n{lines_str}</div>')
-    lyrics_block = "\n".join(stanzas_html)
-
+def render_content_blocks(dramaturgie, points, synthesis, lang_code):
     # Render Dramaturgie
     dram_p = [p.strip() for p in dramaturgie.split('\n\n') if p.strip()]
     dram_rendered = "\n".join([f'<p>{render_md(p)}</p>' for p in dram_p])
@@ -167,6 +155,61 @@ def render_track_slide(num_str, title, subtitle, stanzas, dramaturgie, points, s
     syn_p = [p.strip() for p in synthesis.split('\n\n') if p.strip()]
     syn_rendered = "\n".join([f'<p>{render_md(p)}</p>' for p in syn_p])
 
+    tag_dram = "I. Album-Dramaturgie & Kontext" if lang_code == "de" else "I. Album Dramaturgy & Context"
+    tag_pts = f"Erschöpfende Lektüre ({len(points)} Analyse-Punkte)" if lang_code == "de" else f"Exhaustive Reading ({len(points)} Analysis Points)"
+    tag_syn = "Synthese & Dramaturgische Sollbruchstelle" if lang_code == "de" else "Synthesis & Dramaturgical Fault Line"
+    tag_kicker = "Monolithische Tiefenanalyse" if lang_code == "de" else "Monolithic Deep Analysis"
+
+    return f'''
+    <div class="lang-content lang-{lang_code}" data-lang="{lang_code}">
+      <div class="analysis-section-kicker">{tag_kicker}</div>
+      {f"""
+      <div class="dramaturgy-box">
+        <div class="dramaturgy-tag">{tag_dram}</div>
+        <div class="dramaturgy-content">
+          {dram_rendered}
+        </div>
+      </div>
+      """ if dram_rendered else ""}
+
+      <div class="points-grid-container">
+        <div class="points-section-title">{tag_pts}</div>
+        <div class="points-list">
+          {pts_block}
+        </div>
+      </div>
+
+      {f"""
+      <div class="synthesis-box">
+        <div class="synthesis-tag">{tag_syn}</div>
+        <div class="synthesis-content">
+          {syn_rendered}
+        </div>
+      </div>
+      """ if syn_rendered else ""}
+    </div>
+    '''
+
+def render_track_slide(num_str, title, data_de, data_en, is_active):
+    active_cls = " active" if is_active else ""
+    sub_de, stanzas_de, dram_de, pts_de, syn_de = data_de
+    sub_en, stanzas_en, dram_en, pts_en, syn_en = data_en
+
+    # Lyrics Block (English original text is identical across both languages)
+    stanzas = stanzas_de if stanzas_de else stanzas_en
+    stanzas_html = []
+    for s in stanzas:
+        lines_html = []
+        for l in s["lines"]:
+            lines_html.append(f'<div class="lyric-line-hero"><span class="lyric-hero-text">{render_md(l)}</span></div>')
+        lines_str = "\n".join(lines_html)
+        title_str = f'<div class="stanza-hero-tag">{s["title"]}</div>' if s["title"] else ''
+        stanzas_html.append(f'<div class="stanza-hero-wrap">{title_str}\n{lines_str}</div>')
+    lyrics_block = "\n".join(stanzas_html)
+
+    content_de = render_content_blocks(dram_de, pts_de, syn_de, "de")
+    content_en = render_content_blocks(dram_en, pts_en, syn_en, "en")
+
     return f'''
     <article class="track-slide{active_cls}" id="slide-{num_str}" data-track-num="{num_str}" data-track-title="{title}">
       <!-- Slide Track Header -->
@@ -175,7 +218,8 @@ def render_track_slide(num_str, title, subtitle, stanzas, dramaturgie, points, s
           <span class="slide-num-badge">{num_str}</span>
           <div class="slide-title-wrap">
             <h2 class="slide-title">{title}</h2>
-            <div class="slide-subtitle">{subtitle}</div>
+            <div class="slide-subtitle lang-de" data-lang="de">{sub_de}</div>
+            <div class="slide-subtitle lang-en" data-lang="en" style="display:none;">{sub_en}</div>
           </div>
         </div>
         <div class="slide-header-right">
@@ -193,7 +237,10 @@ def render_track_slide(num_str, title, subtitle, stanzas, dramaturgie, points, s
 
       <!-- Centered Hero Lyrics Column -->
       <div class="hero-lyrics-section">
-        <div class="hero-lyrics-kicker">Songtext</div>
+        <div class="hero-lyrics-kicker">
+          <span class="lang-de" data-lang="de">Songtext</span>
+          <span class="lang-en" data-lang="en" style="display:none;">Lyrics</span>
+        </div>
         <div class="hero-lyrics-container">
           {lyrics_block}
         </div>
@@ -201,32 +248,8 @@ def render_track_slide(num_str, title, subtitle, stanzas, dramaturgie, points, s
 
       <!-- In-Depth Analysis Below Lyrics -->
       <div class="hero-analysis-section">
-        <div class="analysis-section-kicker">Monolithische Tiefenanalyse</div>
-        
-        {f"""
-        <div class="dramaturgy-box">
-          <div class="dramaturgy-tag">I. Album-Dramaturgie & Kontext</div>
-          <div class="dramaturgy-content">
-            {dram_rendered}
-          </div>
-        </div>
-        """ if dram_rendered else ""}
-
-        <div class="points-grid-container">
-          <div class="points-section-title">Erschöpfende Lektüre ({len(points)} Analyse-Punkte)</div>
-          <div class="points-list">
-            {pts_block}
-          </div>
-        </div>
-
-        {f"""
-        <div class="synthesis-box">
-          <div class="synthesis-tag">Synthese & Dramaturgische Sollbruchstelle</div>
-          <div class="synthesis-content">
-            {syn_rendered}
-          </div>
-        </div>
-        """ if syn_rendered else ""}
+        {content_de}
+        {content_en}
       </div>
     </article>
     '''
@@ -239,9 +262,10 @@ def build_carousel_html():
     for num in range(1, 13):
         num_str = f"{num:02d}"
         title = track_names_map[num_str]
-        sub, stanzas, dram, pts, syn = parse_phase1(num_str)
+        data_de = parse_phase1(p1_de_dir, num_str)
+        data_en = parse_phase1(p1_en_dir, num_str)
         is_active = (num == 1)
-        slide_markup = render_track_slide(num_str, title, sub, stanzas, dram, pts, syn, is_active)
+        slide_markup = render_track_slide(num_str, title, data_de, data_en, is_active)
         slides_html_list.append(slide_markup)
         
         drawer_nav_list.append(f'<li><a href="javascript:void(0)" onclick="goToTrack({num-1})">{num_str} — {title}</a></li>')
@@ -398,6 +422,41 @@ def build_carousel_html():
       justify-content: flex-end;
       align-items: center;
       gap: 16px;
+    }}
+
+    /* Sleek Language Switch Toggle */
+    .lang-toggle-wrap {{
+      display: inline-flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      padding: 2px;
+      gap: 2px;
+    }}
+
+    .lang-btn {{
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-family: inherit;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      padding: 4px 10px;
+      border-radius: 16px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }}
+
+    .lang-btn.active {{
+      background: var(--magenta);
+      color: #ffffff;
+      box-shadow: 0 0 10px var(--magenta-glow);
+    }}
+
+    .lang-btn:hover:not(.active) {{
+      color: #ffffff;
     }}
 
     /* Burger Drawer */
@@ -600,34 +659,32 @@ def build_carousel_html():
       right: 24px;
     }}
 
-    .nav-arrow svg {{
-      width: 28px;
-      height: 28px;
-      stroke-width: 2.2;
-    }}
-
-    @media (max-width: 1024px) {{
+    @media (max-width: 1400px) {{
       .nav-arrow {{
-        width: 50px;
-        height: 50px;
-        top: auto;
-        bottom: 100px;
+        position: absolute;
+        top: 24px;
         transform: none;
+        width: 48px;
+        height: 48px;
       }}
       .nav-arrow:hover {{
-        transform: scale(1.08);
+        transform: scale(1.06);
       }}
-      .nav-arrow-left {{ left: 16px; }}
-      .nav-arrow-right {{ right: 16px; }}
+      .nav-arrow-left {{ left: 24px; }}
+      .nav-arrow-right {{ right: 24px; }}
     }}
 
-    /* SLIDE CONTAINER */
+    /* TRACK SLIDE (EINZELNER SONG) */
     .track-slide {{
       display: none;
-      animation: fadeInSlide 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      opacity: 0;
+      transition: opacity 0.35s ease;
     }}
+
     .track-slide.active {{
       display: block;
+      opacity: 1;
+      animation: fadeInSlide 0.4s ease forwards;
     }}
 
     @keyframes fadeInSlide {{
@@ -639,26 +696,26 @@ def build_carousel_html():
     .slide-header {{
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 20px;
-      padding-bottom: 28px;
+      align-items: flex-end;
+      padding-bottom: 24px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       margin-bottom: 48px;
+      gap: 20px;
     }}
 
     .slide-header-left {{
       display: flex;
-      align-items: center;
+      align-items: baseline;
       gap: 20px;
+      flex-wrap: wrap;
     }}
 
     .slide-num-badge {{
-      font-size: 2.2rem;
+      font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 900;
       color: var(--magenta);
-      letter-spacing: 0.05em;
       line-height: 1;
+      letter-spacing: -0.02em;
     }}
 
     .slide-title-wrap {{
@@ -668,95 +725,99 @@ def build_carousel_html():
     }}
 
     .slide-title {{
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 900;
-      color: #ffffff;
-      text-transform: uppercase;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 800;
       letter-spacing: -0.01em;
+      color: #ffffff;
       line-height: 1.1;
     }}
 
     .slide-subtitle {{
-      font-size: 1.05rem;
-      font-weight: 500;
+      font-size: clamp(0.95rem, 1.4vw, 1.15rem);
       color: var(--text-muted);
+      font-weight: 500;
+      max-width: 800px;
       line-height: 1.4;
     }}
 
     .slide-header-right {{
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
+      flex-shrink: 0;
     }}
 
-    /* Round Play Button & Audio Essay Button */
+    /* Header Action Buttons */
     .song-round-play-btn {{
       width: 44px;
       height: 44px;
       border-radius: 50%;
-      background: #ffffff;
-      color: #0c0c0f;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
-      border: none;
       cursor: pointer;
-      transition: all 0.2s ease;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+      transition: all 0.2s;
     }}
 
     .song-round-play-btn:hover {{
       background: var(--magenta);
-      color: #ffffff;
-      box-shadow: 0 0 16px var(--magenta-glow);
+      border-color: var(--magenta);
       transform: scale(1.06);
+      box-shadow: 0 0 15px var(--magenta-glow);
     }}
 
     .song-round-play-btn.playing {{
       background: var(--magenta);
-      color: #ffffff;
-      box-shadow: 0 0 20px var(--magenta-glow);
-    }}
-
-    .audio-play-btn {{
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      color: #cfcfd4;
-      padding: 10px 18px;
-      border-radius: 8px;
-      font-size: 0.8rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: all 0.2s ease;
-    }}
-
-    .audio-play-btn:hover {{
-      color: #ffffff;
       border-color: var(--magenta);
-      background: var(--magenta-dim);
-    }}
-
-    .audio-play-btn.playing {{
-      color: #ffffff;
-      border-color: var(--magenta);
-      background: rgba(255, 0, 122, 0.25);
       box-shadow: 0 0 15px var(--magenta-glow);
     }}
 
-    /* HERO LYRICS SECTION (GROSS IN DER MITTE) */
+    .audio-play-btn {{
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      height: 44px;
+      padding: 0 18px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s;
+    }}
+
+    .audio-play-btn:hover {{
+      background: var(--magenta);
+      border-color: var(--magenta);
+      transform: scale(1.04);
+      box-shadow: 0 0 15px var(--magenta-glow);
+    }}
+
+    .audio-play-btn.playing {{
+      background: var(--magenta);
+      border-color: var(--magenta);
+      box-shadow: 0 0 15px var(--magenta-glow);
+    }}
+
+    /* HERO LYRICS SECTION */
     .hero-lyrics-section {{
-      background: var(--bg-surface);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 12px;
-      padding: 48px 36px;
-      margin-bottom: 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       text-align: center;
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+      padding: 60px 20px;
+      margin-bottom: 70px;
+      background: radial-gradient(circle at 50% 30%, rgba(255, 0, 122, 0.04) 0%, transparent 70%);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.03);
     }}
 
     .hero-lyrics-kicker {{
@@ -769,24 +830,24 @@ def build_carousel_html():
     }}
 
     .hero-lyrics-container {{
-      max-width: 800px;
-      margin: 0 auto;
+      max-width: 760px;
+      width: 100%;
       display: flex;
       flex-direction: column;
-      gap: 32px;
+      gap: 36px;
     }}
 
     .stanza-hero-wrap {{
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 10px;
     }}
 
     .stanza-hero-tag {{
-      font-size: 0.8rem;
+      font-size: 0.72rem;
       font-weight: 800;
-      letter-spacing: 0.15em;
-      color: var(--magenta);
+      letter-spacing: 0.18em;
+      color: var(--text-muted);
       text-transform: uppercase;
       margin-bottom: 8px;
     }}
@@ -811,7 +872,7 @@ def build_carousel_html():
       -webkit-box-decoration-break: clone;
     }}
 
-    /* DEEP DIVE ANALYSIS SECTION (DARUNTER) */
+    /* DEEP DIVE ANALYSIS SECTION */
     .hero-analysis-section {{
       display: flex;
       flex-direction: column;
@@ -851,72 +912,72 @@ def build_carousel_html():
     }}
     .dramaturgy-content p:last-child {{ margin-bottom: 0; }}
 
-    /* Points List */
+    /* Points Grid */
+    .points-grid-container {{
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }}
     .points-section-title {{
       font-size: 1.25rem;
       font-weight: 800;
-      color: #ffffff;
-      margin-bottom: 24px;
       letter-spacing: -0.01em;
+      color: #ffffff;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }}
-
     .points-list {{
       display: flex;
       flex-direction: column;
       gap: 20px;
     }}
-
     .analysis-point-card {{
-      background: var(--bg-surface);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 10px;
-      padding: 24px 28px;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      background: var(--bg-card);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 8px;
+      padding: 28px;
+      transition: border-color 0.2s, background-color 0.2s;
     }}
     .analysis-point-card:hover {{
+      background-color: rgba(26, 26, 32, 0.85);
       border-color: rgba(255, 0, 122, 0.35);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     }}
-
     .point-header {{
       display: flex;
       align-items: baseline;
       gap: 14px;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }}
-
     .point-num-tag {{
-      font-size: 0.95rem;
+      font-size: 0.8rem;
       font-weight: 900;
       color: var(--magenta);
-      letter-spacing: 0.05em;
+      letter-spacing: 0.1em;
       flex-shrink: 0;
     }}
-
     .point-title {{
-      font-size: 1.12rem;
+      font-size: 1.15rem;
       font-weight: 700;
       color: #ffffff;
       line-height: 1.4;
     }}
-
     .point-body p {{
-      font-size: 1.02rem;
-      color: #cfcfd4;
-      line-height: 1.75;
-      margin-bottom: 12px;
+      font-size: 1.04rem;
+      color: #c4c4cc;
+      line-height: 1.8;
+      margin-bottom: 14px;
     }}
     .point-body p:last-child {{ margin-bottom: 0; }}
 
     /* Synthesis Box */
     .synthesis-box {{
-      background: rgba(255, 0, 122, 0.05);
+      background: linear-gradient(180deg, rgba(255, 0, 122, 0.04) 0%, rgba(20, 20, 24, 0.8) 100%);
       border: 1px solid rgba(255, 0, 122, 0.25);
       border-radius: 10px;
       padding: 32px;
     }}
     .synthesis-tag {{
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 800;
       letter-spacing: 0.15em;
       color: var(--magenta);
@@ -998,7 +1059,7 @@ def build_carousel_html():
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 6px;
+      gap: 4px;
     }}
 
     .player-controls {{
@@ -1016,62 +1077,62 @@ def build_carousel_html():
       align-items: center;
       justify-content: center;
       padding: 4px;
-      transition: all 0.2s;
+      transition: color 0.2s, transform 0.1s;
     }}
-    .ctrl-btn:hover {{ color: #ffffff; }}
+    .ctrl-btn:hover {{
+      color: #ffffff;
+      transform: scale(1.1);
+    }}
 
     .play-pause-circle {{
-      width: 34px;
-      height: 34px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       background: #ffffff;
+      border: none;
       color: #0c0c0f;
       display: flex;
       align-items: center;
       justify-content: center;
-      border: none;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: transform 0.15s, background-color 0.2s;
     }}
     .play-pause-circle:hover {{
-      background: var(--magenta);
+      transform: scale(1.08);
+      background-color: var(--magenta);
       color: #ffffff;
-      box-shadow: 0 0 15px var(--magenta-glow);
     }}
 
     .timeline-wrap {{
       display: flex;
       align-items: center;
-      justify-content: center;
       gap: 10px;
-      width: 100%;
+      width: min(280px, 35vw);
     }}
 
     .time-stamp {{
-      font-size: 0.7rem;
+      font-size: 0.65rem;
+      font-weight: 600;
       color: var(--text-muted);
       font-variant-numeric: tabular-nums;
-      font-family: monospace;
       min-width: 28px;
-      text-align: center;
     }}
 
     .timeline-track {{
       flex: 1;
-      height: 4px;
+      height: 3px;
       background: rgba(255, 255, 255, 0.15);
       border-radius: 2px;
-      cursor: pointer;
       position: relative;
+      cursor: pointer;
     }}
-    .timeline-track:hover {{ height: 6px; }}
 
     .timeline-fill {{
       height: 100%;
       background: var(--magenta);
       border-radius: 2px;
       width: 0%;
-      pointer-events: none;
+      position: relative;
     }}
 
     .player-right {{
@@ -1118,8 +1179,11 @@ def build_carousel_html():
       <div class="brand-title">TOMORA</div>
     </div>
     <div class="nav-right">
-      <!-- Platzhalter für konsistente Nav-Balance -->
-      <span style="font-size:0.75rem;font-weight:800;color:var(--magenta);letter-spacing:0.15em;">MASTER</span>
+      <!-- Dynamic Language Switcher Toggle -->
+      <div class="lang-toggle-wrap">
+        <button class="lang-btn active" id="langBtnDE" onclick="setLanguage('de')">DE</button>
+        <button class="lang-btn" id="langBtnEN" onclick="setLanguage('en')">EN</button>
+      </div>
     </div>
   </nav>
 
@@ -1144,7 +1208,10 @@ def build_carousel_html():
       <source src="hero_video.mp4" type="video/mp4">
     </video>
     <div class="hero-overlay-text">
-      <div class="hero-kicker">Das Meisterwerk im Detail</div>
+      <div class="hero-kicker">
+        <span class="lang-de" data-lang="de">Das Meisterwerk im Detail</span>
+        <span class="lang-en" data-lang="en" style="display:none;">The Masterpiece in Close-Up</span>
+      </div>
       <h1 class="hero-title">TOMORA</h1>
     </div>
   </div>
@@ -1171,7 +1238,10 @@ def build_carousel_html():
       </div>
       <span class="player-mode-tag">
         <span class="sub-mode-song">Track Audio (Original)</span>
-        <span class="sub-mode-essay" style="display:none;">Neural TTS Audio-Essay</span>
+        <span class="sub-mode-essay" style="display:none;">
+          <span class="lang-de" data-lang="de">Neural TTS Audio-Essay</span>
+          <span class="lang-en" data-lang="en" style="display:none;">Neural TTS Audio Essay</span>
+        </span>
       </span>
     </div>
 
@@ -1198,7 +1268,7 @@ def build_carousel_html():
     </div>
 
     <div class="player-right">
-      <span style="font-size:0.7rem;font-weight:800;color:var(--text-muted);letter-spacing:0.1em;">DE ESSAY</span>
+      <span id="playerBadgeEssay" style="font-size:0.7rem;font-weight:800;color:var(--text-muted);letter-spacing:0.1em;">DE ESSAY</span>
     </div>
   </div>
 
@@ -1228,8 +1298,7 @@ def build_carousel_html():
         const len = b32.length;
         for (let i = 0; i < len; i++) {{
           if (Math.random() < 0.12) {{
-            const val = (Math.random() * 255) | 0;
-            b32[i] = (50 << 24) | (val << 16) | (val << 8) | val;
+            b32[i] = 0x22ffffff;
           }}
         }}
         ctx.putImageData(idata, 0, 0);
@@ -1238,10 +1307,10 @@ def build_carousel_html():
     }}
     requestAnimationFrame(renderGrain);
 
-    // 2. Drawer Navigation
+    // 2. Burger Drawer Logic
     const burgerToggle = document.getElementById('burgerToggle');
-    const drawerOverlay = document.getElementById('drawerOverlay');
     const drawerNav = document.getElementById('drawerNav');
+    const drawerOverlay = document.getElementById('drawerOverlay');
     const drawerClose = document.getElementById('drawerClose');
 
     function openDrawer() {{
@@ -1260,7 +1329,33 @@ def build_carousel_html():
     // 3. Track List & Navigation State
     const trackList = {track_list_json};
     let currentTrackIdx = 0;
+    let currentLanguage = 'de'; // 'de' | 'en'
     const navTrackCurrent = document.getElementById('navTrackCurrent');
+
+    function setLanguage(lang) {{
+      if (lang !== 'de' && lang !== 'en') return;
+      currentLanguage = lang;
+      
+      document.getElementById('langBtnDE').classList.toggle('active', lang === 'de');
+      document.getElementById('langBtnEN').classList.toggle('active', lang === 'en');
+      
+      document.querySelectorAll('.lang-de').forEach(el => {{
+        el.style.display = (lang === 'de') ? '' : 'none';
+      }});
+      document.querySelectorAll('.lang-en').forEach(el => {{
+        el.style.display = (lang === 'en') ? '' : 'none';
+      }});
+      
+      const badge = document.getElementById('playerBadgeEssay');
+      if (badge) badge.textContent = (lang === 'de') ? 'DE ESSAY' : 'EN ESSAY';
+      
+      // If audio essay is currently playing, switch source to chosen language seamlessly
+      if (currentMode === 'essay' && currentAudio) {{
+        const wasPlaying = !currentAudio.paused;
+        const curTime = currentAudio.currentTime;
+        playEssay(currentTrackIdx, wasPlaying);
+      }}
+    }}
 
     function goToTrack(idx) {{
       if (idx < 0) idx = trackList.length - 1;
@@ -1430,7 +1525,8 @@ def build_carousel_html():
         ytPlayer.pauseVideo();
       }}
 
-      const audioSrc = `audio/track_${{track.num}}_de.mp3`;
+      const langSuffix = (currentLanguage === 'en') ? 'en' : 'de';
+      const audioSrc = `audio/track_${{track.num}}_${{langSuffix}}.mp3`;
       if (currentAudio) {{
         currentAudio.pause();
         currentAudio = null;
@@ -1576,7 +1672,8 @@ def build_carousel_html():
       }});
     }});
 
-    // Start UI
+    // Initialize Language to DE by default
+    setLanguage('de');
     updateTrackUI(0);
   </script>
 </body>
