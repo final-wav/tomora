@@ -46,11 +46,13 @@ def clean_txt(t):
 
 def render_md(text):
     text = text.strip()
+    # Replace German and straight quotes first, before any HTML span tags are inserted
+    text = re.sub(r'„([^“\n]+?)“', r'QQSTART\1QQEND', text)
+    text = re.sub(r'"([^"\n]+?)"', r'QQSTART\1QQEND', text)
     text = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', text)
     text = re.sub(r'(?<!\*)\*([^*]+?)\*(?!\*)', r'<span class="lyric-quote-highlight">\1</span>', text)
     text = re.sub(r'`([^`]+?)`', r'<code style="color:var(--magenta);font-family:monospace;">\1</code>', text)
-    text = re.sub(r'„([^“]+?)“', r'<span class="lyric-quote-highlight">„\1“</span>', text)
-    text = re.sub(r'"([^"]+?)"', r'<span class="lyric-quote-highlight">"\1"</span>', text)
+    text = text.replace('QQSTART', '<span class="lyric-quote-highlight">„').replace('QQEND', '“</span>')
     return text
 
 def parse_phase1(num_str):
