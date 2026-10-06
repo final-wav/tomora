@@ -1452,8 +1452,9 @@ def build_carousel_html():
       }});
 
       currentAudio.addEventListener('ended', () => {{
-        goToTrack(currentTrackIdx + 1);
-        playSong(currentTrackIdx, true);
+        const nextIdx = (currentTrackIdx + 1) % trackList.length;
+        goToTrack(nextIdx);
+        playEssay(nextIdx, true);
       }});
 
       if (autoPlay) {{

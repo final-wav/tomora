@@ -6364,8 +6364,9 @@ Die Reise führte von der totalen Fremdbestimmung zur inneren Souveränität.</p
       });
 
       currentAudio.addEventListener('ended', () => {
-        goToTrack(currentTrackIdx + 1);
-        playSong(currentTrackIdx, true);
+        const nextIdx = (currentTrackIdx + 1) % trackList.length;
+        goToTrack(nextIdx);
+        playEssay(nextIdx, true);
       });
 
       if (autoPlay) {
