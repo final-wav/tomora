@@ -76,7 +76,7 @@ The sun
 
 ---
 
-### III. Die Erschöpfende Lektüre: 34-Punkte-Tiefenbohrung
+### III. Die Erschöpfende Lektüre: 24-Punkte-Tiefenbohrung
 
 #### 1. Der Einstieg mit wortlosen Vokalisen: Die Stimme vor der Sprache
 Der Song eröffnet wie Track 01 mit reinem Klang: *„[Non-Lyrical Vocals]“*. Doch die Qualität dieses Schalls hat sich nach elf Tracks grundlegend gewandelt: Es ist nicht mehr das ängstliche Stammeln aus *Please*, nicht das hysterische *Aah* aus *Ring The Alarm* und nicht das dissoziative Glitch-Stottern aus *I Drink The Light*. Es ist ein warmer, schwingender Chorklang. Das Nervensystem hat sich beruhigt; die Resonanz ist wieder da.
