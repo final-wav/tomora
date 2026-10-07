@@ -1000,8 +1000,8 @@ def build_carousel_html():
       bottom: 24px;
       left: 50%;
       transform: translateX(-50%);
-      width: min(980px, calc(100vw - 32px));
-      height: 76px;
+      width: min(1000px, calc(100vw - 32px));
+      height: 78px;
       background: rgba(12, 12, 15, 0.92);
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
@@ -1009,7 +1009,7 @@ def build_carousel_html():
       border-radius: 12px;
       box-shadow: 0 16px 48px rgba(0, 0, 0, 0.75), 0 0 1px rgba(255, 255, 255, 0.2);
       display: grid;
-      grid-template-columns: 1fr auto 1fr;
+      grid-template-columns: 220px 1fr 220px;
       align-items: center;
       padding: 0 24px;
       gap: 16px;
@@ -1065,6 +1065,7 @@ def build_carousel_html():
       align-items: center;
       gap: 6px;
       width: 100%;
+      min-width: 0;
     }}
 
     .player-controls {{
@@ -1114,7 +1115,7 @@ def build_carousel_html():
       align-items: center;
       gap: 14px;
       width: 100%;
-      max-width: 520px;
+      max-width: 580px;
     }}
 
     .time-stamp {{
