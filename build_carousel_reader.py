@@ -1009,10 +1009,10 @@ def build_carousel_html():
       border-radius: 12px;
       box-shadow: 0 16px 48px rgba(0, 0, 0, 0.75), 0 0 1px rgba(255, 255, 255, 0.2);
       display: grid;
-      grid-template-columns: minmax(180px, 240px) 1fr auto;
+      grid-template-columns: 1fr auto 1fr;
       align-items: center;
       padding: 0 24px;
-      gap: 20px;
+      gap: 16px;
       z-index: 1000;
     }}
 
@@ -1022,6 +1022,7 @@ def build_carousel_html():
       gap: 2px;
       overflow: hidden;
       justify-content: center;
+      min-width: 0;
     }}
 
     .player-track-info {{
@@ -1113,7 +1114,7 @@ def build_carousel_html():
       align-items: center;
       gap: 14px;
       width: 100%;
-      max-width: 480px;
+      max-width: 520px;
     }}
 
     .time-stamp {{
@@ -1172,6 +1173,7 @@ def build_carousel_html():
       justify-content: flex-end;
       align-items: center;
       gap: 12px;
+      min-width: 0;
     }}
 
     @media (max-width: 768px) {{
