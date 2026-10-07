@@ -998,18 +998,19 @@ def build_carousel_html():
       bottom: 24px;
       left: 50%;
       transform: translateX(-50%);
-      width: min(840px, calc(100vw - 32px));
-      height: 68px;
-      background: rgba(12, 12, 15, 0.88);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 8px;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65), 0 0 1px rgba(255, 255, 255, 0.15);
+      width: min(980px, calc(100vw - 32px));
+      height: 76px;
+      background: rgba(12, 12, 15, 0.92);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 12px;
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.75), 0 0 1px rgba(255, 255, 255, 0.2);
       display: grid;
-      grid-template-columns: 1fr auto 1fr;
+      grid-template-columns: minmax(180px, 240px) 1fr auto;
       align-items: center;
       padding: 0 24px;
+      gap: 20px;
       z-index: 1000;
     }}
 
@@ -1031,15 +1032,15 @@ def build_carousel_html():
     }}
 
     .player-track-num {{
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       font-weight: 900;
       color: var(--magenta);
       letter-spacing: 0.1em;
     }}
 
     .player-track-title {{
-      font-size: 0.85rem;
-      font-weight: 700;
+      font-size: 0.92rem;
+      font-weight: 800;
       color: #ffffff;
       letter-spacing: 0.05em;
       white-space: nowrap;
@@ -1048,7 +1049,7 @@ def build_carousel_html():
     }}
 
     .player-mode-tag {{
-      font-size: 0.65rem;
+      font-size: 0.68rem;
       font-weight: 700;
       color: var(--text-muted);
       letter-spacing: 0.08em;
@@ -1059,13 +1060,14 @@ def build_carousel_html():
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 4px;
+      gap: 6px;
+      width: 100%;
     }}
 
     .player-controls {{
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 18px;
     }}
 
     .ctrl-btn {{
@@ -1076,17 +1078,17 @@ def build_carousel_html():
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 4px;
+      padding: 6px;
       transition: color 0.2s, transform 0.1s;
     }}
     .ctrl-btn:hover {{
       color: #ffffff;
-      transform: scale(1.1);
+      transform: scale(1.15);
     }}
 
     .play-pause-circle {{
-      width: 36px;
-      height: 36px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       background: #ffffff;
       border: none;
@@ -1095,44 +1097,72 @@ def build_carousel_html():
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: transform 0.15s, background-color 0.2s;
+      transition: transform 0.15s, background-color 0.2s, box-shadow 0.2s;
     }}
     .play-pause-circle:hover {{
       transform: scale(1.08);
       background-color: var(--magenta);
       color: #ffffff;
+      box-shadow: 0 0 16px var(--magenta-glow);
     }}
 
     .timeline-wrap {{
       display: flex;
       align-items: center;
-      gap: 10px;
-      width: min(280px, 35vw);
+      gap: 14px;
+      width: 100%;
+      max-width: 480px;
     }}
 
     .time-stamp {{
-      font-size: 0.65rem;
-      font-weight: 600;
-      color: var(--text-muted);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #d0d0d5;
       font-variant-numeric: tabular-nums;
-      min-width: 28px;
+      min-width: 38px;
+      text-align: center;
     }}
 
     .timeline-track {{
       flex: 1;
-      height: 3px;
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 2px;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.18);
+      border-radius: 4px;
       position: relative;
       cursor: pointer;
+      transition: height 0.15s ease, background 0.15s ease;
+    }}
+
+    .timeline-track:hover {{
+      height: 10px;
+      background: rgba(255, 255, 255, 0.28);
     }}
 
     .timeline-fill {{
       height: 100%;
       background: var(--magenta);
-      border-radius: 2px;
+      border-radius: 4px;
       width: 0%;
       position: relative;
+      box-shadow: 0 0 12px var(--magenta-glow);
+    }}
+
+    .timeline-fill::after {{
+      content: '';
+      position: absolute;
+      right: -6px;
+      top: 50%;
+      transform: translateY(-50%) scale(0);
+      width: 14px;
+      height: 14px;
+      background: #ffffff;
+      border-radius: 50%;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.5), 0 0 10px var(--magenta);
+      transition: transform 0.15s ease;
+    }}
+
+    .timeline-track:hover .timeline-fill::after {{
+      transform: translateY(-50%) scale(1);
     }}
 
     .player-right {{
@@ -1145,16 +1175,17 @@ def build_carousel_html():
     @media (max-width: 768px) {{
       .bottom-player {{
         bottom: 16px;
-        width: calc(100vw - 24px);
+        width: calc(100vw - 20px);
         grid-template-columns: 1fr;
         height: auto;
-        padding: 10px 14px;
-        gap: 6px;
-        border-radius: 8px;
+        padding: 12px 16px;
+        gap: 8px;
+        border-radius: 10px;
       }}
       .player-left {{ display: none; }}
       .player-right {{ display: none; }}
       .player-center {{ width: 100%; }}
+      .timeline-wrap {{ max-width: 100%; }}
     }}
   </style>
 </head>
