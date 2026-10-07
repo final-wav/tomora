@@ -134,7 +134,9 @@ def render_content_blocks(dramaturgie, points, synthesis, lang_code):
     # Render Points
     pts_html = []
     for idx, pt in enumerate(points):
-        p_title = pt["title"]
+        p_title = pt["title"].strip()
+        # Remove redundant leading number (e.g. "13. ", "13: ", "13 - ") to prevent double numbering with the badge
+        p_title = re.sub(r'^\d+[\.\:\-]\s*', '', p_title)
         p_body = pt["body"]
         body_p = [bp.strip() for bp in p_body.split('\n\n') if bp.strip()]
         body_rendered = "\n".join([f'<p>{render_md(bp)}</p>' for bp in body_p])
